@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useFavorites } from "@/context/FavoritesContext";
 
@@ -21,15 +20,10 @@ export default function ServiceCard({
   const {
     toggleFavorite,
     isFavorite,
+    isHydrated,
   } = useFavorites();
 
   const favorite = isFavorite(id);
-const [mounted, setMounted] =
-  useState(false);
-
-useEffect(() => {
-  setMounted(true);
-}, []);
   return (
     <div
       style={{
@@ -58,7 +52,7 @@ useEffect(() => {
           zIndex: 10,
         }}
       >
-        {mounted
+        {isHydrated
   ? favorite
     ? "❤️"
     : "🤍"

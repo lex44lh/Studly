@@ -1,88 +1,56 @@
+"use client";
+
+import { use, useState } from "react";
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
-import ServiceFavoriteButton from "../../../components/ServiceFavoriteButton";
-import StartChatButton from "../../../components/StartChatButton";
+import ServiceFavoriteButton from "@/components/ServiceFavoriteButton";
+import StartChatButton from "@/components/StartChatButton";
 import CreateOrderButton from "@/components/CreateOrderButton";
+import AdditionalServicesSelector, {
+  AdditionalService,
+} from "@/components/AdditionalServicesSelector";
+import services from "@/data/services";
+
 type Props = {
   params: Promise<{
     id: string;
   }>;
 };
 
-const services = {
-  1: {
-    title: "Помогу с C++",
-    price: "500 ₽",
-    seller: "Иван Петров",
-    rating: "4.9 (126 отзывов)",
-    profileId: 1,
-    duration: "3 дня",
-    description:
-      "Помогу выполнить лабораторные работы, исправить ошибки в коде, объяснить сложные темы по C++.",
-    included: [
-      "Консультация",
-      "Проверка кода",
-      "Исправление ошибок",
-    ],
+const additionalServices: AdditionalService[] = [
+  {
+    id: "urgent",
+    title: "Срочное выполнение",
+    price: 300,
+    extraDays: 0,
   },
-
-  2: {
-    title: "Помощь с Python",
-    price: "900 ₽",
-    seller: "Дмитрий Иванов",
-    rating: "5.0 (54 отзыва)",
-    profileId: 2,
-    duration: "4 дня",
-    description:
-      "Помогу разобраться с Python, решить учебные задачи, найти ошибки в коде и объяснить сложные темы.",
-    included: [
-      "Консультация",
-      "Разбор кода",
-      "Исправление ошибок",
-    ],
+  {
+    id: "call",
+    title: "Созвон и объяснение",
+    price: 500,
+    extraDays: 0,
   },
-
-  100: {
-    title: "Репетитор по английскому",
-    price: "700 ₽",
-    seller: "Анна Смирнова",
-    rating: "4.8 (93 отзыва)",
-    profileId: 100,
-    duration: "7 дней",
-    description:
-      "Помогу улучшить английский язык, разобраться с грамматикой, подготовиться к занятиям и выполнить учебные задания.",
-    included: [
-      "Онлайн-консультация",
-      "Разбор заданий",
-      "Объяснение грамматики",
-    ],
+  {
+    id: "report",
+    title: "Подробный отчёт",
+    price: 400,
+    extraDays: 1,
   },
+];
 
-  101: {
-    title: "Монтаж видео",
-    price: "1200 ₽",
-    seller: "Максим Козлов",
-    rating: "4.9 (41 отзыв)",
-    profileId: 101,
-    duration: "5 дней",
-    description:
-      "Смонтирую видео, добавлю переходы, музыку, субтитры и подготовлю готовый ролик.",
-    included: [
-      "Монтаж видео",
-      "Добавление музыки",
-      "Субтитры и переходы",
-    ],
-  },
-};
-
-export default async function ServicePage({
+export default function ServicePage({
   params,
 }: Props) {
-  const { id } = await params;
+  const { id } = use(params);
 
-  const service = services[
-    Number(id) as keyof typeof services
-  ];
+  const service = services.find(
+    (item) => item.id === Number(id)
+  );
+
+  const [
+    selectedAdditionalServices,
+    setSelectedAdditionalServices,
+  ] = useState<AdditionalService[]>([]);
 
   if (!service) {
     return (
@@ -131,7 +99,7 @@ export default async function ServicePage({
         <BackButton />
 
         <ServiceFavoriteButton
-          serviceId={Number(id)}
+          serviceId={service.id}
         />
       </div>
 
@@ -156,7 +124,7 @@ export default async function ServicePage({
           color: "#3547B8",
           fontWeight: 700,
           fontSize: "24px",
-          marginBottom: "0px",
+          marginBottom: "0",
         }}
       >
         {service.price}
@@ -182,7 +150,7 @@ export default async function ServicePage({
       >
         <p
           style={{
-            marginBottom: "0px",
+            marginBottom: "0",
             cursor: "pointer",
             fontWeight: 600,
           }}
@@ -192,7 +160,7 @@ export default async function ServicePage({
 
         <p
           style={{
-            marginBottom: "0px",
+            marginBottom: "0",
             cursor: "pointer",
           }}
         >
@@ -206,17 +174,17 @@ export default async function ServicePage({
           marginBottom: "10px",
         }}
       >
-        ⏱ Срок выполнения: {service.duration}
+        ⏱ Срок выполнения:{" "}
+        {service.duration}
       </p>
 
       {/* Начать чат */}
-
-<StartChatButton
-  serviceId={Number(id)}
-  performerId={service.profileId}
-  performerName={service.seller}
-  serviceTitle={service.title}
-/>
+      <StartChatButton
+        serviceId={service.id}
+        performerId={service.profileId}
+        performerName={service.seller}
+        serviceTitle={service.title}
+      />
 
       {/* Описание */}
       <h3
@@ -255,46 +223,37 @@ export default async function ServicePage({
         Дополнительные услуги:
       </h3>
 
-      <div
+      <p
         style={{
-          border: "1px solid #E5E7EB",
-          borderRadius: "12px",
-          padding: "12px",
-          marginBottom: "10px",
+          color: "#6B7280",
+          fontSize: "14px",
+          marginTop: "0",
+          marginBottom: "12px",
         }}
       >
-        Срочное выполнение — 300 ₽
-      </div>
+        Можно выбрать дополнительные услуги
+        сразу при оформлении заказа.
+      </p>
 
-      <div
-        style={{
-          border: "1px solid #E5E7EB",
-          borderRadius: "12px",
-          padding: "12px",
-          marginBottom: "10px",
-        }}
-      >
-        Созвон и объяснение — 500 ₽
-      </div>
-
-      <div
-        style={{
-          border: "1px solid #E5E7EB",
-          borderRadius: "12px",
-          padding: "12px",
-          marginBottom: "24px",
-        }}
-      >
-        Подробный отчёт — 400 ₽
-      </div>
+      <AdditionalServicesSelector
+        services={additionalServices}
+        onChange={
+          setSelectedAdditionalServices
+        }
+      />
 
       {/* Оплата */}
       <CreateOrderButton
-  serviceId={Number(id)}
-  serviceTitle={service.title}
-  performerId={service.profileId}
-  performerName={service.seller}
-/>
+        serviceId={service.id}
+        serviceTitle={service.title}
+        performerId={service.profileId}
+        performerName={service.seller}
+        basePrice={service.priceNumber}
+        baseDurationDays={service.durationDays}
+        selectedAdditionalServices={
+          selectedAdditionalServices
+        }
+      />
     </div>
   );
 }

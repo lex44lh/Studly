@@ -5,13 +5,60 @@ import {
   useContext,
   useEffect,
   useState,
+  useSyncExternalStore,
 } from "react";
+import services from "@/data/services";
 
 type FavoritesContextType = {
   favorites: number[];
+  isHydrated: boolean;
   toggleFavorite: (id: number) => void;
   isFavorite: (id: number) => boolean;
 };
+
+const serviceIds = new Set(services.map((service) => service.id));
+
+function parseFavorites(value: string | null): number[] {
+  if (value === null) {
+    return [];
+  }
+
+  try {
+    const parsed: unknown = JSON.parse(value);
+
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+
+    return [...new Set(
+      parsed.filter(
+        (id): id is number =>
+          typeof id === "number" &&
+          Number.isSafeInteger(id) &&
+          id > 0 &&
+          serviceIds.has(id)
+      )
+    )];
+  } catch {
+    return [];
+  }
+}
+
+function readFavorites(): number[] {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  try {
+    return parseFavorites(window.localStorage.getItem("favorites"));
+  } catch {
+    return [];
+  }
+}
+
+const subscribeToHydration = () => () => {};
+const getClientHydrationSnapshot = () => true;
+const getServerHydrationSnapshot = () => false;
 
 const FavoritesContext =
   createContext<FavoritesContextType | null>(
@@ -23,42 +70,65 @@ export function FavoritesProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [favorites, setFavorites] =
-  useState<number[]>(() => {
-    if (typeof window === "undefined") {
-      return [];
+  const [favorites, setFavorites] = useState<number[]>(readFavorites);
+
+  useEffect(() => {
+    try {
+      const serialized = JSON.stringify(favorites);
+
+      if (window.localStorage.getItem("favorites") !== serialized) {
+        window.localStorage.setItem("favorites", serialized);
+      }
+    } catch {
+      // Favorites remain available in memory when storage is unavailable.
     }
+  }, [favorites]);
 
-    const saved =
-      localStorage.getItem("favorites");
+  useEffect(() => {
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key !== "favorites" && event.key !== null) {
+        return;
+      }
 
-    return saved
-      ? JSON.parse(saved)
-      : [];
-  });
+      const nextFavorites = parseFavorites(event.newValue);
+      setFavorites((current) =>
+        current.length === nextFavorites.length &&
+        current.every((id, index) => id === nextFavorites[index])
+          ? current
+          : nextFavorites
+      );
+    };
 
-useEffect(() => {
-  localStorage.setItem(
-    "favorites",
-    JSON.stringify(favorites)
-  );
-}, [favorites]);
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
 
   const toggleFavorite = (id: number) => {
-    setFavorites((prev) =>
-      prev.includes(id)
-        ? prev.filter((item) => item !== id)
-        : [...prev, id]
+    if (!Number.isSafeInteger(id) || !serviceIds.has(id)) {
+      return;
+    }
+
+    setFavorites((current) =>
+      current.includes(id)
+        ? current.filter((item) => item !== id)
+        : [...current, id]
     );
   };
 
   const isFavorite = (id: number) =>
     favorites.includes(id);
 
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getClientHydrationSnapshot,
+    getServerHydrationSnapshot
+  );
+
   return (
     <FavoritesContext.Provider
       value={{
         favorites,
+        isHydrated,
         toggleFavorite,
         isFavorite,
       }}

@@ -28,7 +28,14 @@ export default function OrdersPage() {
       localStorage.getItem("studly-orders");
 
     if (saved) {
-      setOrders(JSON.parse(saved));
+      try {
+        const parsed: unknown = JSON.parse(saved);
+
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Load browser-persisted orders after hydration.
+        setOrders(Array.isArray(parsed) ? parsed as Order[] : []);
+      } catch {
+        // Ignore malformed local order data instead of breaking the page.
+      }
     }
   }, []);
 

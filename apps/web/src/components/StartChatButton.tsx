@@ -9,6 +9,16 @@ type Props = {
   serviceTitle: string;
 };
 
+type Chat = {
+  id: number;
+  performerId: number;
+  performerName: string;
+  serviceId: number;
+  serviceTitle: string;
+  createdAt: number;
+  orderId?: number | null;
+};
+
 export default function StartChatButton({
   serviceId,
   performerId,
@@ -18,16 +28,25 @@ export default function StartChatButton({
   const router = useRouter();
 
   const startChat = () => {
-    const saved =
-      localStorage.getItem("studly-chats");
+    let chats: Chat[];
 
-    const chats = saved
-      ? JSON.parse(saved)
-      : [];
+    try {
+      const saved = localStorage.getItem("studly-chats");
+      const parsed: unknown = saved ? JSON.parse(saved) : [];
+
+      if (!Array.isArray(parsed)) {
+        throw new Error("Invalid chats data");
+      }
+
+      chats = parsed as Chat[];
+    } catch {
+      window.alert("Не удалось загрузить чаты. Попробуйте ещё раз.");
+      return;
+    }
 
     // Один чат = один исполнитель + одна услуга
     const existingChat = chats.find(
-      (chat: any) =>
+      (chat) =>
         chat.performerId === performerId &&
         chat.serviceId === serviceId
     );

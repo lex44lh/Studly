@@ -31,13 +31,16 @@ export default function ChatPage() {
       localStorage.getItem("studly-chats");
 
     if (!saved) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Finish the browser-only localStorage load after hydration.
       setLoading(false);
       return;
     }
 
     try {
-      const chats: Chat[] =
-        JSON.parse(saved);
+      const parsed: unknown = JSON.parse(saved);
+      const chats: Chat[] = Array.isArray(parsed)
+        ? parsed as Chat[]
+        : [];
 
       const foundChat = chats.find(
         (item) =>

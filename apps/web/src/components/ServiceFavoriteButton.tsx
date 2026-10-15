@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useFavorites } from "@/context/FavoritesContext";
 
 type Props = {
@@ -13,15 +12,10 @@ export default function ServiceFavoriteButton({
   const {
     toggleFavorite,
     isFavorite,
+    isHydrated,
   } = useFavorites();
 
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
+  if (!isHydrated) {
     return (
       <button
         type="button"

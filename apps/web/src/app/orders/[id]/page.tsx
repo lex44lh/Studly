@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import BackButton from "@/components/BackButton";
+import type { AdditionalService } from "@/components/AdditionalServicesSelector";
 
 type Order = {
   id: number;
@@ -10,11 +11,21 @@ type Order = {
   serviceTitle: string;
   performerId: number;
   performerName: string;
+
+  basePrice: number;
+  totalPrice: number;
+
+  baseDurationDays: number;
+  totalDurationDays: number;
+
+  additionalServices: AdditionalService[];
+
   status:
     | "PENDING"
     | "IN_PROGRESS"
     | "REVIEW"
     | "COMPLETED";
+
   createdAt: number;
   chatId: number | null;
 };
@@ -46,19 +57,25 @@ export default function OrderPage() {
       localStorage.getItem("studly-orders");
 
     if (!saved) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Finish the browser-only localStorage load after hydration.
       setLoading(false);
       return;
     }
 
-    const orders: Order[] =
-      JSON.parse(saved);
+    try {
+      const orders: Order[] =
+        JSON.parse(saved);
 
-    const foundOrder = orders.find(
-      (item) =>
-        String(item.id) === String(id)
-    );
+      const foundOrder = orders.find(
+        (item) =>
+          String(item.id) === String(id)
+      );
 
-    setOrder(foundOrder ?? null);
+      setOrder(foundOrder ?? null);
+    } catch {
+      setOrder(null);
+    }
+
     setLoading(false);
   }, [id]);
 
@@ -99,68 +116,107 @@ export default function OrderPage() {
   const openChat = () => {
     if (!order) return;
 
-    const saved =
-      localStorage.getItem("studly-chats");
+    const parseArray = <T,>(
+      key: string
+    ): T[] => {
+      try {
+        const value =
+          localStorage.getItem(key);
 
-    const chats: Chat[] = saved
-      ? JSON.parse(saved)
-      : [];
+        const parsed: unknown = value
+          ? JSON.parse(value)
+          : [];
+
+        return Array.isArray(parsed)
+          ? (parsed as T[])
+          : [];
+      } catch {
+        return [];
+      }
+    };
+
+    const chats =
+      parseArray<Chat>("studly-chats");
+
+    const orders =
+      parseArray<Order>("studly-orders");
+
+    const currentOrder =
+      orders.find(
+        (item) => item.id === order.id
+      ) ?? order;
 
     const existingChat =
-  chats.find(
-    (chat) =>
-      chat.orderId === order.id
-  );
-
-    if (existingChat) {
-      router.push(
-        `/chats/${existingChat.id}`
+      chats.find(
+        (chat) =>
+          chat.orderId === currentOrder.id
+      ) ??
+      chats.find(
+        (chat) =>
+          currentOrder.chatId !== null &&
+          chat.id === currentOrder.chatId
+      ) ??
+      chats.find(
+        (chat) =>
+          chat.performerId === currentOrder.performerId &&
+          chat.serviceId === currentOrder.serviceId
       );
-      return;
-    }
 
-    const newChat: Chat = {
-  id: Date.now(),
-  performerId: order.performerId,
-  performerName: order.performerName,
-  serviceId: order.serviceId,
-  serviceTitle: order.serviceTitle,
-  createdAt: Date.now(),
-  orderId: order.id,
-};
+    const chat: Chat = existingChat
+      ? {
+          ...existingChat,
+          orderId: currentOrder.id,
+        }
+      : {
+          id: Date.now(),
+          performerId:
+            currentOrder.performerId,
+          performerName:
+            currentOrder.performerName,
+          serviceId:
+            currentOrder.serviceId,
+          serviceTitle:
+            currentOrder.serviceTitle,
+          createdAt: Date.now(),
+          orderId: currentOrder.id,
+        };
 
-    chats.push(newChat);
-const savedOrders =
-  localStorage.getItem(
-    "studly-orders"
-  );
+    const updatedChats =
+      existingChat
+        ? chats.map((item) =>
+            item.id === chat.id
+              ? chat
+              : item
+          )
+        : [...chats, chat];
 
-if (savedOrders) {
-  const orders: Order[] =
-    JSON.parse(savedOrders);
+    const updatedOrders =
+      orders.map((item) =>
+        item.id === currentOrder.id
+          ? {
+              ...item,
+              chatId: chat.id,
+            }
+          : item
+      );
 
-  const updatedOrders =
-    orders.map((item) =>
-      item.id === order.id
-        ? {
-            ...item,
-            chatId: newChat.id,
-          }
-        : item
-    );
-
-  localStorage.setItem(
-    "studly-orders",
-    JSON.stringify(updatedOrders)
-  );
-}
     localStorage.setItem(
       "studly-chats",
-      JSON.stringify(chats)
+      JSON.stringify(updatedChats)
     );
 
+    localStorage.setItem(
+      "studly-orders",
+      JSON.stringify(updatedOrders)
+    );
+
+    setOrder({
+      ...currentOrder,
+      chatId: chat.id,
+    });
+
     router.push(
-      `/chats/${newChat.id}`
+      `/chats/${chat.id}`
     );
   };
 
@@ -212,6 +268,102 @@ if (savedOrders) {
         {order.performerName}
       </p>
 
+      <div
+        style={{
+          border: "1px solid #E5E7EB",
+          borderRadius: "12px",
+          padding: "14px",
+          marginTop: "20px",
+          marginBottom: "16px",
+        }}
+      >
+        <strong>
+          Состав заказа
+        </strong>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "12px",
+          }}
+        >
+          <span>
+            Основная услуга
+          </span>
+
+          <span>
+            {order.basePrice} ₽
+          </span>
+        </div>
+
+        {order.additionalServices?.map(
+          (service) => (
+            <div
+              key={service.id}
+              style={{
+                display: "flex",
+                justifyContent:
+                  "space-between",
+                gap: "12px",
+                marginTop: "8px",
+                color: "#4B5563",
+              }}
+            >
+              <span>
+                {service.title}
+              </span>
+
+              <span>
+                +{service.price} ₽
+              </span>
+            </div>
+          )
+        )}
+
+        <div
+          style={{
+            borderTop:
+              "1px solid #E5E7EB",
+            marginTop: "12px",
+            paddingTop: "12px",
+            display: "flex",
+            justifyContent:
+              "space-between",
+            fontSize: "18px",
+          }}
+        >
+          <strong>
+            Итого
+          </strong>
+
+          <strong
+            style={{
+              color: "#3547B8",
+            }}
+          >
+            {order.totalPrice} ₽
+          </strong>
+        </div>
+
+        <p
+          style={{
+            marginBottom: "0",
+            color: "#6B7280",
+            fontSize: "14px",
+          }}
+        >
+          Срок:{" "}
+          {order.totalDurationDays}{" "}
+          {order.totalDurationDays === 1
+            ? "день"
+            : order.totalDurationDays <
+              5
+            ? "дня"
+            : "дней"}
+        </p>
+      </div>
+
       <p>
         Статус:{" "}
         {statusLabels[order.status]}
@@ -237,44 +389,46 @@ if (savedOrders) {
 
       {order.status === "PENDING" && (
         <button
-  onClick={() =>
-    updateStatus("IN_PROGRESS")
-  }
-  style={{
-    width: "100%",
-    height: "52px",
-    border: "1px solid #3547B8",
-    borderRadius: "12px",
-    background: "#FFFFFF",
-    color: "#3547B8",
-    fontWeight: 600,
-    cursor: "pointer",
-    marginBottom: "12px",
-  }}
->
-  Принять заказ
-</button>
+          onClick={() =>
+            updateStatus("IN_PROGRESS")
+          }
+          style={{
+            width: "100%",
+            height: "52px",
+            border:
+              "1px solid #3547B8",
+            borderRadius: "12px",
+            background: "#FFFFFF",
+            color: "#3547B8",
+            fontWeight: 600,
+            cursor: "pointer",
+            marginBottom: "12px",
+          }}
+        >
+          Принять заказ
+        </button>
       )}
 
       {order.status === "IN_PROGRESS" && (
         <button
-  onClick={() =>
-    updateStatus("REVIEW")
-  }
-  style={{
-    width: "100%",
-    height: "52px",
-    border: "1px solid #3547B8",
-    borderRadius: "12px",
-    background: "#FFFFFF",
-    color: "#3547B8",
-    fontWeight: 600,
-    cursor: "pointer",
-    marginBottom: "12px",
-  }}
->
-  Работа выполнена
-</button>
+          onClick={() =>
+            updateStatus("REVIEW")
+          }
+          style={{
+            width: "100%",
+            height: "52px",
+            border:
+              "1px solid #3547B8",
+            borderRadius: "12px",
+            background: "#FFFFFF",
+            color: "#3547B8",
+            fontWeight: 600,
+            cursor: "pointer",
+            marginBottom: "12px",
+          }}
+        >
+          Работа выполнена
+        </button>
       )}
 
       {order.status === "REVIEW" && (
@@ -296,44 +450,51 @@ if (savedOrders) {
           Всё в порядке
         </button>
       )}
+
       {order.status === "COMPLETED" && (
-  <button
-    onClick={() => {
-      const saved =
-        localStorage.getItem("studly-orders");
+        <button
+          onClick={() => {
+            const saved =
+              localStorage.getItem(
+                "studly-orders"
+              );
 
-      if (!saved) return;
+            if (!saved) return;
 
-      const orders: Order[] =
-        JSON.parse(saved);
+            const orders: Order[] =
+              JSON.parse(saved);
 
-      const updatedOrders =
-        orders.filter(
-          (item) => item.id !== order.id
-        );
+            const updatedOrders =
+              orders.filter(
+                (item) =>
+                  item.id !== order.id
+              );
 
-      localStorage.setItem(
-        "studly-orders",
-        JSON.stringify(updatedOrders)
-      );
+            localStorage.setItem(
+              "studly-orders",
+              JSON.stringify(
+                updatedOrders
+              )
+            );
 
-      router.push("/orders");
-    }}
-    style={{
-      width: "100%",
-      height: "52px",
-      border: "1px solid #DC2626",
-      borderRadius: "12px",
-      background: "#FFFFFF",
-      color: "#DC2626",
-      fontWeight: 600,
-      cursor: "pointer",
-      marginTop: "12px",
-    }}
-  >
-    Удалить заказ
-  </button>
-)}
+            router.push("/orders");
+          }}
+          style={{
+            width: "100%",
+            height: "52px",
+            border:
+              "1px solid #DC2626",
+            borderRadius: "12px",
+            background: "#FFFFFF",
+            color: "#DC2626",
+            fontWeight: 600,
+            cursor: "pointer",
+            marginTop: "12px",
+          }}
+        >
+          Удалить заказ
+        </button>
+      )}
     </div>
   );
 }

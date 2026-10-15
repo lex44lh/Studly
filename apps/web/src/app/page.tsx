@@ -1,49 +1,58 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
+import services from "@/data/services";
 
 export default function HomePage() {
+  const router = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const categories = [
-    "📚 Помощь с заданиями",
-    "🇬🇧 Английский язык",
-    "💻 Программирование",
-    "🎬 Видеомонтаж",
+    {
+      slug: "homework",
+      title: "📚 Помощь с заданиями",
+    },
+    {
+      slug: "tutoring",
+      title: "👨‍🏫 Репетиторство",
+    },
+    {
+      slug: "programming",
+      title: "💻 Программирование",
+    },
+    {
+      slug: "video",
+      title: "🎬 Видеомонтаж",
+    },
   ];
 
-  const services = [
-    {
-      id: 1,
-      title: "Помогу с C++",
-      price: "500 ₽",
-      seller: "Иван Петров",
-      rating: "4.9 (126)",
-    },
-    {
-      id: 100,
-      title: "Репетитор по английскому",
-      price: "700 ₽",
-      seller: "Анна Смирнова",
-      rating: "4.8 (93)",
-    },
-    {
-      id: 2,
-      title: "Помощь с Python",
-      price: "900 ₽",
-      seller: "Дмитрий Иванов",
-      rating: "5.0 (54)",
-    },
-    {
-      id: 101,
-      title: "Монтаж видео",
-      price: "1200 ₽",
-      seller: "Максим Козлов",
-      rating: "4.9 (41)",
-    },
-  ];
+  const popularServices = services.slice(0, 4);
+
+  const handleSearch = () => {
+    const query = searchQuery.trim();
+
+    if (!query) {
+      router.push("/search");
+      return;
+    }
+
+    router.push(
+      `/search?q=${encodeURIComponent(query)}`
+    );
+  };
 
   return (
     <div>
       {/* Поиск */}
-      <div
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSearch();
+        }}
         style={{
           display: "flex",
           gap: "8px",
@@ -51,6 +60,11 @@ export default function HomePage() {
         }}
       >
         <input
+          type="search"
+          value={searchQuery}
+          onChange={(event) =>
+            setSearchQuery(event.target.value)
+          }
           placeholder="Поиск услуг..."
           style={{
             flex: 1,
@@ -59,21 +73,27 @@ export default function HomePage() {
             borderRadius: "12px",
             padding: "0 12px",
             fontSize: "14px",
+            outline: "none",
+            boxSizing: "border-box",
           }}
         />
 
         <button
+          type="submit"
           style={{
             width: "44px",
+            height: "44px",
             border: "1px solid #E5E7EB",
             borderRadius: "12px",
             background: "#FFFFFF",
             cursor: "pointer",
+            fontSize: "18px",
           }}
+          aria-label="Найти"
         >
-          ⚙️
+          🔍
         </button>
-      </div>
+      </form>
 
       {/* Категории */}
       <h2>Популярные категории</h2>
@@ -87,18 +107,21 @@ export default function HomePage() {
         }}
       >
         {categories.map((category) => (
-          <div
-            key={category}
+          <Link
+            key={category.slug}
+            href={`/category/${category.slug}`}
             style={{
               background: "#FFFFFF",
               border: "1px solid #E5E7EB",
               borderRadius: "12px",
               padding: "16px",
               textAlign: "center",
+              textDecoration: "none",
+              color: "inherit",
             }}
           >
-            {category}
-          </div>
+            {category.title}
+          </Link>
         ))}
       </div>
 
@@ -112,7 +135,7 @@ export default function HomePage() {
           gap: "16px",
         }}
       >
-        {services.map((service) => (
+        {popularServices.map((service) => (
           <ServiceCard
             key={service.id}
             id={service.id}
