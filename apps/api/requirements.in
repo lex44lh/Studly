@@ -1,0 +1,7 @@
+Django>=5.2,<5.3
+djangorestframework>=3.16,<4
+psycopg[binary]>=3.2,<4
+Authlib>=1.9.1,<2
+joserfc>=1.7.5,<2
+requests>=2.32,<3
+python-dotenv>=1.2,<2

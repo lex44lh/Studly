@@ -1,0 +1,17 @@
+asgiref==3.12.1
+Authlib==1.9.1
+certifi==2026.7.22
+cffi==2.1.1
+charset-normalizer==3.5.2
+cryptography==50.0.2
+Django==5.2.18
+djangorestframework==3.18.3
+idna==3.20
+joserfc==1.7.5
+psycopg==3.3.6
+psycopg-binary==3.3.6
+pycparser==3.11
+python-dotenv==1.2.4
+requests==2.34.2
+sqlparse==0.6.0
+urllib3==2.8.0

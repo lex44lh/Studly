@@ -1,0 +1,30 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <p>Решение: <strong>{{ decision }}</strong>. Проверьте содержание перед подтверждением.</p>
+  <p>Если автор изменит услугу, решение по прежней редакции не будет применено.</p>
+  {% for service in services %}
+    <fieldset class="module aligned">
+      <h2>№ {{ service.pk }} — {{ service.title }} (редакция {{ service.revision }})</h2>
+      <div class="form-row"><strong>Исполнитель:</strong> {{ service.performer.display_name }}</div>
+      <div class="form-row"><strong>Описание:</strong><p>{{ service.description|linebreaksbr }}</p></div>
+      <div class="form-row"><strong>Цена:</strong> {{ service.price_amount }} {{ service.currency }}</div>
+      <div class="form-row"><strong>Срок, дней:</strong> {{ service.duration_days }}</div>
+      <div class="form-row"><strong>Состав услуги:</strong>
+        <ul>{% for item in service.included %}<li>{{ item }}</li>{% empty %}<li>Не указан</li>{% endfor %}</ul>
+      </div>
+    </fieldset>
+  {% endfor %}
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="{{ action }}">
+    <input type="hidden" name="confirm_moderation" value="yes">
+    <input type="hidden" name="review_token" value="{{ review_token }}">
+    {% for service in services %}
+      <input type="hidden" name="_selected_action" value="{{ service.pk }}">
+    {% endfor %}
+    <div class="submit-row">
+      <input type="submit" value="Подтвердить решение">
+      <a href="{% url 'admin:catalog_service_changelist' %}">Вернуться без решения</a>
+    </div>
+  </form>
+{% endblock %}

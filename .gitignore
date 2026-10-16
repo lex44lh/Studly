@@ -35,3 +35,8 @@ pnpm-debug.log*
 
 # Misc
 coverage/
+playwright-report/
+test-results/
+
+# Local snapshots before repository sync (never commit)
+local-backups/
