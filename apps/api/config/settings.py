@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "accounts",
     "catalog",
     "orders",
+    "payments",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -112,6 +113,9 @@ TELEGRAM_OIDC_REDIRECT_URI = os.environ.get("TELEGRAM_OIDC_REDIRECT_URI", "")
 TELEGRAM_OIDC_STATE_MAX_AGE = int(os.environ.get("TELEGRAM_OIDC_STATE_MAX_AGE", "300"))
 if min(TELEGRAM_AUTH_MAX_AGE, TELEGRAM_OIDC_STATE_MAX_AGE) <= 0 or TELEGRAM_AUTH_CLOCK_SKEW < 0:
     raise ImproperlyConfigured("Сроки проверки Telegram должны быть положительными.")
+
+YOOKASSA_TEST_SHOP_ID = os.environ.get("YOOKASSA_TEST_SHOP_ID", "")
+YOOKASSA_TEST_SECRET_KEY = os.environ.get("YOOKASSA_TEST_SECRET_KEY", "")
 
 LANGUAGE_CODE = "ru-ru"
 TIME_ZONE = "UTC"
