@@ -23,7 +23,8 @@ def resolve_user(identity):
                 if user.telegram_oidc_subject not in (None, identity.oidc_subject):
                     raise AccountUnavailable
                 user.telegram_oidc_subject = identity.oidc_subject
-            user.display_name = identity.display_name
+            if not user.display_name_customized:
+                user.display_name = identity.display_name
             user.telegram_username = identity.username
             user.save(update_fields=["display_name", "telegram_username", "telegram_oidc_subject"])
             return user

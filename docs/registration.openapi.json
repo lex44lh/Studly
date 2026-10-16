@@ -1,0 +1,946 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "STUDLY — регистрация и Telegram-вход",
+    "version": "1.0.0",
+    "description": "Реализованный Backend-контракт для согласования интеграции, 2026-10-16. Frontend ещё не подключён. Все приватные ответы no-store. Основной сценарий: единый origin, серверная сессия Django, CSRF из JSON /auth/csrf/. Справочник специализаций временно пуст. Дополнительные правила и ограничения в REGISTRATION_API.md. Это спецификация раздела регистрации, а не всего API заказов и каталога."
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Единый origin браузера с проксированием /api/v1/ к Django"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Authentication"
+    },
+    {
+      "name": "Registration"
+    }
+  ],
+  "paths": {
+    "/api/v1/registration/": {
+      "get": {
+        "operationId": "registrationGet",
+        "summary": "Прочитать свой сохранённый профиль и прогресс",
+        "tags": [
+          "Registration"
+        ],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          }
+        }
+      },
+      "patch": {
+        "operationId": "registrationPatch",
+        "summary": "Сохранить роли, профиль исполнителя, общие поля или шаг",
+        "tags": [
+          "Registration"
+        ],
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          },
+          "400": {
+            "description": "Ошибка полей. Изменения не сохранены."
+          },
+          "415": {
+            "description": "Неподдерживаемый Content-Type."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationPatch"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/registration/complete/": {
+      "post": {
+        "operationId": "registrationComplete",
+        "summary": "Завершить общую регистрацию",
+        "tags": [
+          "Registration"
+        ],
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          },
+          "400": {
+            "description": "Ошибка полей. Изменения не сохранены."
+          },
+          "415": {
+            "description": "Неподдерживаемый Content-Type."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmptyAction"
+              }
+            }
+          }
+        },
+        "description": "Имя и хотя бы одна роль обязательны. Профиль исполнителя можно заполнить позже. Повторное завершение сохраняет прежнее completed_at."
+      }
+    },
+    "/api/v1/registration/avatar/": {
+      "get": {
+        "operationId": "registrationAvatarGet",
+        "summary": "Прочитать свой приватный аватар",
+        "tags": [
+          "Registration"
+        ],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Приватный PNG, no-store",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          },
+          "404": {
+            "description": "Аватара нет."
+          }
+        }
+      },
+      "post": {
+        "operationId": "registrationAvatarUpload",
+        "summary": "Загрузить или заменить свой аватар",
+        "tags": [
+          "Registration"
+        ],
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          },
+          "400": {
+            "description": "Ошибка полей. Изменения не сохранены."
+          },
+          "415": {
+            "description": "Неподдерживаемый Content-Type."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/AvatarUpload"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "registrationAvatarDelete",
+        "summary": "Удалить свой аватар",
+        "tags": [
+          "Registration"
+        ],
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          },
+          "204": {
+            "description": "Аватар удалён или уже отсутствует."
+          }
+        }
+      }
+    },
+    "/api/v1/specializations/": {
+      "get": {
+        "operationId": "specializationsList",
+        "summary": "Справочник специализаций с поиском",
+        "tags": [
+          "Registration"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecializationPage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Страница не найдена."
+          }
+        },
+        "description": "Пока пуст по решению владельца. Размер страницы 100; это не ограничение выбранного набора.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Подстрока названия без учёта регистра."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/options/": {
+      "get": {
+        "operationId": "authOptions",
+        "summary": "Доступность настроенных способов входа",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthOptions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/csrf/": {
+      "get": {
+        "operationId": "authCsrf",
+        "summary": "Получить CSRF-токен и cookie",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CsrfResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Повторно вызвать после входа: Telegram login обновляет CSRF. Cookie HttpOnly, читать токен из JSON."
+      }
+    },
+    "/api/v1/auth/telegram/mini-app/": {
+      "post": {
+        "operationId": "authMiniAppLogin",
+        "summary": "Войти по подтверждённому Telegram.WebApp.initData",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          },
+          "400": {
+            "description": "Ошибка полей. Изменения не сохранены."
+          },
+          "415": {
+            "description": "Неподдерживаемый Content-Type."
+          },
+          "401": {
+            "description": "Недостоверные или устаревшие данные Telegram."
+          },
+          "503": {
+            "description": "Telegram не настроен."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MiniAppLogin"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/me/": {
+      "get": {
+        "operationId": "authMe",
+        "summary": "Краткий профиль текущего пользователя",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout/": {
+      "post": {
+        "operationId": "authLogout",
+        "summary": "Завершить текущую сессию",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Нет действующей сессии либо ошибка CSRF."
+          },
+          "204": {
+            "description": "Сессия завершена."
+          }
+        },
+        "description": "Идемпотентный выход; CSRF нужен и без действующей сессии."
+      }
+    },
+    "/api/v1/auth/telegram/start/": {
+      "get": {
+        "operationId": "authWebsiteStart",
+        "summary": "Начать вход на сайте через Telegram OIDC",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [],
+        "responses": {
+          "302": {
+            "description": "Переход на Telegram; создаётся временное состояние OIDC в сессии."
+          },
+          "503": {
+            "description": "OIDC не настроен."
+          }
+        }
+      }
+    },
+    "/api/v1/auth/telegram/callback/": {
+      "get": {
+        "operationId": "authWebsiteCallback",
+        "summary": "Проверить ответ Telegram OIDC и создать сессию",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Неверный или просроченный state."
+          },
+          "401": {
+            "description": "Неверный ответ Telegram."
+          },
+          "403": {
+            "description": "Аккаунт недоступен."
+          },
+          "503": {
+            "description": "OIDC не настроен либо ошибка связи с Telegram."
+          }
+        },
+        "description": "Callback сейчас возвращает JSON, без перенаправления на экран Frontend. Требует сессию начатого входа; не вызывать вручную из формы.",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "sessionCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sessionid",
+        "description": "HttpOnly; браузер отправляет автоматически. В production только HTTPS."
+      },
+      "csrfCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "csrftoken",
+        "description": "HttpOnly; получить через /auth/csrf/."
+      },
+      "csrfHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-CSRFToken",
+        "description": "Значение csrf_token из JSON /auth/csrf/, обновить после входа."
+      }
+    },
+    "schemas": {
+      "Role": {
+        "type": "string",
+        "enum": [
+          "customer",
+          "performer"
+        ]
+      },
+      "Specialization": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ]
+      },
+      "ProfilePatch": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "display_name": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "Пустая строка допустима в черновике. При завершении обязательно непустое имя."
+          },
+          "university": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "city": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "about": {
+            "type": "string",
+            "maxLength": 10000
+          }
+        },
+        "required": []
+      },
+      "Profile": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "display_name": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "Пустая строка допустима в черновике. При завершении обязательно непустое имя."
+          },
+          "university": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "city": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "about": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "avatar_url": {
+            "type": "string",
+            "nullable": true,
+            "description": "Относительный закрытый URL текущего аватара; требуется сессия. Только чтение."
+          }
+        },
+        "required": [
+          "display_name",
+          "university",
+          "city",
+          "about",
+          "avatar_url"
+        ]
+      },
+      "PerformerPatch": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "study_year": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "portfolio": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "specialization_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "uniqueItems": true,
+            "description": "Замена набора выбранных существующих UUID. Без продуктового ограничения количества; [] очищает набор."
+          }
+        },
+        "required": []
+      },
+      "Performer": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "study_year": {
+            "type": "string"
+          },
+          "portfolio": {
+            "type": "string"
+          },
+          "specializations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Specialization"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "study_year",
+          "portfolio",
+          "specializations"
+        ],
+        "nullable": true
+      },
+      "ProgressPatch": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "current_step": {
+            "type": "string",
+            "enum": [
+              "roles",
+              "profile",
+              "performer"
+            ]
+          },
+          "performer_skipped": {
+            "type": "boolean"
+          }
+        },
+        "required": []
+      },
+      "Progress": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "current_step": {
+            "type": "string",
+            "enum": [
+              "roles",
+              "profile",
+              "performer"
+            ]
+          },
+          "performer_skipped": {
+            "type": "boolean"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "required": [
+          "current_step",
+          "performer_skipped",
+          "updated_at"
+        ]
+      },
+      "RegistrationStatus": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "is_complete": {
+            "type": "boolean"
+          },
+          "completed_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "missing_fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "profile.display_name",
+                "roles"
+              ]
+            }
+          },
+          "performer_ready": {
+            "type": "boolean",
+            "description": "Заполненность: роль исполнителя, имя и специализация. Не разрешение на публикацию и не одобрение модератора."
+          },
+          "performer_missing_fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "roles.performer",
+                "profile.display_name",
+                "performer.specialization_ids"
+              ]
+            }
+          }
+        },
+        "required": [
+          "is_complete",
+          "completed_at",
+          "missing_fields",
+          "performer_ready",
+          "performer_missing_fields"
+        ]
+      },
+      "Registration": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Role"
+            },
+            "uniqueItems": true
+          },
+          "profile": {
+            "$ref": "#/components/schemas/Profile"
+          },
+          "performer": {
+            "$ref": "#/components/schemas/Performer"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/Progress"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RegistrationStatus"
+          }
+        },
+        "required": [
+          "roles",
+          "profile",
+          "performer",
+          "progress",
+          "status"
+        ]
+      },
+      "RegistrationPatch": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Role"
+            },
+            "uniqueItems": true
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfilePatch"
+          },
+          "performer": {
+            "$ref": "#/components/schemas/PerformerPatch"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/ProgressPatch"
+          }
+        },
+        "required": [],
+        "minProperties": 1,
+        "description": "Частичное атомарное сохранение. Непереданные поля сохраняются. Полностью пустые вложенные блоки без изменений дают 400."
+      },
+      "EmptyAction": {
+        "type": "object",
+        "additionalProperties": false,
+        "maxProperties": 0
+      },
+      "SpecializationPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "next": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "previous": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Specialization"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "next",
+          "previous",
+          "results"
+        ]
+      },
+      "AuthUserResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "user": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "telegram_username": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "display_name",
+              "telegram_username"
+            ]
+          }
+        },
+        "required": [
+          "user"
+        ]
+      },
+      "CsrfResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "csrf_token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "csrf_token"
+        ]
+      },
+      "AuthOptions": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "telegram_mini_app": {
+            "type": "boolean"
+          },
+          "telegram_website": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "telegram_mini_app",
+          "telegram_website"
+        ]
+      },
+      "MiniAppLogin": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "init_data": {
+            "type": "string",
+            "maxLength": 16384,
+            "minLength": 1
+          }
+        },
+        "required": [
+          "init_data"
+        ]
+      },
+      "AvatarUpload": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatar": {
+            "type": "string",
+            "format": "binary",
+            "description": "Один PNG/JPEG/WebP до 5 МиБ, до 16 000 000 пикселей, без анимации. Сервер уменьшает до 1024x1024 и пересохраняет в PNG без исходных метаданных."
+          }
+        },
+        "required": [
+          "avatar"
+        ]
+      }
+    }
+  }
+}

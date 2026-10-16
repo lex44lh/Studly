@@ -64,6 +64,7 @@ TEMPLATES = [{
 }]
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+MEDIA_ROOT = Path(os.environ.get("DJANGO_MEDIA_ROOT", str(BASE_DIR / "media")))
 
 # Health остаётся доступен без БД; пользователям и сессиям нужна PostgreSQL.
 DATABASES = {}
@@ -95,6 +96,10 @@ AUTH_USER_MODEL = "accounts.User"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = not DEBUG
 SESSION_COOKIE_SAMESITE = "Lax"
+# Явно фиксируем действовавшие значения Django: без продления от чтения API.
+SESSION_COOKIE_AGE = 14 * 24 * 60 * 60
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_SAVE_EVERY_REQUEST = False
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = not DEBUG
 CSRF_FAILURE_VIEW = "accounts.views.csrf_failure"

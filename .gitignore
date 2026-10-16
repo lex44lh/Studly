@@ -40,3 +40,6 @@ test-results/
 
 # Local snapshots before repository sync (never commit)
 local-backups/
+
+# Backend: private uploaded avatars
+apps/api/media/

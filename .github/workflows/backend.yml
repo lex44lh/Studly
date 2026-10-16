@@ -6,11 +6,13 @@ name: Backend checks
       - 'apps/api/**'
       - '.github/workflows/backend.yml'
       - 'compose.yaml'
+      - 'docs/registration.openapi.json'
   pull_request:
     paths:
       - 'apps/api/**'
       - '.github/workflows/backend.yml'
       - 'compose.yaml'
+      - 'docs/registration.openapi.json'
   workflow_dispatch:
 
 permissions:

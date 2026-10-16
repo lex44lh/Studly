@@ -1,5 +1,7 @@
 # STUDLY
 
+Backend регистрации: [контракт для Frontend](REGISTRATION_API.md), [OpenAPI](docs/registration.openapi.json), [план](REGISTRATION_PLAN.md). Роли, профиль, черновик и аватар реализованы на сервере; проверка реальной браузерной интеграции с другом ещё предстоит.
+
 Платформа образовательных услуг. Frontend разрабатывается отдельно в `apps/web`; Backend — в `apps/api`. Материалы текущего серверного этапа находятся в ветке `codex/backend`.
 
 ## Для подключения Frontend

@@ -20,6 +20,8 @@ class ApiRootView(APIView):
             "auth_options": "accounts:options",
             "me": "accounts:me",
             "csrf": "accounts:csrf",
+            "registration": "registration:detail",
+            "specializations": "registration:specializations",
             "admin": "admin:index",
         }
         return Response({name: reverse(route, request=request) for name, route in routes.items()})
