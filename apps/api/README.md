@@ -25,6 +25,8 @@ Python 3.13, Django 5.2 LTS, Django REST Framework и PostgreSQL 17 для ло�
 Схема и границы решения: [TELEGRAM_AUTH.md](../../TELEGRAM_AUTH.md).
 Общий план: [BACKEND_START.md](../../BACKEND_START.md).
 
+Автоматические проверки настроены в [GitHub Actions](../../.github/workflows/backend.yml): отдельная PostgreSQL 17, Python 3.13, существующие зависимости, проверки Django/миграций и полный набор тестов. Ключи Telegram/ЮKassa не подключаются; сайт автоматически не размещается. Запуск и чтение результата: [BACKEND_CI_PLAN.md](../../BACKEND_CI_PLAN.md).
+
 ## Запуск
 
 Нужны Python 3.13 и запущенный Docker Desktop с Compose. В текущей среде `python3` запускает Python 3.9; при создании окружения используйте `python3.13`.

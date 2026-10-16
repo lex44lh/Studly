@@ -14,6 +14,7 @@
 | [TELEGRAM_SETUP.md](TELEGRAM_SETUP.md) | Что осталось настроить для настоящего Telegram-входа |
 | [FRONTEND_ISSUES.md](FRONTEND_ISSUES.md) | Замечания по текущему Frontend |
 | [BACKEND_NEXT.md](BACKEND_NEXT.md) | Выполненные этапы и следующие задачи |
+| [BACKEND_CI_PLAN.md](BACKEND_CI_PLAN.md) | Автоматические проверки Backend в GitHub и чтение результатов |
 | [ORDERS_PLAN.md](ORDERS_PLAN.md) | Согласованные правила и границы заказов |
 | [ORDERS_UNPAID_PLAN.md](ORDERS_UNPAID_PLAN.md) | Отмена заказчиком и отказ исполнителя до оплаты |
 | [PAYMENTS_PLAN.md](PAYMENTS_PLAN.md) | Требования к оплате и открытые вопросы |
@@ -54,6 +55,8 @@ apps/api/.venv/bin/python apps/api/manage.py runserver 127.0.0.1:8000
 Запуск Backend не требует установки зависимостей Frontend. Прокси общего origin в текущем Frontend отсутствует; одни доверенные origin CSRF не включают CORS. Подключение cookie и маршрутов нужно выполнить на стороне Frontend по контракту, сохранив серверные проверки сессии и CSRF.
 
 ## Проверки
+
+Для серверных изменений добавлен [workflow Backend checks](.github/workflows/backend.yml): Python 3.13, отдельная PostgreSQL 17, проверка зависимостей и Django, применение миграций с нуля, полный набор тестов. Он запускается при push/PR с изменениями Backend, самого workflow или `compose.yaml`; изменения только Frontend его не запускают. Результаты доступны в [GitHub Actions](https://github.com/lex44lh/Studly/actions). Это проверки кода, размещение сайта они не выполняют. Подробности: [BACKEND_CI_PLAN.md](BACKEND_CI_PLAN.md).
 
 ```bash
 apps/api/.venv/bin/python apps/api/manage.py test
