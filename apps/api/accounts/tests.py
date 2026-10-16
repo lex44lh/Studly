@@ -21,6 +21,7 @@ from rest_framework.test import APIClient
 
 from .models import User
 from .services import AccountUnavailable, resolve_user
+from .registration import save_registration
 from .telegram import InvalidTelegramData, TelegramIdentity, validate_mini_app
 from .views import OIDC_PENDING
 
@@ -177,6 +178,16 @@ class SessionEndpointTests(TestCase):
     def test_anonymous_profile_is_denied(self):
         self.assertEqual(self.client.get(reverse("accounts:me")).status_code, 403)
 
+    def test_logout_requires_existing_session_and_repeated_logout_is_denied(self):
+        self.assertEqual(self.client.post(reverse("accounts:logout"), {}, format="json",
+                                         HTTP_X_CSRFTOKEN=self.csrf()).status_code, 403)
+        self.sign_in()
+        token = self.csrf()
+        self.assertEqual(self.client.post(reverse("accounts:logout"), {}, format="json",
+                                         HTTP_X_CSRFTOKEN=token).status_code, 204)
+        self.assertEqual(self.client.post(reverse("accounts:logout"), {}, format="json",
+                                         HTTP_X_CSRFTOKEN=token).status_code, 403)
+
     def test_invalid_proof_does_not_create_account_or_session(self):
         response = self.client.post(reverse("accounts:mini-app"), {"init_data": "hash=fake"},
                                     format="json", HTTP_X_CSRFTOKEN=self.csrf())
@@ -217,8 +228,8 @@ class OidcFlowTests(TestCase):
         cls.key = RSAKey.generate_key(2048, parameters={"kid": "local-test-key"})
         cls.other_key = RSAKey.generate_key(2048, parameters={"kid": "local-test-key"})
 
-    def begin(self):
-        response = self.client.get(reverse("accounts:oidc-start"))
+    def begin(self, **params):
+        response = self.client.get(reverse("accounts:oidc-start"), params)
         self.assertEqual(response.status_code, 302)
         query = parse_qs(urlsplit(response["Location"]).query)
         self.nonce = query["nonce"][0]
@@ -230,7 +241,7 @@ class OidcFlowTests(TestCase):
                 "id": TELEGRAM_ID, "iat": int(time.time()), "exp": int(time.time()) + 300,
                 "nonce": self.nonce, "name": "Тестовый Пользователь", **changes}
 
-    def exchange(self, claims=None, *, signing_key=None, algorithm="RS256", token_response=None):
+    def exchange(self, claims=None, *, signing_key=None, algorithm="RS256", token_response=None, callback_params=None):
         signed = jwt.encode({"alg": algorithm, "kid": "local-test-key"},
                             self.claims() if claims is None else claims, signing_key or self.key,
                             algorithms=[algorithm])
@@ -256,7 +267,9 @@ class OidcFlowTests(TestCase):
             return response
 
         with patch("requests.sessions.Session.send", side_effect=send):
-            response = self.client.get(reverse("accounts:oidc-callback"), {"state": self.state, "code": "fake-code"})
+            response = self.client.get(reverse("accounts:oidc-callback"), {
+                "state": self.state, "code": "fake-code", **(callback_params or {}),
+            })
         return response, sent
 
     def test_start_and_callback_use_pkce_basic_auth_and_validated_id_token(self):
@@ -338,6 +351,143 @@ class OidcFlowTests(TestCase):
         self.assertEqual(second.status_code, 200)
         self.assertEqual(first.json()["user"]["id"], second.json()["user"]["id"])
         self.assertEqual(User.objects.count(), 1)
+
+    def test_verified_website_login_redirects_to_saved_local_path_and_sets_session(self):
+        target = "/register/roles?from=welcome#form"
+        query = self.begin(next=target)
+        self.assertNotIn("next", query)
+        self.assertEqual(query["redirect_uri"], [settings.TELEGRAM_OIDC_REDIRECT_URI])
+        self.assertEqual(self.client.session[OIDC_PENDING]["next"], target)
+        response, _ = self.exchange()
+        self.assertEqual(response.status_code, 303)
+        self.assertEqual(response["Location"], target)
+        self.assertEqual(response.content, b"")
+        self.assertIn("no-store", response["Cache-Control"])
+        self.assertTrue(self.client.cookies[settings.SESSION_COOKIE_NAME]["httponly"])
+        self.assertEqual(self.client.get(reverse("accounts:me")).status_code, 200)
+        self.assertNotIn(OIDC_PENDING, self.client.session)
+        repeat = self.client.get(reverse("accounts:oidc-callback"), {"state": self.state, "code": "fake-code"})
+        self.assertEqual(repeat.status_code, 400)
+        self.assertNotIn("Location", repeat)
+
+    def test_callback_cannot_override_saved_target_or_enable_redirect(self):
+        self.begin(next="/register/profile")
+        response, _ = self.exchange(callback_params={"next": "https://attacker.invalid/"})
+        self.assertEqual(response.status_code, 303)
+        self.assertEqual(response["Location"], "/register/profile")
+        self.begin()
+        response, _ = self.exchange(callback_params={"next": "/profile/"})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("user", response.json())
+        self.assertNotIn("Location", response)
+
+    def test_new_attempt_replaces_path_and_invalid_old_state_cannot_redirect(self):
+        self.begin(next="/register/roles")
+        previous_state = self.state
+        self.begin()
+        self.assertIsNone(self.client.session[OIDC_PENDING]["next"])
+        with patch("requests.sessions.Session.send") as send:
+            response = self.client.get(reverse("accounts:oidc-callback"), {
+                "state": previous_state, "code": "fake-code", "next": "/register/roles",
+            })
+        send.assert_not_called()
+        self.assertEqual(response.status_code, 400)
+        self.assertNotIn("Location", response)
+        self.assertEqual(self.exchange()[0].status_code, 200)
+
+    def test_redirect_keeps_existing_draft_and_requires_fresh_csrf_for_writes(self):
+        user = User.objects.create_user(TELEGRAM_ID)
+        save_registration(user.pk, {"roles": ["customer"], "profile": {
+            "display_name": "Своё имя STUDLY", "city": "Казань",
+        }, "progress": {"current_step": "profile"}})
+        self.client = APIClient(enforce_csrf_checks=True)
+        old_csrf = self.client.get(reverse("accounts:csrf")).json()["csrf_token"]
+        self.begin(next="/register/profile")
+        self.assertEqual(self.exchange()[0].status_code, 303)
+        draft = self.client.get(reverse("registration:detail")).json()
+        self.assertEqual(draft["roles"], ["customer"])
+        self.assertEqual(draft["profile"]["display_name"], "Своё имя STUDLY")
+        self.assertEqual(draft["profile"]["city"], "Казань")
+        self.assertEqual(draft["progress"]["current_step"], "profile")
+        self.assertEqual(User.objects.count(), 1)
+        self.assertEqual(self.client.patch(reverse("registration:detail"), {"profile": {"city": "Москва"}},
+                                          format="json", HTTP_X_CSRFTOKEN=old_csrf).status_code, 403)
+        new_csrf = self.client.get(reverse("accounts:csrf")).json()["csrf_token"]
+        self.assertNotEqual(old_csrf, new_csrf)
+        self.assertEqual(self.client.patch(reverse("registration:detail"), {"profile": {"city": "Москва"}},
+                                          format="json", HTTP_X_CSRFTOKEN=new_csrf).status_code, 200)
+
+    def test_invalid_token_expired_state_and_inactive_user_do_not_redirect(self):
+        self.begin(next="/register/roles")
+        response, _ = self.exchange(self.claims(nonce="changed"))
+        self.assertEqual(response.status_code, 401)
+        self.assertNotIn("Location", response)
+        self.assertFalse(User.objects.exists())
+        self.begin(next="/register/roles")
+        session = self.client.session
+        session[OIDC_PENDING]["created_at"] = time.time() - 3600
+        session.save()
+        with patch("requests.sessions.Session.send") as send:
+            response = self.client.get(reverse("accounts:oidc-callback"), {"state": self.state, "code": "fake-code"})
+        send.assert_not_called()
+        self.assertEqual(response.status_code, 400)
+        self.assertNotIn("Location", response)
+        self.assertFalse(User.objects.exists())
+        User.objects.create_user(TELEGRAM_ID, is_active=False)
+        self.begin(next="/register/roles")
+        response, _ = self.exchange()
+        self.assertEqual(response.status_code, 403)
+        self.assertNotIn("Location", response)
+
+    def test_network_error_with_saved_path_does_not_redirect_or_log_in(self):
+        self.begin(next="/register/roles")
+        with patch("requests.sessions.Session.send", side_effect=Timeout):
+            response = self.client.get(reverse("accounts:oidc-callback"), {"state": self.state, "code": "fake-code"})
+        self.assertEqual(response.status_code, 503)
+        self.assertNotIn("Location", response)
+        self.assertNotIn(OIDC_PENDING, self.client.session)
+        self.assertNotIn(f"_state_telegram_{self.state}", self.client.session)
+        self.assertFalse(User.objects.exists())
+        with patch("requests.sessions.Session.send") as send:
+            repeat = self.client.get(reverse("accounts:oidc-callback"), {"state": self.state, "code": "fake-code"})
+        self.assertEqual(repeat.status_code, 400)
+        send.assert_not_called()
+
+    def test_configuration_removed_during_attempt_consumes_saved_path(self):
+        self.begin(next="/register/roles")
+        with override_settings(TELEGRAM_OIDC_CLIENT_SECRET=""):
+            response = self.client.get(reverse("accounts:oidc-callback"), {"state": self.state, "code": "fake-code"})
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.json()["code"], "telegram_not_configured")
+        self.assertNotIn("Location", response)
+        self.assertNotIn(OIDC_PENDING, self.client.session)
+        self.assertNotIn(f"_state_telegram_{self.state}", self.client.session)
+        self.assertFalse(User.objects.exists())
+
+    def test_cancelled_telegram_login_does_not_redirect_or_create_account(self):
+        self.begin(next="/register/roles")
+        with patch("requests.sessions.Session.send") as send:
+            response = self.client.get(reverse("accounts:oidc-callback"), {
+                "state": self.state, "error": "access_denied",
+            })
+        send.assert_not_called()
+        self.assertEqual(response.status_code, 401)
+        self.assertNotIn("Location", response)
+        self.assertNotIn(OIDC_PENDING, self.client.session)
+        self.assertFalse(User.objects.exists())
+
+    def test_invalid_path_in_stored_attempt_is_rejected_before_exchange(self):
+        self.begin(next="/register/roles")
+        session = self.client.session
+        session[OIDC_PENDING]["next"] = "https://attacker.invalid/"
+        session.save()
+        with patch("requests.sessions.Session.send") as send:
+            response = self.client.get(reverse("accounts:oidc-callback"), {"state": self.state, "code": "fake-code"})
+        send.assert_not_called()
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["code"], "invalid_return_path")
+        self.assertNotIn("Location", response)
+        self.assertFalse(User.objects.exists())
 
     @override_settings(TELEGRAM_OIDC_CLIENT_SECRET="")
     def test_missing_configuration_disables_oidc(self):

@@ -5,7 +5,7 @@ import time
 from authlib.integrations.base_client.errors import OAuthError
 from django.conf import settings
 from django.contrib.auth import login, logout
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.middleware.csrf import get_token
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -17,6 +17,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .serializers import MiniAppLoginSerializer, UserSerializer
+from .return_paths import validate_return_path
 from .services import AccountUnavailable, resolve_user
 from .telegram import (InvalidTelegramData, TelegramNotConfigured,
                        identity_from_oidc, oidc_client, validate_mini_app)
@@ -62,6 +63,11 @@ def unavailable():
     return Response({"detail": "Вход через Telegram ещё не настроен.", "code": "telegram_not_configured"}, status=503)
 
 
+def invalid_return_path():
+    return Response({"detail": "Укажите относительный путь страницы STUDLY.",
+                     "code": "invalid_return_path"}, status=400)
+
+
 @method_decorator(csrf_protect, name="dispatch")
 class MiniAppLoginView(PublicAuthView):
     def post(self, request):
@@ -79,6 +85,13 @@ class MiniAppLoginView(PublicAuthView):
 
 class OidcStartView(PublicAuthView):
     def get(self, request):
+        return_paths = request.query_params.getlist("next")
+        if len(return_paths) > 1:
+            return invalid_return_path()
+        try:
+            return_path = validate_return_path(return_paths[0]) if return_paths else None
+        except ValueError:
+            return invalid_return_path()
         try:
             client = oidc_client()
         except TelegramNotConfigured:
@@ -90,7 +103,7 @@ class OidcStartView(PublicAuthView):
         state = secrets.token_urlsafe(32)
         response = client.authorize_redirect(request, settings.TELEGRAM_OIDC_REDIRECT_URI,
                                              state=state, nonce=secrets.token_urlsafe(32))
-        request.session[OIDC_PENDING] = {"state": state, "created_at": time.time()}
+        request.session[OIDC_PENDING] = {"state": state, "created_at": time.time(), "next": return_path}
         return response
 
 
@@ -105,14 +118,31 @@ class OidcCallbackView(PublicAuthView):
         if age < 0 or age > settings.TELEGRAM_OIDC_STATE_MAX_AGE:
             request.session.pop(f"_state_telegram_{state}", None)
             return Response({"detail": "Начните вход заново.", "code": "expired_oidc_state"}, status=400)
+        return_path = pending.get("next")
+        if return_path is not None:
+            try:
+                validate_return_path(return_path)
+            except ValueError:
+                request.session.pop(f"_state_telegram_{state}", None)
+                return invalid_return_path()
         try:
             token = oidc_client().authorize_access_token(request, leeway=settings.TELEGRAM_AUTH_CLOCK_SKEW)
-            return complete_login(request, identity_from_oidc(token.get("userinfo")))
+            response = complete_login(request, identity_from_oidc(token.get("userinfo")))
+            if return_path is not None:
+                # Относительный Location сохраняет origin браузера за прокси.
+                return HttpResponseRedirect(return_path, status=303)
+            return response
         except TelegramNotConfigured:
+            # SessionMiddleware не сохраняет сессию для 5xx: попытка уже
+            # израсходована, повторять обмен с тем же state нельзя.
+            request.session.pop(f"_state_telegram_{state}", None)
+            request.session.save()
             return unavailable()
         except (OAuthError, JoseError, InvalidTelegramData, ValueError, KeyError):
             return Response({"detail": "Не удалось подтвердить вход Telegram.", "code": "invalid_oidc_response"}, status=401)
         except RequestException:
+            request.session.pop(f"_state_telegram_{state}", None)
+            request.session.save()
             return Response({"detail": "Telegram временно недоступен. Повторите вход.", "code": "telegram_unavailable"}, status=503)
         except AccountUnavailable:
             return Response({"detail": "Вход в аккаунт недоступен.", "code": "account_unavailable"}, status=403)

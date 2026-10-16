@@ -3,7 +3,7 @@
   "info": {
     "title": "STUDLY — регистрация и Telegram-вход",
     "version": "1.0.0",
-    "description": "Реализованный Backend-контракт для согласования интеграции, 2026-10-16. Frontend ещё не подключён. Все приватные ответы no-store. Основной сценарий: единый origin, серверная сессия Django, CSRF из JSON /auth/csrf/. Справочник специализаций временно пуст. Дополнительные правила и ограничения в REGISTRATION_API.md. Это спецификация раздела регистрации, а не всего API заказов и каталога."
+    "description": "Реализованный Backend-контракт для согласования интеграции, 2026-10-17. Frontend ещё не подключён. Все приватные ответы no-store. Основной сценарий: единый origin, серверная сессия Django, CSRF из JSON /auth/csrf/. Справочник специализаций временно пуст. Дополнительные правила и ограничения в REGISTRATION_API.md. Это спецификация раздела регистрации, а не всего API заказов и каталога."
   },
   "servers": [
     {
@@ -421,6 +421,7 @@
         ],
         "security": [
           {
+            "sessionCookie": [],
             "csrfCookie": [],
             "csrfHeader": []
           }
@@ -433,7 +434,7 @@
             "description": "Сессия завершена."
           }
         },
-        "description": "Идемпотентный выход; CSRF нужен и без действующей сессии."
+        "description": "Выход требует действующей сессии и CSRF. Успешный ответ 204; без входа и при повторном выходе 403."
       }
     },
     "/api/v1/auth/telegram/start/": {
@@ -450,8 +451,25 @@
           },
           "503": {
             "description": "OIDC не настроен."
+          },
+          "400": {
+            "description": "Неверный или повторяющийся next; JSON с code invalid_return_path. Перехода на Telegram нет."
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "next",
+            "in": "query",
+            "required": false,
+            "description": "Путь от корня текущего origin после успешного входа. Один параметр; внешние URL, обратные слеши и неоднозначные кодированные пути запрещены. Сохраняется в серверной сессии и не меняет OAuth redirect_uri.",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            },
+            "example": "/register/roles"
+          }
+        ]
       }
     },
     "/api/v1/auth/telegram/callback/": {
@@ -464,7 +482,7 @@
         "security": [],
         "responses": {
           "200": {
-            "description": "Успешный ответ",
+            "description": "Успешный вход без next в начале OIDC: JSON текущего пользователя.",
             "content": {
               "application/json": {
                 "schema": {
@@ -474,7 +492,7 @@
             }
           },
           "400": {
-            "description": "Неверный или просроченный state."
+            "description": "Неверный, повторный или просроченный state либо некорректный путь в сохранённой попытке."
           },
           "401": {
             "description": "Неверный ответ Telegram."
@@ -484,9 +502,21 @@
           },
           "503": {
             "description": "OIDC не настроен либо ошибка связи с Telegram."
+          },
+          "303": {
+            "description": "Успешный вход с next в начале OIDC: пустое тело и переход на сохранённый путь текущего сайта.",
+            "headers": {
+              "Location": {
+                "description": "Сохранённый относительный путь, без добавленных Telegram-кодов и токенов.",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "/register/roles"
+              }
+            }
           }
         },
-        "description": "Callback сейчас возвращает JSON, без перенаправления на экран Frontend. Требует сессию начатого входа; не вызывать вручную из формы.",
+        "description": "Требует cookie сессии начатого входа. Без исходного next возвращает JSON, с next — 303. Параметр next непосредственно в callback игнорируется. Ошибки возвращают JSON без перехода. После обработки использованного state, включая 503, начать новый вход через start. Не вызывать callback вручную из формы.",
         "parameters": [
           {
             "name": "state",
@@ -499,7 +529,17 @@
           {
             "name": "code",
             "in": "query",
-            "required": true,
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Код Telegram при успешном согласии. При отказе Telegram вместо него может вернуть error."
+          },
+          {
+            "name": "error",
+            "in": "query",
+            "required": false,
+            "description": "Ошибка или отказ Telegram; успешная сессия не создаётся.",
             "schema": {
               "type": "string"
             }
