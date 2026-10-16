@@ -1,4 +1,4 @@
-"""Оформление заказа и согласие исполнителя. Денежных операций здесь нет."""
+"""Оформление и переходы неоплаченных заказов. Денежных операций здесь нет."""
 
 from django.db import IntegrityError, transaction
 from django.db.models import Q
@@ -17,7 +17,7 @@ class OrderConflict(APIException):
 
 
 def _existing_order(buyer, data):
-    order = Order.objects.select_related("buyer", "performer").filter(
+    order = Order.objects.select_related("buyer", "performer", "closed_by").filter(
         buyer=buyer, request_key=data["request_key"]
     ).first()
     if order is not None and (
@@ -80,14 +80,19 @@ def create_order(*, buyer, data):
     return order, True
 
 
-@transaction.atomic
-def accept_order(*, user, pk):
+def _locked_order_for_participant(user, pk):
     # Сначала ограничиваем выборку участниками, чтобы не раскрывать чужие заказы.
-    order = Order.objects.select_for_update(of=("self",)).select_related("buyer", "performer").filter(
+    order = Order.objects.select_for_update(of=("self",)).select_related("buyer", "performer", "closed_by").filter(
         Q(buyer=user) | Q(performer=user), pk=pk
     ).first()
     if order is None:
         raise NotFound("Заказ не найден.")
+    return order
+
+
+@transaction.atomic
+def accept_order(*, user, pk):
+    order = _locked_order_for_participant(user, pk)
     if order.performer_id != user.pk:
         raise PermissionDenied("Дать согласие может только исполнитель заказа.")
     if order.status == Order.Status.AWAITING_PAYMENT:
@@ -97,4 +102,36 @@ def accept_order(*, user, pk):
     order.status = Order.Status.AWAITING_PAYMENT
     order.accepted_at = timezone.now()
     order.save(update_fields=["status", "accepted_at"])
+    return order
+
+
+@transaction.atomic
+def cancel_order(*, user, pk):
+    order = _locked_order_for_participant(user, pk)
+    if order.buyer_id != user.pk:
+        raise PermissionDenied("Отменить заказ может только заказчик.")
+    if order.status == Order.Status.CANCELLED:
+        return order
+    if order.status not in (Order.Status.PENDING_ACCEPTANCE, Order.Status.AWAITING_PAYMENT):
+        raise OrderConflict("Отмена недоступна в текущем состоянии заказа.")
+    return _close_order(order, user, Order.Status.CANCELLED)
+
+
+@transaction.atomic
+def decline_order(*, user, pk):
+    order = _locked_order_for_participant(user, pk)
+    if order.performer_id != user.pk:
+        raise PermissionDenied("Отказаться от заказа может только исполнитель.")
+    if order.status == Order.Status.DECLINED:
+        return order
+    if order.status != Order.Status.PENDING_ACCEPTANCE:
+        raise OrderConflict("Отказ возможен только до согласия исполнителя.")
+    return _close_order(order, user, Order.Status.DECLINED)
+
+
+def _close_order(order, user, status):
+    order.status = status
+    order.closed_at = timezone.now()
+    order.closed_by = user
+    order.save(update_fields=["status", "closed_at", "closed_by"])
     return order

@@ -24,13 +24,14 @@ class CreateOrderSerializer(StrictInputSerializer):
     request_key = serializers.UUIDField()
 
 
-class AcceptOrderSerializer(StrictInputSerializer):
+class OrderActionSerializer(StrictInputSerializer):
     pass
 
 
 class OrderSerializer(serializers.ModelSerializer):
     buyer = PerformerSummarySerializer(read_only=True)
     performer = PerformerSummarySerializer(read_only=True)
+    closed_by = PerformerSummarySerializer(read_only=True)
 
     class Meta:
         model = Order
@@ -38,6 +39,6 @@ class OrderSerializer(serializers.ModelSerializer):
             "id", "service_id", "service_revision", "request_key", "buyer", "performer",
             "title", "description", "included", "duration_days", "price_amount", "currency",
             "buyer_fee_percent", "buyer_fee_amount", "total_amount", "status",
-            "created_at", "accepted_at",
+            "created_at", "accepted_at", "closed_at", "closed_by",
         ]
         read_only_fields = fields

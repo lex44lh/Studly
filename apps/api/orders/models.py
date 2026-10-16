@@ -7,6 +7,8 @@ class Order(models.Model):
     class Status(models.TextChoices):
         PENDING_ACCEPTANCE = "pending_acceptance", "Ожидает согласия исполнителя"
         AWAITING_PAYMENT = "awaiting_payment", "Ожидает оплаты"
+        CANCELLED = "cancelled", "Отменён заказчиком"
+        DECLINED = "declined", "Исполнитель отказался"
 
     buyer = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="buyer_orders"
@@ -36,6 +38,11 @@ class Order(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     accepted_at = models.DateTimeField(null=True, blank=True)
+    closed_at = models.DateTimeField(null=True, blank=True)
+    closed_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
+        related_name="closed_orders", null=True, blank=True,
+    )
 
     class Meta:
         ordering = ["-id"]
@@ -71,10 +78,25 @@ class Order(models.Model):
             ),
             models.CheckConstraint(
                 condition=(
-                    models.Q(status="pending_acceptance", accepted_at__isnull=True)
-                    | models.Q(status="awaiting_payment", accepted_at__isnull=False)
+                    models.Q(
+                        status="pending_acceptance", accepted_at__isnull=True,
+                        closed_at__isnull=True, closed_by__isnull=True,
+                    )
+                    | models.Q(
+                        status="awaiting_payment", accepted_at__isnull=False,
+                        closed_at__isnull=True, closed_by__isnull=True,
+                    )
+                    | models.Q(
+                        status="cancelled", closed_at__isnull=False,
+                        closed_by__isnull=False, closed_by=models.F("buyer"),
+                    )
+                    | models.Q(
+                        status="declined", accepted_at__isnull=True,
+                        closed_at__isnull=False, closed_by__isnull=False,
+                        closed_by=models.F("performer"),
+                    )
                 ),
-                name="order_status_acceptance_consistent",
+                name="order_status_history_consistent",
             ),
         ]
 

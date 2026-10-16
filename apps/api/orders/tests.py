@@ -65,7 +65,7 @@ class OrderAPITests(TestCase):
             "id", "service_id", "service_revision", "request_key", "buyer", "performer",
             "title", "description", "included", "duration_days", "price_amount", "currency",
             "buyer_fee_percent", "buyer_fee_amount", "total_amount", "status",
-            "created_at", "accepted_at",
+            "created_at", "accepted_at", "closed_at", "closed_by",
         })
         self.assertEqual(data["buyer"], {"id": self.buyer.pk, "name": "Заказчик"})
         self.assertEqual(data["performer"], {"id": self.performer.pk, "name": "Исполнитель"})
@@ -82,6 +82,8 @@ class OrderAPITests(TestCase):
         self.assertEqual(data["total_amount"], "1030.00")
         self.assertEqual(data["status"], "pending_acceptance")
         self.assertIsNone(data["accepted_at"])
+        self.assertIsNone(data["closed_at"])
+        self.assertIsNone(data["closed_by"])
         self.assertIn("no-store", response["Cache-Control"])
         self.assertNotContains(response, "private@example.com", status_code=201)
         self.assertEqual(Order.objects.count(), 1)

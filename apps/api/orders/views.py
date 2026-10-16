@@ -9,8 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Order
-from .serializers import AcceptOrderSerializer, CreateOrderSerializer, OrderSerializer
-from .services import accept_order, create_order
+from .serializers import CreateOrderSerializer, OrderActionSerializer, OrderSerializer
+from .services import accept_order, cancel_order, create_order, decline_order
 
 
 class OrderPagination(PageNumberPagination):
@@ -26,7 +26,7 @@ class PrivateOrdersMixin:
     def get_queryset(self):
         user = self.request.user
         return Order.objects.filter(Q(buyer=user) | Q(performer=user)).select_related(
-            "buyer", "performer"
+            "buyer", "performer", "closed_by"
         ).order_by("-id")
 
 
@@ -47,11 +47,23 @@ class OrderDetailView(PrivateOrdersMixin, RetrieveAPIView):
 
 
 @method_decorator(never_cache, name="dispatch")
-class OrderAcceptView(PrivateOrdersMixin, GenericAPIView):
-    serializer_class = AcceptOrderSerializer
+class OrderActionView(PrivateOrdersMixin, GenericAPIView):
+    serializer_class = OrderActionSerializer
 
     def post(self, request, pk):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        order = accept_order(user=request.user, pk=pk)
+        order = self.operation(user=request.user, pk=pk)
         return Response(OrderSerializer(order).data)
+
+
+class OrderAcceptView(OrderActionView):
+    operation = staticmethod(accept_order)
+
+
+class OrderCancelView(OrderActionView):
+    operation = staticmethod(cancel_order)
+
+
+class OrderDeclineView(OrderActionView):
+    operation = staticmethod(decline_order)
