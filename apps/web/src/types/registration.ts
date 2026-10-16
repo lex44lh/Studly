@@ -23,13 +23,5 @@ export type RegistrationDraft = {
 
 export type ProfilePrefill = { displayName?: string; avatarUrl?: string };
 
-export type ClientResult<T> =
-  | { status: "available"; data: T }
-  | { status: "unavailable" };
-
-// A future Django adapter maps its actual contract to these frontend models.
-export interface RegistrationClient {
-  loadDraft(signal: AbortSignal): Promise<ClientResult<RegistrationDraft | null>>;
-  listSpecializations(signal: AbortSignal): Promise<ClientResult<Specialization[]>>;
-  submitDraft(draft: RegistrationDraft): Promise<ClientResult<void>>;
-}
+// Adapter is backed by the published Django registration contract.
+export type RegistrationClient = typeof import("@/lib/api/registration").registrationClient;

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { demoMode } from "@/lib/api/catalog";
 import { usePathname } from "next/navigation";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 import { useState } from "react";
@@ -13,6 +14,8 @@ export default function AppShell({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const pendingIntegration = !demoMode && ["/orders", "/chats", "/create-service", "/notifications"]
+    .some(path => pathname === path || pathname.startsWith(`${path}/`));
   const [sidebarOpen, setSidebarOpen] =
     useState(false);
 
@@ -107,7 +110,10 @@ export default function AppShell({
               padding: "16px",
             }}
           >
-            {children}
+            {demoMode && <p role="note">Демонстрационный режим · Данные не являются реальными</p>}
+            {pendingIntegration ? <section><h1>Раздел пока не подключён</h1>
+              <p>Действия этого раздела станут доступны после подключения серверного сценария.</p>
+              <Link href="/search">Перейти к услугам</Link></section> : children}
           </main>
         </FavoritesProvider>
 

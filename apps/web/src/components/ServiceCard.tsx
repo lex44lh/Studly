@@ -7,7 +7,8 @@ type Props = {
   title: string;
   price: string;
   seller: string;
-  rating: string;
+  rating?: string;
+  isDemo?: boolean;
 };
 
 export default function ServiceCard({
@@ -16,6 +17,7 @@ export default function ServiceCard({
   price,
   seller,
   rating,
+  isDemo,
 }: Props) {
   const {
     toggleFavorite,
@@ -96,7 +98,8 @@ export default function ServiceCard({
 
           <p>{seller}</p>
 
-          <p>⭐ {rating}</p>
+          {rating && <p>⭐ {rating}</p>}
+          {isDemo && <p>Демонстрационная услуга</p>}
         </div>
       </Link>
     </div>

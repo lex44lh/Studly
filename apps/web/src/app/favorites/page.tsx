@@ -4,8 +4,10 @@ import { useFavorites } from "@/context/FavoritesContext";
 import ServiceCard from "@/components/ServiceCard";
 import BackButton from "@/components/BackButton";
 import services from "@/data/services";
+import { demoMode } from "@/lib/api/catalog";
+import LiveFavorites from "@/components/catalog/LiveFavorites";
 
-export default function FavoritesPage() {
+function DemoFavoritesPage() {
   const { favorites, isHydrated } = useFavorites();
 
   const favoriteServices = services.filter((service) =>
@@ -37,3 +39,5 @@ export default function FavoritesPage() {
     </div>
   );
 }
+
+export default function FavoritesPage() { return demoMode ? <DemoFavoritesPage /> : <LiveFavorites />; }

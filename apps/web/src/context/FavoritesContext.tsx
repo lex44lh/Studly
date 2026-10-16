@@ -8,6 +8,8 @@ import {
   useSyncExternalStore,
 } from "react";
 import services from "@/data/services";
+import { demoMode } from "@/lib/api/catalog";
+const storageKey = demoMode ? "favorites" : "studly-api-favorites";
 
 type FavoritesContextType = {
   favorites: number[];
@@ -36,7 +38,7 @@ function parseFavorites(value: string | null): number[] {
           typeof id === "number" &&
           Number.isSafeInteger(id) &&
           id > 0 &&
-          serviceIds.has(id)
+          (!demoMode || serviceIds.has(id))
       )
     )];
   } catch {
@@ -50,7 +52,7 @@ function readFavorites(): number[] {
   }
 
   try {
-    return parseFavorites(window.localStorage.getItem("favorites"));
+    return parseFavorites(window.localStorage.getItem(storageKey));
   } catch {
     return [];
   }
@@ -76,8 +78,8 @@ export function FavoritesProvider({
     try {
       const serialized = JSON.stringify(favorites);
 
-      if (window.localStorage.getItem("favorites") !== serialized) {
-        window.localStorage.setItem("favorites", serialized);
+      if (window.localStorage.getItem(storageKey) !== serialized) {
+        window.localStorage.setItem(storageKey, serialized);
       }
     } catch {
       // Favorites remain available in memory when storage is unavailable.
@@ -86,7 +88,7 @@ export function FavoritesProvider({
 
   useEffect(() => {
     const handleStorage = (event: StorageEvent) => {
-      if (event.key !== "favorites" && event.key !== null) {
+      if (event.key !== storageKey && event.key !== null) {
         return;
       }
 
@@ -104,7 +106,7 @@ export function FavoritesProvider({
   }, []);
 
   const toggleFavorite = (id: number) => {
-    if (!Number.isSafeInteger(id) || !serviceIds.has(id)) {
+    if (!Number.isSafeInteger(id) || (demoMode && !serviceIds.has(id))) {
       return;
     }
 

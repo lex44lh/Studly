@@ -10,6 +10,8 @@ import AdditionalServicesSelector, {
   AdditionalService,
 } from "@/components/AdditionalServicesSelector";
 import services from "@/data/services";
+import { demoMode } from "@/lib/api/catalog";
+import LiveService from "@/components/catalog/LiveService";
 
 type Props = {
   params: Promise<{
@@ -38,7 +40,7 @@ const additionalServices: AdditionalService[] = [
   },
 ];
 
-export default function ServicePage({
+function DemoServicePage({
   params,
 }: Props) {
   const { id } = use(params);
@@ -256,4 +258,9 @@ export default function ServicePage({
       />
     </div>
   );
+}
+
+export default function ServicePage({ params }: Props) {
+  const { id } = use(params);
+  return demoMode ? <DemoServicePage params={params} /> : <LiveService id={id} />;
 }

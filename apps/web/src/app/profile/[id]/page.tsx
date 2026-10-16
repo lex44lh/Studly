@@ -1,3 +1,5 @@
+import { demoMode } from "@/lib/api/catalog";
+import LivePerformer from "@/components/catalog/LivePerformer";
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
 
@@ -83,7 +85,7 @@ const services = {
   },
 };
 
-export default async function PerformerProfilePage({
+async function DemoPerformerProfilePage({
   params,
 }: Props) {
   const { id } = await params;
@@ -319,4 +321,9 @@ export default async function PerformerProfilePage({
       </button>
     </div>
   );
+}
+
+export default async function PerformerProfilePage({ params }: Props) {
+  const { id } = await params;
+  return demoMode ? <DemoPerformerProfilePage params={params} /> : <LivePerformer key={id} id={id} />;
 }

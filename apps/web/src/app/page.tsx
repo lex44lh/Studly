@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import services from "@/data/services";
+import { demoMode } from "@/lib/api/catalog";
+import ServiceList from "@/components/catalog/ServiceList";
 
 export default function HomePage() {
   const router = useRouter();
@@ -126,7 +128,7 @@ export default function HomePage() {
       </div>
 
       {/* Услуги */}
-      <h2>Популярные услуги</h2>
+      <h2>{demoMode ? "Популярные услуги" : "Услуги"}</h2>
 
       <div
         style={{
@@ -135,7 +137,7 @@ export default function HomePage() {
           gap: "16px",
         }}
       >
-        {popularServices.map((service) => (
+        {demoMode ? popularServices.map((service) => (
           <ServiceCard
             key={service.id}
             id={service.id}
@@ -144,7 +146,7 @@ export default function HomePage() {
             seller={service.seller}
             rating={service.rating}
           />
-        ))}
+        )) : <ServiceList limit={4} />}
       </div>
 
       {/* Все услуги */}

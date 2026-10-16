@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useRegistration } from "@/context/RegistrationContext";
 import { RegistrationStep } from "@/components/registration/RegistrationShell";
 import styles from "@/components/registration/registration.module.css";
@@ -12,12 +11,11 @@ const roles: { id: RegistrationRole; title: string; description: string }[] = [
 ];
 
 export default function RolesPage() {
-  const { draft, dispatch } = useRegistration();
-  const router = useRouter();
+  const { draft, dispatch, saveStep } = useRegistration();
   return <RegistrationStep step="roles" title="Как вы хотите использовать STUDLY?" intro="Выберите одну или обе роли. Вы сможете развивать свои навыки и находить помощь одновременно.">
     <form className={styles.form} onSubmit={event => {
       event.preventDefault();
-      if (draft.roles.length) router.push("/register/profile");
+      if (draft.roles.length) void saveStep("roles");
     }}>
       <fieldset className={styles.fieldset}>
         <legend className={styles.legend}>Ваши роли</legend>

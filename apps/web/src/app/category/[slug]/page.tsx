@@ -1,4 +1,6 @@
 "use client";
+import Link from "next/link";
+import { demoMode } from "@/lib/api/catalog";
 
 import {
   useMemo,
@@ -56,7 +58,7 @@ const categoryNamesWithoutEmoji: Record<
   video: "Видеомонтаж",
 };
 
-export default function CategoryPage({
+function DemoCategoryPage({
   params,
 }: Props) {
   const { slug } = use(params);
@@ -683,4 +685,10 @@ export default function CategoryPage({
       )}
     </div>
   );
+}
+
+export default function CategoryPage({ params }: Props) {
+  return demoMode ? <DemoCategoryPage params={params} /> : <div><BackButton /><h1>Категория</h1>
+    <p>Категории пока не подключены. Все доступные услуги можно найти через поиск.</p>
+    <Link href="/search">Перейти к поиску</Link></div>;
 }
