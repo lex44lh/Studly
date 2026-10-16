@@ -41,7 +41,7 @@ Next по умолчанию выдавал 308 без завершающего 
 `fd9011e5b557376c1bfe5a6f9e4379ca65e7eda4`.
 
 ## Frontend commit
-Коммит этой публикации. Точная ссылка приводится в git-отчёте и финальном ответе после создания коммита.
+Код интеграции: [`7a50ea4`](https://github.com/lex44lh/Studly/commit/7a50ea4441c638819242e1252fc285e615a1f2e3). Результат push подтверждён удалённым ref. Завершающий docs-коммит содержит этот статус и Git-отчёт, без изменений кода.
 
 ## Ссылки GitHub
 - [Frontend](https://github.com/lex44lh/Studly/tree/codex/frontend-registration)

@@ -9,3 +9,4 @@
 - [Интеграция и публикация](frontend/api-integration/2026-10-16_20-43_integration-publish.md)
 - [Frontend/Backend Integration Status](frontend/api-integration/2026-10-16_integration-status.md)
 - [Предшествующий аудит Backend-контрактов](frontend/api-integration/2026-10-16_15-08_backend-contract-audit.md)
+- [Проверка публикации интеграции](git/2026-10-16_20-59_frontend-integration-publication.md)
