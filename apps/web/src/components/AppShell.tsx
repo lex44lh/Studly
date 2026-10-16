@@ -16,7 +16,7 @@ export default function AppShell({
   const [sidebarOpen, setSidebarOpen] =
     useState(false);
 
-  if (pathname === "/welcome") {
+  if (pathname === "/welcome" || pathname === "/register" || pathname.startsWith("/register/")) {
     return <>{children}</>;
   }
 

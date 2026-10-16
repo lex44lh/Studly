@@ -95,7 +95,7 @@ export default function WelcomePage() {
         }}
       >
         <Link
-          href="/"
+          href="/register/roles"
           style={{
             width: "100%",
             maxWidth: "740px",

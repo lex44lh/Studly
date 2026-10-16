@@ -1,0 +1,53 @@
+.screen {
+  min-height: 100svh;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  color: #1F2937;
+  padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+  overflow-wrap: anywhere;
+  color-scheme: light;
+}
+.container { width: 100%; max-width: 560px; margin: 0 auto; }
+.brand { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 22px; font-weight: 750; margin: 8px 0 30px; }
+.navigation { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.back { color: #3547B8; text-decoration: none; background: transparent; border: 0; padding: 8px 0; font: inherit; cursor: pointer; }
+.step { color: #94A3B8; font-size: 14px; }
+.title { font-size: clamp(27px, 6vw, 34px); line-height: 1.2; font-weight: 650; letter-spacing: -.025em; margin: 0 0 14px; }
+.intro { color: #64748B; font-size: 15px; line-height: 1.6; margin: 0 0 26px; }
+.notice { padding: 12px 14px; border-radius: 12px; background: #E8ECFF; color: #3547B8; font-size: 13px; line-height: 1.6; margin: 0 0 28px; }
+.form { display: flex; flex-direction: column; gap: 22px; }
+.fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.legend { font-weight: 600; font-size: 15px; margin-bottom: 12px; }
+.roleList { display: flex; flex-direction: column; gap: 14px; }
+.role { display: flex; align-items: center; gap: 14px; cursor: pointer; border: 1px solid #CBD5E1; border-radius: 18px; padding: 22px 18px; background: #FFFFFF; }
+.role:has(input:checked) { border-color: #3547B8; background: #E8ECFF; box-shadow: inset 0 0 0 1px #3547B8; }
+.role input { accent-color: #3547B8; width: 22px; height: 22px; flex-shrink: 0; margin: 0; }
+.role strong { display: block; font-size: 18px; margin-bottom: 5px; }
+.role small { display: block; color: #64748B; font-size: 14px; line-height: 1.5; }
+.field { display: flex; flex-direction: column; gap: 8px; font-size: 15px; min-width: 0; }
+.label { font-weight: 600; }
+.optional { color: #94A3B8; font-size: 13px; font-weight: 400; }
+.input, .textarea { width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1px solid #CBD5E1; color: #1F2937; border-radius: 12px; padding: 13px 14px; font: inherit; font-size: 16px; line-height: 1.5; scroll-margin-block: 24px; }
+.input { min-height: 50px; }
+.textarea { min-height: 110px; resize: vertical; }
+.input::placeholder, .textarea::placeholder { color: #94A3B8; }
+.input[aria-invalid="true"] { border-color: #B42318; }
+.hint { color: #64748B; font-size: 13px; line-height: 1.55; margin: 0; }
+.error { color: #B42318; font-size: 14px; margin: 0; }
+.actions { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.primary, .secondary { width: 100%; min-height: 54px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-radius: 14px; padding: 14px 18px; font: inherit; font-size: 16px; font-weight: 600; text-align: center; cursor: pointer; text-decoration: none; }
+.primary { background: #3547B8; color: #FFFFFF; border: 1px solid #3547B8; }
+.primary:disabled { opacity: .45; cursor: not-allowed; }
+.secondary { background: #FFFFFF; border: 1px solid #CBD5E1; color: #3547B8; }
+.screen :is(button, a, input, textarea):focus-visible { outline: 3px solid #3547B8; outline-offset: 4px; }
+.avatarRow { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.avatar { width: 72px; height: 72px; border-radius: 50%; background: #E8ECFF; object-fit: cover; display: flex; align-items: center; justify-content: center; color: #3547B8; font-size: 28px; flex-shrink: 0; }
+.fileInput { max-width: 100%; font-size: 14px; }
+.avatarControls { flex: 1; min-width: min(200px, 100%); display: flex; flex-direction: column; gap: 8px; }
+.options { max-height: 280px; overflow: auto; border: 1px solid #CBD5E1; border-radius: 12px; padding: 6px; }
+.option { display: flex; align-items: center; gap: 10px; padding: 12px 8px; cursor: pointer; min-height: 44px; box-sizing: border-box; }
+.option input { accent-color: #3547B8; width: 20px; height: 20px; flex-shrink: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.chip { color: #3547B8; background: #E8ECFF; border: 0; border-radius: 10px; padding: 8px 12px; min-height: 40px; font: inherit; font-size: 14px; cursor: pointer; }
+.center { padding-top: clamp(36px, 12vh, 100px); text-align: center; }
+@media (min-width: 768px) { .screen { padding-top: 40px; padding-bottom: 56px; } .brand { margin-bottom: 40px; } }
