@@ -1,0 +1,29 @@
+[Unit]
+Description=STUDLY Next.js website
+After=network.target
+
+[Service]
+Type=simple
+User=studly-web
+Group=studly-web
+WorkingDirectory=/opt/studly-web/current/apps/web
+Environment=NODE_ENV=production
+Environment=NEXT_TELEMETRY_DISABLED=1
+Environment=NEXT_PUBLIC_STUDLY_DATA_MODE=api
+Environment=DJANGO_API_ORIGIN=https://studly-help.ru
+ExecStart=/opt/studly/node/bin/node /opt/studly-web/current/node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3000
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0027
+StateDirectory=studly-web
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/studly-web/current/apps/web/.next/cache
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target

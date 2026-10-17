@@ -1,15 +1,16 @@
-# Первый запуск Backend STUDLY
+# Размещение STUDLY на FirstVDS
 
-План: [SERVER_DEPLOYMENT_PLAN.md](../../SERVER_DEPLOYMENT_PLAN.md). Эта папка содержит инфраструктуру Backend; Frontend не меняется. Действительное состояние размещения фиксируется в [SERVER_SETUP.md](../../SERVER_SETUP.md).
+Планы: [Backend](../../SERVER_DEPLOYMENT_PLAN.md), [публикация Frontend](../../FRONTEND_DEPLOYMENT_PLAN.md). Эта папка содержит инфраструктуру сервера; исходники Frontend не меняются. Действительное состояние размещения фиксируется в [SERVER_SETUP.md](../../SERVER_SETUP.md).
 
 ## Состав
 
 - `requirements-production.txt` в `apps/api` добавляет Gunicorn к существующим фиксированным зависимостям Backend.
 - `studly-api.service` запускает два процесса Gunicorn от `studly-api`, автоматически перезапускает их после сбоя и создаёт закрытый рабочий каталог.
 - `api.env.example` описывает отдельное серверное окружение. Настоящий файл `/etc/studly/api.env` читается systemd, в Git не попадает.
-- `studly-http.conf` обслуживает только HTTP-проверку сертификата и переход на HTTPS. `studly-https.conf` включается после получения сертификата.
+- `studly-http.conf` обслуживает только HTTP-проверку сертификата и переход на HTTPS. `studly-https.conf` — общий vhost сайта и API, включается после получения сертификата и подготовки обеих служб/snippets.
 - `studly-api-proxy.conf` направляет запросы в Unix-сокет и заменяет заголовки HTTPS/IP. Прямой публичный порт Gunicorn не открывается.
 - `studly-certbot-deploy.sh` после успешного обновления сертификата проверяет Nginx и перечитывает его конфигурацию. На VPS устанавливается с правами `0755` в `/etc/letsencrypt/renewal-hooks/deploy/studly-nginx-reload`; одного обновления файлов сертификата недостаточно для их подхвата работающим Nginx.
+- `studly-web.service` запускает production Next.js от отдельного пользователя на `127.0.0.1:3000`; `studly-web-proxy.conf` направляет к нему страницы. API/admin и приватные данные остаются у Django.
 
 ## Каталоги и база данных
 
@@ -52,7 +53,26 @@ runuser -u www-data -- curl --fail-with-body --unix-socket /run/studly-api/api.s
 
 Результат установки hook и настоящего HTTPS смотрите в [SERVER_SETUP.md](../../SERVER_SETUP.md). Наличие этого скрипта в репозитории само по себе не подтверждает их включение.
 
-Пока согласованная версия Frontend не размещена, HTTPS-корень отвечает 503. `/api/` и `/admin/` обслуживает Django. В Nginx access log не записываются параметры URL с OAuth code/state; access log Gunicorn по умолчанию выключен.
+Текущий HTTPS-vhost требует запущенный Frontend и установленный `studly-web-proxy.conf`. При размещении только API вместо его корневого location используется заглушка `return 503`; старый вариант сохранён на действующем VPS как описано в `SERVER_SETUP.md`. `/api/` и `/admin/` обслуживает Django. В Nginx access log не записываются параметры URL с OAuth code/state; access log Gunicorn по умолчанию выключен.
+
+## Frontend без изменений исходников
+
+На действующем VPS установлен Node.js `24.22.0` из официального архива с проверенным SHA-256; ссылка `/opt/studly/node` ведёт на версионный каталог runtime. Frontend выбирается отдельно по полному SHA из ветки его автора. Релиз размещается в `/opt/studly-web/releases/<SHA>`, `current` выбирает сборку. Backend и Frontend не обязаны иметь один SHA; их рабочие директории не смешиваются.
+
+В новую папку из зафиксированного архива извлекаются root `package.json`, `package-lock.json`, `apps/web` и при появлении импортов — согласованные workspace-пакеты. Локальные `.env`, `.next`, `node_modules` и тестовые данные не копируются. До установки снимаются SHA-256 исходных файлов. В релизе выполняются от отдельного непривилегированного пользователя:
+
+```sh
+npm ci --no-audit --no-fund
+npm run lint -w apps/web
+npm run test -w apps/web
+NEXT_TELEMETRY_DISABLED=1 NEXT_PUBLIC_STUDLY_DATA_MODE=api DJANGO_API_ORIGIN=https://studly-help.ru NODE_OPTIONS=--max-old-space-size=1536 npm run build -w apps/web
+```
+
+Это команды после подготовки пользователя и runtime; его `bin` должен быть в PATH. `npm ci` использует имеющийся lock-файл, без обновления версий. Параметры публичного режима и rewrite задаются уже при сборке. Регистрация остаётся под production gate автора; `NODE_ENV=development` для публикации не используется. Тестовая HTTP-фикстура Frontend не запускается.
+
+После успешной сборки и сверки исходных SHA-256 код передаётся `root:root`. Только `apps/web/.next/cache` принадлежит `studly-web` и доступен для записи. Устанавливаются unit и proxy-snippet, `systemd-analyze verify` проверяет unit, затем включается служба. До переключения Nginx Next должен отдавать главную `200` локально, а `ss` — показывать только `127.0.0.1:3000`. Существующий vhost сохраняется вне `/etc/nginx/conf.d`, проверяются `nginx -t` и reload. Прямой Node-порт наружу не открывается, CORS не ослабляется.
+
+Для обновления сначала собирается отдельный новый SHA. После проверок атомарно переключается `current`, перезапускается `studly-web`, выполняется HTTPS/browser smoke. При ошибке возвращается предыдущая ссылка и процесс; если менялся Nginx, возвращается сохранённый vhost с обязательными `nginx -t` и reload. Старые релизы и БД автоматически не удаляются. Ошибки исходников передаются в `FRONTEND_ISSUES.md` автору.
 
 ## Что остаётся перед настоящим использованием
 
