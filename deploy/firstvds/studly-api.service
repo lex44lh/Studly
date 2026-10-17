@@ -1,0 +1,32 @@
+[Unit]
+Description=STUDLY Django API
+After=network.target postgresql.service
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=studly-api
+Group=www-data
+WorkingDirectory=/opt/studly/current/apps/api
+EnvironmentFile=/etc/studly/api.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=DJANGO_SETTINGS_MODULE=config.production
+ExecStart=/opt/studly/venv/bin/gunicorn config.wsgi:application --bind unix:/run/studly-api/api.sock --workers 2 --timeout 30 --umask 7 --forwarded-allow-ips=127.0.0.1
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=35
+KillMode=mixed
+RuntimeDirectory=studly-api
+RuntimeDirectoryMode=0750
+StateDirectory=studly-api
+StateDirectoryMode=0700
+UMask=0027
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
