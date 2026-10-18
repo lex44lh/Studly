@@ -1,6 +1,6 @@
 # Локальный запуск STUDLY
 
-Актуально: **18 октября2026**, ветка `codex/frontend-registration`. Дизайн «Кампус» находится на `/search`.
+Актуально: **18 октября 2026**, три Frontend-worktree из утверждённого TEAM_WORKFLOW. Дизайн «Кампус» находится на `/search`.
 
 ## Открыть терминал и проект
 
@@ -132,3 +132,15 @@ npm run dev:live -- --port 3001
 - Backend упал после готовности: приложение показывает API-ошибку. Startup-проверка не является непрерывным мониторингом.
 
 [Индекс отчётов](<documents/project/для отчетов/README.md>).
+
+## Три независимых Frontend-worktree
+
+| Каталог | Ветка | Команда из этого каталога |
+|---|---|---|
+| `/Users/alekspih/Projects/studly` | `codex/frontend-main-dev` | `npm run dev:demo -- --port 3000` |
+| `/Users/alekspih/Projects/studly-redesign` | `codex/frontend-redesign-campus` | `npm run dev:demo -- --port 3001` |
+| `/Users/alekspih/Projects/studly-integration` | `codex/frontend-api-integration` | `npm run dev:demo -- --port 3002` |
+
+В Integration после отдельной подготовки Django: `npm run dev:live -- --port 3002`. Без неё Live автоматически не запускать. Каждое дерево имеет собственную установку `npm ci` и `.next`; два dev в одном дереве не запускать. Demo разных деревьев можно запускать одновременно. Перед запуском проверить порт и lock; неизвестный процесс не останавливать. Для независимых Live-аккаунтов нужны отдельные браузерные профили: cookies не изолируются портами.
+
+[Регламент](documents/project/TEAM_WORKFLOW.md) · [Привязка Codex Desktop](documents/project/CODEX_DESKTOP.md) · [Передача контекста](documents/project/handoffs/README.md).

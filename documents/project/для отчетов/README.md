@@ -18,3 +18,9 @@
 - [Frontend Redesign 2.0: аудит, технологии, три концепции и план — 17–18.10.2026](frontend/redesign/README.md)
 - [Frontend Redesign 2.0, этап2: три визуальных прототипа поиска — 18.10.2026](frontend/redesign/2026-10-18_02-08_visual-prototypes.md)
 - [Frontend Redesign 2.0: реализация утверждённого «Кампуса», дизайн-система и /search — 18.10.2026](frontend/redesign/2026-10-18_13-21_campus-search-implementation.md)
+
+- [Этап 1: аудит worktree и командного процесса — 18.10.2026](git/2026-10-18_20-08_worktree-workflow-audit.md)
+
+- [Утверждённый регламент](../TEAM_WORKFLOW.md)
+- [Привязка Codex Desktop](../CODEX_DESKTOP.md) и [контекст трёх сессий](../handoffs/README.md)
+- [Этап 1.2: настройка worktree — 18.10.2026](git/2026-10-18_20-34_worktree-setup.md)
