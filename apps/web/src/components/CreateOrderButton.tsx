@@ -1,5 +1,6 @@
 "use client";
 
+import { demoMode } from "@/lib/data-mode";
 import { useRouter } from "next/navigation";
 import type { AdditionalService } from "./AdditionalServicesSelector";
 
@@ -53,6 +54,7 @@ export default function CreateOrderButton({
     baseDurationDays + additionalDays;
 
   const createOrder = () => {
+    if (!demoMode) return;
     try {
       // -----------------------------
       // 1. Загружаем существующие заказы
@@ -270,6 +272,7 @@ export default function CreateOrderButton({
       <button
         type="button"
         onClick={createOrder}
+        disabled={!demoMode}
         style={{
           width: "100%",
           height: "52px",
@@ -282,7 +285,7 @@ export default function CreateOrderButton({
           marginBottom: "20px",
         }}
       >
-        Оплатить {totalPrice} ₽
+        Создать локальный демо-пример заказа
       </button>
     </div>
   );

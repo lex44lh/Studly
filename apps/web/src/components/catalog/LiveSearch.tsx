@@ -1,671 +1,189 @@
 "use client";
 
-import { Suspense, useCallback, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import ServiceCard from "@/components/ServiceCard";
 import services from "@/data/services";
-import { demoMode } from "@/lib/api/catalog";
-import { catalogClient, money } from "@/lib/api/catalog";
-import { ApiState, useApiResource } from "@/components/catalog/ApiState";
-import { pagePath } from "@/lib/api/client";
+import { catalogClient, demoMode, money } from "@/lib/api/catalog";
+import { ApiError, apiErrorMessage, pagePath } from "@/lib/api/client";
+import { useApiResource } from "@/components/catalog/ApiState";
+import { SearchFilters } from "@/components/catalog/SearchFilters";
+import { CampusServiceCard } from "@/components/studly/CampusServiceCard";
+import { Icon } from "@/components/studly/Icon";
+import { Button, StatusPanel } from "@/components/studly/primitives";
+import {
+  filterSearchServices, normalizeSearch, searchRequestQuery, validatePriceRange,
+  type DurationFilter, type SortOption,
+} from "@/lib/catalog/search";
 
-type DurationFilter =
-  | "any"
-  | "1"
-  | "3"
-  | "7";
+const categories = [...new Set(services.map(service => service.category))];
 
-type SortOption =
-  | "relevance"
-  | "priceAsc"
-  | "priceDesc"
-  | "rating"
-  | "duration";
+function SearchSkeleton() {
+  return (
+    <StatusPanel kind="loading" title="Загружаем услуги…">
+      <div className="skeleton-grid" aria-hidden="true">
+        {[0, 1, 2].map(index => <div className="skeleton-card" key={index} />)}
+      </div>
+    </StatusPanel>
+  );
+}
 
 function SearchContent({ initialQuery }: { initialQuery: string }) {
-
-
-  const [query, setQuery] =
-    useState(initialQuery);
-
-  const [filtersOpen, setFiltersOpen] =
-    useState(false);
-
-  const [minPrice, setMinPrice] =
-    useState("");
-
-  const [maxPrice, setMaxPrice] =
-    useState("");
-
-  const [duration, setDuration] =
-    useState<DurationFilter>("any");
-
-  const [rating47, setRating47] =
-    useState(false);
-
-  const [sort, setSort] =
-    useState<SortOption>("relevance");
-
-  const normalizedQuery =
-    query.trim().toLowerCase();
-
+  const [query, setQuery] = useState(initialQuery);
+  const [category, setCategory] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [duration, setDuration] = useState<DurationFilter>("any");
+  const [rating47, setRating47] = useState(false);
+  const [sort, setSort] = useState<SortOption>("relevance");
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const filterDialog = useRef<HTMLDialogElement>(null);
+  const searchInput = useRef<HTMLInputElement>(null);
   const [page, setPage] = useState({ search: "", query: "" });
-  const requestQuery = page.search === normalizedQuery && page.query
-    ? page.query : new URLSearchParams({ search: query.trim() }).toString();
+  const normalizedQuery = normalizeSearch(query);
+  const requestQuery = searchRequestQuery(query, page);
   const load = useCallback((signal: AbortSignal) => demoMode ? Promise.resolve(null) : catalogClient.list(requestQuery, signal), [requestQuery]);
   const { data, error, retry } = useApiResource(requestQuery, load);
+
   const sourceServices = useMemo(() => demoMode ? services : (data?.results ?? []).map(service => ({
     id: service.id, title: service.title, description: service.description, price: money(service.price_amount, service.currency),
     priceNumber: Number(service.price_amount), seller: service.performer.name, rating: "", category: "", profileId: service.performer.id,
     duration: `${service.duration_days} дн.`, durationDays: service.duration_days, included: service.included, isDemo: service.is_demo,
   })), [data]);
 
-  const minPriceValue =
-    minPrice.trim() === "" ? null : Number(minPrice);
-  const maxPriceValue =
-    maxPrice.trim() === "" ? null : Number(maxPrice);
-  const hasInvalidMinPrice =
-    minPriceValue !== null &&
-    (!Number.isFinite(minPriceValue) || minPriceValue < 0);
-  const hasInvalidMaxPrice =
-    maxPriceValue !== null &&
-    (!Number.isFinite(maxPriceValue) || maxPriceValue < 0);
-  const hasInvalidPriceRange =
-    !hasInvalidMinPrice &&
-    !hasInvalidMaxPrice &&
-    minPriceValue !== null &&
-    maxPriceValue !== null &&
-    minPriceValue > maxPriceValue;
-  const priceError = hasInvalidMinPrice || hasInvalidMaxPrice
-    ? "Цена не может быть отрицательной."
-    : hasInvalidPriceRange
-      ? "Минимальная цена не может быть выше максимальной."
-      : "";
+  const values = useMemo(() => ({ query, category, minPrice, maxPrice, duration, rating47, sort }), [query, category, minPrice, maxPrice, duration, rating47, sort]);
+  const price = validatePriceRange(minPrice, maxPrice);
+  const hasActiveFilters = Boolean(category || minPrice || maxPrice || duration !== "any" || rating47 || sort !== "relevance");
+  const filteredServices = useMemo(() => filterSearchServices(sourceServices, values, demoMode), [sourceServices, values]);
 
-  const hasActiveFilters =
-    minPrice !== "" ||
-    maxPrice !== "" ||
-    duration !== "any" ||
-    rating47 ||
-    sort !== "relevance";
+  // A modal must never leave the desktop page inert after a viewport change.
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 701px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches && filterDialog.current?.open) filterDialog.current.close();
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
 
-  const filteredServices = useMemo(() => {
-    let result = [...sourceServices];
-
-    // Поиск
-    if (demoMode && normalizedQuery) {
-      result = result.filter((service) => {
-        const searchableText = [
-          service.title,
-          service.seller,
-          service.description,
-          service.category,
-        ]
-          .join(" ")
-          .toLowerCase();
-
-        return searchableText.includes(
-          normalizedQuery
-        );
-      });
-    }
-
-    // Минимальная цена
-    // Цена применяется только после проверки всего диапазона.
-    if (!priceError && minPriceValue !== null) {
-      result = result.filter(
-        (service) => service.priceNumber >= minPriceValue
-      );
-    }
-
-    if (!priceError && maxPriceValue !== null) {
-      result = result.filter(
-        (service) => service.priceNumber <= maxPriceValue
-      );
-    }
-
-    // Срок
-    if (duration !== "any") {
-      const maxDays = Number(duration);
-
-      result = result.filter(
-        (service) =>
-          service.durationDays <= maxDays
-      );
-    }
-
-    // Рейтинг 4.7+
-    if (rating47) {
-      result = result.filter(
-        (service) =>
-          Number.parseFloat(service.rating) >=
-          4.7
-      );
-    }
-
-    // Сортировка
-    if (sort === "priceAsc") {
-      result.sort(
-        (a, b) =>
-          a.priceNumber - b.priceNumber
-      );
-    }
-
-    if (sort === "priceDesc") {
-      result.sort(
-        (a, b) =>
-          b.priceNumber - a.priceNumber
-      );
-    }
-
-    if (sort === "rating") {
-      result.sort(
-        (a, b) =>
-          Number.parseFloat(b.rating) -
-          Number.parseFloat(a.rating)
-      );
-    }
-
-    if (sort === "duration") {
-      result.sort(
-        (a, b) =>
-          a.durationDays - b.durationDays
-      );
-    }
-
-    if (demoMode && sort === "relevance" && normalizedQuery) {
-      result.sort((a, b) => {
-        const aText = [a.title, a.seller, a.description, a.category]
-          .join(" ")
-          .toLowerCase();
-        const bText = [b.title, b.seller, b.description, b.category]
-          .join(" ")
-          .toLowerCase();
-        return aText.indexOf(normalizedQuery) - bText.indexOf(normalizedQuery);
-      });
-    }
-
-    return result;
-  }, [
-    sourceServices,
-    normalizedQuery,
-    minPriceValue,
-    maxPriceValue,
-    priceError,
-    duration,
-    rating47,
-    sort,
-  ]);
-
+  const updateQuery = (value: string) => {
+    setQuery(value);
+    setPage({ search: "", query: "" });
+  };
   const resetFilters = () => {
+    setCategory("");
     setMinPrice("");
     setMaxPrice("");
     setDuration("any");
     setRating47(false);
     setSort("relevance");
   };
+  const filterFields = {
+    values, isDemo: demoMode, onMinPrice: setMinPrice, onMaxPrice: setMaxPrice,
+    onDuration: setDuration, onRating: setRating47,
+  };
+  const openFilters = () => {
+    filterDialog.current?.showModal();
+    setFiltersOpen(true);
+  };
 
   return (
-    <div>
-      <h1
-        style={{
-          marginBottom: "16px",
-        }}
-      >
-        Поиск услуг
-      </h1>
+    <>
+      <section className="intro" aria-labelledby="search-title">
+        <p className="eyebrow">Свои люди. Нужные навыки.</p>
+        <h1 className="intro-title" id="search-title">Найди своего<br /><span>исполнителя.</span></h1>
+        <p className="intro-copy">От учёбы до творчества — нужная помощь рядом.</p>
+        <div className="intro-art" aria-hidden="true" />
+      </section>
 
-      {/* Поиск + фильтры */}
-      <div
-        style={{
-          display: "flex",
-          gap: "8px",
-          marginBottom: filtersOpen
-            ? "12px"
-            : "24px",
-        }}
-      >
-        <input
-          type="search"
-          value={query}
-          onChange={(event) =>
-            setQuery(event.target.value)
-          }
-          placeholder="Что Вы ищете?"
-          autoFocus
-          style={{
-            flex: 1,
-            height: "44px",
-            border: "1px solid #E5E7EB",
-            borderRadius: "12px",
-            padding: "0 12px",
-            fontSize: "14px",
-            outline: "none",
-            boxSizing: "border-box",
-          }}
-        />
+      <form className="search-form" role="search" onSubmit={event => { event.preventDefault(); if (window.matchMedia("(pointer: coarse)").matches) searchInput.current?.blur(); }}>
+        <Icon name="search" />
+        <label className="sr-only" htmlFor="service-search">Поиск услуг и исполнителей</label>
+        <input ref={searchInput} className="search-input" id="service-search" type="search" value={query}
+          onChange={event => updateQuery(event.target.value)} placeholder="Что тебе нужно?" autoComplete="off" enterKeyHint="search" />
+        {query && <button className="icon-btn clear-search" type="button" aria-label="Очистить поиск" onClick={() => { updateQuery(""); searchInput.current?.focus(); }}><Icon name="close" /></button>}
+        <Button type="submit" className="search-submit" aria-label="Найти услуги"><span className="button-label">Найти</span><Icon name="arrow" /></Button>
+      </form>
 
-        {query && (
-          <button
-            type="button"
-            onClick={() => setQuery("")}
-            style={{
-              width: "44px",
-              height: "44px",
-              border:
-                "1px solid #E5E7EB",
-              borderRadius: "12px",
-              background: "#FFFFFF",
-              cursor: "pointer",
-              fontSize: "18px",
-              flexShrink: 0,
-            }}
-            aria-label="Очистить поиск"
-          >
-            ×
-          </button>
-        )}
+      <nav className="category-list" aria-label="Категории услуг">
+        <button className="category-chip" type="button" aria-pressed={!category} onClick={() => setCategory("")}><Icon name="grid" />Все услуги</button>
+        {demoMode ? categories.map(item => (
+          <button key={item} className="category-chip" type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>
+        )) : <span className="filter-note">Категории пока не подключены к API.</span>}
+      </nav>
 
-        <button
-          type="button"
-          onClick={() =>
-            setFiltersOpen(
-              (value) => !value
-            )
-          }
-          style={{
-            width: "44px",
-            height: "44px",
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "12px",
-            background: "#FFFFFF",
-            cursor: "pointer",
-            fontSize: filtersOpen
-              ? "22px"
-              : "16px",
-            flexShrink: 0,
-          }}
-          aria-label={
-            filtersOpen
-              ? "Закрыть фильтры"
-              : "Открыть фильтры"
-          }
-        >
-          {filtersOpen ? "×" : "⚙️"}
-        </button>
+      <div className="catalog-layout">
+        <aside className="filters-panel" aria-label="Фильтры услуг">
+          <div className="filter-head">Фильтры<button type="button" className="reset-btn" disabled={!hasActiveFilters} onClick={resetFilters}>Сбросить</button></div>
+          <SearchFilters {...filterFields} />
+          <p className="filter-note">{demoMode ? "Демонстрационные предложения. Имена и данные вымышлены." : "Цена, срок и сортировка применяются к текущей странице."}</p>
+        </aside>
+
+        <section className="results" aria-labelledby="results-title" aria-busy={!demoMode && !data && !error}>
+          <div className="results-toolbar">
+            <div>
+              <h2 className="results-title" id="results-title">Услуги</h2>
+              <span className="results-count" aria-live="polite">
+                {demoMode ? `Найдено: ${filteredServices.length}` : data ? `Показано: ${filteredServices.length} на этой странице · Всего: ${data.count}` : error ? "Не удалось загрузить услуги" : "Загрузка…"}
+              </span>
+            </div>
+            <div className="toolbar-actions">
+              <button type="button" className="filter-toggle" onClick={openFilters} aria-label="Открыть фильтры" aria-haspopup="dialog" aria-expanded={filtersOpen} aria-controls="search-filter-dialog"><Icon name="filter" /><span>Фильтры</span></button>
+              <label className="sr-only" htmlFor="search-sort">Сортировка услуг</label>
+              <select className="sort-select" id="search-sort" value={sort} onChange={event => setSort(event.target.value as SortOption)}>
+                <option value="relevance">По релевантности</option><option value="priceAsc">Сначала дешевле</option>
+                <option value="priceDesc">Сначала дороже</option><option value="rating" disabled={!demoMode}>По рейтингу</option>
+                <option value="duration">Сначала быстрее</option>
+              </select>
+            </div>
+          </div>
+
+          {!demoMode && <p className="catalog-notice">Цена, срок и сортировка применяются к текущей странице. Рейтинг пока недоступен.</p>}
+          <div className="active-filters">
+            {category && <button type="button" onClick={() => setCategory("")} aria-label={`Убрать категорию ${category}`}>{category}<Icon name="close" /></button>}
+            {(minPrice || maxPrice) && <button type="button" onClick={() => { setMinPrice(""); setMaxPrice(""); }}>Цена: {minPrice || "0"}–{maxPrice || "∞"} ₽<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
+            {duration !== "any" && <button type="button" onClick={() => setDuration("any")}>До {duration} {duration === "1" ? "дня" : "дней"}<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
+            {rating47 && <button type="button" onClick={() => setRating47(false)}>Рейтинг 4,7+<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
+          </div>
+
+          {!demoMode && !data ? error ? (
+            <StatusPanel kind="error" title="Не удалось загрузить услуги"
+              action={!(error instanceof ApiError && error.status === 404) ? <Button onClick={retry}>Повторить загрузку</Button> : undefined}>
+              <p>{apiErrorMessage(error)}</p>
+            </StatusPanel>
+          ) : <SearchSkeleton /> : filteredServices.length ? (
+            <div className="service-grid">
+              {filteredServices.map(service => <CampusServiceCard key={service.id} id={service.id} title={service.title}
+                description={service.description} category={service.category} price={service.price} seller={service.seller}
+                profileId={service.profileId} duration={service.duration} rating={demoMode ? service.rating : undefined}
+                isDemo={demoMode || ("isDemo" in service && Boolean(service.isDemo))} />)}
+            </div>
+          ) : (
+            <StatusPanel kind="empty" title="Пока ничего не нашлось" action={
+              <Button onClick={() => { updateQuery(""); resetFilters(); }}>Сбросить поиск и фильтры</Button>
+            }><p>Попробуй другой запрос или убери часть фильтров.</p></StatusPanel>
+          )}
+
+          {!demoMode && data && (data.previous || data.next) && (
+            <nav className="catalog-pagination" aria-label="Страницы каталога">
+              {data.previous && <Button variant="secondary" onClick={() => setPage({ search: normalizedQuery, query: pagePath(data.previous!, "services/").split("?")[1] ?? "" })}>Назад</Button>}
+              {data.next && <Button variant="secondary" onClick={() => setPage({ search: normalizedQuery, query: pagePath(data.next!, "services/").split("?")[1] ?? "" })}>Далее</Button>}
+            </nav>
+          )}
+        </section>
       </div>
 
-      {/* Фильтры */}
-      {filtersOpen && (
-        <div
-          style={{
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "16px",
-            padding: "16px",
-            marginBottom: "20px",
-            background: "#FFFFFF",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent:
-                "space-between",
-              marginBottom: "16px",
-            }}
-          >
-            <strong
-              style={{
-                fontSize: "16px",
-              }}
-            >
-              Фильтры
-            </strong>
-
-            {hasActiveFilters && (
-              <button
-                type="button"
-                onClick={resetFilters}
-                style={{
-                  border: "none",
-                  background: "none",
-                  padding: 0,
-                  color: "#3547B8",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Сбросить
-              </button>
-            )}
+      <dialog className="filter-dialog" id="search-filter-dialog" ref={filterDialog} aria-labelledby="search-filter-title" onClose={() => setFiltersOpen(false)}>
+        <form className="filter-form" onSubmit={event => { event.preventDefault(); if (!price.error) filterDialog.current?.close(); }}>
+          <div className="filter-dialog-head"><h2 id="search-filter-title">Фильтры</h2><button type="button" className="icon-btn" aria-label="Закрыть фильтры" onClick={() => filterDialog.current?.close()}><Icon name="close" /></button></div>
+          <SearchFilters {...filterFields} />
+          {!demoMode && <p className="filter-note">Цена и срок применяются к текущей странице.</p>}
+          <div className="dialog-actions">
+            <Button type="button" variant="secondary" onClick={resetFilters} disabled={!hasActiveFilters}>Сбросить</Button>
+            <Button type="submit" className="filter-apply" disabled={Boolean(price.error)}>Показать услуги</Button>
           </div>
-
-          {/* Цена */}
-          <div
-            style={{
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "8px",
-              }}
-            >
-              Цена
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                gap: "8px",
-              }}
-            >
-              <input
-                type="number"
-                min="0"
-                value={minPrice}
-                aria-invalid={hasInvalidMinPrice || hasInvalidPriceRange}
-                aria-label="Минимальная цена"
-                onChange={(event) =>
-                  setMinPrice(
-                    event.target.value
-                  )
-                }
-                placeholder="От ₽"
-                style={{
-                  width: "50%",
-                  height: "44px",
-                  border:
-                    "1px solid #E5E7EB",
-                  borderRadius: "10px",
-                  padding: "0 12px",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                }}
-              />
-
-              <input
-                type="number"
-                min="0"
-                value={maxPrice}
-                aria-invalid={hasInvalidMaxPrice || hasInvalidPriceRange}
-                aria-label="Максимальная цена"
-                onChange={(event) =>
-                  setMaxPrice(
-                    event.target.value
-                  )
-                }
-                placeholder="До ₽"
-                style={{
-                  width: "50%",
-                  height: "44px",
-                  border:
-                    "1px solid #E5E7EB",
-                  borderRadius: "10px",
-                  padding: "0 12px",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
-            {priceError && (
-              <p
-                role="alert"
-                style={{
-                  margin: "8px 0 0",
-                  color: "#B42318",
-                  fontSize: "13px",
-                }}
-              >
-                {priceError}
-              </p>
-            )}
-          </div>
-
-          {/* Срок */}
-          <div
-            style={{
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "10px",
-              }}
-            >
-              Срок выполнения
-            </div>
-
-            {[
-              ["1", "До 1 дня"],
-              ["3", "До 3 дней"],
-              ["7", "До 7 дней"],
-              ["any", "Любой"],
-            ].map(([value, label]) => (
-              <label
-                key={value}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  marginBottom: "10px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                <input
-                  type="radio"
-                  name="duration"
-                  value={value}
-                  checked={
-                    duration === value
-                  }
-                  onChange={() =>
-                    setDuration(
-                      value as DurationFilter
-                    )
-                  }
-                />
-
-                {label}
-              </label>
-            ))}
-          </div>
-
-          {/* Рейтинг */}
-          <div
-            style={{
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "10px",
-              }}
-            >
-              Рейтинг исполнителя
-            </div>
-
-            <label
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                fontSize: "14px",
-                cursor: "pointer",
-              }}
-            >
-              <input
-                type="checkbox"
-                disabled={!demoMode}
-                checked={rating47}
-                onChange={(event) =>
-                  setRating47(
-                    event.target.checked
-                  )
-                }
-              />
-
-              4,7+
-            </label>
-          </div>
-
-          {/* Сортировка */}
-          <div>
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "8px",
-              }}
-            >
-              Сортировка
-            </div>
-
-            <select
-              value={sort}
-              onChange={(event) =>
-                setSort(
-                  event.target.value as SortOption
-                )
-              }
-              style={{
-                width: "100%",
-                height: "44px",
-                border:
-                  "1px solid #E5E7EB",
-                borderRadius: "10px",
-                padding: "0 12px",
-                fontSize: "14px",
-                background: "#FFFFFF",
-              }}
-            >
-              <option value="relevance">
-                По релевантности
-              </option>
-              <option value="priceAsc">
-                Сначала дешевле
-              </option>
-              <option value="priceDesc">
-                Сначала дороже
-              </option>
-              <option value="rating" disabled={!demoMode}>
-                По рейтингу
-              </option>
-              <option value="duration">
-                По сроку выполнения
-              </option>
-            </select>
-          </div>
-        </div>
-      )}
-
-      {!normalizedQuery && !hasActiveFilters && (
-        <div
-          style={{
-            marginBottom: "20px",
-            color: "#6B7280",
-            fontSize: "14px",
-          }}
-        >
-          Найдите исполнителя или услугу по
-          названию или описанию.
-        </div>
-      )}
-
-      {(normalizedQuery ||
-        hasActiveFilters) && (
-        <div
-          style={{
-            marginBottom: "16px",
-            fontSize: "14px",
-            color: "#6B7280",
-          }}
-        >
-          Найдено: {demoMode ? filteredServices.length : data?.count ?? 0}
-        </div>
-      )}
-
-      {!demoMode && <p style={{ color: "#6B7280", fontSize: 14 }}>Цена, срок и сортировка применяются к текущей странице. Рейтинг пока недоступен.</p>}
-      {!demoMode && !data ? <ApiState error={error} retry={retry} /> : filteredServices.length > 0 ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-          }}
-        >
-          {filteredServices.map(
-            (service) => (
-              <ServiceCard
-                key={service.id}
-                id={service.id}
-                title={service.title}
-                price={service.price}
-                seller={service.seller}
-                rating={demoMode ? service.rating : undefined}
-                isDemo={"isDemo" in service ? Boolean(service.isDemo) : undefined}
-              />
-            )
-          )}
-        </div>
-      ) : (
-        <div
-          style={{
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "16px",
-            padding: "32px 20px",
-            textAlign: "center",
-            background: "#FFFFFF",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "32px",
-              marginBottom: "12px",
-            }}
-          >
-            🔍
-          </div>
-
-          <h3
-            style={{
-              marginTop: 0,
-              marginBottom: "8px",
-            }}
-          >
-            Ничего не найдено
-          </h3>
-
-          <p
-            style={{
-              margin: 0,
-              color: "#6B7280",
-              fontSize: "14px",
-              lineHeight: 1.5,
-            }}
-          >
-            Попробуйте изменить запрос
-            или параметры фильтрации.
-          </p>
-        </div>
-      )}
-      {!demoMode && data && <nav aria-label="Страницы каталога">
-        {data.previous && <button type="button" onClick={() => setPage({ search: normalizedQuery, query: pagePath(data.previous!, "services/").split("?")[1] ?? "" })}>Назад</button>}
-        {data.next && <button type="button" onClick={() => setPage({ search: normalizedQuery, query: pagePath(data.next!, "services/").split("?")[1] ?? "" })}>Далее</button>}
-      </nav>}
-
-    </div>
+        </form>
+      </dialog>
+    </>
   );
 }
 
@@ -676,9 +194,5 @@ function SearchWithQuery() {
 }
 
 export default function SearchPage() {
-  return (
-    <Suspense fallback={<p>Загрузка поиска...</p>}>
-      <SearchWithQuery />
-    </Suspense>
-  );
+  return <Suspense fallback={<SearchSkeleton />}><SearchWithQuery /></Suspense>;
 }

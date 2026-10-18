@@ -7,7 +7,7 @@ export type ServicePage = { count: number; next: string | null; previous: string
 export type Performer = { id: number; name: string; about: string };
 export type Quote = { service_id: number; service_revision: number; price_amount: string; currency: string; is_demo: boolean;
   buyer_fee_percent: string; buyer_fee_amount: string; total_amount: string };
-export const demoMode = process.env.NEXT_PUBLIC_STUDLY_DATA_MODE === "demo";
+export { demoMode } from "../data-mode";
 export function money(amount: string, currency: string) {
   return new Intl.NumberFormat("ru-RU", { style: "currency", currency }).format(Number(amount));
 }

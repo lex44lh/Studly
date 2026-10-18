@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { demoMode } from "@/lib/data-mode";
 import { useRegistration } from "@/context/RegistrationContext";
 import styles from "./registration.module.css";
 
@@ -37,7 +38,7 @@ export default function ProfileForm() {
           }}>Удалить аватар</button>}
         </div>
       </div>
-      <p id="avatar-hint" className={styles.hint}>PNG, JPEG или WebP, до 5 МБ. Изображение сохраняется при продолжении.</p>
+      <p id="avatar-hint" className={styles.hint}>PNG, JPEG или WebP, до 5 МБ. {demoMode ? "Изображение остаётся только в этой вкладке." : "Изображение сохраняется при продолжении."}</p>
       <p id="avatar-error" className={styles.error} role="alert">{avatarError}</p>
     </div>
     <div className={styles.field}>

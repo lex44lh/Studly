@@ -1,4 +1,5 @@
 "use client";
+import { demoMode } from "@/lib/data-mode";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -28,7 +29,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     const saved =
-      localStorage.getItem("studly-chats");
+      demoMode ? localStorage.getItem("studly-chats") : null;
 
     if (!saved) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Finish the browser-only localStorage load after hydration.

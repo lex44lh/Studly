@@ -6,12 +6,15 @@ const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'studly-auth-'));
+fs.mkdirSync(path.join(dir, 'api'));
+const modeSource = fs.readFileSync(path.join(__dirname, '../src/lib/data-mode.ts'), 'utf8');
+fs.writeFileSync(path.join(dir, 'data-mode.js'), ts.transpileModule(modeSource, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText);
 for (const name of ['client', 'auth', 'registration', 'catalog']) {
   const source = fs.readFileSync(path.join(__dirname, '../src/lib/api', name + '.ts'), 'utf8');
-  fs.writeFileSync(path.join(dir, name + '.js'), ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText);
+  fs.writeFileSync(path.join(dir, 'api', name + '.js'), ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText);
 }
-const { authClient, getTelegramInitData } = require(path.join(dir, 'auth.js'));
-const { apiRequest, ApiError } = require(path.join(dir, 'client.js'));
+const { authClient, getTelegramInitData } = require(path.join(dir, 'api', 'auth.js'));
+const { apiRequest, ApiError } = require(path.join(dir, 'api', 'client.js'));
 const originalFetch = global.fetch;
 after(() => { global.fetch = originalFetch; delete global.window; fs.rmSync(dir, { recursive: true }); });
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status });
@@ -57,8 +60,8 @@ test('malformed 200 cannot become an authenticated session', async () => {
   await assert.rejects(authClient.me(), e => e.status === 502);
 });
 
-const { registrationClient, toDraft } = require(path.join(dir, 'registration.js'));
-const { catalogClient } = require(path.join(dir, 'catalog.js'));
+const { registrationClient, toDraft } = require(path.join(dir, 'api', 'registration.js'));
+const { catalogClient } = require(path.join(dir, 'api', 'catalog.js'));
 const registration = () => ({
   roles: ['customer', 'performer'], profile: { display_name: 'Server name', avatar_url: null, university: '', city: '', about: '' },
   performer: { description: 'About', study_year: '2', portfolio: '', specializations: [{ id: 'uuid-1', title: 'From server' }] },
@@ -130,4 +133,18 @@ test('catalog sends server search, rejects missing records and never falls back 
   assert.equal(url, '/api/v1/services/?search=Python');
   global.fetch = async () => json({ detail: 'Not found' }, 404);
   await assert.rejects(catalogClient.service('42'), e => e.status === 404);
+});
+
+const { resolveDataMode } = require(path.join(dir, 'data-mode.js'));
+test('demo is explicit, missing mode stays live even for production', () => {
+  const previous = process.env.NODE_ENV;
+  process.env.NODE_ENV = 'production';
+  try {
+    assert.equal(resolveDataMode(undefined), 'live');
+    assert.equal(resolveDataMode(''), 'live');
+    assert.equal(resolveDataMode('live'), 'live');
+    assert.equal(resolveDataMode('api'), 'live');
+    assert.equal(resolveDataMode('demo'), 'demo');
+    assert.throws(() => resolveDataMode('demoo'));
+  } finally { if (previous === undefined) delete process.env.NODE_ENV; else process.env.NODE_ENV = previous; }
 });

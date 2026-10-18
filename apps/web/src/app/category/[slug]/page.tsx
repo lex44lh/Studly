@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { demoMode } from "@/lib/api/catalog";
 
 import {
@@ -93,7 +92,7 @@ function DemoCategoryPage({
     : undefined;
 
   const categoryServices = useMemo(() => {
-    if (!categoryName) {
+    if (!demoMode || !categoryName) {
       return [];
     }
 
@@ -688,7 +687,8 @@ function DemoCategoryPage({
 }
 
 export default function CategoryPage({ params }: Props) {
-  return demoMode ? <DemoCategoryPage params={params} /> : <div><BackButton /><h1>Категория</h1>
-    <p>Категории пока не подключены. Все доступные услуги можно найти через поиск.</p>
-    <Link href="/search">Перейти к поиску</Link></div>;
+  return demoMode ? <DemoCategoryPage params={params} /> : <>
+    <p role="note">Серверный каталог категорий ещё не подключён. Демонстрационные услуги в LIVE не подставляются.</p>
+    <fieldset disabled style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}><DemoCategoryPage params={params} /></fieldset>
+  </>;
 }

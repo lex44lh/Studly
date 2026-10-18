@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { demoMode } from "@/lib/data-mode";
 import { useRegistration } from "@/context/RegistrationContext";
 import SpecializationPicker, { type SpecializationSource } from "./SpecializationPicker";
 import styles from "./registration.module.css";
@@ -8,9 +9,10 @@ import styles from "./registration.module.css";
 export default function PerformerForm() {
   const { draft, dispatch, client, saveStep } = useRegistration();
   const performer = draft.performer;
-  const [source, setSource] = useState<SpecializationSource>({ status: "loading" });
+  const [source, setSource] = useState<SpecializationSource>({ status: demoMode ? "unavailable" : "loading" });
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
+    if (demoMode) return;
     const controller = new AbortController();
     client.listSpecializations(controller.signal).then(result => {
       if (!controller.signal.aborted) setSource({ status: "available", options: result });

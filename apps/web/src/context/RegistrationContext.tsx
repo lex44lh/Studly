@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useReducer, useRef, useState, type Dispatch, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { demoMode } from "@/lib/data-mode";
 import { useAuth } from "@/context/AuthContext";
 import { registrationClient, toDraft } from "@/lib/api/registration";
 import { authClient } from "@/lib/api/auth";
@@ -12,7 +13,7 @@ import type { RegistrationResponse, RegistrationStep } from "@/types/registratio
 
 const RegistrationContext = createContext<{
   draft: RegistrationDraft; dispatch: Dispatch<DraftAction>; client: typeof registrationClient;
-  ready: boolean; loading: boolean; busy: boolean; error: string; retry: () => void;
+  previewComplete: boolean; returnToForm: () => void; ready: boolean; loading: boolean; busy: boolean; error: string; retry: () => void;
   saveStep: (step: RegistrationStep, skip?: boolean) => Promise<void>;
 } | null>(null);
 
@@ -29,8 +30,9 @@ function RegistrationSession({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(draftReducer, undefined, createDraftState);
   const { state: auth } = useAuth();
   const router = useRouter();
-  const [ready, setReady] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [previewComplete, setPreviewComplete] = useState(false);
+  const [ready, setReady] = useState(demoMode);
+  const [loading, setLoading] = useState(!demoMode);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
@@ -39,7 +41,7 @@ function RegistrationSession({ children }: { children: ReactNode }) {
   const draft = state.draft;
 
   useEffect(() => {
-    if (auth.status !== "authenticated") return;
+    if (demoMode || auth.status !== "authenticated") return;
     const controller = new AbortController();
     registrationClient.loadDraft(controller.signal).then(value => {
       if (controller.signal.aborted) return;
@@ -60,6 +62,12 @@ function RegistrationSession({ children }: { children: ReactNode }) {
   const avatarUrl = draft.profile.avatarUrl;
   useEffect(() => () => { if (avatarUrl.startsWith("blob:")) URL.revokeObjectURL(avatarUrl); }, [avatarUrl]);
   const saveStep = useCallback(async (step: RegistrationStep, skip = false) => {
+    if (demoMode) {
+      if (step === "roles") router.push("/register/profile");
+      else if (step === "profile" && draft.roles.includes("performer")) router.push("/register/performer");
+      else setPreviewComplete(true);
+      return;
+    }
     if (active.current || loading || auth.status !== "authenticated" || !server.current) return;
     const controller = new AbortController(); active.current = controller;
     setBusy(true); setError("");
@@ -108,7 +116,7 @@ function RegistrationSession({ children }: { children: ReactNode }) {
     }
   }, [draft, loading, auth.status, router]);
 
-  return <RegistrationContext.Provider value={{ draft, dispatch, client: registrationClient, ready, loading, busy, error,
+  return <RegistrationContext.Provider value={{ draft, dispatch, client: registrationClient, previewComplete, returnToForm: () => setPreviewComplete(false), ready, loading, busy, error,
     retry: () => { setLoading(true); setError(""); setAttempt(value => value + 1); }, saveStep }}>{children}</RegistrationContext.Provider>;
 }
 export function useRegistration() {

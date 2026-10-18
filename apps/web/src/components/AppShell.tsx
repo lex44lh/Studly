@@ -7,14 +7,19 @@ import { FavoritesProvider } from "@/context/FavoritesContext";
 import { useState } from "react";
 import BottomNav from "./BottomNav";
 import Sidebar from "./Sidebar";
+import { CampusShell } from "./studly/CampusShell";
 
 export default function AppShell({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  return <FavoritesProvider><AppShellContent>{children}</AppShellContent></FavoritesProvider>;
+}
+
+function AppShellContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const pendingIntegration = !demoMode && ["/orders", "/chats", "/create-service", "/notifications"]
+  const legacyPreview = !demoMode && ["/orders", "/chats", "/create-service", "/notifications"]
     .some(path => pathname === path || pathname.startsWith(`${path}/`));
   const [sidebarOpen, setSidebarOpen] =
     useState(false);
@@ -22,6 +27,8 @@ export default function AppShell({
   if (pathname === "/welcome" || pathname === "/register" || pathname.startsWith("/register/")) {
     return <>{children}</>;
   }
+
+  if (pathname === "/search") return <CampusShell>{children}</CampusShell>;
 
   return (
     <>
@@ -103,7 +110,6 @@ export default function AppShell({
           </Link>
         </header>
 
-        <FavoritesProvider>
           <main
             style={{
               flex: 1,
@@ -111,11 +117,11 @@ export default function AppShell({
             }}
           >
             {demoMode && <p role="note">Демонстрационный режим · Данные не являются реальными</p>}
-            {pendingIntegration ? <section><h1>Раздел пока не подключён</h1>
-              <p>Действия этого раздела станут доступны после подключения серверного сценария.</p>
-              <Link href="/search">Перейти к услугам</Link></section> : children}
+            {legacyPreview ? <>
+              <p role="note">Серверные данные этого раздела ещё не подключены. Интерфейс сохранён; действия отключены. Для просмотра демонстрационных данных используйте явно выбранный DEMO-режим.</p>
+              <fieldset disabled style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>{children}</fieldset>
+            </> : children}
           </main>
-        </FavoritesProvider>
 
         <BottomNav />
       </div>

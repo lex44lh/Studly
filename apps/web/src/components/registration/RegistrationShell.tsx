@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import BrandMark from "@/components/BrandMark";
+import { demoMode } from "@/lib/data-mode";
 import { useAuth } from "@/context/AuthContext";
 import { useRegistration } from "@/context/RegistrationContext";
 import { prerequisitePath } from "@/lib/registration/draft";
@@ -15,7 +16,7 @@ export function RegistrationStep({ step, title, intro, children }: {
   intro: string;
   children: ReactNode;
 }) {
-  const { draft, ready, loading, busy, error, retry } = useRegistration();
+  const { draft, previewComplete, returnToForm, ready, loading, busy, error, retry } = useRegistration();
   const { state: auth, refresh } = useAuth();
   const router = useRouter();
   const target = prerequisitePath(draft, step);
@@ -26,7 +27,7 @@ export function RegistrationStep({ step, title, intro, children }: {
     <main className={styles.screen}>
       <div className={styles.container}>
         <div className={styles.brand}><BrandMark size={36} /><span>STUDLY</span></div>
-        {auth.status !== "authenticated" ? <>
+        {!demoMode && auth.status !== "authenticated" ? <>
           <p role={auth.status === "error" ? "alert" : "status"}>{auth.message}</p>
           {auth.status !== "loading" && <button type="button" className={styles.secondary} onClick={refresh}>Повторить вход</button>}
         </> : loading ? <p role="status">Восстанавливаем регистрацию…</p> : error && !ready ? <>
@@ -38,9 +39,10 @@ export function RegistrationStep({ step, title, intro, children }: {
           </nav>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.intro}>{intro}</p>
+          {demoMode && <p className={styles.notice}>DEMO · Данные формы остаются в этой вкладке. Аккаунт не создаётся.</p>}
           {error && <p className={styles.error} role="alert">{error}</p>}
           <fieldset disabled={busy} className={styles.fieldset} aria-busy={busy}>
-          {children}
+          {previewComplete ? <RegistrationPreviewEnd onBack={returnToForm} /> : children}
           </fieldset>
           {busy && <p role="status">Сохраняем…</p>}
         </>}

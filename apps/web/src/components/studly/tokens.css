@@ -1,0 +1,63 @@
+/* STUDLY Campus tokens. Approved prototype: 2026-10-18-search. Scoped to /search. */
+.studly-app{
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #f0f3f9;
+  --text: #17203a;
+  --muted: #59647a;
+  --line: #dfe4ee;
+  --soft: #edf0f7;
+  --accent: #3547b8;
+  --accent-text: #ffffff;
+  --accent-soft: #e8ecff;
+  --accent-ink: #3547b8;
+  --cover-a: #e7efe7;
+  --cover-a-ink: #315544;
+  --cover-b: #e9e5fa;
+  --cover-b-ink: #584b84;
+  --radius: 18px;
+  --shadow: 0 8px 28px rgb(23 32 58 / 5%);
+  --campus-focus: #3547b8;
+  --focus: var(--campus-focus);
+  --campus-warm: #f2c96d;
+  --campus-inset: 0 1px 0 rgb(255 255 255 / 80%)}
+.studly-app[data-theme="dark"]{
+  --bg: #111827;
+  --surface: #192236;
+  --surface-2: #212c40;
+  --text: #f2f4fa;
+  --muted: #aab6cc;
+  --line: #334055;
+  --soft: #26334c;
+  --accent: #3547b8;
+  --accent-text: #ffffff;
+  --accent-soft: #26335f;
+  --accent-ink: #bcc7ff;
+  --cover-a: #243d35;
+  --cover-a-ink: #c6e1d2;
+  --cover-b: #38304f;
+  --cover-b-ink: #dfd4ff;
+  --shadow: 0 8px 28px rgb(0 0 0 / 13%);
+  --campus-focus: #aebdff;
+  --campus-inset: 0 1px 0 rgb(255 255 255 / 3%)}
+.studly-app{--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--type-small:13px;--type-body:16px;--radius-control:11px;--motion-feedback:140ms;--motion-sheet:180ms;--motion-ease:cubic-bezier(.2,.7,.2,1)}
+@media (prefers-color-scheme: dark){
+  .studly-app[data-theme="auto"]{
+  --bg: #111827;
+  --surface: #192236;
+  --surface-2: #212c40;
+  --text: #f2f4fa;
+  --muted: #aab6cc;
+  --line: #334055;
+  --soft: #26334c;
+  --accent: #3547b8;
+  --accent-text: #ffffff;
+  --accent-soft: #26335f;
+  --accent-ink: #bcc7ff;
+  --cover-a: #243d35;
+  --cover-a-ink: #c6e1d2;
+  --cover-b: #38304f;
+  --cover-b-ink: #dfd4ff;
+  --shadow: 0 8px 28px rgb(0 0 0 / 13%);
+  --campus-focus: #aebdff;
+  --campus-inset: 0 1px 0 rgb(255 255 255 / 3%)}}

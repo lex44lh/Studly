@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import Script from "next/script";
 import { authClient, getTelegramInitData, type SessionUser } from "@/lib/api/auth";
+import { demoMode } from "@/lib/data-mode";
 import { ApiError } from "@/lib/api/client";
 
 type AuthState = { status: "loading" | "anonymous" | "authenticated" | "error"; user: SessionUser | null; message: string };
@@ -28,7 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const verified = useRef(false);
 
   const run = useCallback(async (logout = false) => {
-    if (active.current) return;
+    if (demoMode || active.current) return;
     const controller = new AbortController();
     active.current = controller;
     setState(previous => ({ status: "loading", user: previous.user, message: logout ? "Выходим…" : "Проверяем сессию…" }));
@@ -68,15 +69,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (verified.current) return;
+    if (demoMode || verified.current) return;
     const timer = setTimeout(() => { void run(); }, 0);
     return () => clearTimeout(timer);
   }, [run, sdkReady]);
   useEffect(() => () => { active.current?.abort(); active.current = null; }, []);
 
-  return <AuthContext.Provider value={{ state, sdkReady, refresh: () => { loggedOut.current = false; void run(); }, logout: () => { void run(true); } }}>
-    <Script src="https://telegram.org/js/telegram-web-app.js?64" strategy="afterInteractive"
-      onReady={() => setSdkReady(true)} onError={() => setSdkReady(true)} />
+  return <AuthContext.Provider value={{ state: demoMode ? { status: "anonymous", user: null, message: "Демо: вход и серверная сессия не выполняются." } : state, sdkReady, refresh: () => { loggedOut.current = false; void run(); }, logout: () => { void run(true); } }}>
+    {!demoMode && <Script src="https://telegram.org/js/telegram-web-app.js?64" strategy="afterInteractive"
+      onReady={() => setSdkReady(true)} onError={() => setSdkReady(true)} />}
     {children}
   </AuthContext.Provider>;
 }

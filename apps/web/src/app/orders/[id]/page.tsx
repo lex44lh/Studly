@@ -1,4 +1,5 @@
 "use client";
+import { demoMode } from "@/lib/data-mode";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -54,7 +55,7 @@ export default function OrderPage() {
 
   useEffect(() => {
     const saved =
-      localStorage.getItem("studly-orders");
+      demoMode ? localStorage.getItem("studly-orders") : null;
 
     if (!saved) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Finish the browser-only localStorage load after hydration.
@@ -85,7 +86,7 @@ export default function OrderPage() {
     if (!order) return;
 
     const saved =
-      localStorage.getItem("studly-orders");
+      demoMode ? localStorage.getItem("studly-orders") : null;
 
     if (!saved) return;
 

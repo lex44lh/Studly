@@ -1,4 +1,5 @@
 "use client";
+import { demoMode } from "@/lib/data-mode";
 
 import BackButton from "@/components/BackButton";
 
@@ -35,6 +36,7 @@ const notifications: NotificationItem[] = [
 ];
 
 export default function NotificationsPage() {
+  const visibleNotifications = demoMode ? notifications : [];
   return (
     <div>
       <BackButton />
@@ -48,7 +50,7 @@ export default function NotificationsPage() {
         Уведомления
       </h1>
 
-      {notifications.length === 0 ? (
+      {visibleNotifications.length === 0 ? (
         <div
           style={{
             textAlign: "center",
@@ -78,7 +80,7 @@ export default function NotificationsPage() {
         </div>
       ) : (
         <div>
-          {notifications.map(
+          {visibleNotifications.map(
             (notification) => (
               <div
                 key={

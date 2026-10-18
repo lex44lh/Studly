@@ -1,4 +1,5 @@
 "use client";
+import { demoMode } from "@/lib/data-mode";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -25,7 +26,7 @@ export default function OrdersPage() {
 
   useEffect(() => {
     const saved =
-      localStorage.getItem("studly-orders");
+      demoMode ? localStorage.getItem("studly-orders") : null;
 
     if (saved) {
       try {

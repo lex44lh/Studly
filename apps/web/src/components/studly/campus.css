@@ -1,0 +1,1305 @@
+/* Approved Campus layout, scoped to prevent style changes on legacy routes. */
+.studly-app *{box-sizing:border-box}.studly-app{color-scheme:light}.studly-app[data-theme="dark"]{color-scheme:dark}.studly-app{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.45}.studly-app button,.studly-app input,.studly-app select{font:inherit;color:inherit}.studly-app button,.studly-app a,.studly-app input,.studly-app select{-webkit-tap-highlight-color:transparent}.studly-app button{cursor:pointer}.studly-app button:disabled{cursor:not-allowed;opacity:.48}.studly-app button{border:0}.studly-app a{color:inherit;text-decoration:none}.studly-app button:focus-visible,.studly-app a:focus-visible,.studly-app input:focus-visible,.studly-app select:focus-visible{outline:3px solid var(--focus,#7f91ff);outline-offset:3px}.studly-app button,.studly-app input,.studly-app select{min-height:44px}.studly-app button{touch-action:manipulation}.studly-app .icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.studly-app .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.studly-app button{transition:background-color .14s ease,color .14s ease,box-shadow .14s ease,transform .14s ease}.studly-app button:active:not(:disabled){transform:scale(.97)}.studly-app [hidden]{display:none!important}.studly-app .topbar{height:84px;padding:0 max(32px,calc((100vw - 1240px)/2));display:flex;align-items:center;gap:44px;background:var(--surface);border-bottom:1px solid var(--line)}.studly-app .brand{display:flex;align-items:center;gap:10px;font-size:22px;letter-spacing:.01em;font-weight:800;flex-shrink:0}.studly-app .brand-mark{width:25px;height:36px;fill:#3547B8}.studly-app .desktop-nav{display:flex;align-items:center;gap:8px;height:100%}.studly-app .nav-item{background:transparent;padding:12px 14px;color:var(--muted);font-weight:600;border-radius:10px}.studly-app .nav-item.is-active{background:var(--accent-soft);color:var(--accent-ink)}.studly-app .header-actions{margin-left:auto;display:flex;align-items:center;gap:16px}.studly-app .demo-label{font-size:11px;letter-spacing:.1em;font-weight:700;color:var(--muted);border:1px solid var(--line);padding:4px 7px;border-radius:5px}.studly-app .publish-btn,.studly-app .search-submit,.studly-app .primary-btn{background:#3547B8;color:#fff;padding:11px 20px;border-radius:12px;font-weight:650}.studly-app .publish-btn{white-space:nowrap}.studly-app .icon-btn{width:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:var(--surface-2);flex-shrink:0}.studly-app .workspace{max-width:1240px;margin:auto;padding:42px 0 60px}.studly-app .intro{position:relative;min-height:130px;padding-right:180px;margin-bottom:28px}.studly-app .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:0 0 10px}.studly-app .intro-title{font-size:40px;line-height:1.12;letter-spacing:-.045em;font-weight:700;margin:0 0 12px}.studly-app .intro-title span{color:var(--accent-ink)}.studly-app .intro-copy{font-size:15px;color:var(--muted);margin:0}.studly-app .intro-art{position:absolute;right:14px;top:0;width:140px;height:120px;pointer-events:none}.studly-app .search-form{display:flex;align-items:center;gap:12px;padding:7px 8px 7px 18px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--shadow);margin-bottom:20px}.studly-app .search-form>.icon{color:var(--muted)}.studly-app .search-input{flex:1;min-width:0;border:0;background:transparent;outline-offset:0!important;font-size:16px}.studly-app .search-input::placeholder{color:var(--muted);opacity:1}.studly-app .clear-search{background:transparent}.studly-app .search-submit{min-width:108px}.studly-app .category-list{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 8px;margin:0 0 26px}.studly-app .category-list::-webkit-scrollbar{display:none}.studly-app .category-chip{display:flex;align-items:center;gap:8px;white-space:nowrap;background:var(--surface);padding:10px 16px;border:1px solid var(--line);border-radius:24px;color:var(--muted);font-weight:550}.studly-app .category-chip[aria-pressed=true]{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}.studly-app .category-chip .icon{width:17px;height:17px}.studly-app .catalog-layout{display:grid;grid-template-columns:216px minmax(0,1fr);gap:28px;align-items:start}.studly-app .filters-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}.studly-app .filter-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:700;margin-bottom:20px}.studly-app .filter-group{margin:0 0 22px}.studly-app .filter-group>label,.studly-app .filter-group>legend{display:block;font-size:13px;font-weight:600;margin-bottom:9px}.studly-app .filter-group input[type=number],.studly-app .filter-group select{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 12px}.studly-app .field-hint{display:block;font-size:12px;color:var(--muted);margin-top:7px}.studly-app .reset-btn{padding:0;background:transparent;color:var(--accent-ink);font-weight:550;font-size:13px}.studly-app .filter-check{display:flex;align-items:center;gap:9px;font-size:13px;min-height:44px;cursor:pointer}.studly-app .filter-check input{min-height:20px;width:18px;height:18px;accent-color:#3547B8}.studly-app .filter-note{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin:0}.studly-app .results-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;min-height:44px}.studly-app .results-title{display:inline;margin:0;font-size:19px;line-height:1.2;font-weight:650;letter-spacing:-.02em}.studly-app .results-count{font-size:13px;color:var(--muted);margin-left:9px}.studly-app .toolbar-actions{display:flex;gap:8px;align-items:center}.studly-app .sort-select{min-height:44px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13px;padding:8px 30px 8px 12px;max-width:190px}.studly-app .filter-toggle{display:none;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px}.studly-app .active-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}.studly-app .active-filters:empty{display:none}.studly-app .filter-tag{font-size:12px;padding:6px 10px;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;gap:8px}.studly-app .filter-tag button{min-height:28px;width:28px;background:transparent}.studly-app .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.studly-app .service-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);box-shadow:var(--shadow);min-width:0;display:flex;flex-direction:column}.studly-app .service-cover{position:relative;height:150px;background:var(--cover-a);color:var(--cover-a-ink);overflow:hidden;padding:17px}.studly-app .service-card:nth-child(even) .service-cover{background:var(--cover-b);color:var(--cover-b-ink)}.studly-app .cover-label{position:relative;z-index:1;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:650}.studly-app .cover-symbol{position:absolute;right:20px;bottom:13px;font-size:65px;line-height:1;font-weight:600;letter-spacing:-.08em}.studly-app .favorite-btn{position:absolute;top:10px;right:10px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--surface);color:var(--muted);z-index:2;box-shadow:0 1px 5px #00000009}.studly-app .favorite-btn[aria-pressed=true]{color:var(--accent-ink);background:var(--accent-soft)}.studly-app .favorite-btn[aria-pressed=true] .icon{fill:currentColor;stroke:currentColor}.studly-app .card-body{padding:18px;flex:1;display:flex;flex-direction:column}.studly-app .card-category{font-size:11px;font-weight:600;color:var(--muted);margin-bottom:6px}.studly-app .service-title{margin:0 0 8px;font-size:17px;line-height:1.28;letter-spacing:-.02em;font-weight:650;min-height:44px}.studly-app .service-description{font-size:13px;color:var(--muted);margin:0 0 16px;min-height:38px}.studly-app .performer{display:flex;align-items:center;gap:9px;margin-top:auto;margin-bottom:16px}.studly-app .avatar{width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border-radius:50%;background:var(--surface-2);color:var(--text);flex-shrink:0}.studly-app .performer-copy{display:flex;flex-direction:column;min-width:0}.studly-app .performer-name{font-size:12px;font-weight:600}.studly-app .performer-specialty{font-size:11px;color:var(--muted)}.studly-app .card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:14px;border-top:1px solid var(--line);margin-bottom:14px}.studly-app .price-block{display:flex;align-items:baseline;gap:5px}.studly-app .price{font-size:22px;letter-spacing:-.03em;line-height:1.2;font-variant-numeric:tabular-nums;font-weight:750}.studly-app .price-unit{font-size:10px;color:var(--muted)}.studly-app .delivery{font-size:11px;color:var(--muted);white-space:nowrap;display:flex;gap:4px;align-items:center}.studly-app .delivery .icon{width:13px;height:13px}.studly-app .detail-btn{border-radius:10px;background:var(--accent-soft);color:var(--accent-ink);padding:10px;font-size:13px;font-weight:650;min-height:44px;width:100%}.studly-app .detail-btn:hover{background:var(--accent);color:var(--accent-text)}.studly-app .empty-state{text-align:center;padding:50px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}.studly-app .empty-state h3{margin:12px 0}.studly-app .empty-state p{color:var(--muted)}.studly-app .bottom-nav{display:none}.studly-app .components-panel{margin-top:32px;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}.studly-app .component-heading{margin-top:0}.studly-app .button-states{display:flex;flex-wrap:wrap;gap:16px}.studly-app .button-sample{display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--muted)}.studly-app .sample-hover{filter:brightness(.92)}.studly-app .sample-focus{outline:3px solid var(--focus,#7f91ff);outline-offset:3px}.studly-app .sample-active{transform:scale(.97)}.studly-app .card-specimen{max-width:320px;margin-top:24px}.studly-app dialog{color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:0;width:min(520px,calc(100% - 32px));max-height:90dvh;box-shadow:0 24px 100px #0000003d}.studly-app dialog::backdrop{background:#0c143b66}.studly-app .dialog-inner,.studly-app .filter-form{padding:28px}.studly-app .dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}.studly-app .dialog-heading h2{margin:0;font-size:22px;line-height:1.2}.studly-app .dialog-inner p{color:var(--muted)}.studly-app .detail-price{display:block;font-size:28px;margin:20px 0 4px}.studly-app .dialog-actions{display:flex;gap:10px;margin-top:24px}.studly-app .secondary-btn{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px 16px}.studly-app .toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,12px);max-width:min(440px,calc(100% - 32px));padding:12px 18px;background:var(--text);color:var(--surface);border-radius:14px;box-shadow:0 8px 40px #00000024;opacity:0;pointer-events:none;z-index:50;font-size:13px;transition:opacity .18s,transform .18s}.studly-app .toast.is-visible{opacity:1;transform:translate(-50%,0)}@media(min-width:701px) and (max-width:1320px){.studly-app .workspace{padding-left:32px;padding-right:32px}.studly-app .topbar{padding-left:32px;padding-right:32px;gap:25px}}@media(max-width:1100px) and (min-width:701px){.studly-app .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.studly-app .desktop-nav{gap:0}.studly-app .nav-item{padding:12px 8px}.studly-app .publish-btn{font-size:13px;padding:10px 12px}.studly-app .header-actions{gap:8px}.studly-app .demo-label{display:none}.studly-app .catalog-layout{gap:22px;grid-template-columns:190px minmax(0,1fr)}}@media(max-width:700px){.studly-app .topbar{height:68px;padding:max(8px,env(safe-area-inset-top)) 18px 8px;gap:12px}.studly-app .brand{font-size:20px;gap:8px}.studly-app .brand-mark{width:21px;height:31px}.studly-app .desktop-nav,.studly-app .publish-btn{display:none}.studly-app .header-actions{gap:10px}.studly-app .demo-label{font-size:9px}.studly-app .theme-toggle{background:transparent}.studly-app .workspace{padding:26px 18px calc(100px + env(safe-area-inset-bottom))}.studly-app .intro{min-height:0;padding-right:0;margin-bottom:22px}.studly-app .eyebrow{font-size:10px;margin-bottom:8px;letter-spacing:.12em}.studly-app .intro-title{font-size:30px;line-height:1.12;letter-spacing:-.04em;margin-bottom:10px;max-width:305px}.studly-app .intro-copy{font-size:13px;max-width:310px}.studly-app .intro-art{display:none}.studly-app .search-form{padding:4px 5px 4px 13px;border-radius:13px;gap:8px;margin-bottom:15px}.studly-app .search-input{font-size:16px}.studly-app .search-submit{min-width:44px;width:44px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px}.studly-app .search-submit .button-label{display:none}.studly-app .clear-search{width:28px;min-height:44px}.studly-app .search-submit>.icon{display:block}.studly-app .category-list{gap:7px;margin:0 -18px 18px;padding:0 18px 5px}.studly-app .category-chip{font-size:12px;min-height:44px;padding:10px 14px}.studly-app .category-chip .icon{width:16px;height:16px}.studly-app .catalog-layout{display:block}.studly-app .filters-panel{display:none}.studly-app .results-toolbar{margin-bottom:14px;gap:8px;align-items:center}.studly-app .results-title{font-size:17px}.studly-app .results-count{font-size:12px;margin-left:5px}.studly-app .toolbar-actions{gap:6px}.studly-app .sort-select{max-width:120px;font-size:12px;padding-left:8px;padding-right:18px;background:transparent;border:0}.studly-app .filter-toggle{display:flex}.studly-app .filter-toggle .button-label{display:none}.studly-app .filter-toggle{width:44px;padding:11px;justify-content:center}.studly-app .service-grid{grid-template-columns:1fr;gap:16px}.studly-app .service-cover{height:137px;padding:17px}.studly-app .cover-symbol{font-size:66px;bottom:10px}.studly-app .card-body{padding:17px}.studly-app .card-category{font-size:11px}.studly-app .service-title{font-size:19px;min-height:0;margin-bottom:7px}.studly-app .service-description{font-size:13px;min-height:0;margin-bottom:15px}.studly-app .performer{margin-bottom:13px}.studly-app .performer-name{font-size:13px}.studly-app .performer-specialty{font-size:11px}.studly-app .price{font-size:24px}.studly-app .price-unit{font-size:11px}.studly-app .delivery{font-size:12px}.studly-app .detail-btn{font-size:14px}.studly-app .bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;padding:6px 6px max(8px,env(safe-area-inset-bottom));min-height:74px;background:var(--surface);border-top:1px solid var(--line);z-index:20;justify-content:space-around}.studly-app .bottom-item{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;min-width:54px;min-height:56px;background:transparent;color:var(--muted);font-size:10px;border-radius:12px;padding:5px 3px}.studly-app .bottom-item .icon{width:21px;height:21px}.studly-app .bottom-item.is-active{color:var(--accent-ink);background:var(--accent-soft)}.studly-app .toast{bottom:94px}.studly-app .filter-dialog{position:fixed;margin:auto 0 0;width:100%;max-height:85dvh;border-radius:24px 24px 0 0;border-bottom:0}.studly-app .filter-form{padding:24px 22px max(26px,env(safe-area-inset-bottom))}.studly-app .dialog-actions>*{flex:1}.studly-app .components-panel{padding:20px}.studly-app .card-bottom{margin-bottom:12px}}@media(prefers-reduced-motion:reduce){.studly-app *,.studly-app *::before,.studly-app *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}@media(hover:hover){.studly-app .service-card:hover{border-color:var(--accent-ink)}.studly-app .category-chip:hover:not([aria-pressed=true]){background:var(--surface-2)}.studly-app .publish-btn:hover,.studly-app .search-submit:hover{filter:brightness(.94)}}.studly-app {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light;
+}.studly-app[data-theme="dark"] {
+  color-scheme: dark;
+}.studly-app :is(button, input, select, a) {
+  -webkit-tap-highlight-color: transparent;
+}.studly-app :is(button, input, select, a):focus-visible {
+  outline: 3px solid var(--campus-focus);
+  outline-offset: 3px;
+}.studly-app button {
+  font-weight: 600;
+  transition: background-color 140ms ease, border-color 140ms ease,
+    color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}.studly-app button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+  transform: none;
+}.studly-app .topbar {
+  min-height: 80px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  box-shadow: none;
+}.studly-app .brand {
+  gap: 10px;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}.studly-app .brand-mark {
+  color: #3547b8;
+}.studly-app .brand-mark path {
+  fill: #3547b8;
+}.studly-app[data-theme="dark"] .brand-mark path {
+  fill: #ffffff;
+}.studly-app .desktop-nav {
+  gap: 6px;
+}.studly-app .nav-item {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 11px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+}.studly-app .nav-item.is-active {
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+}.studly-app .header-actions {
+  gap: 14px;
+}.studly-app .demo-label {
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--muted);
+  background: var(--surface);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 1px;
+}.studly-app :is(.publish-btn, .search-submit) {
+  min-height: 44px;
+  padding: 11px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 11px;
+  color: var(--accent-text);
+  background: var(--accent);
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+}.studly-app .icon-btn {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--muted);
+  background: var(--surface);
+}.studly-app .workspace {
+  padding-top: 34px;
+  padding-bottom: 72px;
+}.studly-app .intro {
+  position: relative;
+  min-height: 144px;
+  padding: 0 250px 24px 0;
+  overflow: hidden;
+}.studly-app .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}.studly-app .eyebrow::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--accent);
+  content: "";
+}.studly-app .intro-title {
+  max-width: 780px;
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: clamp(30px, 3.05vw, 42px);
+  font-weight: 730;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  text-wrap: balance;
+}.studly-app .intro-copy {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}.studly-app .intro-art {
+  position: absolute;
+  top: 7px;
+  right: 35px;
+  width: 160px;
+  height: 120px;
+  pointer-events: none;
+}.studly-app .intro-art::before,
+.studly-app .intro-art::after {
+  position: absolute;
+  width: 140px;
+  height: 44px;
+  border-radius: 16px;
+  content: "";
+}.studly-app .intro-art::before {
+  top: 14px;
+  left: 5px;
+  background: var(--accent);
+  transform: rotate(-24deg);
+}.studly-app .intro-art::after {
+  top: 65px;
+  left: 20px;
+  background: var(--campus-warm);
+  transform: rotate(-24deg);
+}.studly-app .search-form {
+  min-height: 60px;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 7px 7px 7px 18px;
+  border: 1px solid #cbd3e6;
+  border-radius: 16px;
+  color: var(--muted);
+  background: var(--surface);
+  box-shadow: var(--campus-inset), 0 3px 10px rgb(23 32 58 / 3%);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}.studly-app[data-theme="dark"] .search-form {
+  border-color: #52617e;
+}.studly-app .search-form:focus-within {
+  border-color: var(--campus-focus);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}.studly-app .search-input {
+  min-width: 0;
+  min-height: 44px;
+  padding: 5px 0;
+  border: 0;
+  color: var(--text);
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  outline: none;
+}.studly-app .search-input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}.studly-app .clear-search {
+  flex-shrink: 0;
+  border: 0;
+  background: var(--surface-2);
+}.studly-app .search-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding-inline: 24px;
+  border-radius: 10px;
+}.studly-app .category-list {
+  gap: 8px;
+  margin-bottom: 30px;
+  padding-bottom: 2px;
+}.studly-app .category-chip {
+  min-height: 44px;
+  padding: 10px 17px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--muted);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}.studly-app .category-chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent-text);
+  background: var(--accent);
+  box-shadow: 0 3px 8px rgb(53 71 184 / 12%);
+}.studly-app .catalog-layout {
+  gap: 28px;
+  align-items: start;
+}.studly-app .filters-panel {
+  padding: 19px 18px 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--campus-inset);
+}.studly-app .filter-head {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+}.studly-app .filter-head .reset-btn {
+  flex-shrink: 0;
+  width: auto;
+  padding: 8px 0 8px 8px;
+  border: 0;
+  color: var(--accent-ink);
+  background: transparent;
+  font-size: 12px;
+}.studly-app .filter-group {
+  gap: 8px;
+  margin-bottom: 22px;
+}.studly-app .filter-group label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}.studly-app .filter-group :is(input, select) {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #b9c3d5;
+  border-radius: 10px;
+  color: var(--text);
+  background-color: var(--surface);
+  font-size: 14px;
+  line-height: 1.5;
+}.studly-app[data-theme="dark"] .filter-group :is(input, select) {
+  border-color: #60708e;
+}.studly-app .filter-group input[type="range"] {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  accent-color: var(--accent);
+}.studly-app .reset-btn {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--accent-ink);
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+}.studly-app .results-toolbar {
+  min-height: 44px;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 0;
+}.studly-app .results-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+}.studly-app .results-count {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}.studly-app .toolbar-actions {
+  gap: 8px;
+}.studly-app :is(.sort-select, .filter-toggle) {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
+}.studly-app .filter-toggle {
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}.studly-app .active-filters {
+  color: var(--muted);
+  font-size: 13px;
+}.studly-app .active-filters:not(:empty) {
+  margin: -3px 0 16px;
+}.studly-app .active-filters button {
+  min-height: 44px;
+  margin: 0 8px 4px 0;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+}.studly-app .service-grid {
+  gap: 20px;
+}.studly-app .service-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 2px 4px rgb(23 32 58 / 2%);
+  transition: border-color 140ms ease, box-shadow 140ms ease,
+    transform 140ms ease;
+}.studly-app .service-cover {
+  position: relative;
+  display: flex;
+  min-height: 156px;
+  height: 156px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  border-bottom: 1px solid rgb(23 32 58 / 4%);
+  color: var(--cover-ink, var(--cover-a-ink));
+  background: var(--cover-bg, var(--cover-a));
+}.studly-app .cover-label {
+  position: absolute;
+  z-index: 2;
+  top: 17px;
+  left: 17px;
+  max-width: calc(100% - 78px);
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: none;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}.studly-app .cover-symbol {
+  position: relative;
+  inset: auto;
+  z-index: 1;
+  display: block;
+  margin-top: 18px;
+  color: inherit;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 68px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -3px;
+  white-space: nowrap;
+  transform: rotate(-6deg);
+}.studly-app .service-card[data-kind] .service-cover {
+  color: var(--cover-ink, var(--cover-a-ink));
+  background: var(--cover-bg, var(--cover-a));
+}.studly-app .service-cover::before,
+.studly-app .service-cover::after {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}.studly-app .favorite-btn {
+  position: absolute;
+  z-index: 3;
+  top: 9px;
+  right: 9px;
+  display: flex;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(23 32 58 / 10%);
+  border-radius: 50%;
+  color: #3547b8;
+  background: #ffffff;
+  box-shadow: none;
+}.studly-app .favorite-btn[aria-pressed="true"] {
+  border-color: #3547b8;
+  color: #ffffff;
+  background: #3547b8;
+}.studly-app .favorite-btn[aria-pressed="true"] .icon {
+  fill: currentColor;
+}.studly-app .service-card[data-kind="math"] {
+  --cover-bg: #e7efe7;
+  --cover-ink: #315544;
+}.studly-app [data-kind="math"] .service-cover::before {
+  inset: 0;
+  background-image: linear-gradient(rgb(49 85 68 / 7%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(49 85 68 / 7%) 1px, transparent 1px);
+  background-position: 20px 16px;
+  background-size: 26px 26px;
+}.studly-app [data-kind="math"] .service-cover::after {
+  right: -24px;
+  bottom: -57px;
+  width: 170px;
+  height: 170px;
+  border: 1px solid rgb(49 85 68 / 24%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 18px rgb(49 85 68 / 4%);
+}.studly-app .service-card[data-kind="design"] {
+  --cover-bg: #e9e5fa;
+  --cover-ink: #584b84;
+}.studly-app [data-kind="design"] .service-cover::before {
+  top: 46px;
+  left: 34px;
+  width: 73px;
+  height: 97px;
+  border: 1px solid rgb(88 75 132 / 22%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 20%);
+  transform: rotate(-15deg);
+}.studly-app [data-kind="design"] .service-cover::after {
+  right: 19px;
+  bottom: -21px;
+  width: 106px;
+  height: 106px;
+  border: 22px solid rgb(88 75 132 / 12%);
+  border-radius: 50%;
+}.studly-app [data-kind="design"] .cover-symbol {
+  font-family: inherit;
+  font-size: 76px;
+  font-weight: 750;
+  letter-spacing: -5px;
+  transform: rotate(-7deg);
+}.studly-app .service-card[data-kind="code"] {
+  --cover-bg: #e1e9f5;
+  --cover-ink: #34517d;
+}.studly-app [data-kind="code"] .service-cover::before {
+  right: 19px;
+  bottom: -15px;
+  width: 164px;
+  height: 119px;
+  border: 1px solid rgb(52 81 125 / 24%);
+  border-radius: 11px;
+  background: rgb(255 255 255 / 12%);
+  transform: rotate(8deg);
+}.studly-app [data-kind="code"] .service-cover::after {
+  right: 74px;
+  bottom: 32px;
+  width: 68px;
+  height: 4px;
+  border-radius: 3px;
+  background: rgb(52 81 125 / 14%);
+  box-shadow: 12px 12px 0 rgb(52 81 125 / 14%),
+    0 24px 0 rgb(52 81 125 / 14%);
+  transform: rotate(8deg);
+}.studly-app [data-kind="code"] .cover-symbol {
+  font-family: inherit;
+  font-size: 58px;
+  font-weight: 500;
+  letter-spacing: -5px;
+  transform: rotate(-5deg);
+}.studly-app .service-card[data-kind="english"] {
+  --cover-bg: #f3ebdd;
+  --cover-ink: #745934;
+}.studly-app [data-kind="english"] .service-cover::before {
+  top: 58px;
+  right: 22px;
+  width: 114px;
+  height: 72px;
+  border: 1px solid rgb(116 89 52 / 20%);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}.studly-app [data-kind="english"] .service-cover::after {
+  right: 22px;
+  bottom: 29px;
+  width: 144px;
+  height: 1px;
+  background: rgb(116 89 52 / 22%);
+  transform: rotate(-9deg);
+}.studly-app [data-kind="english"] .cover-symbol {
+  font-style: italic;
+  font-size: 75px;
+  transform: rotate(-7deg);
+}.studly-app .service-card[data-kind="video"] {
+  --cover-bg: #f5e6e0;
+  --cover-ink: #874a3d;
+}.studly-app [data-kind="video"] .service-cover::before {
+  left: 25px;
+  bottom: 21px;
+  width: 150px;
+  height: 80px;
+  border: 1px solid rgb(135 74 61 / 22%);
+  border-radius: 9px;
+  transform: rotate(6deg);
+}.studly-app [data-kind="video"] .service-cover::after {
+  right: 32px;
+  bottom: 21px;
+  width: 76px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgb(135 74 61 / 20%);
+  box-shadow: -24px 10px 0 rgb(135 74 61 / 13%);
+  transform: rotate(-8deg);
+}.studly-app [data-kind="video"] .cover-symbol {
+  font-family: inherit;
+  font-size: 62px;
+  transform: rotate(-5deg);
+}.studly-app .service-card[data-kind="career"] {
+  --cover-bg: #f3eccf;
+  --cover-ink: #776128;
+}.studly-app [data-kind="career"] .service-cover::before {
+  right: 34px;
+  bottom: -26px;
+  width: 112px;
+  height: 142px;
+  border: 1px solid rgb(119 97 40 / 24%);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 24%);
+  transform: rotate(13deg);
+}.studly-app [data-kind="career"] .service-cover::after {
+  right: 52px;
+  bottom: 24px;
+  width: 67px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgb(119 97 40 / 17%);
+  box-shadow: 0 -13px 0 rgb(119 97 40 / 17%), 0 -26px 0 rgb(119 97 40 / 17%);
+  transform: rotate(13deg);
+}.studly-app [data-kind="career"] .cover-symbol {
+  font-family: inherit;
+  font-size: 58px;
+  font-weight: 750;
+  letter-spacing: -4px;
+  transform: rotate(-8deg);
+}.studly-app[data-theme="dark"] .service-card[data-kind="math"] {
+  --cover-bg: #243d35;
+  --cover-ink: #c6e1d2;
+}.studly-app[data-theme="dark"] .service-card[data-kind="design"] {
+  --cover-bg: #38304f;
+  --cover-ink: #dfd4ff;
+}.studly-app[data-theme="dark"] .service-card[data-kind="code"] {
+  --cover-bg: #24344d;
+  --cover-ink: #c0d5f3;
+}.studly-app[data-theme="dark"] .service-card[data-kind="english"] {
+  --cover-bg: #453a2b;
+  --cover-ink: #f0ddc0;
+}.studly-app[data-theme="dark"] .service-card[data-kind="video"] {
+  --cover-bg: #49332f;
+  --cover-ink: #f5c6b7;
+}.studly-app[data-theme="dark"] .service-card[data-kind="career"] {
+  --cover-bg: #45402b;
+  --cover-ink: #ebdca1;
+}.studly-app[data-theme="dark"] .service-cover::before,
+.studly-app[data-theme="dark"] .service-cover::after {
+  opacity: 0.65;
+  border-color: currentColor;
+}.studly-app[data-theme="dark"] [data-kind="math"] .service-cover::before {
+  opacity: 0.55;
+  background-image: linear-gradient(rgb(198 225 210 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(198 225 210 / 10%) 1px, transparent 1px);
+}.studly-app .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px;
+}.studly-app .card-category {
+  margin: 0 0 7px;
+  color: var(--accent-ink);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+}.studly-app .service-title {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.35px;
+  overflow-wrap: anywhere;
+}.studly-app .service-description {
+  display: -webkit-box;
+  min-height: 40px;
+  margin: 0 0 17px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}.studly-app .performer {
+  gap: 10px;
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-bottom: 16px;
+}.studly-app .avatar {
+  display: inline-flex;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--muted);
+  background: var(--surface-2);
+  font-size: 11px;
+  font-weight: 700;
+}.studly-app .performer-copy {
+  min-width: 0;
+}.studly-app .performer-name {
+  display: block;
+  overflow: hidden;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}.studly-app .performer-specialty {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}.studly-app .card-bottom {
+  gap: 10px;
+  margin-bottom: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}.studly-app .price-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+}.studly-app .price {
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -0.6px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}.studly-app .price-unit {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}.studly-app .delivery {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: nowrap;
+}.studly-app .detail-btn {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 15px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--accent-ink);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 650;
+}.studly-app .empty-state {
+  padding: 56px 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--muted);
+  background: var(--surface);
+  text-align: center;
+}.studly-app .empty-state h2,
+.studly-app .empty-state h3 {
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}.studly-app .components-panel {
+  margin-top: 48px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}.studly-app .component-heading {
+  margin: 0 0 20px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}.studly-app .button-states {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}.studly-app .button-states button {
+  min-height: 44px;
+}.studly-app .card-specimen {
+  max-width: 310px;
+}.studly-app :is(.filter-dialog, .detail-dialog) {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: 0 24px 80px rgb(10 17 35 / 24%);
+}.studly-app :is(.filter-dialog, .detail-dialog)::backdrop {
+  background: rgb(14 22 42 / 42%);
+}.studly-app .filter-form {
+  padding: 24px;
+}.studly-app .filter-form h2,
+.studly-app .dialog-inner h2 {
+  margin-top: 0;
+  color: var(--text);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.7px;
+}.studly-app .dialog-inner {
+  padding: 28px;
+}.studly-app .dialog-inner :is(p, li) {
+  color: var(--muted);
+  line-height: 1.65;
+}.studly-app .toast {
+  padding: 13px 20px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: 0 8px 32px rgb(14 22 42 / 14%);
+  font-size: 14px;
+  font-weight: 500;
+}.studly-app .bottom-nav {
+  min-height: 68px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 -4px 18px rgb(23 32 58 / 3%);
+}.studly-app .bottom-item {
+  min-width: 44px;
+  min-height: 56px;
+  gap: 5px;
+  padding: 8px 3px;
+  border: 0;
+  border-radius: 10px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+}.studly-app .bottom-item .icon {
+  width: 21px;
+  height: 21px;
+}.studly-app .bottom-item.is-active {
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+}@media (hover: hover) and (pointer: fine) {
+  .studly-app :is(.publish-btn, .search-submit):not(:disabled):hover {
+    border-color: #293991;
+    background: #293991;
+    box-shadow: 0 4px 10px rgb(53 71 184 / 14%);
+  }
+
+  .studly-app :is(.icon-btn, .nav-item, .category-chip):not(:disabled):hover {
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+  }
+
+  .studly-app .category-chip[aria-pressed="true"]:hover {
+    color: #ffffff;
+    background: #293991;
+  }
+
+  .studly-app .service-card:hover {
+    border-color: #b8c2dd;
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+
+  .studly-app[data-theme="dark"] .service-card:hover {
+    border-color: #6b7da6;
+  }
+
+  .studly-app :is(.detail-btn, .reset-btn):not(:disabled):hover {
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+  }
+
+  .studly-app .favorite-btn:not(:disabled):hover {
+    transform: scale(1.045);
+  }
+}.studly-app :is(.publish-btn, .search-submit, .detail-btn, .category-chip):not(:disabled):active {
+  transform: translateY(1px);
+}@media (max-width: 1100px) {
+  .studly-app .intro {
+    padding-right: 190px;
+  }
+
+  .studly-app .intro-art {
+    right: 8px;
+  }
+
+  .studly-app .desktop-nav {
+    gap: 0;
+  }
+
+  .studly-app .nav-item {
+    padding-inline: 10px;
+  }
+
+  .studly-app .header-actions {
+    gap: 8px;
+  }
+
+  .studly-app .service-cover {
+    min-height: 164px;
+    height: 164px;
+  }
+}@media (max-width: 700px) {
+  .studly-app .topbar {
+    min-height: 66px;
+  }
+
+  .studly-app .brand {
+    gap: 8px;
+    font-size: 21px;
+  }
+
+  .studly-app .header-actions {
+    gap: 9px;
+  }
+
+  .studly-app .demo-label {
+    padding: 4px 7px;
+    font-size: 9px;
+    letter-spacing: 0.7px;
+  }
+
+  .studly-app .theme-toggle {
+    width: 44px;
+    height: 44px;
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .studly-app .workspace {
+    padding-top: 20px;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .studly-app .intro {
+    min-height: 0;
+    margin-bottom: 16px;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .studly-app .eyebrow {
+    display: none;
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .studly-app .intro-title {
+    max-width: 340px;
+    margin-bottom: 8px;
+    font-size: 30px;
+    font-weight: 730;
+    line-height: 1.13;
+    letter-spacing: -1.05px;
+  }
+
+  .studly-app .intro-copy {
+    max-width: 350px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .studly-app .intro-art {
+    display: none;
+  }
+
+  .studly-app .search-form {
+    gap: 9px;
+    min-height: 56px;
+    margin-bottom: 15px;
+    padding: 5px 5px 5px 14px;
+    border-radius: 13px;
+  }
+
+  .studly-app .search-form > .icon {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+  }
+
+  .studly-app .search-input {
+    font-size: 16px;
+  }
+
+  .studly-app .search-submit {
+    padding-inline: 15px;
+    border-radius: 9px;
+    font-size: 13px;
+  }
+
+  .studly-app .clear-search {
+    border-radius: 8px;
+  }
+
+  .studly-app .category-list {
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+
+  .studly-app .category-chip {
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  .studly-app .results-toolbar {
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 14px;
+  }
+
+  .studly-app .results-title {
+    font-size: 18px;
+    letter-spacing: -0.4px;
+  }
+
+  .studly-app .results-count {
+    font-size: 12px;
+  }
+
+  .studly-app .toolbar-actions {
+    gap: 7px;
+  }
+
+  .studly-app :is(.sort-select, .filter-toggle) {
+    min-height: 44px;
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+
+  .studly-app .service-grid {
+    gap: 18px;
+  }
+
+  .studly-app .service-card {
+    border-radius: 17px;
+  }
+
+  .studly-app .service-cover {
+    min-height: 104px;
+    height: 104px;
+  }
+
+  .studly-app .cover-label {
+    top: 15px;
+    left: 17px;
+  }
+
+  .studly-app .service-card[data-kind] .cover-symbol {
+    margin-top: 15px;
+    font-size: 54px;
+  }
+
+  .studly-app .card-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "category category" "title title" "performer performer" "price action";
+    align-content: start;
+    row-gap: 9px;
+    column-gap: 10px;
+    padding: 14px 16px 16px;
+  }
+
+  .studly-app .card-category {
+    grid-area: category;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .studly-app .service-title {
+    grid-area: title;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .studly-app .service-description {
+    display: none;
+    min-height: 0;
+    margin-bottom: 14px;
+    font-size: 13px;
+    -webkit-line-clamp: 1;
+  }
+
+  .studly-app .performer {
+    grid-area: performer;
+    min-width: 0;
+    margin: 3px 0 4px;
+    padding: 0;
+  }
+
+  .studly-app .performer-name {
+    font-size: 13px;
+  }
+
+  .studly-app .performer-specialty {
+    font-size: 13px;
+  }
+
+  .studly-app .card-bottom {
+    grid-area: price;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .studly-app .price {
+    font-size: 23px;
+  }
+
+  .studly-app .price-unit,
+  .studly-app .delivery {
+    font-size: 13px;
+  }
+
+  .studly-app .detail-btn {
+    grid-area: action;
+    align-self: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 10px 7px;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .studly-app .components-panel {
+    padding: 20px 16px;
+  }
+
+  .studly-app .filter-dialog {
+    border-radius: 22px 22px 0 0;
+  }
+
+  .studly-app .filter-form {
+    padding: 23px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .studly-app .filter-form :is(input, select) {
+    font-size: 16px;
+  }
+
+  .studly-app .dialog-inner {
+    padding: 24px 20px;
+  }
+}@media (max-width: 359px) {
+  .studly-app .search-form {
+    gap: 6px;
+    padding-left: 10px;
+  }
+
+  .studly-app .search-submit {
+    padding-inline: 11px;
+  }
+
+  .studly-app .intro-title {
+    font-size: 28px;
+    letter-spacing: -0.9px;
+  }
+
+  .studly-app .toolbar-actions {
+    width: 100%;
+  }
+
+  .studly-app .sort-select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .studly-app .bottom-item {
+    font-size: 9px;
+  }
+}@media (min-width: 701px) {
+  .studly-app .workspace {
+    padding-top: 30px;
+  }
+
+  .studly-app .intro {
+    min-height: 120px;
+    margin-bottom: 12px;
+    padding-bottom: 0;
+  }
+
+  .studly-app .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .studly-app .intro-title {
+    margin-bottom: 8px;
+  }
+
+  .studly-app .search-form {
+    margin-bottom: 16px;
+  }
+
+  .studly-app .category-list {
+    margin-bottom: 24px;
+  }
+
+  .studly-app .results-toolbar {
+    margin-bottom: 16px;
+  }
+
+  .studly-app .service-cover {
+    min-height: 130px;
+    height: 130px;
+  }
+
+  .studly-app .card-body {
+    padding: 16px;
+  }
+
+  .studly-app .card-category {
+    margin-bottom: 6px;
+  }
+
+  .studly-app .service-title {
+    margin-bottom: 6px;
+  }
+
+  .studly-app .service-description {
+    margin-bottom: 12px;
+  }
+
+  .studly-app .performer {
+    padding-bottom: 12px;
+  }
+
+  .studly-app .card-bottom {
+    padding-top: 12px;
+  }
+
+  .studly-app .detail-btn {
+    margin-top: 12px;
+  }
+}@media (prefers-reduced-motion: reduce) {
+  .studly-app *,
+  .studly-app *::before,
+  .studly-app *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .studly-app .service-card:hover,
+  .studly-app .favorite-btn:hover,
+  .studly-app :is(.publish-btn, .search-submit, .detail-btn, .category-chip):active {
+    transform: none;
+  }
+}@media (prefers-color-scheme: dark){.studly-app[data-theme="auto"]{color-scheme:dark}.studly-app[data-theme="auto"] {
+  color-scheme: dark;
+}.studly-app[data-theme="auto"] .brand-mark path {
+  fill: #ffffff;
+}.studly-app[data-theme="auto"] .search-form {
+  border-color: #52617e;
+}.studly-app[data-theme="auto"] .filter-group :is(input, select) {
+  border-color: #60708e;
+}.studly-app[data-theme="auto"] .service-card[data-kind="math"] {
+  --cover-bg: #243d35;
+  --cover-ink: #c6e1d2;
+}.studly-app[data-theme="auto"] .service-card[data-kind="design"] {
+  --cover-bg: #38304f;
+  --cover-ink: #dfd4ff;
+}.studly-app[data-theme="auto"] .service-card[data-kind="code"] {
+  --cover-bg: #24344d;
+  --cover-ink: #c0d5f3;
+}.studly-app[data-theme="auto"] .service-card[data-kind="english"] {
+  --cover-bg: #453a2b;
+  --cover-ink: #f0ddc0;
+}.studly-app[data-theme="auto"] .service-card[data-kind="video"] {
+  --cover-bg: #49332f;
+  --cover-ink: #f5c6b7;
+}.studly-app[data-theme="auto"] .service-card[data-kind="career"] {
+  --cover-bg: #45402b;
+  --cover-ink: #ebdca1;
+}.studly-app[data-theme="auto"] .service-cover::before,
+.studly-app[data-theme="auto"] .service-cover::after {
+  opacity: 0.65;
+  border-color: currentColor;
+}.studly-app[data-theme="auto"] [data-kind="math"] .service-cover::before {
+  opacity: 0.55;
+  background-image: linear-gradient(rgb(198 225 210 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(198 225 210 / 10%) 1px, transparent 1px);
+}@media (hover: hover) and (pointer: fine) {
+
+  .studly-app[data-theme="auto"] .service-card:hover {
+    border-color: #6b7da6;
+  }
+}}
+
+/* Application-only states and platform integration; no global selectors. */
+.studly-app { min-height:var(--studly-viewport-height,100svh); --safe-top:max(env(safe-area-inset-top,0px),var(--studly-safe-top,0px)); --safe-bottom:max(env(safe-area-inset-bottom,0px),var(--studly-safe-bottom,0px)); }
+.studly-app .app { min-height:inherit; }
+.studly-app .brand-mark svg { width:100%;height:100%; }
+.studly-app .brand { min-height:44px; }
+.studly-app a.performer-name { display:flex;align-items:center;min-height:44px; }
+.studly-app a:is(.primary-btn,.secondary-btn,.detail-btn,.publish-btn,.nav-item) { display:inline-flex;align-items:center;justify-content:center;text-align:center; }
+.studly-app .search-submit { display:inline-flex;align-items:center;justify-content:center;gap:8px; }
+.studly-app .skip-link { position:fixed;left:16px;top:8px;z-index:100;padding:12px;background:var(--surface);color:var(--text);border:2px solid var(--accent-ink);border-radius:10px;transform:translateY(-150%); }
+.studly-app .skip-link:focus { transform:none; }
+.studly-app .price-inputs { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px; }
+.studly-app .price-inputs label { display:block;font-size:12px;color:var(--muted);margin-bottom:5px; }
+.studly-app fieldset.filter-group { border:0;padding:0;min-width:0; }
+.studly-app .filter-group label.filter-option { display:flex;align-items:center;gap:9px;min-height:44px;cursor:pointer; }
+.studly-app .filter-option input[type=checkbox] { width:18px;height:18px;min-height:18px;margin:0;accent-color:var(--accent); }
+.studly-app .filter-option:has(input:disabled) { color:var(--muted);cursor:not-allowed; }
+.studly-app .filter-error { font-size:13px;color:#a32437;margin:8px 0; }
+.studly-app .filter-note { line-height:1.5; }
+.studly-app .category-list>.filter-note { align-self:center;border:0;padding:0;margin:0;white-space:normal; }
+.studly-app .filter-dialog-head { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px; }
+.studly-app .filter-dialog-head h2 { margin:0; }
+.studly-app .filter-toggle span { display:none; }
+.studly-app .catalog-notice { font-size:13px;line-height:1.55;color:var(--muted);margin:0 0 18px; }
+.studly-app .catalog-pagination { display:flex;justify-content:space-between;gap:12px;margin-top:24px; }
+.studly-app .active-filters>button { display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--accent-soft);color:var(--accent-ink);font-size:13px; }
+.studly-app .status-panel>.icon { display:block;margin:auto;width:28px;height:28px; }
+.studly-app .status-copy { margin:12px 0 22px;color:var(--muted); }
+.studly-app .loading-lines { max-width:340px;margin:24px auto 0;display:grid;gap:12px; }
+.studly-app .loading-lines span { height:12px;border-radius:6px;background:var(--surface-2); }
+.studly-app .loading-lines span:last-child { width:65%; }
+.studly-app .skeleton-grid { display:none; }
+.studly-app .menu-dialog { margin:auto;max-height:85dvh; }
+.studly-app .menu-links { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:20px; }
+.studly-app .menu-links a { display:flex;align-items:center;min-height:44px;padding:9px 12px;border-radius:10px;background:var(--surface-2);font-size:14px; }
+.studly-app .theme-dark-icon { display:none; }
+.studly-app[data-theme=dark] .theme-dark-icon { display:inline-flex; }
+.studly-app[data-theme=dark] .theme-light-icon { display:none; }
+.studly-app[data-theme=dark] .filter-error { color:#ffacb9; }
+.studly-app dialog[open] { animation:studly-dialog-enter var(--motion-sheet) var(--motion-ease); }
+@keyframes studly-dialog-enter { from {opacity:0;transform:translateY(12px)} to {opacity:1;transform:translateY(0)} }
+@media(prefers-color-scheme:dark) {
+  .studly-app[data-theme=auto] .theme-dark-icon { display:inline-flex; }
+  .studly-app[data-theme=auto] .theme-light-icon { display:none; }
+  .studly-app[data-theme=auto] .filter-error { color:#ffacb9; }
+}
+@media(min-width:701px) and (max-width:950px) {
+  .studly-app .desktop-nav { gap:0; }
+  .studly-app .nav-item { padding-inline:7px;font-size:13px; }
+  .studly-app .publish-btn { display:none; }
+}
+@media(max-width:700px) {
+  .studly-app .app .publish-btn { display:none; }
+  .studly-app .app .topbar { height:calc(68px + var(--safe-top));min-height:calc(68px + var(--safe-top));padding:calc(8px + var(--safe-top)) max(18px,env(safe-area-inset-right,0px)) 8px max(18px,env(safe-area-inset-left,0px));gap:8px; }
+  .studly-app .app .header-actions { gap:2px; }
+  .studly-app .app .bottom-nav { min-height:calc(74px + var(--safe-bottom));padding-bottom:calc(8px + var(--safe-bottom));padding-left:max(6px,env(safe-area-inset-left,0px));padding-right:max(6px,env(safe-area-inset-right,0px)); }
+  .studly-app .app .workspace { padding-bottom:calc(100px + var(--safe-bottom)); }
+  .studly-app .app .bottom-item { font-size:11px;min-height:56px;min-width:54px; }
+  .studly-app .app .demo-label { font-size:11px;letter-spacing:.07em; }
+  .studly-app .app .filter-form { padding-bottom:calc(24px + var(--safe-bottom)); }
+  .studly-app .app input,.studly-app .app .filter-group select { font-size:16px; }
+  .studly-app .app .clear-search { width:44px;min-width:44px; }
+  .studly-app .results-count { display:inline-block;margin-left:6px; }
+  .studly-app .filter-dialog { bottom:0;top:auto;margin:0;max-height:85dvh; }
+}
+@media(max-width:359px) {
+  .studly-app .app .brand { font-size:19px;gap:6px; }
+  .studly-app .app .demo-label { padding:4px; }
+  .studly-app .app .bottom-item { font-size:10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .studly-app dialog[open] { animation:none; }
+  .studly-app *,.studly-app *::before,.studly-app *::after { animation:none!important;transition:none!important;scroll-behavior:auto!important; }
+}
+.studly-app { --safe-left:max(env(safe-area-inset-left,0px),var(--studly-safe-left,0px));--safe-right:max(env(safe-area-inset-right,0px),var(--studly-safe-right,0px)); }
+@media(max-width:700px) {
+  .studly-app .app .topbar { padding-left:max(18px,var(--safe-left));padding-right:max(18px,var(--safe-right)); }
+  .studly-app .app .workspace { padding-left:max(18px,var(--safe-left));padding-right:max(18px,var(--safe-right)); }
+  .studly-app .app .bottom-nav { padding-left:max(6px,var(--safe-left));padding-right:max(6px,var(--safe-right)); }
+}

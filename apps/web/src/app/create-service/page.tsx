@@ -71,7 +71,7 @@ const [fileName, setFileName] = useState("");
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      alert("Услуга отправлена на модерацию");
+      alert("Проверка формы завершена. Это предпросмотр: услуга не отправлена на сервер и не опубликована.");
     }
   };
 
@@ -693,7 +693,7 @@ const removeImage = () => {
           cursor: "pointer",
         }}
       >
-        Отправить на модерацию
+        Проверить демо-форму
       </button>
     </div>
   );

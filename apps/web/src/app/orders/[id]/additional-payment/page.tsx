@@ -90,7 +90,9 @@ export default function AdditionalPaymentPage() {
     );
   }
 
+  const paymentAvailable = false;
   const pay = () => {
+    if (!paymentAvailable) return;
     if (paying) return;
 
     setPaying(true);
@@ -330,7 +332,7 @@ export default function AdditionalPaymentPage() {
       <button
         type="button"
         onClick={pay}
-        disabled={paying}
+        disabled={!paymentAvailable || paying}
         style={{
           width: "100%",
           height: "52px",
@@ -347,7 +349,7 @@ export default function AdditionalPaymentPage() {
       >
         {paying
           ? "Обработка оплаты..."
-          : `Оплатить ${additionalService.price} ₽`}
+          : "Оплата отключена в предпросмотре"}
       </button>
 
       <button

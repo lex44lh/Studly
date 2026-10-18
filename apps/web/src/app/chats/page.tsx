@@ -1,4 +1,5 @@
 "use client";
+import { demoMode } from "@/lib/data-mode";
 
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
@@ -29,7 +30,7 @@ export default function ChatsPage() {
 
   useEffect(() => {
     const loadChats = () => {
-      const saved = localStorage.getItem("studly-chats");
+      const saved = demoMode ? localStorage.getItem("studly-chats") : null;
 
       if (!saved) {
         setChats([]);

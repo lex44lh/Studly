@@ -1,3 +1,4 @@
+import demoServices from "@/data/services";
 import { demoMode } from "@/lib/api/catalog";
 import LivePerformer from "@/components/catalog/LivePerformer";
 import BackButton from "@/components/BackButton";
@@ -63,37 +64,19 @@ const profiles = {
   },
 };
 
-const services = {
-  1: {
-    title: "Помогу с C++",
-    price: "500 ₽",
-  },
-
-  2: {
-    title: "Помощь с Python",
-    price: "900 ₽",
-  },
-
-  100: {
-    title: "Репетитор по английскому",
-    price: "700 ₽",
-  },
-
-  101: {
-    title: "Монтаж видео",
-    price: "1200 ₽",
-  },
-};
+const services = Object.fromEntries(demoServices.map(service => [service.id, service]));
 
 async function DemoPerformerProfilePage({
   params,
 }: Props) {
   const { id } = await params;
 
-  const profile =
-    profiles[
-      Number(id) as keyof typeof profiles
-    ];
+  const existingService = demoServices.find(service => service.profileId === Number(id));
+  const profile = profiles[Number(id) as keyof typeof profiles] ?? (existingService ? {
+    name: existingService.seller, rating: existingService.rating, status: "Демо-профиль",
+    about: "Описание не добавлено в демонстрационные данные.", completed: "—", servicesCount: demoServices.filter(service => service.profileId === Number(id)).length,
+    success: "—", disputes: "—", services: demoServices.filter(service => service.profileId === Number(id)).map(service => service.id),
+  } : undefined);
 
   if (!profile) {
     return (
