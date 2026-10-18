@@ -1,3 +1,10 @@
+# STUDLY Frontend
+
+Из корня: `npm run dev:demo` или `npm run dev:live`. После готовности открывайте http://localhost:3000/search.
+Для Live нужен отдельно подготовленный Django. Полная инструкция: [LOCAL_START.md](../../LOCAL_START.md).
+
+Ниже сохранена стандартная справка Next; для STUDLY используйте две явные команды выше.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

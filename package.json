@@ -10,6 +10,8 @@
     "dev:web": "npm run dev -w apps/web",
     "dev:api": "npm run start:dev -w apps/api",
     "build": "npm run build --workspaces",
-    "lint": "npm run lint --workspaces"
+    "lint": "npm run lint --workspaces",
+    "dev:demo": "npm run dev:demo -w apps/web --",
+    "dev:live": "npm run dev:live -w apps/web --"
   }
 }
