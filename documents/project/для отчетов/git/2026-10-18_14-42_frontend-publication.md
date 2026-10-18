@@ -1,7 +1,7 @@
 # STUDLY — публикация готового Frontend
 
 - Дата: **18.10.2026**, Europe/Moscow, начало общего сеанса **14:42:13**, системные часы.
-- Статус этой записи: **проверки пройдены, два коммита созданы; готовится документационный коммит и push. Фактическая сверка после push будет добавлена отдельным обновлением**.
+- Статус: **исходники успешно опубликованы в origin/codex/frontend-registration; после push проверены удалённые refs и состав Git-дерева**. Эта запись публикуется отдельным документационным обновлением результатов проверки.
 - Текущая ветка: `codex/frontend-registration`; разрешённая цель: **origin/codex/frontend-registration**.
 - Авторизация: основной текст первоначально запрещал commit/push, вложение требовало публикацию. После прямого уточнения пользователь явно выбрал «После проверок выполнить commit и push в codex/frontend-registration».
 
@@ -17,6 +17,7 @@ Backend remote snapshot: `d7a5ffa5abc1537301ced7275da9e45282d6b4f3`. Main: `ccfd
 |---|---|
 | [202fa99f8c63ff9c5d887211d5ced851fed7d358](https://github.com/lex44lh/Studly/commit/202fa99f8c63ff9c5d887211d5ced851fed7d358) | Дизайн-система, каталог «Кампус», Telegram platform metadata, search tests; сохранённые Demo/Live и регистрационные guards, исправления старых страниц, legacy api→live |
 | [781770d27e624097e722bef41bbb73720dbe7d02](https://github.com/lex44lh/Studly/commit/781770d27e624097e722bef41bbb73720dbe7d02) | Два проверяемых запуска, port/API diagnostics, graceful stop,7 launcher tests, root LOCAL_START и web README |
+| [9ad99ef52e16eb947f18ac5e7dcb7b7f5b862b33](https://github.com/lex44lh/Studly/commit/9ad99ef52e16eb947f18ac5e7dcb7b7f5b862b33) | Исследования, прототипы, Markdown-отчёты/индексы, screenshots и узкие gitignore-правила |
 
 Разделение регистрации/Demo и каталога на отдельные commits не делалось: AppShell импортирует новые Campus-компоненты, общие mode/провайдеры связывают изменения. Полный согласованный исходник сохранён одним связным Frontend-коммитом. Команды запуска выделены отдельно. AGENTS.md и apps/web/AGENTS.md уже отслеживались в исходном HEAD и сохранены без изменений.
 
@@ -55,4 +56,22 @@ Backend remote snapshot: `d7a5ffa5abc1537301ced7275da9e45282d6b4f3`. Main: `ccfd
 
 Сервер production возвращает пустой каталог и выключенные Telegram login flags. Реальные login/registration/session mutations и физический Telegram не проверены; готовность публичных GET не равна успешному пользовательскому входу. Новые страницы не переделывались. Release/security gate прошлого исследования перед развёртыванием сайта остаётся отдельным этапом; Git push не развёртывает приложение в интернете.
 
-Backend и main не будут целями push. При неизвестном изменении удалённой Frontend-ветки публикация останавливается; force push не применяется.
+Backend и main не являлись целями push. При неизвестном изменении удалённой Frontend-ветки публикация останавливается; force push не применяется.
+
+## Фактическая проверка после push
+
+**18.10.2026,15:01:44 Europe/Moscow**, системные часы. Команда `git push origin HEAD:refs/heads/codex/frontend-registration` успешно отправила `2411705..9ad99ef`. Последующая прямая `git ls-remote` с GitHub подтвердила:
+
+| Remote ref | Hash после публикации |
+|---|---|
+| Frontend | `9ad99ef52e16eb947f18ac5e7dcb7b7f5b862b33` — три новых коммита |
+| Backend | `d7a5ffa5abc1537301ced7275da9e45282d6b4f3` — совпадает с исходным |
+| main | `ccfde590b6e722d1eeb0694747e10afc7958acb1` — совпадает с исходным |
+
+Сверено дерево именно подтверждённого remote commit: CampusShell, новый поиск, data-mode, launcher, dev-launcher tests, LOCAL_START, оба AGENTS присутствуют; семь исследований и16 dist-файлов прототипов опубликованы. Env/node_modules/.next/logo-archive paths в дереве отсутствуют. Общая публикация включает122 изменённых/новых файла, около3.8MB; финальная pattern-проверка не выявила секретов. Staged diff-check выявил две лишние пустые строки EOF в старых Markdown, они исправлены без удаления содержимого; итоговый check PASS.
+
+Рабочее дерево после исходного push было чистым; `HEAD` совпал с origin Frontend. Единственный намеренно исключённый пользовательский файл — **`studly-logo-files.zip`**, сохранён локально как ignored. Приватные env отсутствовали, зависимости/сборки остались ignored. Новые готовые Frontend-файлы не оставлены незакоммиченными. Временные тестовые серверы остановлены.
+
+Обновление этого отчёта и текущего статуса индексов оформляется заключительным docs-коммитом и отправляется в ту же Frontend-ветку. Собственный hash содержащего эту запись коммита доступен в [истории ветки](https://github.com/lex44lh/Studly/commits/codex/frontend-registration); его точный hash и финальная повторная сверка приведены пользователю после завершения push.
+
+Репозиторий: [Frontend-ветка](https://github.com/lex44lh/Studly/tree/codex/frontend-registration). Источники опубликованы на GitHub; развёртывание сайта и изменение production-конфигурации не выполнялись.
