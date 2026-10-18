@@ -35,3 +35,10 @@ pnpm-debug.log*
 
 # Misc
 coverage/
+
+# The original brand archive is local material, not a publication artifact.
+/studly-logo-files.zip
+
+# Reviewed, self-contained visual prototypes are intentional documentation.
+!/documents/project/для отчетов/frontend/redesign/prototypes/2026-10-18-search/dist/
+!/documents/project/для отчетов/frontend/redesign/prototypes/2026-10-18-search/dist/**

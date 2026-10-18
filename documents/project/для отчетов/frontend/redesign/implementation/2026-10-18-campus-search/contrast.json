@@ -1,0 +1,16 @@
+{
+  "light": {
+    "text / surface": 16.1,
+    "muted / surface": 5.95,
+    "muted / bg": 5.56,
+    "accent-text / accent": 7.65,
+    "accent-ink / accent-soft": 6.51
+  },
+  "dark": {
+    "text / surface": 14.43,
+    "muted / surface": 7.76,
+    "muted / bg": 8.68,
+    "accent-text / accent": 7.65,
+    "accent-ink / accent-soft": 7.41
+  }
+}

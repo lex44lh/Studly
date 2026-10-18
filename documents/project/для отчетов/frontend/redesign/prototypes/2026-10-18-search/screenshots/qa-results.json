@@ -1,0 +1,1218 @@
+{
+  "mobile": [
+    {
+      "concept": "campus",
+      "theme": "light",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 15.04,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 5.56,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 16.1,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 16.1,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 16.1,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 6.51,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 6.51,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 669,
+      "navTop": 770,
+      "priceBottom": 651,
+      "scrollWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "concept": "campus",
+      "theme": "dark",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 16.13,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 8.68,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 9.64,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 7.41,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 7.41,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 669,
+      "navTop": 770,
+      "priceBottom": 651,
+      "scrollWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "concept": "editorial",
+      "theme": "light",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 13.59,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 5.76,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 10.5,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 6.17,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 6.17,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 6.17,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 9,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 5.76,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 9,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 727,
+      "navTop": 770,
+      "priceBottom": 672,
+      "scrollWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "concept": "editorial",
+      "theme": "dark",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 15.73,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 9.11,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 10.29,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 8.36,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 9.11,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 8.36,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 727,
+      "navTop": 770,
+      "priceBottom": 672,
+      "scrollWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "concept": "orbit",
+      "theme": "light",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 14.15,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 5.4,
+          "selector": ".intro-copy",
+          "visible": false
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 15.45,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 15.45,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 6.33,
+          "selector": ".performer-specialty",
+          "visible": false
+        },
+        {
+          "ratio": 15.45,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 6.33,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 5.55,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 6.51,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 5.55,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 6.51,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 621,
+      "navTop": 770,
+      "priceBottom": 567,
+      "scrollWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "concept": "orbit",
+      "theme": "dark",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 16.27,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 7.58,
+          "selector": ".intro-copy",
+          "visible": false
+        },
+        {
+          "ratio": 9.89,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 8.38,
+          "selector": ".performer-specialty",
+          "visible": false
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 8.38,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 7.06,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 9.89,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.34,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 7.06,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 7.34,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 621,
+      "navTop": 770,
+      "priceBottom": 567,
+      "scrollWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    }
+  ],
+  "desktop": [
+    {
+      "concept": "campus",
+      "theme": "light",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 15.04,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 5.56,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 16.1,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 16.1,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 16.1,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 5.95,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 6.51,
+          "selector": ".bottom-item.is-active",
+          "visible": false
+        }
+      ],
+      "ctaBottom": 905,
+      "navTop": 0,
+      "priceBottom": 849,
+      "scrollWidth": 1440,
+      "smallButtons": [],
+      "width": 1440
+    },
+    {
+      "concept": "campus",
+      "theme": "dark",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 16.13,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 8.68,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 9.64,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 9.64,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 7.41,
+          "selector": ".bottom-item.is-active",
+          "visible": false
+        }
+      ],
+      "ctaBottom": 905,
+      "navTop": 0,
+      "priceBottom": 849,
+      "scrollWidth": 1440,
+      "smallButtons": [],
+      "width": 1440
+    },
+    {
+      "concept": "editorial",
+      "theme": "light",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 13.59,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 5.76,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 10.5,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 6.17,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 6.17,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 6.17,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 14.56,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 9,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 5.76,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 9,
+          "selector": ".bottom-item.is-active",
+          "visible": false
+        }
+      ],
+      "ctaBottom": 891,
+      "navTop": 0,
+      "priceBottom": 834,
+      "scrollWidth": 1440,
+      "smallButtons": [],
+      "width": 1440
+    },
+    {
+      "concept": "editorial",
+      "theme": "dark",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 15.73,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 9.11,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 10.29,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 8.36,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 9.11,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 8.36,
+          "selector": ".bottom-item.is-active",
+          "visible": false
+        }
+      ],
+      "ctaBottom": 891,
+      "navTop": 0,
+      "priceBottom": 834,
+      "scrollWidth": 1440,
+      "smallButtons": [],
+      "width": 1440
+    },
+    {
+      "concept": "orbit",
+      "theme": "light",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 14.15,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 5.4,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 15.45,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 15.45,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 6.33,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 15.45,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 6.33,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 5.55,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 6.51,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 5.55,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 6.51,
+          "selector": ".bottom-item.is-active",
+          "visible": false
+        }
+      ],
+      "ctaBottom": 911,
+      "navTop": 0,
+      "priceBottom": 854,
+      "scrollWidth": 1440,
+      "smallButtons": [],
+      "width": 1440
+    },
+    {
+      "concept": "orbit",
+      "theme": "dark",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 16.27,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 7.58,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 9.89,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 8.38,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 8.38,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 7.06,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 9.89,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.34,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 7.06,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 7.34,
+          "selector": ".bottom-item.is-active",
+          "visible": false
+        }
+      ],
+      "ctaBottom": 911,
+      "navTop": 0,
+      "priceBottom": 854,
+      "scrollWidth": 1440,
+      "smallButtons": [],
+      "width": 1440
+    }
+  ],
+  "narrow": [
+    {
+      "concept": "campus",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 16.13,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 8.68,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 9.64,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.43,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 7.41,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.65,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 7.76,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 7.41,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 752,
+      "navTop": 706,
+      "priceBottom": 727,
+      "scrollWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "concept": "editorial",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 15.73,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 9.11,
+          "selector": ".intro-copy",
+          "visible": true
+        },
+        {
+          "ratio": 10.29,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".performer-specialty",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 8.19,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 14.14,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 8.36,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 9.11,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 8.36,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 805,
+      "navTop": 706,
+      "priceBottom": 750,
+      "scrollWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "concept": "orbit",
+      "cards": 6,
+      "contrast": [
+        {
+          "ratio": 16.27,
+          "selector": "body",
+          "visible": true
+        },
+        {
+          "ratio": 7.58,
+          "selector": ".intro-copy",
+          "visible": false
+        },
+        {
+          "ratio": 9.89,
+          "selector": ".card-category",
+          "visible": true
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".service-title",
+          "visible": true
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".performer-name",
+          "visible": true
+        },
+        {
+          "ratio": 8.38,
+          "selector": ".performer-specialty",
+          "visible": false
+        },
+        {
+          "ratio": 14.45,
+          "selector": ".price",
+          "visible": true
+        },
+        {
+          "ratio": 8.38,
+          "selector": ".price-unit",
+          "visible": true
+        },
+        {
+          "ratio": 7.06,
+          "selector": ".delivery",
+          "visible": true
+        },
+        {
+          "ratio": 9.89,
+          "selector": ".detail-btn",
+          "visible": true
+        },
+        {
+          "ratio": 7.34,
+          "selector": ".category-chip[aria-pressed=true]",
+          "visible": true
+        },
+        {
+          "ratio": 7.06,
+          "selector": ".demo-label",
+          "visible": true
+        },
+        {
+          "ratio": 7.34,
+          "selector": ".bottom-item.is-active",
+          "visible": true
+        }
+      ],
+      "ctaBottom": 656,
+      "navTop": 706,
+      "priceBottom": 601,
+      "scrollWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    }
+  ],
+  "interactions": [
+    {
+      "concept": "campus",
+      "searchCount": 1,
+      "categoryCount": 3,
+      "filteredCount": 2,
+      "favorite": "true",
+      "detailTitle": "Разобраться с высшей математикой",
+      "orderDisabled": true,
+      "empty": true,
+      "restoredCount": 6
+    },
+    {
+      "concept": "editorial",
+      "searchCount": 1,
+      "categoryCount": 3,
+      "filteredCount": 2,
+      "favorite": "true",
+      "detailTitle": "Разобраться с высшей математикой",
+      "orderDisabled": true,
+      "empty": true,
+      "restoredCount": 6
+    },
+    {
+      "concept": "orbit",
+      "searchCount": 1,
+      "categoryCount": 3,
+      "filteredCount": 2,
+      "favorite": "true",
+      "detailTitle": "Разобраться с высшей математикой",
+      "orderDisabled": true,
+      "empty": true,
+      "restoredCount": 6
+    }
+  ],
+  "safeAreaSimulation": {
+    "headerHeight": 92,
+    "navHeight": 94,
+    "navTop": 750,
+    "scrollWidth": 390,
+    "width": 390,
+    "workspacePadding": "120px"
+  }
+}

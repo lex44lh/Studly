@@ -1,0 +1,122 @@
+{
+  "matrix": [
+    {
+      "cardBackground": "rgb(25, 34, 54)",
+      "cardText": "rgb(242, 244, 250)",
+      "columns": "284px",
+      "firstActionBottom": 753.28125,
+      "navTop": 770,
+      "scroll": 320,
+      "theme": "dark",
+      "vars": {
+        "--accent": "#3547b8",
+        "--accent-ink": "#bcc7ff",
+        "--accent-soft": "#26335f",
+        "--accent-text": "#ffffff",
+        "--bg": "#111827",
+        "--muted": "#aab6cc",
+        "--surface": "#192236",
+        "--text": "#f2f4fa"
+      },
+      "width": 320
+    },
+    {
+      "cardBackground": "rgb(25, 34, 54)",
+      "cardText": "rgb(242, 244, 250)",
+      "columns": "354px",
+      "firstActionBottom": 693.4765625,
+      "navTop": 770,
+      "scroll": 390,
+      "theme": "dark",
+      "vars": {
+        "--accent": "#3547b8",
+        "--accent-ink": "#bcc7ff",
+        "--accent-soft": "#26335f",
+        "--accent-text": "#ffffff",
+        "--bg": "#111827",
+        "--muted": "#aab6cc",
+        "--surface": "#192236",
+        "--text": "#f2f4fa"
+      },
+      "width": 390
+    },
+    {
+      "cardBackground": "rgb(25, 34, 54)",
+      "cardText": "rgb(242, 244, 250)",
+      "columns": "233px 233px",
+      "firstActionBottom": 900.921875,
+      "navTop": 0,
+      "scroll": 768,
+      "theme": "dark",
+      "vars": {
+        "--accent": "#3547b8",
+        "--accent-ink": "#bcc7ff",
+        "--accent-soft": "#26335f",
+        "--accent-text": "#ffffff",
+        "--bg": "#111827",
+        "--muted": "#aab6cc",
+        "--surface": "#192236",
+        "--text": "#f2f4fa"
+      },
+      "width": 768
+    },
+    {
+      "cardBackground": "rgb(25, 34, 54)",
+      "cardText": "rgb(242, 244, 250)",
+      "columns": "318.664px 318.664px 318.664px",
+      "firstActionBottom": 927.8125,
+      "navTop": 0,
+      "scroll": 1440,
+      "theme": "dark",
+      "vars": {
+        "--accent": "#3547b8",
+        "--accent-ink": "#bcc7ff",
+        "--accent-soft": "#26335f",
+        "--accent-text": "#ffffff",
+        "--bg": "#111827",
+        "--muted": "#aab6cc",
+        "--surface": "#192236",
+        "--text": "#f2f4fa"
+      },
+      "width": 1440
+    }
+  ],
+  "liveFixture": [
+    {
+      "query": "fail401",
+      "text": "Не удалось загрузить услуги\n\nСессия истекла. Выполните вход заново.\n\nПовторить загрузку",
+      "cards": 0,
+      "retry": 1
+    },
+    {
+      "query": "fail403",
+      "text": "Не удалось загрузить услуги\n\nСессия, CSRF или права доступа не подтверждены. Проверьте вход и повторите действие.\n\nПовторить загрузку",
+      "cards": 0,
+      "retry": 1
+    },
+    {
+      "query": "fail404",
+      "text": "Не удалось загрузить услуги\n\nЗапись не найдена или больше недоступна.",
+      "cards": 0,
+      "retry": 0
+    },
+    {
+      "query": "malformed",
+      "text": "Не удалось загрузить услуги\n\nСервер временно недоступен. Повторите попытку позже.\n\nПовторить загрузку",
+      "cards": 0,
+      "retry": 1
+    },
+    {
+      "query": "bad-dto",
+      "text": "Не удалось загрузить услуги\n\nСервер временно недоступен. Повторите попытку позже.\n\nПовторить загрузку",
+      "cards": 0,
+      "retry": 1
+    },
+    {
+      "query": "empty",
+      "text": "Пока ничего не нашлось\n\nПопробуй другой запрос или убери часть фильтров.\n\nСбросить поиск и фильтры",
+      "cards": 0,
+      "retry": 0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+/* Shared platform behavior for the isolated prototypes; no Telegram SDK or API. */
+.search-submit{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.component-view :is(.intro,.search-form,.category-list,.catalog-layout){display:none}
+.component-view .components-panel{margin-top:0}
+.component-view .card-specimen{max-width:360px}
+html.simulate-safe-area{--preview-safe-top:24px;--preview-safe-bottom:20px}
+@media(max-width:700px){
+  .app .topbar{height:calc(68px + var(--preview-safe-top,env(safe-area-inset-top,0px)));min-height:calc(68px + var(--preview-safe-top,env(safe-area-inset-top,0px)));padding-top:calc(8px + var(--preview-safe-top,env(safe-area-inset-top,0px)));padding-bottom:8px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+  .app .bottom-nav{min-height:calc(74px + var(--preview-safe-bottom,env(safe-area-inset-bottom,0px)));padding-bottom:calc(8px + var(--preview-safe-bottom,env(safe-area-inset-bottom,0px)))}
+  .app .workspace{padding-bottom:calc(100px + var(--preview-safe-bottom,env(safe-area-inset-bottom,0px)))}
+  .app .bottom-item{font-size:11px;min-height:56px;min-width:54px}
+  .app .demo-label{font-size:11px;letter-spacing:.07em}
+  .app .filter-form{padding-bottom:calc(24px + var(--preview-safe-bottom,env(safe-area-inset-bottom,0px)))}
+  .app input,.app .filter-group select{font-size:16px}
+  .app .clear-search{width:44px;min-width:44px}
+}
+dialog[open]{animation:dialog-enter .18s cubic-bezier(.2,.7,.2,1)}
+@keyframes dialog-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){dialog[open]{animation:none}.app *,.app *::before,.app *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

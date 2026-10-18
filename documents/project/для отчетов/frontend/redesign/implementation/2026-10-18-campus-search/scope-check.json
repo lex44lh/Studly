@@ -1,0 +1,8 @@
+{
+  "baselineFiles": 87,
+  "changedSinceBaseline": [
+    "apps/web/src/app/search/page.tsx",
+    "apps/web/src/components/AppShell.tsx",
+    "apps/web/src/components/catalog/LiveSearch.tsx"
+  ]
+}

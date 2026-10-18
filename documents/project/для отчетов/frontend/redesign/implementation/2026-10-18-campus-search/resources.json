@@ -1,0 +1,52 @@
+{
+  "method": "local gzip sums of production search HTML assets, modern scripts excluding noModule; not HAR or device timing",
+  "js": [
+    {
+      "path": "static/chunks/87c73c54-fd33669cffb637e8.js",
+      "raw": 201054,
+      "gzip": 63297
+    },
+    {
+      "path": "static/chunks/968-934709e3164e44f8.js",
+      "raw": 240696,
+      "gzip": 66346
+    },
+    {
+      "path": "static/chunks/main-app-45113fc38376803d.js",
+      "raw": 509,
+      "gzip": 220
+    },
+    {
+      "path": "static/chunks/825-c56ef468f97f379e.js",
+      "raw": 8640,
+      "gzip": 3569
+    },
+    {
+      "path": "static/chunks/424-6a50891fc29bd9db.js",
+      "raw": 14573,
+      "gzip": 4465
+    },
+    {
+      "path": "static/chunks/app/layout-221d3fbdd7a51988.js",
+      "raw": 23858,
+      "gzip": 8240
+    },
+    {
+      "path": "static/chunks/app/search/page-43c767723661adb3.js",
+      "raw": 19520,
+      "gzip": 6314
+    },
+    {
+      "path": "static/chunks/webpack-8dbe8d6b579fa271.js",
+      "raw": 3334,
+      "gzip": 1682
+    }
+  ],
+  "css": [
+    {
+      "path": "static/css/4cab53def7101162.css",
+      "raw": 51676,
+      "gzip": 10478
+    }
+  ]
+}
