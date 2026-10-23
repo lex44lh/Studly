@@ -1,6 +1,6 @@
 # STUDLY 2 Матрица Frontend и Backend API
 
-24 октября 2026. Frontend: принятый `5db64a2437ce0b000f32de51bc730a9708be5178` в `codex/frontend-redesign-campus`. Backend-база: `d7a5ffa5abc1537301ced7275da9e45282d6b4f3`; новые изменения пока в рабочем дереве `codex/backend`. Integration remote: `1888b9194827d00317fb9cf9d27218ef702999cb`. Ниже не заявляется публикация, deployment или завершённая клиентская интеграция.
+24 октября 2026. Frontend: принятый `5db64a2437ce0b000f32de51bc730a9708be5178` в `codex/frontend-redesign-campus`. Backend-база: `d7a5ffa5abc1537301ced7275da9e45282d6b4f3`; код новых API опубликован в `codex/backend`: [`ebec0915a17e55033cc62093912244c13bf13782`](https://github.com/lex44lh/Studly/commit/ebec0915a17e55033cc62093912244c13bf13782). Integration remote: `1888b9194827d00317fb9cf9d27218ef702999cb`. Ниже не заявляется deployment или завершённая клиентская интеграция.
 
 ## Обозначения и общий контракт
 

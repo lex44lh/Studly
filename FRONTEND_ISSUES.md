@@ -1,5 +1,20 @@
 # STUDLY — замечания разработчику Frontend
 
+## 24 октября — принятый Redesign и новые серверные контракты
+
+Изучен `5db64a2437ce0b000f32de51bc730a9708be5178`, без изменений/сборки Frontend. Все пять handoff из задания найдены. Расширение Backend опубликовано в `codex/backend`: [`ebec0915a17e55033cc62093912244c13bf13782`](https://github.com/lex44lh/Studly/commit/ebec0915a17e55033cc62093912244c13bf13782); на сервере не размещено. Результаты Django tests не означают Live-интеграцию Redesign. Актуальные задачи для направления Integration — [INTEGRATION_HANDOFF.md](INTEGRATION_HANDOFF.md), полная [матрица](ROUTE_API_MATRIX.md). История замечаний ниже сохраняет привязку к старым SHA и не является повторной диагностикой Redesign.
+
+Новые несовпадения, которые Integration должен обработать:
+
+- В Demo approved/pending профиль заблокирован для редактирования. Владелец теперь утвердил правку с возвратом в pending и скрытием услуг. Не копировать прежний запрет Demo в Live; получать новую moderation.revision и отправлять performer_revision.
+- V1 деньги сохраняют 3%; новый opt-in v2 использует quote_id, 5% от base+extras, subtotal в price_amount и основную цену отдельно в base_price_amount. Не переносить Demo-суммы/enum напрямую и не пересчитывать старый заказ.
+- Live lifecycle по-прежнему pending_acceptance → awaiting_payment. Demo payment-first → IN_PROGRESS не подключать через выдуманный paid. Новые server capabilities и available_actions — источник доступности действий.
+- Portfolio — private owner/moderator; публичный профиль не получает автоматически новые файлы. Multipart/form-data и cookie на content_url; PDF attachment. Шаблон proxy предлагает 12m, действующий сервер не обновлялся.
+- Чат: server conversation на конкретный order, не service ID; сообщения stored/held, стабильный client_message_id, cursor/sequence, ручной release с прежним message ID и новым sequence. Нет серверных вложений/read receipts/WebSocket.
+- Frontend `/admin` конфликтует с существующим Django `/admin/`. Согласовать адрес перед размещением; ни Demo admin flag, ни activeRole не дают staff capabilities.
+
+Новых дефектов отрисовки Redesign здесь не заявляется: браузерные проверки принятого Frontend этой задачей не запускались. Серверные ограничители, загрузки, роли, повторы/конкуренция проверены отдельно.
+
 ## Актуально 17 октября: сайт опубликован, регистрация пока закрыта
 
 На `https://studly-help.ru` размещён неизменённый Frontend из ветки `codex/frontend-registration`, коммит [`24117052e6091efb391c8840e3d98b2708b773c3`](https://github.com/lex44lh/Studly/commit/24117052e6091efb391c8840e3d98b2708b773c3). Backend остаётся `d4a0d1a`. Подробности эксплуатации: [SERVER_SETUP.md](SERVER_SETUP.md). Ни `apps/web`, ни его зависимости/конфигурация/lock-файл Backend-разработчиком не исправлялись.

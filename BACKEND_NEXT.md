@@ -1,5 +1,13 @@
 # STUDLY — текущий этап Backend
 
+## STUDLY 2 — 24 октября 2026
+
+Новая диагностика принята по `5db64a2437ce0b000f32de51bc730a9708be5178`; исходный Backend/remote `d7a5ffa` проверен через fetch. Локально реализованы аккаунт/capabilities/кабинеты, серверное избранное, портфолио с приватными PNG/JPEG/WebP/PDF, модерация профиля/услуг с revision и аудитом, черновики/дополнения, отдельные v2 quote/orders с 5% и сохранением прежних 3%, канонический чат заказа/сохранённые сообщения/held/appeal и ограниченные staff-проекции. Полная регрессия **238/238**, системные/миграционные проверки успешны. Новый OpenAPI: 42 path/54 schemas, контрактные проверки включены в набор. [GitHub CI](https://github.com/lex44lh/Studly/actions/runs/40035221210) коммита `ebec091` завершился успешно: Python 3.13 / PostgreSQL 17 и Python 3.12 / PostgreSQL 16; проверены установка зависимостей, системные проверки, миграции пустой БД и полный набор тестов.
+
+Решения владельца и нерешённые финансовые/арбитражные вопросы: [OPEN_PRODUCT_DECISIONS.md](OPEN_PRODUCT_DECISIONS.md). План: [BACKEND_2_IMPLEMENTATION_PLAN.md](BACKEND_2_IMPLEMENTATION_PLAN.md). Карта: [ROUTE_API_MATRIX.md](ROUTE_API_MATRIX.md). Передача: [INTEGRATION_HANDOFF.md](INTEGRATION_HANDOFF.md). Архитектура/миграционный план: [BACKEND_ARCHITECTURE_DECISIONS.md](BACKEND_ARCHITECTURE_DECISIONS.md).
+
+**Код опубликован с разрешения владельца только в `codex/backend`: [`ebec0915a17e55033cc62093912244c13bf13782`](https://github.com/lex44lh/Studly/commit/ebec0915a17e55033cc62093912244c13bf13782). Deployment не выполнялся.** Рабочая локальная и production БД не мигрировались, тесты создавали отдельную БД. Новый код не является кодом работающего сайта. Frontend/Integration и lock-файл не менялись; их настоящая интеграция не проверена, INTEGRATED не присваивался. Последующие сведения 17 октября — история прежнего размещения.
+
 ## Подключение сервера — 17 октября 2026 года
 
 Вход только по отдельному SSH-ключу подтверждён. Backend коммита `d4a0d1a` размещён на FirstVDS `153.76.172.88` и запущен как `studly-api.service`: Python 3.12.3, Gunicorn 26.2.0, PostgreSQL 16.15. Применены все миграции к новой БД, собраны 154 служебных статических файла. Настроены отдельный системный пользователь, приватные аватары, секреты вне Git, локальный доступ к БД и Unix-сокет Gunicorn. Исходные службы ispmanager сохранены. План до изменений: [SERVER_DEPLOYMENT_PLAN.md](SERVER_DEPLOYMENT_PLAN.md); реальные результаты: [SERVER_SETUP.md](SERVER_SETUP.md).
