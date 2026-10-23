@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from .models import Order
 from .serializers import CreateOrderSerializer, OrderActionSerializer, OrderSerializer
 from .services import accept_order, cancel_order, create_order, decline_order
+from accounts.permissions import require_role
 
 
 class OrderPagination(PageNumberPagination):
@@ -25,9 +26,16 @@ class PrivateOrdersMixin:
 
     def get_queryset(self):
         user = self.request.user
-        return Order.objects.filter(Q(buyer=user) | Q(performer=user)).select_related(
+        queryset = Order.objects.filter(Q(buyer=user) | Q(performer=user)).select_related(
             "buyer", "performer", "closed_by"
         ).order_by("-id")
+        role = self.request.query_params.get("role")
+        if role is not None:
+            from rest_framework.exceptions import ValidationError
+            if role not in ("customer", "performer"):
+                raise ValidationError({"role": "Укажите customer или performer."})
+            queryset = queryset.filter(**{"buyer_id" if role == "customer" else "performer_id": user.pk})
+        return queryset
 
 
 @method_decorator(never_cache, name="dispatch")
@@ -35,6 +43,7 @@ class OrderListView(PrivateOrdersMixin, ListAPIView):
     pagination_class = OrderPagination
 
     def post(self, request):
+        require_role(request.user, "customer")
         serializer = CreateOrderSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         order, created = create_order(buyer=request.user, data=serializer.validated_data)

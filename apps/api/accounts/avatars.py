@@ -17,11 +17,11 @@ MAX_AVATAR_PIXELS = 16_000_000
 logger = logging.getLogger(__name__)
 
 
-def normalize_avatar(upload):
-    if upload.size > MAX_AVATAR_BYTES:
+def normalize_avatar(upload, *, max_bytes=MAX_AVATAR_BYTES):
+    if upload.size > max_bytes:
         raise ValidationError("Размер аватара не должен превышать 5 МиБ.")
-    raw = upload.read(MAX_AVATAR_BYTES + 1)
-    if len(raw) > MAX_AVATAR_BYTES:
+    raw = upload.read(max_bytes + 1)
+    if len(raw) > max_bytes:
         raise ValidationError("Размер аватара не должен превышать 5 МиБ.")
     try:
         with warnings.catch_warnings():
@@ -64,6 +64,8 @@ def save_avatar(user_id, content):
             user.avatar.save(content.name, content, save=False)
             new_name = user.avatar.name
             user.save(update_fields=["avatar"])
+            from .moderation import touch_performer
+            touch_performer(user)
             progress, _ = RegistrationProgress.objects.get_or_create(user=user)
             progress.save()
             transaction.on_commit(lambda: remove_stored_avatar(storage, previous))
@@ -79,6 +81,8 @@ def delete_avatar(user_id):
     if previous:
         user.avatar = ""
         user.save(update_fields=["avatar"])
+        from .moderation import touch_performer
+        touch_performer(user)
         progress, _ = RegistrationProgress.objects.get_or_create(user=user)
         progress.save()
         transaction.on_commit(lambda: remove_stored_avatar(storage, previous))

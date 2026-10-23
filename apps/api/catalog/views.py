@@ -1,3 +1,4 @@
+from decimal import Decimal, InvalidOperation
 from django.db import transaction
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -11,8 +12,10 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from accounts.models import User
+from accounts.permissions import require_role
 from .models import Service
 from .pricing import calculate_buyer_quote
+from .visibility import public_services
 from .serializers import (OwnServiceSerializer, PerformerSerializer,
                           ServiceQuoteSerializer, ServiceSerializer)
 
@@ -40,7 +43,7 @@ class ServiceListView(PublicCatalogMixin, ListAPIView):
     search_fields = ["title", "description"]
 
     def get_queryset(self):
-        queryset = Service.objects.filter(status=Service.Status.PUBLISHED).select_related("performer").order_by("id")
+        queryset = public_services().select_related("performer").order_by("id")
         performer = self.request.query_params.get("performer")
         if performer is not None:
             queryset = queryset.filter(performer_id=positive_id(performer, "performer"))
@@ -50,11 +53,48 @@ class ServiceListView(PublicCatalogMixin, ListAPIView):
             if len(parts) > 100:
                 raise ValidationError({"ids": "За один запрос допускается не более 100 ID."})
             queryset = queryset.filter(pk__in=[positive_id(part, "ids") for part in parts])
+        category = self.request.query_params.get("category", "").strip()
+        if len(category) > 100:
+            raise ValidationError({"category": "До 100 символов."})
+        if category:
+            queryset = queryset.filter(category=category)
+        ranges = {}
+        for parameter, lookup in {"min_price": "price_amount__gte", "max_price": "price_amount__lte"}.items():
+            raw = self.request.query_params.get(parameter)
+            if raw is not None:
+                try:
+                    if len(raw) > 32:
+                        raise ValueError
+                    value = Decimal(raw)
+                    if not value.is_finite() or not Decimal(0) <= value <= Decimal("99999999.99") or value.as_tuple().exponent < -2:
+                        raise ValueError
+                except (ValueError, InvalidOperation):
+                    raise ValidationError({parameter: "Нужна неотрицательная сумма до 99999999.99 с точностью до копейки."})
+                ranges[parameter] = value
+                queryset = queryset.filter(**{lookup: value})
+        for parameter, lookup in {"min_duration": "duration_days__gte", "max_duration": "duration_days__lte"}.items():
+            raw = self.request.query_params.get(parameter)
+            if raw is not None:
+                if len(raw) > 5 or not raw.isascii() or not raw.isdecimal() or not 1 <= int(raw) <= 32767:
+                    raise ValidationError({parameter: "Нужно целое число дней 1–32767."})
+                ranges[parameter] = int(raw)
+                queryset = queryset.filter(**{lookup: int(raw)})
+        for low, high in (("min_price", "max_price"), ("min_duration", "max_duration")):
+            if low in ranges and high in ranges and ranges[low] > ranges[high]:
+                raise ValidationError({high: "Верхняя граница меньше нижней."})
+        ordering = self.request.query_params.get("ordering", "id")
+        orders = {"id": ("id",), "newest": ("-id",), "price_asc": ("price_amount", "id"),
+                  "price_desc": ("-price_amount", "id"), "duration_asc": ("duration_days", "id")}
+        if ordering not in orders:
+            raise ValidationError({"ordering": "Неподдерживаемая сортировка."})
+        if "min_rating" in self.request.query_params:
+            raise ValidationError({"min_rating": "Фильтр рейтинга ещё не поддерживается."})
+        queryset = queryset.order_by(*orders[ordering])
         return queryset
 
 
 class ServiceDetailView(PublicCatalogMixin, RetrieveAPIView):
-    queryset = Service.objects.filter(status=Service.Status.PUBLISHED).select_related("performer")
+    queryset = public_services().select_related("performer")
     serializer_class = ServiceSerializer
 
 
@@ -62,7 +102,7 @@ class ServiceDetailView(PublicCatalogMixin, RetrieveAPIView):
 class ServiceQuoteView(PublicCatalogMixin, RetrieveAPIView):
     """Цена услуги и надбавка заказчика 3%. Предварительный расчёт без оплаты."""
 
-    queryset = Service.objects.filter(status=Service.Status.PUBLISHED)
+    queryset = public_services()
     serializer_class = ServiceQuoteSerializer
 
     def retrieve(self, request, *args, **kwargs):
@@ -74,7 +114,7 @@ class ServiceQuoteView(PublicCatalogMixin, RetrieveAPIView):
 
 class PerformerDetailView(PublicCatalogMixin, RetrieveAPIView):
     # Публичный профиль существует в каталоге, только если у него есть услуги.
-    queryset = User.objects.filter(services__status=Service.Status.PUBLISHED).distinct()
+    queryset = User.objects.filter(services__in=public_services()).distinct()
     serializer_class = PerformerSerializer
 
 
@@ -93,7 +133,10 @@ class OwnServiceListView(OwnServicesMixin, ListCreateAPIView):
     pagination_class = CatalogPagination
 
     def perform_create(self, serializer):
-        serializer.save(performer=self.request.user)
+        with transaction.atomic():
+            owner = User.objects.select_for_update().get(pk=self.request.user.pk)
+            require_role(owner, "performer")
+            serializer.save(performer=owner)
 
 
 @method_decorator(never_cache, name="dispatch")
@@ -108,7 +151,10 @@ class OwnServiceDetailView(OwnServicesMixin, RetrieveUpdateAPIView):
 
     @transaction.atomic
     def patch(self, request, *args, **kwargs):
+        owner = User.objects.select_for_update().get(pk=request.user.pk)
+        require_role(owner, "performer")
         return super().patch(request, *args, **kwargs)
 
     def perform_update(self, serializer):
+        require_role(self.request.user, "performer")
         serializer.save(status=Service.Status.PENDING, revision=serializer.instance.revision + 1)

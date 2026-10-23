@@ -7,7 +7,10 @@ from rest_framework.exceptions import APIException, NotFound, PermissionDenied, 
 
 from catalog.models import Service
 from catalog.pricing import calculate_buyer_quote
-from .models import Order
+from catalog.visibility import public_services
+from accounts.models import PerformerProfile, User
+from accounts.permissions import require_role
+from .models import Order, OrderEvent
 
 
 class OrderConflict(APIException):
@@ -23,6 +26,7 @@ def _existing_order(buyer, data):
     if order is not None and (
         order.service_id != data["service_id"]
         or order.service_revision != data["service_revision"]
+        or order.quote_id is not None
     ):
         raise OrderConflict({"request_key": "Этот ключ уже использован для других условий заказа."})
     return order
@@ -33,6 +37,14 @@ def create_order(*, buyer, data):
     existing = _existing_order(buyer, data)
     if existing is not None:
         return existing, False
+
+    initial = Service.objects.filter(pk=data["service_id"]).only("performer_id").first()
+    if initial is None:
+        raise NotFound("Опубликованная услуга не найдена.")
+    users = {user.pk: user for user in User.objects.select_for_update().filter(
+        pk__in=[buyer.pk, initial.performer_id]).order_by("pk")}
+    buyer = users[buyer.pk]
+    require_role(buyer, "customer")
 
     # Та же строка блокируется при редактировании услуги и её модерации.
     service = Service.objects.select_for_update(of=("self",)).select_related("performer").filter(
@@ -56,6 +68,10 @@ def create_order(*, buyer, data):
         raise ValidationError({"service_id": "Для заказа требуется положительная цена услуги."})
     if service.currency != "RUB":
         raise ValidationError({"service_id": "Оформление доступно только для услуг в RUB."})
+    if not service.performer.is_performer or not PerformerProfile.objects.filter(user_id=service.performer_id, moderation_status="approved").exists():
+        raise NotFound("Опубликованная услуга не найдена.")
+    if not public_services().filter(pk=service.pk).exists():
+        raise NotFound("Опубликованная услуга не найдена.")
 
     quote = calculate_buyer_quote(service)
     try:
@@ -77,6 +93,9 @@ def create_order(*, buyer, data):
         if existing is None:
             raise
         return existing, False
+    from conversations.models import Conversation
+    Conversation.objects.create(order=order)
+    OrderEvent.objects.create(order=order, actor=buyer, action="created", revision=order.revision)
     return order, True
 
 
@@ -101,7 +120,9 @@ def accept_order(*, user, pk):
         raise OrderConflict("Согласие недоступно в текущем состоянии заказа.")
     order.status = Order.Status.AWAITING_PAYMENT
     order.accepted_at = timezone.now()
-    order.save(update_fields=["status", "accepted_at"])
+    order.revision += 1
+    order.save(update_fields=["status", "accepted_at", "revision"])
+    OrderEvent.objects.create(order=order, actor=user, action="accepted", revision=order.revision)
     return order
 
 
@@ -133,5 +154,7 @@ def _close_order(order, user, status):
     order.status = status
     order.closed_at = timezone.now()
     order.closed_by = user
-    order.save(update_fields=["status", "closed_at", "closed_by"])
+    order.revision += 1
+    order.save(update_fields=["status", "closed_at", "closed_by", "revision"])
+    OrderEvent.objects.create(order=order, actor=user, action=status, revision=order.revision)
     return order

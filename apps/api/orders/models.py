@@ -21,6 +21,11 @@ class Order(models.Model):
     )
     service_revision = models.PositiveBigIntegerField(validators=[MinValueValidator(1)])
     request_key = models.UUIDField()
+    revision = models.PositiveBigIntegerField(default=1)
+    quote = models.OneToOneField("Quote", on_delete=models.PROTECT, null=True, blank=True)
+    tariff_code = models.CharField(max_length=80, default="buyer-3-v1")
+    base_price_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    selected_extras = models.JSONField(default=list)
 
     # Условия заказа сохраняются отдельно от изменяемого объявления.
     title = models.CharField(max_length=200)
@@ -102,3 +107,38 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Заказ {self.pk}: {self.title}"
+
+
+class Tariff(models.Model):
+    code = models.CharField(max_length=80, primary_key=True)
+    buyer_fee_percent = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def save(self, *args, **kwargs):
+        from django.core.exceptions import ValidationError
+        previous = type(self).objects.filter(pk=self.pk).first()
+        if previous and previous.buyer_fee_percent != self.buyer_fee_percent:
+            raise ValidationError("Создайте новую версию тарифа вместо изменения существующей.")
+        return super().save(*args, **kwargs)
+
+    class Meta:
+        constraints = [models.CheckConstraint(condition=models.Q(buyer_fee_percent__gte=0, buyer_fee_percent__lte=100), name="tariff_percent_valid")]
+
+
+class Quote(models.Model):
+    import uuid
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    service = models.ForeignKey("catalog.Service", on_delete=models.PROTECT)
+    snapshot = models.JSONField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class OrderEvent(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name="events")
+    actor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    action = models.CharField(max_length=80)
+    revision = models.PositiveBigIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["id"]

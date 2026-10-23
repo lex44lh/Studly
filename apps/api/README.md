@@ -162,3 +162,8 @@ apps/api/.venv/bin/python -m pip check
 ## Регистрация
 
 Приватные `GET/PATCH /api/v1/registration/`, `POST /api/v1/registration/complete/` и `GET/POST/DELETE /api/v1/registration/avatar/`; публичный `GET /api/v1/specializations/`. Роли совместимы, частичные поля и шаг хранятся в PostgreSQL, профиль исполнителя можно заполнить позже. Аватар обрабатывается Pillow и читается через маршрут с сессией; файлы `media/` не входят в Git. Справочник пока пустой до утверждения владельцем. [Контракт и ограничения интеграции](../../REGISTRATION_API.md), [OpenAPI](../../docs/registration.openapi.json).
+# STUDLY 2 локальное расширение от 24 октября
+
+Новые аккаунт/кабинеты, портфолио/модерация, черновики/дополнения, v2 quote/orders и чат описаны в [API_CONTRACT](../../API_CONTRACT.md). Центральная [матрица](../../ROUTE_API_MATRIX.md), [передача Integration](../../INTEGRATION_HANDOFF.md), [план миграций](../../BACKEND_ARCHITECTURE_DECISIONS.md). Новый код передаётся в codex/backend после разрешённой публикации; размещение на сервере в этом этапе не выполняется. Рабочую БД этой задачей не мигрировали: тесты создавали отдельную PostgreSQL test БД.
+
+Зависимости Backend включают `pypdf==6.21.2`. Новый `STUDLY_V2_BUYER_TARIFF=buyer-5-v1` выбирает v2 тариф; v1 сохраняет 3%. Политика настоящих платежей не включена. Экспорт нового OpenAPI после изменения сериализаторов: `.venv/bin/python operations/export_openapi.py` из этой папки. Не использовать production secrets и БД для тестов.

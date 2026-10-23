@@ -6,6 +6,8 @@ from django.db import transaction
 from django.template.response import TemplateResponse
 
 from .models import Service
+from accounts.models import User, PerformerProfile
+from .workspace import service_ready
 
 
 @admin.register(Service)
@@ -79,10 +81,20 @@ class ServiceAdmin(admin.ModelAdmin):
         revisions = reviewed["revisions"]
         changed = 0
         with transaction.atomic():
+            # Общий порядок блокировок: владелец профиля, затем его услуга.
+            owner_ids = queryset.filter(pk__in=revisions).values_list("performer_id", flat=True)
+            list(User.objects.select_for_update().filter(pk__in=owner_ids).order_by("pk"))
             services = list(queryset.select_for_update(of=("self",)).filter(
                 pk__in=revisions, status=Service.Status.PENDING, is_demo=False,
             ))
             for service in services:
+                if service.performer_id == request.user.pk:
+                    continue
+                if status == Service.Status.PUBLISHED and (
+                    not PerformerProfile.objects.filter(user_id=service.performer_id, moderation_status="approved").exists()
+                    or service_ready(service)
+                ):
+                    continue
                 if service.revision != revisions[str(service.pk)]:
                     continue
                 service.status = status

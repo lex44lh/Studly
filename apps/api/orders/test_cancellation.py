@@ -9,6 +9,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient
 
 from accounts.models import User
+from accounts.test_workspace import approved_performer
 from .models import Order
 from .services import OrderConflict, accept_order, cancel_order, create_order, decline_order
 from .tests import make_service
@@ -17,8 +18,9 @@ from .tests import make_service
 class UnpaidOrderClosureTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.buyer = User.objects.create_user(62001, display_name="Заказчик")
+        cls.buyer = User.objects.create_user(62001, display_name="Заказчик", is_customer=True)
         cls.performer = User.objects.create_user(62002, display_name="Исполнитель")
+        approved_performer(cls.performer)
         cls.other = User.objects.create_user(62003)
         cls.service = make_service(cls.performer)
 
@@ -244,8 +246,9 @@ class UnpaidOrderClosureTests(TestCase):
 
 class ConcurrentOrderClosureTests(TransactionTestCase):
     def setUp(self):
-        self.buyer = User.objects.create_user(63001)
+        self.buyer = User.objects.create_user(63001, is_customer=True)
         self.performer = User.objects.create_user(63002)
+        approved_performer(self.performer)
         service = make_service(self.performer)
         self.order, _ = create_order(buyer=self.buyer, data={
             "service_id": service.pk, "service_revision": 1, "request_key": uuid4(),

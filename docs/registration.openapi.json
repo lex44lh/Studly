@@ -852,6 +852,11 @@
           },
           "progress": {
             "$ref": "#/components/schemas/ProgressPatch"
+          },
+          "performer_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Опциональная защита редактируемых полей от устаревшей редакции профиля исполнителя; GET /api/v1/performer/moderation/."
           }
         },
         "required": [],

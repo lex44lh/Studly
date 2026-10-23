@@ -8,6 +8,8 @@ class Service(models.Model):
         PENDING = "pending", "На модерации"
         PUBLISHED = "published", "Опубликована"
         REJECTED = "rejected", "Отклонена"
+        DRAFT = "draft", "Черновик"
+        CHANGES = "changes", "Нужны исправления"
 
     performer = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="services"
@@ -20,6 +22,10 @@ class Service(models.Model):
     currency = models.CharField(max_length=3, default="RUB")
     duration_days = models.PositiveSmallIntegerField(validators=[MinValueValidator(1)])
     included = models.JSONField(default=list)
+    category = models.CharField(max_length=100, blank=True)
+    extras = models.JSONField(default=list)
+    portfolio_examples = models.ManyToManyField("accounts.PortfolioExample", blank=True)
+    moderation_reason = models.TextField(blank=True)
     status = models.CharField(
         max_length=16, choices=Status.choices, default=Status.PENDING, db_index=True
     )
@@ -34,7 +40,7 @@ class Service(models.Model):
         permissions = [("moderate_service", "Может одобрять и отклонять услуги")]
         constraints = [
             models.CheckConstraint(
-                condition=models.Q(status__in=["pending", "published", "rejected"]),
+                condition=models.Q(status__in=["pending", "published", "rejected", "draft", "changes"]),
                 name="service_status_valid",
             ),
             models.CheckConstraint(
@@ -47,3 +53,12 @@ class Service(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=["user", "service"], name="favorite_user_service_unique")]

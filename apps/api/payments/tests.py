@@ -233,8 +233,10 @@ class YooKassaClientTests(SimpleTestCase):
 class YooKassaOrderDiagnosticTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.buyer = User.objects.create_user(telegram_id=63001, display_name="Заказчик")
+        cls.buyer = User.objects.create_user(telegram_id=63001, display_name="Заказчик", is_customer=True)
         cls.performer = User.objects.create_user(telegram_id=63002, display_name="Исполнитель")
+        from accounts.test_workspace import approved_performer
+        approved_performer(cls.performer)
         service = Service.objects.create(
             performer=cls.performer, title="Консультация", description="Разбор темы", included=["Консультация"],
             price_amount=Decimal("1000.00"), duration_days=2, status=Service.Status.PUBLISHED,

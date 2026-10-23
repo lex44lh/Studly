@@ -47,6 +47,7 @@ class ProgressPatch(StrictSerializer):
 
 
 class RegistrationPatch(StrictSerializer):
+    performer_revision = serializers.IntegerField(min_value=1, required=False)
     roles = serializers.ListField(
         child=serializers.ChoiceField(choices=["customer", "performer"]), required=False,
     )
@@ -60,7 +61,8 @@ class RegistrationPatch(StrictSerializer):
         return roles
 
     def validate(self, data):
-        if not data or not any(not isinstance(value, dict) or value for value in data.values()):
+        writable = {key: value for key, value in data.items() if key != "performer_revision"}
+        if not writable or not any(not isinstance(value, dict) or value for value in writable.values()):
             raise serializers.ValidationError("Передайте хотя бы одно поле для сохранения.")
         return data
 

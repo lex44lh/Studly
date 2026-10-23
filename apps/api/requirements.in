@@ -6,3 +6,4 @@ joserfc>=1.7.5,<2
 requests>=2.32,<3
 python-dotenv>=1.2,<2
 Pillow>=12.3,<13
+pypdf>=6.21.2,<7

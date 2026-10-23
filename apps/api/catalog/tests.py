@@ -8,6 +8,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from accounts.models import User
+from accounts.test_workspace import approved_performer
 from .models import Service
 
 
@@ -28,9 +29,22 @@ class CatalogTests(TestCase):
             title="Английский язык", description="Грамматика", price_amount="700.00", duration_days=7,
             status=Service.Status.PUBLISHED,
         )
+        approved_performer(cls.performer)
+        approved_performer(cls.other.performer)
 
     def setUp(self):
         self.client = APIClient()
+
+    def test_server_ranges_category_ordering_and_invalid_filters(self):
+        Service.objects.filter(pk=self.service.pk).update(category="programming")
+        response = self.client.get(reverse("catalog:list"), {"category": "programming", "min_price": "800.00", "max_price": "1000.00", "max_duration": "5"})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([x["id"] for x in response.json()["results"]], [self.service.pk])
+        response = self.client.get(reverse("catalog:list"), {"ordering": "price_desc"})
+        self.assertEqual([x["id"] for x in response.json()["results"]], [self.service.pk, self.other.pk])
+        for query in ({"min_price": "NaN"}, {"max_price": "Infinity"}, {"min_price": "1.001"}, {"min_price": "10", "max_price": "1"},
+                      {"min_duration": "-1"}, {"ordering": "rating"}, {"min_rating": "4"}):
+            self.assertEqual(self.client.get(reverse("catalog:list"), query).status_code, 400, query)
 
     def test_public_list_reads_database_and_has_stable_pagination(self):
         response = self.client.get(reverse("catalog:list"))

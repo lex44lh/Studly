@@ -3,14 +3,16 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from accounts.models import User
+from accounts.test_workspace import approved_performer
 from .models import Service
 
 
 class ServiceEditingTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.owner = User.objects.create_user(40001, display_name="Автор")
-        cls.other = User.objects.create_user(40002)
+        cls.owner = User.objects.create_user(40001, display_name="Автор", is_performer=True)
+        cls.other = User.objects.create_user(40002, is_performer=True)
+        approved_performer(cls.owner)
 
     def setUp(self):
         self.client = APIClient(enforce_csrf_checks=True)

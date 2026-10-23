@@ -5,6 +5,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from accounts.models import User
+from accounts.test_workspace import approved_performer
 from .models import Service
 
 
@@ -19,6 +20,7 @@ class ServiceQuoteTests(TestCase):
             price_amount=Decimal("1000.00"), duration_days=2,
             status=Service.Status.PUBLISHED,
         )
+        approved_performer(cls.performer)
 
     def setUp(self):
         self.client = APIClient()

@@ -10,6 +10,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from accounts.models import User
+from accounts.test_workspace import approved_performer
 from catalog.models import Service
 from .models import Order
 from .services import OrderConflict, accept_order, create_order
@@ -27,12 +28,13 @@ def make_service(performer, **overrides):
 class OrderAPITests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.buyer = User.objects.create_user(60001, display_name="Заказчик")
+        cls.buyer = User.objects.create_user(60001, display_name="Заказчик", is_customer=True)
         cls.performer = User.objects.create_user(
-            60002, display_name="Исполнитель", email="private@example.com"
+            60002, display_name="Исполнитель", email="private@example.com", is_performer=True, is_customer=True,
         )
-        cls.other = User.objects.create_user(60003, display_name="Другой пользователь")
+        cls.other = User.objects.create_user(60003, display_name="Другой пользователь", is_customer=True)
         cls.service = make_service(cls.performer)
+        approved_performer(cls.performer)
 
     def setUp(self):
         self.client = APIClient(enforce_csrf_checks=True)
@@ -232,6 +234,7 @@ class OrderAPITests(TestCase):
 
     def test_list_includes_both_roles_excludes_other_orders_and_is_paginated(self):
         self.create_order()
+        approved_performer(self.buyer)
         buyer_service = make_service(self.buyer)
         create_order(buyer=self.other, data={
             "service_id": buyer_service.pk, "service_revision": 1, "request_key": uuid4(),
@@ -349,8 +352,9 @@ class OrderAPITests(TestCase):
 
 class ConcurrentOrderTests(TransactionTestCase):
     def setUp(self):
-        self.buyer = User.objects.create_user(61001)
+        self.buyer = User.objects.create_user(61001, is_customer=True)
         self.performer = User.objects.create_user(61002)
+        approved_performer(self.performer)
         self.service = make_service(self.performer)
         self.data = {"service_id": self.service.pk, "service_revision": 1, "request_key": uuid4()}
 
@@ -374,16 +378,12 @@ class ConcurrentOrderTests(TransactionTestCase):
     def test_simultaneous_key_reuse_for_different_services_has_one_winner(self):
         other_service = make_service(self.performer)
         barrier = Barrier(2)
-        real_insert = Order.objects.create
-
-        def simultaneous_insert(**kwargs):
-            # Оба запроса уже проверили отсутствие заказа до вставки в БД.
-            barrier.wait(timeout=10)
-            return real_insert(**kwargs)
-
         def create(service_id):
             try:
                 try:
+                    # Новая проверка роли блокирует аккаунты до вставки.
+                    # Одновременный вход проверяем до этой сериализации.
+                    barrier.wait(timeout=10)
                     order, _ = create_order(buyer=self.buyer, data={**self.data, "service_id": service_id})
                     return order.pk, "created"
                 except OrderConflict:
@@ -391,9 +391,8 @@ class ConcurrentOrderTests(TransactionTestCase):
             finally:
                 connections.close_all()
 
-        with patch("orders.services.Order.objects.create", side_effect=simultaneous_insert):
-            with ThreadPoolExecutor(max_workers=2) as pool:
-                results = list(pool.map(create, [self.service.pk, other_service.pk]))
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(create, [self.service.pk, other_service.pk]))
         self.assertCountEqual([outcome for _, outcome in results], ["created", "conflict"])
         self.assertEqual(Order.objects.count(), 1)
 

@@ -10,14 +10,15 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from accounts.models import User
+from accounts.test_workspace import approved_performer
 from .models import Service
 
 
 class ServiceSubmissionTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.owner = User.objects.create_user(10001, display_name="Автор")
-        cls.other = User.objects.create_user(10002, display_name="Другой")
+        cls.owner = User.objects.create_user(10001, display_name="Автор", is_performer=True)
+        cls.other = User.objects.create_user(10002, display_name="Другой", is_performer=True)
 
     def setUp(self):
         self.client = APIClient(enforce_csrf_checks=True)
@@ -111,7 +112,8 @@ class ServiceSubmissionTests(TestCase):
 class ModerationAdminTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.owner = User.objects.create_user(20001)
+        cls.owner = User.objects.create_user(20001, is_performer=True)
+        approved_performer(cls.owner)
         cls.moderator = User.objects.create_user(20002, is_staff=True)
         cls.moderator.user_permissions.add(Permission.objects.get(codename="moderate_service"))
         cls.staff = User.objects.create_user(20003, is_staff=True)
@@ -121,7 +123,8 @@ class ModerationAdminTests(TestCase):
         self.client = APIClient(enforce_csrf_checks=True)
         self.client.force_login(self.moderator)
         self.service = Service.objects.create(performer=self.owner, title="Заявка", description="Описание",
-                                               price_amount="100.00", duration_days=2)
+                                               price_amount="100.00", duration_days=2, category="programming", included=["Разбор"])
+        self.service.portfolio_examples.set(self.owner.performer_profile.examples.all())
 
     def moderate(self, action, ids=None):
         csrf = self.client.get(reverse("accounts:csrf")).json()["csrf_token"]

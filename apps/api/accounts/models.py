@@ -68,12 +68,42 @@ class Specialization(models.Model):
 
 
 class PerformerProfile(models.Model):
+    class Moderation(models.TextChoices):
+        DRAFT = "draft", "Черновик"
+        PENDING = "pending", "На модерации"
+        APPROVED = "approved", "Одобрен"
+        REJECTED = "rejected", "Отклонён"
+        CHANGES = "changes", "Нужны исправления"
+
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
                                related_name="performer_profile")
     description = models.TextField(blank=True)
     study_year = models.CharField(max_length=100, blank=True)
     portfolio = models.TextField(blank=True)
     specializations = models.ManyToManyField(Specialization, blank=True)
+    revision = models.PositiveBigIntegerField(default=1, editable=False)
+    moderation_status = models.CharField(max_length=16, choices=Moderation.choices, default=Moderation.DRAFT)
+    moderation_reason = models.TextField(blank=True)
+    submitted_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        permissions = [("moderate_performer", "Может рассматривать заявки исполнителей")]
+        constraints = [
+            models.CheckConstraint(condition=models.Q(revision__gte=1), name="performer_revision_positive"),
+            models.CheckConstraint(condition=models.Q(moderation_status__in=["draft", "pending", "approved", "rejected", "changes"]), name="performer_moderation_valid"),
+        ]
+
+
+class PortfolioExample(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    profile = models.ForeignKey(PerformerProfile, on_delete=models.PROTECT, related_name="examples")
+    title = models.CharField(max_length=200)
+    url = models.URLField(max_length=2000, blank=True)
+    file = models.FileField(upload_to="portfolio/", blank=True)
+    content_type = models.CharField(max_length=80, blank=True)
+    size = models.PositiveIntegerField(default=0)
+    active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class RegistrationProgress(models.Model):

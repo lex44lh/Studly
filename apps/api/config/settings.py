@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "catalog",
     "orders",
     "payments",
+    "operations",
+    "conversations",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -120,6 +122,7 @@ if min(TELEGRAM_AUTH_MAX_AGE, TELEGRAM_OIDC_STATE_MAX_AGE) <= 0 or TELEGRAM_AUTH
     raise ImproperlyConfigured("Сроки проверки Telegram должны быть положительными.")
 
 YOOKASSA_TEST_SHOP_ID = os.environ.get("YOOKASSA_TEST_SHOP_ID", "")
+STUDLY_V2_BUYER_TARIFF = os.environ.get("STUDLY_V2_BUYER_TARIFF", "buyer-5-v1")
 YOOKASSA_TEST_SECRET_KEY = os.environ.get("YOOKASSA_TEST_SECRET_KEY", "")
 
 LANGUAGE_CODE = "ru-ru"

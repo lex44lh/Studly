@@ -7,6 +7,7 @@ from rest_framework.exceptions import ValidationError
 
 from .models import PerformerProfile, RegistrationProgress, User
 from .registration_serializers import SpecializationSerializer
+from .moderation import moderated_fields, touch_performer
 
 
 def registration_user(user_id):
@@ -65,6 +66,12 @@ def registration_data(user):
 def save_registration(user_id, data):
     # Этот же замок используют завершение, загрузка аватара и Telegram-вход.
     user = User.objects.select_for_update().get(pk=user_id)
+    before = moderated_fields(user)
+    if "performer_revision" in data:
+        profile = PerformerProfile.objects.filter(user=user).first()
+        if data["performer_revision"] != (profile.revision if profile else 1):
+            from operations.services import Conflict
+            raise Conflict()
     fields = []
     if "roles" in data:
         user.is_customer = "customer" in data["roles"]
@@ -88,6 +95,8 @@ def save_registration(user_id, data):
             performer.save(update_fields=list(values))
         if ids is not None:
             performer.specializations.set(ids)
+    if before != moderated_fields(user):
+        touch_performer(user)
     progress, _ = RegistrationProgress.objects.get_or_create(user=user)
     for field, value in data.get("progress", {}).items():
         setattr(progress, field, value)
