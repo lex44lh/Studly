@@ -1,0 +1,66 @@
+[
+  {
+    "path": "apps/web/src/features/demo-workspace/AccountWorkspace.tsx",
+    "mode": "0644",
+    "sha256": "089e5b4453915c66190a7312ddc27c66346db4c4a5636e8938281bba86666373",
+    "bytes": 32523,
+    "status": "modified",
+    "before": "6ce9965ff5ed5497fb47526319d6554bda1531db312e197ff3f210bf1f90a43d"
+  },
+  {
+    "path": "apps/web/src/features/demo-workspace/AdminWorkspace.tsx",
+    "mode": "0644",
+    "sha256": "00fc26c6b813660271ca615e7c37d394cc785aa5fc4ad3331eb0eaf2d7229146",
+    "bytes": 55519,
+    "status": "modified",
+    "before": "b10fc21dd854a83326ce0ec7b67685744c198abda3323fc1f48e9468957d26b5"
+  },
+  {
+    "path": "apps/web/src/features/demo-workspace/Provider.tsx",
+    "mode": "0644",
+    "sha256": "ddfa956c35f1621a4fd342988e28174c6313b94cc4c6f6527cf1794c6fb858c7",
+    "bytes": 7485,
+    "status": "modified",
+    "before": "e0e0dbfb81bc97dbdc7cf1043efbf64e533bc423cecc5555c4bf5a18c000c1a2"
+  },
+  {
+    "path": "apps/web/src/features/demo-workspace/RegistrationAdapter.tsx",
+    "mode": "0644",
+    "sha256": "35a2862a42ab6230ef3a8530ed26e6cfda440b4b740fed46f6700e3f48546db8",
+    "bytes": 8918,
+    "status": "modified",
+    "before": "4a81639ca8d68ba50090a6954db30c0106c8cbcd4b8f5ad28720ad7e6902933f"
+  },
+  {
+    "path": "apps/web/tests/demo-account-avatar.test.cjs",
+    "mode": "0644",
+    "sha256": "df7545c456e9a95baf868752c37a483153194c0841ee47f2b6101dd76e376c42",
+    "bytes": 10348,
+    "status": "new",
+    "before": null
+  },
+  {
+    "path": "apps/web/tests/demo-admin-avatar-lifecycle.test.cjs",
+    "mode": "0644",
+    "sha256": "32d565df629c57ffdac11d1c0724a6402a377befbcae2ae9f3e14eaba2c9ac12",
+    "bytes": 7261,
+    "status": "new",
+    "before": null
+  },
+  {
+    "path": "apps/web/tests/demo-provider-avatar.test.cjs",
+    "mode": "0644",
+    "sha256": "dd72e0e234f219fd02c5b485aca040e5b1978b46e320129a424028a68fec8e9f",
+    "bytes": 5116,
+    "status": "new",
+    "before": null
+  },
+  {
+    "path": "apps/web/tests/demo-registration-adapter.test.cjs",
+    "mode": "0644",
+    "sha256": "cfc363d153b848aa7a24c6b4ac0e2a5d528944c50653a779fa9995dd308184b1",
+    "bytes": 22234,
+    "status": "modified",
+    "before": "44491b43e3644a79c04b0320be69e0654881e85cda3c1d89a934d3a13d3bdea4"
+  }
+]

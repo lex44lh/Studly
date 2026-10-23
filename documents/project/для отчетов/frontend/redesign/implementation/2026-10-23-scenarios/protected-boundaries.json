@@ -1,0 +1,91 @@
+[
+  {
+    "path": "apps/web/src/types/registration-api.ts",
+    "sha256": "25dbe28a057b158e7c14eb78c8ace150e24523f202b06c21a60dd46ba8eb9a39",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/types/registration.ts",
+    "sha256": "60d20a2787bed692857011d47b2592ff4d71d988b471c9b038b117c6a8374cb8",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/context/AuthContext.tsx",
+    "sha256": "6f577ab45f822327dfd8453ab155d184eb1e14837ffc042ef872f5a83a20170d",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/lib/data-mode.ts",
+    "sha256": "587caaa67771825248297cb7275588211ebd7f42de129baeb7f7e70f471e83c7",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/lib/registration/draft.ts",
+    "sha256": "7a99bf44afddd8eaced3e66ae34a6d244c54e89d12db9dacd5757adbdb19e3d6",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/lib/api/client.ts",
+    "sha256": "435cb14cc631f3e002c49132a46f990c6b33a3ab54b979987a94ca3dfc2e299d",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/lib/api/auth.ts",
+    "sha256": "a7406fcd0cf2f2c11e1486d883cdf517961dc7eddcefdf700bca0083e1756a0b",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/lib/api/catalog.ts",
+    "sha256": "da93e9fcf3da6608151df8e689d54c49e27e8cd65691b8d255aabef06ceaafa1",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/lib/api/registration.ts",
+    "sha256": "9b858570702381b7e75ef7baff7b2cf9117396a086d1bd7bd38f75682924508b",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/components/studly/campus.css",
+    "sha256": "cd9b89da4bb467bb18f09648b9c8f7eae784679f35cf97e9958a7cd41260c075",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/components/studly/tokens.css",
+    "sha256": "9bdb9f320b1c4348f8f7951cf549bdfe9b330e37504a50c35663a25e34b25fe1",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/components/catalog/service-detail.css",
+    "sha256": "b6bcd7a2778f09f060f119afe645dfac3eb4538ed8c5e15a1118849225855e6a",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/src/components/catalog/ServiceDetail.tsx",
+    "sha256": "f03f000ffbfa7410567f07340621581c1d821d653dd6e47f617f0b6a550c6f6b",
+    "unchanged": true
+  },
+  {
+    "path": "apps/web/package.json",
+    "unchangedFromHEAD": true
+  },
+  {
+    "path": "package-lock.json",
+    "unchangedFromHEAD": true
+  },
+  {
+    "path": "apps/web/next.config.ts",
+    "unchangedFromHEAD": true
+  },
+  {
+    "path": "AGENTS.md",
+    "unchangedFromHEAD": true
+  },
+  {
+    "path": "apps/web/AGENTS.md",
+    "unchangedFromHEAD": true
+  },
+  {
+    "path": "documents/project/TEAM_WORKFLOW.md",
+    "unchangedFromHEAD": true
+  }
+]

@@ -1,0 +1,76 @@
+✖ admin avatar: a delayed asset resolved after unmount creates no object URL or late state write (71.185792ms)
+✖ admin avatar: changing assetId invalidates the pending old read and only displays the current image (33.726416ms)
+✖ admin avatar: repeated card open and close revokes every allocated URL and ignores late reads (150.230541ms)
+✔ admin avatar: replacing and removing a loaded avatar releases each URL before showing initials (26.69275ms)
+✔ admin avatar: missing, unsupported and failed assets retain initials without allocating URLs (65.16375ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 468.750417
+
+✖ failing tests:
+
+test at apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:71:1
+✖ admin avatar: a delayed asset resolved after unmount creates no object URL or late state write (71.185792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'blob:admin-avatar-fixture-1'
+  + ]
+  - []
+  
+      at /Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:76:12
+      at async withObjectUrls (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:67:9)
+      at async TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:72:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'blob:admin-avatar-fixture-1' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:82:1
+✖ admin avatar: changing assetId invalidates the pending old read and only displays the current image (33.726416ms)
+  AssertionError [ERR_ASSERTION]: the obsolete read must not allocate another URL
+  
+  2 !== 1
+  
+      at /Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:90:12
+      at async withObjectUrls (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:67:9)
+      at async TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:83:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:98:1
+✖ admin avatar: repeated card open and close revokes every allocated URL and ignores late reads (150.230541ms)
+  AssertionError [ERR_ASSERTION]: only images loaded while their cards are open allocate a URL
+  
+  6 !== 3
+  
+      at /Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:107:12
+      at async withObjectUrls (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:67:9)
+      at async TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-admin-avatar-lifecycle.test.cjs:99:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 6,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

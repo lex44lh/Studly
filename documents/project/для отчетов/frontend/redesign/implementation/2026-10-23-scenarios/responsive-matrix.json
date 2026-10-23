@@ -1,0 +1,1842 @@
+[
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "light",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "light",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "light",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "light",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "light",
+    "error": false,
+    "h1": "Мои заказы",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "light",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "light",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "light",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "light",
+    "error": false,
+    "h1": "Нужен режим исполнителя",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "light",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "light",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "light",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "light",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "light",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "light",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "light",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "light",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "light",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "dark",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "dark",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "dark",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "dark",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "dark",
+    "error": false,
+    "h1": "Мои заказы",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "dark",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "dark",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "dark",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "dark",
+    "error": false,
+    "h1": "Нужен режим исполнителя",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "dark",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "dark",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "dark",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "dark",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "dark",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "dark",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "dark",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "dark",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "dark",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "light",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "light",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "light",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "light",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "light",
+    "error": false,
+    "h1": "Заказы у меня",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "light",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "light",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "light",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "light",
+    "error": false,
+    "h1": "Мои услуги",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "light",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "light",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "light",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "light",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "light",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "light",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "light",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "light",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "light",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "dark",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "dark",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "dark",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "dark",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "dark",
+    "error": false,
+    "h1": "Заказы у меня",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "dark",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "dark",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "dark",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "dark",
+    "error": false,
+    "h1": "Мои услуги",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "dark",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "dark",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "dark",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "dark",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "dark",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "dark",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "dark",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "dark",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "dark",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "light",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "light",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "light",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "light",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "light",
+    "error": false,
+    "h1": "Заказы у меня",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "light",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "light",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "light",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "light",
+    "error": false,
+    "h1": "Мои услуги",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "light",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "light",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "light",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "light",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "light",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "light",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "light",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "light",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "light",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "dark",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "dark",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "dark",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "dark",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "dark",
+    "error": false,
+    "h1": "Заказы у меня",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "dark",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "dark",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "dark",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "dark",
+    "error": false,
+    "h1": "Мои услуги",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "dark",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "dark",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "dark",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "dark",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "dark",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "dark",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "dark",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "dark",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "dark",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "light",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "light",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "light",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "light",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "light",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "light",
+    "error": false,
+    "h1": "Заказы у меня",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "light",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "light",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "light",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "light",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "light",
+    "error": false,
+    "h1": "Мои услуги",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "light",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "light",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "light",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "light",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "light",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "light",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "light",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "light",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "light",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "light",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "home",
+    "path": "/",
+    "theme": "dark",
+    "error": false,
+    "h1": "Твоя задача.Чья-то сильная сторона.",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "theme": "dark",
+    "error": false,
+    "h1": "Найди своегоисполнителя.",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "category",
+    "path": "/category/programming",
+    "theme": "dark",
+    "error": false,
+    "h1": "Программирование",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "service",
+    "path": "/service/1000000000",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "favorites",
+    "path": "/favorites",
+    "theme": "dark",
+    "error": false,
+    "h1": "Избранное",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "performer",
+    "path": "/profile/demo-self",
+    "theme": "dark",
+    "error": false,
+    "h1": "Демо Студент",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "theme": "dark",
+    "error": false,
+    "h1": "Заказы у меня",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "order",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76",
+    "theme": "dark",
+    "error": false,
+    "h1": "Разбор учебного проекта на Python",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "additional",
+    "path": "/orders/order-70ffd232-afa0-4f10-b1bf-7fb11499be76/additional-payment?serviceId=urgent",
+    "theme": "dark",
+    "error": false,
+    "h1": "Дополнительная услуга",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "chats",
+    "path": "/chats",
+    "theme": "dark",
+    "error": false,
+    "h1": "Чаты",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "chat",
+    "path": "/chats/conversation-a73e6d04-09bb-4214-b571-ff3494eb12c0",
+    "theme": "dark",
+    "error": false,
+    "h1": "Помогу с C++",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "create",
+    "path": "/create-service",
+    "theme": "dark",
+    "error": false,
+    "h1": "Мои услуги",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "welcome",
+    "path": "/welcome",
+    "theme": "dark",
+    "error": false,
+    "h1": "Добропожаловать!",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "roles",
+    "path": "/register/roles",
+    "theme": "dark",
+    "error": false,
+    "h1": "Как вы хотите использовать STUDLY?",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "registration",
+    "path": "/register/profile",
+    "theme": "dark",
+    "error": false,
+    "h1": "Давайте познакомимся!",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "performer-form",
+    "path": "/register/performer",
+    "theme": "dark",
+    "error": false,
+    "h1": "Расскажите, чем вы занимаетесь",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "theme": "dark",
+    "error": false,
+    "h1": "Уведомления",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "theme": "dark",
+    "error": false,
+    "h1": "Свои люди.Нужные навыки.",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "rules",
+    "path": "/rules",
+    "theme": "dark",
+    "error": false,
+    "h1": "Правила платформы",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "safety",
+    "path": "/safety",
+    "theme": "dark",
+    "error": false,
+    "h1": "Безопасность",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "support",
+    "path": "/support",
+    "theme": "dark",
+    "error": false,
+    "h1": "Поддержка",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "theme": "dark",
+    "error": false,
+    "h1": "Обзор",
+    "main": 1,
+    "scrollWidth": 1440,
+    "width": 1440
+  }
+]

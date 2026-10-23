@@ -1,0 +1,496 @@
+{
+  "baseline": "2026-10-22 02:55:34 Europe/Moscow",
+  "changed": [
+    {
+      "path": "apps/web/src/components/ChatWindow.tsx",
+      "before": "6398929a16fe55de7b5f2a197b0dd18e10ed96dd6f85b32a7ada1efe9f6fb75a",
+      "after": "255c3fbcbff92bddac54bfebd5cba8681157e0dbf7a216998e93d595fdc5663d"
+    },
+    {
+      "path": "apps/web/src/components/studly/CampusShell.tsx",
+      "before": "aacd84f8f0fec1eae5d9a771d398e48e96ac5ae7bdca08754bbf54ab5d2e941f",
+      "after": "24a54daf9923902d6bed447a744fe2116f65dc8210984db95890bd9f3b9121a0"
+    },
+    {
+      "path": "apps/web/src/components/studly/activity.css",
+      "before": "eaa15f6a8612da032122e1d7f9c6438b4b079ba55c6033446f7b8020a8766f45",
+      "after": "4bfdae577fd1d095f4c01e3bc4da8bdc42a1e68aececae5fb75993a7e827efc0"
+    },
+    {
+      "path": "apps/web/src/app/chats/page.tsx",
+      "before": "ccabb468c3a65a5dfddf27851eea84e40d72d24e18d92a84bcdad752a025ce9c",
+      "after": "8023c4ebf9b2109b0959da2da031375674837845ae922dca7da0f53c128ed0e1"
+    },
+    {
+      "path": "apps/web/src/app/orders/page.tsx",
+      "before": "375d48e83002d265329f6515403e8d4166a957979e136a69b8984af37e9d0a4e",
+      "after": "b84865ee8f0bb7790bbb26761bea7eaa5635a723e99d077586abbd9d4e698807"
+    },
+    {
+      "path": "apps/web/src/app/orders/[id]/page.tsx",
+      "before": "453ebee84965e4019128888535ce82508172c915f712f0ecceeec0858f978f2f",
+      "after": "ebd893246076d8b62c44f2323de203a7ea7fb96c6483c81311920f954a52c843"
+    }
+  ],
+  "unchanged": [
+    {
+      "path": "apps/web/src/types/registration-api.ts",
+      "before": "25dbe28a057b158e7c14eb78c8ace150e24523f202b06c21a60dd46ba8eb9a39",
+      "after": "25dbe28a057b158e7c14eb78c8ace150e24523f202b06c21a60dd46ba8eb9a39"
+    },
+    {
+      "path": "apps/web/src/types/registration.ts",
+      "before": "60d20a2787bed692857011d47b2592ff4d71d988b471c9b038b117c6a8374cb8",
+      "after": "60d20a2787bed692857011d47b2592ff4d71d988b471c9b038b117c6a8374cb8"
+    },
+    {
+      "path": "apps/web/src/context/FavoritesContext.tsx",
+      "before": "549b725ceaf6a8e03a09122ad8903c7bd61c3f8d98abf2fe370ade82fae909c7",
+      "after": "549b725ceaf6a8e03a09122ad8903c7bd61c3f8d98abf2fe370ade82fae909c7"
+    },
+    {
+      "path": "apps/web/src/context/RegistrationContext.tsx",
+      "before": "53949638c8b7cea446a1940633b597bc79846061c5e78f1bf71b74327e37e436",
+      "after": "53949638c8b7cea446a1940633b597bc79846061c5e78f1bf71b74327e37e436"
+    },
+    {
+      "path": "apps/web/src/context/AuthContext.tsx",
+      "before": "6f577ab45f822327dfd8453ab155d184eb1e14837ffc042ef872f5a83a20170d",
+      "after": "6f577ab45f822327dfd8453ab155d184eb1e14837ffc042ef872f5a83a20170d"
+    },
+    {
+      "path": "apps/web/src/app/favicon.ico",
+      "before": "86828b8ffa2aa736330c1d23e3e1ffeec7d721176651846cf9d76e08b0794107",
+      "after": "86828b8ffa2aa736330c1d23e3e1ffeec7d721176651846cf9d76e08b0794107"
+    },
+    {
+      "path": "apps/web/src/app/apple-icon.svg",
+      "before": "ae8f1ab434b1b57337a7e68b510c3e586c8b42ca54d94ad5eaafe768d372ff2b",
+      "after": "ae8f1ab434b1b57337a7e68b510c3e586c8b42ca54d94ad5eaafe768d372ff2b"
+    },
+    {
+      "path": "apps/web/src/app/icon.svg",
+      "before": "ae8f1ab434b1b57337a7e68b510c3e586c8b42ca54d94ad5eaafe768d372ff2b",
+      "after": "ae8f1ab434b1b57337a7e68b510c3e586c8b42ca54d94ad5eaafe768d372ff2b"
+    },
+    {
+      "path": "apps/web/src/app/layout.tsx",
+      "before": "6ed9e45483f41aaa74af0924f1d32718a0a8addd55ea8322c9eef5431a203ef4",
+      "after": "6ed9e45483f41aaa74af0924f1d32718a0a8addd55ea8322c9eef5431a203ef4"
+    },
+    {
+      "path": "apps/web/src/app/error.tsx",
+      "before": "c47bab08ad81275d71e322b8686a6fd22c8f2b5be6201e1585d5a1b87bab5e41",
+      "after": "c47bab08ad81275d71e322b8686a6fd22c8f2b5be6201e1585d5a1b87bab5e41"
+    },
+    {
+      "path": "apps/web/src/app/information.module.css",
+      "before": "f22ff58e8fffa984d27572bedf33823388aedcd64d8793ecf8351bae74c4c541",
+      "after": "f22ff58e8fffa984d27572bedf33823388aedcd64d8793ecf8351bae74c4c541"
+    },
+    {
+      "path": "apps/web/src/app/page.tsx",
+      "before": "6aebdeba75ace0476fc029a59813d73b3fccb96a3598f89c69867acd47df97ae",
+      "after": "6aebdeba75ace0476fc029a59813d73b3fccb96a3598f89c69867acd47df97ae"
+    },
+    {
+      "path": "apps/web/src/app/globals.css",
+      "before": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+      "after": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651"
+    },
+    {
+      "path": "apps/web/src/app/not-found.tsx",
+      "before": "eaaf51097ae1adeef858dab0adfd193b2c968204a83c171e15b3d1e2443fe9a8",
+      "after": "eaaf51097ae1adeef858dab0adfd193b2c968204a83c171e15b3d1e2443fe9a8"
+    },
+    {
+      "path": "apps/web/src/components/BackButton.tsx",
+      "before": "3cac5782b46c9448976164bc678b732e7186659df8436db9644bfb5ed4d6ca7a",
+      "after": "3cac5782b46c9448976164bc678b732e7186659df8436db9644bfb5ed4d6ca7a"
+    },
+    {
+      "path": "apps/web/src/components/StartChatButton.tsx",
+      "before": "7464ad328b0f65099a183a1fd8531992bfbdc4febf6445101e4e110d94b18ded",
+      "after": "7464ad328b0f65099a183a1fd8531992bfbdc4febf6445101e4e110d94b18ded"
+    },
+    {
+      "path": "apps/web/src/components/BrandMark.tsx",
+      "before": "a14becaa60b3a56b486864be60df49c4c943d0959bfe0cc82fb818645324c0b3",
+      "after": "a14becaa60b3a56b486864be60df49c4c943d0959bfe0cc82fb818645324c0b3"
+    },
+    {
+      "path": "apps/web/src/components/CreateOrderButton.tsx",
+      "before": "04143bf96d3e7ad2c1f0847da8cb87f517594eb3d40d814df686e906e69757e2",
+      "after": "04143bf96d3e7ad2c1f0847da8cb87f517594eb3d40d814df686e906e69757e2"
+    },
+    {
+      "path": "apps/web/src/components/BottomNav.tsx",
+      "before": "876edef774857568d4ab0977ab367af72c96160ca9e6d1041030c73437d74394",
+      "after": "876edef774857568d4ab0977ab367af72c96160ca9e6d1041030c73437d74394"
+    },
+    {
+      "path": "apps/web/src/components/AppShell.tsx",
+      "before": "a2d543ab769f06cd168ab3580c0a888dc501923f4f8c366950921330651ca227",
+      "after": "a2d543ab769f06cd168ab3580c0a888dc501923f4f8c366950921330651ca227"
+    },
+    {
+      "path": "apps/web/src/components/AdditionalServicesSelector.tsx",
+      "before": "4102d028fff55f086ed65ef81d24196637b85b4e608a85d8bcebe84e6351aab0",
+      "after": "4102d028fff55f086ed65ef81d24196637b85b4e608a85d8bcebe84e6351aab0"
+    },
+    {
+      "path": "apps/web/src/components/Sidebar.tsx",
+      "before": "bbe02c1275f6b49e42e296153989943bf6b346974c1c787a1fcfd21d76210fd5",
+      "after": "bbe02c1275f6b49e42e296153989943bf6b346974c1c787a1fcfd21d76210fd5"
+    },
+    {
+      "path": "apps/web/src/components/ServiceCard.tsx",
+      "before": "e591045b3fb372ac1895b72aa65a9d91f4429585d1d4e1627f12f1bdfe60f112",
+      "after": "e591045b3fb372ac1895b72aa65a9d91f4429585d1d4e1627f12f1bdfe60f112"
+    },
+    {
+      "path": "apps/web/src/components/ServiceFavoriteButton.tsx",
+      "before": "dd019ba147ed34a6472edee767794e14c6aa75d55374469191d964e54754049a",
+      "after": "dd019ba147ed34a6472edee767794e14c6aa75d55374469191d964e54754049a"
+    },
+    {
+      "path": "apps/web/src/lib/data-mode.ts",
+      "before": "587caaa67771825248297cb7275588211ebd7f42de129baeb7f7e70f471e83c7",
+      "after": "587caaa67771825248297cb7275588211ebd7f42de129baeb7f7e70f471e83c7"
+    },
+    {
+      "path": "apps/web/src/data/services.ts",
+      "before": "a7f9227bcc0fcd1fcdca546bc26b75cf0fd743a032901cd3f50354ede17fe26c",
+      "after": "a7f9227bcc0fcd1fcdca546bc26b75cf0fd743a032901cd3f50354ede17fe26c"
+    },
+    {
+      "path": "apps/web/src/lib/registration/draft.ts",
+      "before": "7a99bf44afddd8eaced3e66ae34a6d244c54e89d12db9dacd5757adbdb19e3d6",
+      "after": "7a99bf44afddd8eaced3e66ae34a6d244c54e89d12db9dacd5757adbdb19e3d6"
+    },
+    {
+      "path": "apps/web/src/lib/catalog/search.ts",
+      "before": "0fb928cf91b21c4a398b92112377dc489d60a1d6d70346a65385fed432e9a181",
+      "after": "0fb928cf91b21c4a398b92112377dc489d60a1d6d70346a65385fed432e9a181"
+    },
+    {
+      "path": "apps/web/src/lib/telegram/profile-prefill.ts",
+      "before": "751921dba63b2f83955cc3b0776794d62799cc512e830e911be6771bd9816e07",
+      "after": "751921dba63b2f83955cc3b0776794d62799cc512e830e911be6771bd9816e07"
+    },
+    {
+      "path": "apps/web/src/lib/telegram/campus-platform.ts",
+      "before": "49ad620bee3a18cac0cc125a7ebbb5bf307767b17a0f34e1586dbd7dee259a6b",
+      "after": "49ad620bee3a18cac0cc125a7ebbb5bf307767b17a0f34e1586dbd7dee259a6b"
+    },
+    {
+      "path": "apps/web/src/lib/api/client.ts",
+      "before": "435cb14cc631f3e002c49132a46f990c6b33a3ab54b979987a94ca3dfc2e299d",
+      "after": "435cb14cc631f3e002c49132a46f990c6b33a3ab54b979987a94ca3dfc2e299d"
+    },
+    {
+      "path": "apps/web/src/lib/api/auth.ts",
+      "before": "a7406fcd0cf2f2c11e1486d883cdf517961dc7eddcefdf700bca0083e1756a0b",
+      "after": "a7406fcd0cf2f2c11e1486d883cdf517961dc7eddcefdf700bca0083e1756a0b"
+    },
+    {
+      "path": "apps/web/src/lib/api/catalog.ts",
+      "before": "da93e9fcf3da6608151df8e689d54c49e27e8cd65691b8d255aabef06ceaafa1",
+      "after": "da93e9fcf3da6608151df8e689d54c49e27e8cd65691b8d255aabef06ceaafa1"
+    },
+    {
+      "path": "apps/web/src/lib/api/registration.ts",
+      "before": "9b858570702381b7e75ef7baff7b2cf9117396a086d1bd7bd38f75682924508b",
+      "after": "9b858570702381b7e75ef7baff7b2cf9117396a086d1bd7bd38f75682924508b"
+    },
+    {
+      "path": "apps/web/src/components/studly/PageHeading.tsx",
+      "before": "00e39a29bc8a836a0b8a307da5aff023cc00e03a17ccc99bb4b5c1f1f16d0fe2",
+      "after": "00e39a29bc8a836a0b8a307da5aff023cc00e03a17ccc99bb4b5c1f1f16d0fe2"
+    },
+    {
+      "path": "apps/web/src/components/studly/campus.css",
+      "before": "cd9b89da4bb467bb18f09648b9c8f7eae784679f35cf97e9958a7cd41260c075",
+      "after": "cd9b89da4bb467bb18f09648b9c8f7eae784679f35cf97e9958a7cd41260c075"
+    },
+    {
+      "path": "apps/web/src/components/studly/Icon.tsx",
+      "before": "26358f1c4715461a37af6e511ef1a1637217ff1226713ce572a2d4caddee580f",
+      "after": "26358f1c4715461a37af6e511ef1a1637217ff1226713ce572a2d4caddee580f"
+    },
+    {
+      "path": "apps/web/src/components/studly/CampusServiceCard.tsx",
+      "before": "72bfbeca4af42a6649e07d29eb65353702b8dbf03c2f3dda343ed4d5a7affce6",
+      "after": "72bfbeca4af42a6649e07d29eb65353702b8dbf03c2f3dda343ed4d5a7affce6"
+    },
+    {
+      "path": "apps/web/src/components/studly/primitives.tsx",
+      "before": "d0d3d442df258fd34f4ed87c2fa18571b93cfcedbae31c7614a334ad4fb55090",
+      "after": "d0d3d442df258fd34f4ed87c2fa18571b93cfcedbae31c7614a334ad4fb55090"
+    },
+    {
+      "path": "apps/web/src/components/studly/tokens.css",
+      "before": "9bdb9f320b1c4348f8f7951cf549bdfe9b330e37504a50c35663a25e34b25fe1",
+      "after": "9bdb9f320b1c4348f8f7951cf549bdfe9b330e37504a50c35663a25e34b25fe1"
+    },
+    {
+      "path": "apps/web/src/components/studly/campus-pages.css",
+      "before": "e5bc1d253c6a1db6c79ae5e2f4a7425c7d98910729017a3fac133fa9972b71df",
+      "after": "e5bc1d253c6a1db6c79ae5e2f4a7425c7d98910729017a3fac133fa9972b71df"
+    },
+    {
+      "path": "apps/web/src/components/registration/RegistrationShell.tsx",
+      "before": "6c0c37188ba64ec5012ea38410261f646d55e6bc6f212280fecf709fb593a769",
+      "after": "6c0c37188ba64ec5012ea38410261f646d55e6bc6f212280fecf709fb593a769"
+    },
+    {
+      "path": "apps/web/src/components/registration/registration.module.css",
+      "before": "6bab966eca3f962237a9a79f20f1a52e2a435e117420c988392a81348d7c7667",
+      "after": "6bab966eca3f962237a9a79f20f1a52e2a435e117420c988392a81348d7c7667"
+    },
+    {
+      "path": "apps/web/src/components/registration/ProfileForm.tsx",
+      "before": "5348a2f9a61a75737bbf17e6fd167f6ac06c1b526de91312beb654368173bce9",
+      "after": "5348a2f9a61a75737bbf17e6fd167f6ac06c1b526de91312beb654368173bce9"
+    },
+    {
+      "path": "apps/web/src/components/registration/PerformerForm.tsx",
+      "before": "60e23f569510ab7060c680b27eccd8fa1d655dc570b8dcfdf0a7e0bda7e5a47c",
+      "after": "60e23f569510ab7060c680b27eccd8fa1d655dc570b8dcfdf0a7e0bda7e5a47c"
+    },
+    {
+      "path": "apps/web/src/components/registration/SpecializationPicker.tsx",
+      "before": "c813cfb138e7e91a990d33d7609324d0ba0a0572511fd60452972dad8e1d1a7a",
+      "after": "c813cfb138e7e91a990d33d7609324d0ba0a0572511fd60452972dad8e1d1a7a"
+    },
+    {
+      "path": "apps/web/src/components/catalog/LiveService.tsx",
+      "before": "253bed6c7bca5c7cf4ec40f24279fbd55da470739fe9b0eabf52a98f328eaa37",
+      "after": "253bed6c7bca5c7cf4ec40f24279fbd55da470739fe9b0eabf52a98f328eaa37"
+    },
+    {
+      "path": "apps/web/src/components/catalog/service-detail.css",
+      "before": "b6bcd7a2778f09f060f119afe645dfac3eb4538ed8c5e15a1118849225855e6a",
+      "after": "b6bcd7a2778f09f060f119afe645dfac3eb4538ed8c5e15a1118849225855e6a"
+    },
+    {
+      "path": "apps/web/src/components/catalog/LiveSearch.tsx",
+      "before": "bcbdd5e3e346c76214a6adb02d2835c49ee5e9f3de889ca46ac8aa18bad5ee56",
+      "after": "bcbdd5e3e346c76214a6adb02d2835c49ee5e9f3de889ca46ac8aa18bad5ee56"
+    },
+    {
+      "path": "apps/web/src/components/catalog/SearchFilters.tsx",
+      "before": "7ac5efee617470198042cd7a4557823409bd3aa82fc4b94a7ce462d2aacf7c0c",
+      "after": "7ac5efee617470198042cd7a4557823409bd3aa82fc4b94a7ce462d2aacf7c0c"
+    },
+    {
+      "path": "apps/web/src/components/catalog/ServiceDetail.tsx",
+      "before": "f03f000ffbfa7410567f07340621581c1d821d653dd6e47f617f0b6a550c6f6b",
+      "after": "f03f000ffbfa7410567f07340621581c1d821d653dd6e47f617f0b6a550c6f6b"
+    },
+    {
+      "path": "apps/web/src/components/catalog/ServiceList.tsx",
+      "before": "225a91bb3c6c87d5153f9217c15a7db9a87671f7eae13faf79aa8ea9da9e361a",
+      "after": "225a91bb3c6c87d5153f9217c15a7db9a87671f7eae13faf79aa8ea9da9e361a"
+    },
+    {
+      "path": "apps/web/src/components/catalog/ApiState.tsx",
+      "before": "fde57207c23ce28cf1ed9d6f1a1a64a5916768580e43d5f124c65407dce90b33",
+      "after": "fde57207c23ce28cf1ed9d6f1a1a64a5916768580e43d5f124c65407dce90b33"
+    },
+    {
+      "path": "apps/web/src/components/catalog/LivePerformer.tsx",
+      "before": "09ed3335bc8d65beb4e4c9f8891b9e788c412e07174dbe4e2257838f234dcf7d",
+      "after": "09ed3335bc8d65beb4e4c9f8891b9e788c412e07174dbe4e2257838f234dcf7d"
+    },
+    {
+      "path": "apps/web/src/components/catalog/LiveFavorites.tsx",
+      "before": "12ce72c74e1d70373b1374e0bb78320346d7a562076818f702d98f2d36450568",
+      "after": "12ce72c74e1d70373b1374e0bb78320346d7a562076818f702d98f2d36450568"
+    },
+    {
+      "path": "apps/web/src/app/favorites/page.tsx",
+      "before": "b1ef3adb5067d453dcacc337d0749a1ddde4823bd25e3046cae82d0b8516b4ba",
+      "after": "b1ef3adb5067d453dcacc337d0749a1ddde4823bd25e3046cae82d0b8516b4ba"
+    },
+    {
+      "path": "apps/web/src/app/about/page.tsx",
+      "before": "45e4100277aefa33ccadd1b98e2b2724e214fdb9786f60ce6ee35c023d281645",
+      "after": "45e4100277aefa33ccadd1b98e2b2724e214fdb9786f60ce6ee35c023d281645"
+    },
+    {
+      "path": "apps/web/src/app/welcome/welcome.module.css",
+      "before": "8d16ec109c1631019d60fd139798703e145ea5392ccee8dda7cb086058cec090",
+      "after": "8d16ec109c1631019d60fd139798703e145ea5392ccee8dda7cb086058cec090"
+    },
+    {
+      "path": "apps/web/src/app/welcome/page.tsx",
+      "before": "64b52890e33835eddd8efd5e7c9cae7df8e713cdab3f24f73df0bb29d3827acb",
+      "after": "64b52890e33835eddd8efd5e7c9cae7df8e713cdab3f24f73df0bb29d3827acb"
+    },
+    {
+      "path": "apps/web/src/app/search/page.tsx",
+      "before": "a89f411c0ebc3060da745f45e9bfdf6cb7c72c88f3e3540468ff48634de9a6d1",
+      "after": "a89f411c0ebc3060da745f45e9bfdf6cb7c72c88f3e3540468ff48634de9a6d1"
+    },
+    {
+      "path": "apps/web/src/app/safety/page.tsx",
+      "before": "abdb9ff2dcd1d36503c6c2b878aefadec7984f25b4bc2722feb503fe546b8056",
+      "after": "abdb9ff2dcd1d36503c6c2b878aefadec7984f25b4bc2722feb503fe546b8056"
+    },
+    {
+      "path": "apps/web/src/app/register/layout.tsx",
+      "before": "058b1225187c25f5e5defb72f9a6b24d9fdbe58f63c5379d2bc3c0fe2e2d1ae4",
+      "after": "058b1225187c25f5e5defb72f9a6b24d9fdbe58f63c5379d2bc3c0fe2e2d1ae4"
+    },
+    {
+      "path": "apps/web/src/app/profile/page.tsx",
+      "before": "7e657d2dd16c1e32a273d04c45b380eea17af23a5cf4e1d92e9ac65dd1bab242",
+      "after": "7e657d2dd16c1e32a273d04c45b380eea17af23a5cf4e1d92e9ac65dd1bab242"
+    },
+    {
+      "path": "apps/web/src/app/support/page.tsx",
+      "before": "053d9454bf7f0091d1c286a9ae4b9a9f1d5e2dc9e02ca2082f37088b3c02f46e",
+      "after": "053d9454bf7f0091d1c286a9ae4b9a9f1d5e2dc9e02ca2082f37088b3c02f46e"
+    },
+    {
+      "path": "apps/web/src/app/create-service/create-service.module.css",
+      "before": "cb1c69e0688077cbc774c16f65b16b3cd762b8dcb21c8aad2b46105c89bd7585",
+      "after": "cb1c69e0688077cbc774c16f65b16b3cd762b8dcb21c8aad2b46105c89bd7585"
+    },
+    {
+      "path": "apps/web/src/app/create-service/page.tsx",
+      "before": "529ee4c78fa8b7769819ebb3ae1c715ad618a357f29f8be3c95294dab9081cb6",
+      "after": "529ee4c78fa8b7769819ebb3ae1c715ad618a357f29f8be3c95294dab9081cb6"
+    },
+    {
+      "path": "apps/web/src/app/rules/page.tsx",
+      "before": "c4a971555209f33398f311d75ce2856ffaeebf06c5960545e18e5bd2f336f8e1",
+      "after": "c4a971555209f33398f311d75ce2856ffaeebf06c5960545e18e5bd2f336f8e1"
+    },
+    {
+      "path": "apps/web/src/app/notifications/page.tsx",
+      "before": "bff01eb9dcb7898a7744a8eca8ccbac80eab04a2675b5717c339a4fd8614a25e",
+      "after": "bff01eb9dcb7898a7744a8eca8ccbac80eab04a2675b5717c339a4fd8614a25e"
+    },
+    {
+      "path": "apps/web/src/app/service/[id]/layout.tsx",
+      "before": "7f1be9913f6c457810dbe2162f4256db5e608bb2441d38fa2de6113137a2bb31",
+      "after": "7f1be9913f6c457810dbe2162f4256db5e608bb2441d38fa2de6113137a2bb31"
+    },
+    {
+      "path": "apps/web/src/app/service/[id]/page.tsx",
+      "before": "3d3e80a80d3ef2c07b52fe7247fa92445b8aa20e03572a048218c23f86fe5166",
+      "after": "3d3e80a80d3ef2c07b52fe7247fa92445b8aa20e03572a048218c23f86fe5166"
+    },
+    {
+      "path": "apps/web/src/app/orders/[id]/additional-payment/page.tsx",
+      "before": "47d79901650e2f0a18edab01583824f094752bac305d1d847a56a94db0ec737a",
+      "after": "47d79901650e2f0a18edab01583824f094752bac305d1d847a56a94db0ec737a"
+    },
+    {
+      "path": "apps/web/src/app/chats/[id]/page.tsx",
+      "before": "7416fa8dad606814f8c9d08cb0a5f4362085f5d45efd13934a0d0cdef2fa0a4a",
+      "after": "7416fa8dad606814f8c9d08cb0a5f4362085f5d45efd13934a0d0cdef2fa0a4a"
+    },
+    {
+      "path": "apps/web/src/app/profile/[id]/page.tsx",
+      "before": "8277836992be945ff2458163634f1c4d5621bc25d12b74ab33b29352c151115c",
+      "after": "8277836992be945ff2458163634f1c4d5621bc25d12b74ab33b29352c151115c"
+    },
+    {
+      "path": "apps/web/src/app/register/performer/page.tsx",
+      "before": "350e5fa4045d4312b041fff825e0bb30e04f1afcfd9530dcad2bf88ab941cc2e",
+      "after": "350e5fa4045d4312b041fff825e0bb30e04f1afcfd9530dcad2bf88ab941cc2e"
+    },
+    {
+      "path": "apps/web/src/app/register/roles/page.tsx",
+      "before": "13f9f966d25ff7b67957100ac7d1c09e0b2b266faec0c9da649f2c57c8401689",
+      "after": "13f9f966d25ff7b67957100ac7d1c09e0b2b266faec0c9da649f2c57c8401689"
+    },
+    {
+      "path": "apps/web/src/app/register/profile/page.tsx",
+      "before": "796b3583248b3f9b5b382f2ab5806cec3adc3a7e764c8557ad0332759abf5ec6",
+      "after": "796b3583248b3f9b5b382f2ab5806cec3adc3a7e764c8557ad0332759abf5ec6"
+    },
+    {
+      "path": "apps/web/src/app/category/[slug]/page.tsx",
+      "before": "00ab64bceec43472a2d285b0f56604774c34f5389a0bfd28eded8de62ef282d8",
+      "after": "00ab64bceec43472a2d285b0f56604774c34f5389a0bfd28eded8de62ef282d8"
+    },
+    {
+      "path": "apps/web/tests/campus-platform.test.cjs",
+      "before": "afd4ce3f7e2b675828fdcfea534a4cd3b4c1f3421bf55123345f9716d013c414",
+      "after": "afd4ce3f7e2b675828fdcfea534a4cd3b4c1f3421bf55123345f9716d013c414"
+    },
+    {
+      "path": "apps/web/tests/registration.test.ts",
+      "before": "5db0c5090ef827f9f6fb5fe8402d7e07d3bf4c6b77a05ac67736783df410a2bf",
+      "after": "5db0c5090ef827f9f6fb5fe8402d7e07d3bf4c6b77a05ac67736783df410a2bf"
+    },
+    {
+      "path": "apps/web/tests/auth.test.cjs",
+      "before": "6f8289594828d0e0a34dbc31fa357a156bd0269f4c96afb0399cd5e6ef32df65",
+      "after": "6f8289594828d0e0a34dbc31fa357a156bd0269f4c96afb0399cd5e6ef32df65"
+    },
+    {
+      "path": "apps/web/tests/ui-fixture.cjs",
+      "before": "15ef37d6a4d31597d43ece771ccb38deeb7cc7398e72c346b7ad62ea404b81c3",
+      "after": "15ef37d6a4d31597d43ece771ccb38deeb7cc7398e72c346b7ad62ea404b81c3"
+    },
+    {
+      "path": "apps/web/tests/search.test.cjs",
+      "before": "1c3f03dc957d85543aa2ec1aa4636e533630000c3a3890174ea90eef9e0a3057",
+      "after": "1c3f03dc957d85543aa2ec1aa4636e533630000c3a3890174ea90eef9e0a3057"
+    },
+    {
+      "path": "apps/web/tests/dev-launcher.test.cjs",
+      "before": "6231b869ccd6dfc864673df399beefc39dbb71af8e82ea30e007a628e1ddc701",
+      "after": "6231b869ccd6dfc864673df399beefc39dbb71af8e82ea30e007a628e1ddc701"
+    },
+    {
+      "path": "package.json",
+      "before": "6e0a9cdc0ffe4a7a8731ab16c26886956d43f6f5b9313292d84c2282a6f89452",
+      "after": "6e0a9cdc0ffe4a7a8731ab16c26886956d43f6f5b9313292d84c2282a6f89452"
+    },
+    {
+      "path": "package-lock.json",
+      "before": "8b39b45e577b7f2ab0eed08aeb038f8457d35ec5e0542f40e0e534542df864eb",
+      "after": "8b39b45e577b7f2ab0eed08aeb038f8457d35ec5e0542f40e0e534542df864eb"
+    },
+    {
+      "path": "apps/web/package.json",
+      "before": "c80dec6bba521b95189f8dcfa013ccdfab6aff2e73fbb2e2388a49c9a59669cf",
+      "after": "c80dec6bba521b95189f8dcfa013ccdfab6aff2e73fbb2e2388a49c9a59669cf"
+    },
+    {
+      "path": "apps/web/next.config.ts",
+      "before": "f18b6c1f3aba0eb649f4c393536dbb54d2451672a6097a9172d34bcdc7f1f3cf",
+      "after": "f18b6c1f3aba0eb649f4c393536dbb54d2451672a6097a9172d34bcdc7f1f3cf"
+    },
+    {
+      "path": "documents/project/для отчетов/README.md",
+      "before": "14c467ea792a0dc9a11882e32674847b7f243061725bc52f5d1ff7c9603feac8",
+      "after": "14c467ea792a0dc9a11882e32674847b7f243061725bc52f5d1ff7c9603feac8"
+    },
+    {
+      "path": "documents/project/для отчетов/frontend/redesign/README.md",
+      "before": "4e69c358cbcd2ea727b3c5dbe8579b35d32831a1eb95dd8704b5b093fb8ba03c",
+      "after": "4e69c358cbcd2ea727b3c5dbe8579b35d32831a1eb95dd8704b5b093fb8ba03c"
+    }
+  ],
+  "new": [
+    {
+      "path": "apps/web/src/components/studly/DemoOrderPresentation.tsx",
+      "sha256": "07492c3c07a7dabc28bc225b4f25e36230003bde2f4652e43c46e90abf25d429"
+    },
+    {
+      "path": "apps/web/tests/campus-skip-link.test.cjs",
+      "sha256": "352baa4833930c4a23a1bf2c7144432d381a9e8fffbfeb7f8b1cf8fbaf526056"
+    },
+    {
+      "path": "apps/web/tests/demo-order-rendering.test.cjs",
+      "sha256": "86cd29190adb026406c6e7f660d07e0c8d5cf9bc6881227e8213ee29cefefc6a"
+    }
+  ]
+}

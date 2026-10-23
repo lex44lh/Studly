@@ -38,7 +38,7 @@ export default function ProfileForm() {
           }}>Удалить аватар</button>}
         </div>
       </div>
-      <p id="avatar-hint" className={styles.hint}>PNG, JPEG или WebP, до 5 МБ. {demoMode ? "Изображение остаётся только в этой вкладке." : "Изображение сохраняется при продолжении."}</p>
+      <p id="avatar-hint" className={styles.hint}>PNG, JPEG или WebP, до 5 МБ. {demoMode ? "Изображение сохраняется локально в этом браузере." : "Изображение сохраняется при продолжении."}</p>
       <p id="avatar-error" className={styles.error} role="alert">{avatarError}</p>
     </div>
     <div className={styles.field}>

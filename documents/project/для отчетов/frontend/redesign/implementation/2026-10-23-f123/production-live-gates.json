@@ -1,0 +1,9 @@
+{
+  "capturedAt": "2026-10-23T17:37:54+03:00",
+  "mode": "live",
+  "adminFlagExplicitlyEnabledForNegativeTest": true,
+  "adminClosed": true,
+  "registrationGateClosed": true,
+  "serverStarted": false,
+  "djangoTested": false
+}

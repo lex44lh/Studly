@@ -1,0 +1,182 @@
+[
+  {
+    "label": "home",
+    "route": "/",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "search",
+    "route": "/search",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "service",
+    "route": "/service/101",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "category",
+    "route": "/category/programming",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "favorites",
+    "route": "/favorites",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "performer",
+    "route": "/profile/101",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "profile",
+    "route": "/profile",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "orders",
+    "route": "/orders",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "order-detail",
+    "route": "/orders/1792611041164",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "chats",
+    "route": "/chats",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "chat-detail",
+    "route": "/chats/1792611041165",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "payment",
+    "route": "/orders/1792611041164/additional-payment?chatId=1792611041165&serviceId=urgent",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "create-service",
+    "route": "/create-service",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "notifications",
+    "route": "/notifications",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "welcome",
+    "route": "/welcome",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "register-roles",
+    "route": "/register/roles",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "register-profile",
+    "route": "/register/profile",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "register-performer",
+    "route": "/register/performer",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "about",
+    "route": "/about",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "rules",
+    "route": "/rules",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "safety",
+    "route": "/safety",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "support",
+    "route": "/support",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "not-found",
+    "route": "/no-such-studly-page",
+    "status": 404,
+    "expected": 404
+  },
+  {
+    "label": "category-homework",
+    "route": "/category/homework",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "category-courseworks",
+    "route": "/category/courseworks",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "category-tutoring",
+    "route": "/category/tutoring",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "category-engineering",
+    "route": "/category/engineering",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "category-presentations",
+    "route": "/category/presentations",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "category-reports",
+    "route": "/category/reports",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "label": "category-video",
+    "route": "/category/video",
+    "status": 200,
+    "expected": 200
+  }
+]

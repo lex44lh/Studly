@@ -1,0 +1,60 @@
+.page { max-width: 1120px; margin: 0 auto; min-width: 0; overflow-wrap: anywhere; }
+.heading { margin-bottom: 24px; }
+.eyebrow { margin: 0 0 12px; color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.heading h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); font-weight: 700; line-height: 1.1; letter-spacing: -.045em; }
+.heading > p:last-child { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 0; }
+.notice { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; margin: 0 0 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--accent-soft); color: var(--accent-ink); font-size: 13px; line-height: 1.6; }
+.notice svg { flex-shrink: 0; margin-top: 1px; }
+.layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.formColumn { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.panel { min-width: 0; border: 1px solid var(--line); border-radius: 18px; padding: 26px; background: var(--surface); }
+.sectionHeading { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 25px; }
+.sectionHeading > span { display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 9px; width: 34px; height: 34px; flex-shrink: 0; background: var(--surface-2); color: var(--muted); font-size: 11px; font-weight: 650; }
+.sectionHeading h2, .summary h2 { font-size: 19px; line-height: 1.25; font-weight: 650; letter-spacing: -.02em; margin: 0 0 6px; }
+.sectionHeading p { font-size: 12px; line-height: 1.55; color: var(--muted); margin: 0; }
+.fields { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.field label { font-size: 13px; font-weight: 600; }
+.field label > span { color: var(--accent-ink); }
+.page .field :is(input, select, textarea) { display: block; width: 100%; min-width: 0; box-sizing: border-box; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 10px; min-height: 48px; padding: 11px 12px; font: inherit; font-size: 16px; line-height: 1.5; scroll-margin-block: 120px; }
+.field select { padding-right: 24px; text-overflow: ellipsis; }
+.field textarea { min-height: 120px; resize: vertical; }
+.field :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
+.page .field [aria-invalid="true"] { border-color: var(--campus-error, var(--accent-ink)); }
+.twoColumns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.error { margin: 0; color: var(--campus-error, var(--text)); border-left: 3px solid var(--campus-error, var(--accent-ink)); padding-left: 8px; font-size: 12px; line-height: 1.5; }
+.upload { display: flex; align-items: center; flex-direction: column; gap: 12px; padding: 25px 16px; border: 1px dashed var(--line); border-radius: 12px; background: var(--surface-2); color: var(--muted); }
+.upload > svg { width: 28px; height: 28px; color: var(--accent-ink); }
+.upload label { color: var(--text); font-size: 14px; font-weight: 600; }
+.page .upload input { width: 100%; max-width: 300px; min-height: 44px; color: var(--muted); font: inherit; font-size: 12px; }
+.upload input::file-selector-button { min-height: 40px; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 9px; padding: 8px 12px; margin-right: 8px; font: inherit; font-weight: 600; cursor: pointer; }
+.fileName { margin: 12px 0; font-size: 12px; color: var(--muted); }
+.imagePreview { margin-top: 16px; }
+.imagePreview img { width: 100%; max-height: 250px; object-fit: cover; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 8px; }
+.extra { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0,1fr); gap: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+.page .extra .remove { grid-column: 1 / -1; }
+.page .primary, .page .secondary, .page .remove { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); color: var(--text); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.page .primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+.page .remove { background: var(--surface); color: var(--muted); }
+.summary { display: flex; flex-direction: column; gap: 20px; min-width: 0; position: sticky; top: 24px; }
+.summaryIcon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid var(--line); border-radius: 13px; background: var(--accent-soft); color: var(--accent-ink); margin-bottom: 20px; }
+.hint { color: var(--muted); font-size: 13px; line-height: 1.65; margin: 10px 0 22px; }
+.actions { display: flex; flex-direction: column; gap: 10px; }
+.caption { color: var(--muted); font-size: 11px; text-align: center; line-height: 1.6; margin: 12px 0 0; }
+.preview { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); overflow: hidden; min-width: 0; }
+.previewCover { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--cover-a); color: var(--cover-a-ink); min-height: 170px; font-size: 12px; }
+.previewCover img { width: 100%; height: 180px; object-fit: cover; }
+.previewBody { padding: 22px; }
+.previewLabel { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 12px; }
+.previewPrice { margin: 0 0 8px; color: var(--accent-ink); font-size: 30px; line-height: 1.2; font-weight: 700; letter-spacing: -.04em; }
+.previewBody h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.025em; margin: 0 0 16px; }
+.previewMeta { display: flex; flex-direction: column; gap: 8px; border-block: 1px solid var(--line); padding-block: 14px; }
+.previewMeta span { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+.previewMeta svg { width: 16px; height: 16px; }
+.previewBody h4 { font-size: 13px; margin: 20px 0 8px; font-weight: 650; }
+.previewBody h4 + p { font-size: 13px; color: var(--muted); line-height: 1.65; white-space: pre-wrap; margin: 0; }
+.previewExtra { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; font-size: 12px; margin-top: 8px; }
+.page :is(button, input, textarea, select):focus-visible { outline: 3px solid var(--campus-focus); outline-offset: 3px; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0,1fr) minmax(0,.85fr); gap: 18px; } .panel { padding: 22px; } .twoColumns, .extra { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .heading h1 { font-size: 32px; } .heading > p:last-child { font-size: 14px; } .eyebrow { font-size: 10px; } .notice { font-size: 12px; padding: 12px 14px; margin-bottom: 22px; } .layout { grid-template-columns: 1fr; gap: 20px; } .summary { position: static; } .panel { padding: 22px 18px; } .sectionHeading { gap: 12px; margin-bottom: 22px; } .sectionHeading h2 { font-size: 18px; } .fields { gap: 20px; } .page .primary, .page .secondary, .page .remove { min-height: 50px; font-size: 14px; } }
+@media (max-width: 360px) { .panel { padding: 20px 14px; } .sectionHeading > span { width: 28px; height: 30px; } .sectionHeading h2 { font-size: 17px; } .upload { padding: 20px 12px; } }

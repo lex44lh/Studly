@@ -1,20 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { Icon } from "./studly/Icon";
 
 export default function BackButton() {
   const router = useRouter();
-
-  return (
-    <div
-      onClick={() => router.back()}
-      style={{
-        marginBottom: "16px",
-        cursor: "pointer",
-        fontWeight: 500,
-      }}
-    >
-      ← Назад
-    </div>
-  );
+  return <button type="button" className="page-back" onClick={() => router.back()}><Icon name="arrow" />Назад</button>;
 }

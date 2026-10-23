@@ -1,10 +1,14 @@
 "use client";
+import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
+import { ChatRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import BackButton from "@/components/BackButton";
 import ChatWindow from "@/components/ChatWindow";
+import { Icon } from "@/components/studly/Icon";
+import "@/components/studly/activity.css";
 
 type Chat = {
   id: number;
@@ -17,6 +21,8 @@ type Chat = {
 };
 
 export default function ChatPage() {
+  const workspace = useOptionalDemoWorkspace();
+  const canonical = workspace !== null;
   const params = useParams();
 
   const chatId = String(params.id);
@@ -29,7 +35,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     const saved =
-      demoMode ? localStorage.getItem("studly-chats") : null;
+      demoMode && !canonical ? localStorage.getItem("studly-chats") : null;
 
     if (!saved) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Finish the browser-only localStorage load after hydration.
@@ -54,43 +60,22 @@ export default function ChatPage() {
     }
 
     setLoading(false);
-  }, [chatId]);
+  }, [chatId, canonical]);
+
+  if (workspace) return <ChatRoute id={chatId}/>;
 
   if (loading) {
-    return (
-      <div>
-        <BackButton />
-        <p>Загрузка...</p>
-      </div>
-    );
+    return <div className="activity-page activity-page--chat"><BackButton /><div className="activity-empty" role="status" aria-busy="true"><span className="activity-empty-icon"><Icon name="chat" /></span><h1>Загрузка чата…</h1><p>Открываем Ваш диалог.</p></div></div>;
   }
 
   if (!chat) {
-    return (
-      <div>
-        <BackButton />
-
-        <h1>Чат не найден</h1>
-
-        <p>
-          Этот чат больше не существует.
-        </p>
-      </div>
-    );
+    return <div className="activity-page activity-page--chat"><BackButton /><div className="activity-empty"><span className="activity-empty-icon"><Icon name="chat" /></span><h1>Чат не найден</h1><p>Этот чат больше не существует.</p></div></div>;
   }
 
   return (
-    <div>
+    <div className="activity-page activity-page--chat">
       <BackButton />
-
-      <ChatWindow
-        chatId={String(chat.id)}
-        user={chat.performerName}
-        service={chat.serviceTitle}
-        orderId={
-          chat.orderId ?? null
-        }
-      />
+      <ChatWindow chatId={String(chat.id)} user={chat.performerName} service={chat.serviceTitle} orderId={chat.orderId ?? null} />
     </div>
   );
 }

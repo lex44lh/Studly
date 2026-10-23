@@ -1,9 +1,14 @@
 "use client";
+import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
+import { OrderRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import BackButton from "@/components/BackButton";
+import { DemoOrderStatus, demoPerformerName, demoPerformerInitial } from "@/components/studly/DemoOrderPresentation";
+import { Icon } from "@/components/studly/Icon";
+import "@/components/studly/activity.css";
 import type { AdditionalService } from "@/components/AdditionalServicesSelector";
 
 type Order = {
@@ -42,6 +47,8 @@ type Chat = {
 };
 
 export default function OrderPage() {
+  const workspace = useOptionalDemoWorkspace();
+  const canonical = workspace !== null;
   const params = useParams<{ id: string }>();
   const router = useRouter();
 
@@ -55,7 +62,7 @@ export default function OrderPage() {
 
   useEffect(() => {
     const saved =
-      demoMode ? localStorage.getItem("studly-orders") : null;
+      demoMode && !canonical ? localStorage.getItem("studly-orders") : null;
 
     if (!saved) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Finish the browser-only localStorage load after hydration.
@@ -78,7 +85,7 @@ export default function OrderPage() {
     }
 
     setLoading(false);
-  }, [id]);
+  }, [id, canonical]);
 
   const updateStatus = (
     status: Order["status"]
@@ -86,7 +93,7 @@ export default function OrderPage() {
     if (!order) return;
 
     const saved =
-      demoMode ? localStorage.getItem("studly-orders") : null;
+      demoMode && !canonical ? localStorage.getItem("studly-orders") : null;
 
     if (!saved) return;
 
@@ -221,281 +228,50 @@ export default function OrderPage() {
     );
   };
 
-  if (loading) {
-    return (
-      <div>
-        <BackButton />
+  if (workspace) return <OrderRoute id={String(id)}/>;
 
-        <p>
-          Загрузка заказа...
-        </p>
-      </div>
-    );
+  if (loading) {
+    return <div className="activity-page"><BackButton /><div className="activity-empty" role="status" aria-busy="true"><span className="activity-empty-icon"><Icon name="book" /></span><h1>Загрузка заказа…</h1><p>Открываем состав и ход работы.</p></div></div>;
   }
 
   if (!order) {
-    return (
-      <div>
-        <BackButton />
-
-        <h1>
-          Заказ не найден
-        </h1>
-
-        <p>
-          Такой заказ не найден в системе.
-        </p>
-      </div>
-    );
+    return <div className="activity-page"><BackButton /><div className="activity-empty"><span className="activity-empty-icon"><Icon name="book" /></span><h1>Заказ не найден</h1><p>Такой заказ не найден в системе.</p></div></div>;
   }
 
-  const statusLabels = {
-    PENDING: "🟡 Ожидает",
-    IN_PROGRESS: "🔵 В работе",
-    REVIEW: "🟣 На рассмотрении",
-    COMPLETED: "🟢 Завершён",
-  };
-
   return (
-    <div>
+    <div className="activity-page">
       <BackButton />
-
-      <h1>
-        {order.serviceTitle}
-      </h1>
-
-      <p>
-        Исполнитель:{" "}
-        {order.performerName}
-      </p>
-
-      <div
-        style={{
-          border: "1px solid #E5E7EB",
-          borderRadius: "12px",
-          padding: "14px",
-          marginTop: "20px",
-          marginBottom: "16px",
-        }}
-      >
-        <strong>
-          Состав заказа
-        </strong>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "12px",
-          }}
-        >
-          <span>
-            Основная услуга
-          </span>
-
-          <span>
-            {order.basePrice} ₽
-          </span>
-        </div>
-
-        {order.additionalServices?.map(
-          (service) => (
-            <div
-              key={service.id}
-              style={{
-                display: "flex",
-                justifyContent:
-                  "space-between",
-                gap: "12px",
-                marginTop: "8px",
-                color: "#4B5563",
-              }}
-            >
-              <span>
-                {service.title}
-              </span>
-
-              <span>
-                +{service.price} ₽
-              </span>
-            </div>
-          )
-        )}
-
-        <div
-          style={{
-            borderTop:
-              "1px solid #E5E7EB",
-            marginTop: "12px",
-            paddingTop: "12px",
-            display: "flex",
-            justifyContent:
-              "space-between",
-            fontSize: "18px",
-          }}
-        >
-          <strong>
-            Итого
-          </strong>
-
-          <strong
-            style={{
-              color: "#3547B8",
-            }}
-          >
-            {order.totalPrice} ₽
-          </strong>
-        </div>
-
-        <p
-          style={{
-            marginBottom: "0",
-            color: "#6B7280",
-            fontSize: "14px",
-          }}
-        >
-          Срок:{" "}
-          {order.totalDurationDays}{" "}
-          {order.totalDurationDays === 1
-            ? "день"
-            : order.totalDurationDays <
-              5
-            ? "дня"
-            : "дней"}
-        </p>
+      <header className="activity-header">
+        <div><p className="activity-kicker">Заказ № {order.id}</p><h1>{order.serviceTitle}</h1><div className="activity-person"><span className="activity-avatar" aria-hidden="true">{demoPerformerInitial(order.performerName)}</span><div><small>Исполнитель</small><strong>{demoPerformerName(order.performerName)}</strong></div></div></div>
+      </header>
+      <div className="activity-order-layout">
+        <section className="activity-panel" aria-labelledby="order-composition-title">
+          <h2 id="order-composition-title">Состав заказа</h2>
+          <div className="activity-line-item"><span>Основная услуга</span><strong>{order.basePrice} ₽</strong></div>
+          {order.additionalServices?.map((service) => <div key={service.id} className="activity-line-item"><span>{service.title}</span><span>+{service.price} ₽</span></div>)}
+          <div className="activity-line-item activity-line-item--total"><strong>Итого</strong><strong>{order.totalPrice} ₽</strong></div>
+          <p className="activity-duration"><Icon name="clock" />Срок: {order.totalDurationDays} {order.totalDurationDays === 1 ? "день" : order.totalDurationDays < 5 ? "дня" : "дней"}</p>
+        </section>
+        <section className="activity-panel" aria-labelledby="order-progress-title">
+          <h2 id="order-progress-title">Ход работы</h2>
+          <DemoOrderStatus status={order.status} />
+          <div className="activity-action-stack">
+            <button type="button" onClick={openChat} className="primary-btn"><Icon name="chat" />Открыть чат</button>
+            {order.status === "PENDING" && <button type="button" onClick={() => updateStatus("IN_PROGRESS")} className="secondary-btn">Принять заказ</button>}
+            {order.status === "IN_PROGRESS" && <button type="button" onClick={() => updateStatus("REVIEW")} className="secondary-btn">Работа выполнена</button>}
+            {order.status === "REVIEW" && <button type="button" onClick={() => updateStatus("COMPLETED")} className="secondary-btn">Всё в порядке</button>}
+            {order.status === "COMPLETED" && <button type="button" onClick={() => {
+              const saved = localStorage.getItem("studly-orders");
+              if (!saved) return;
+              const orders: Order[] = JSON.parse(saved);
+              const updatedOrders = orders.filter((item) => item.id !== order.id);
+              localStorage.setItem("studly-orders", JSON.stringify(updatedOrders));
+              router.push("/orders");
+            }} className="activity-danger">Удалить заказ</button>}
+          </div>
+          {demoMode && <p className="activity-note">Локальный демо-пример. Изменения сохраняются в этом браузере, реальные платежи не выполняются.</p>}
+        </section>
       </div>
-
-      <p>
-        Статус:{" "}
-        {statusLabels[order.status]}
-      </p>
-
-      <button
-        onClick={openChat}
-        style={{
-          width: "100%",
-          height: "52px",
-          border: "none",
-          borderRadius: "12px",
-          background: "#3547B8",
-          color: "#FFFFFF",
-          fontWeight: 600,
-          cursor: "pointer",
-          marginTop: "20px",
-          marginBottom: "12px",
-        }}
-      >
-        Открыть чат
-      </button>
-
-      {order.status === "PENDING" && (
-        <button
-          onClick={() =>
-            updateStatus("IN_PROGRESS")
-          }
-          style={{
-            width: "100%",
-            height: "52px",
-            border:
-              "1px solid #3547B8",
-            borderRadius: "12px",
-            background: "#FFFFFF",
-            color: "#3547B8",
-            fontWeight: 600,
-            cursor: "pointer",
-            marginBottom: "12px",
-          }}
-        >
-          Принять заказ
-        </button>
-      )}
-
-      {order.status === "IN_PROGRESS" && (
-        <button
-          onClick={() =>
-            updateStatus("REVIEW")
-          }
-          style={{
-            width: "100%",
-            height: "52px",
-            border:
-              "1px solid #3547B8",
-            borderRadius: "12px",
-            background: "#FFFFFF",
-            color: "#3547B8",
-            fontWeight: 600,
-            cursor: "pointer",
-            marginBottom: "12px",
-          }}
-        >
-          Работа выполнена
-        </button>
-      )}
-
-      {order.status === "REVIEW" && (
-        <button
-          onClick={() =>
-            updateStatus("COMPLETED")
-          }
-          style={{
-            width: "100%",
-            height: "52px",
-            border: "none",
-            borderRadius: "12px",
-            background: "#1B8A5A",
-            color: "#FFFFFF",
-            fontWeight: 600,
-            cursor: "pointer",
-          }}
-        >
-          Всё в порядке
-        </button>
-      )}
-
-      {order.status === "COMPLETED" && (
-        <button
-          onClick={() => {
-            const saved =
-              localStorage.getItem(
-                "studly-orders"
-              );
-
-            if (!saved) return;
-
-            const orders: Order[] =
-              JSON.parse(saved);
-
-            const updatedOrders =
-              orders.filter(
-                (item) =>
-                  item.id !== order.id
-              );
-
-            localStorage.setItem(
-              "studly-orders",
-              JSON.stringify(
-                updatedOrders
-              )
-            );
-
-            router.push("/orders");
-          }}
-          style={{
-            width: "100%",
-            height: "52px",
-            border:
-              "1px solid #DC2626",
-            borderRadius: "12px",
-            background: "#FFFFFF",
-            color: "#DC2626",
-            fontWeight: 600,
-            cursor: "pointer",
-            marginTop: "12px",
-          }}
-        >
-          Удалить заказ
-        </button>
-      )}
     </div>
   );
 }

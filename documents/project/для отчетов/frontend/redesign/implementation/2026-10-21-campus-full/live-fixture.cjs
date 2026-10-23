@@ -1,0 +1,12 @@
+// Read-only synthetic UI fixture. Not Django; never deploy with STUDLY.
+/* eslint-disable @typescript-eslint/no-require-imports -- Standalone QA fixture. */
+if(process.env.STUDLY_ALLOW_TEST_FIXTURE!=='1')throw new Error('Explicit test opt-in required');
+const http=require('node:http');
+const service=id=>({id,title:id===42?'Синтетическая консультация':'Проверочная услуга',description:'Только синтетический ответ для проверки UI.',price_amount:'1000.00',currency:'RUB',duration_days:3,performer:{id:7,name:'Тестовый исполнитель'},included:['Разбор вопросов'],is_demo:false});
+http.createServer((req,res)=>{const u=new URL(req.url,'http://localhost');res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store');const send=(v,status=200)=>{res.statusCode=status;res.end(JSON.stringify(v));};if(req.method!=='GET')return send({detail:'Read-only test fixture'},405);
+if(u.pathname==='/api/v1/auth/me/')return send({detail:'Guest'},403);
+if(u.pathname==='/api/v1/auth/options/')return send({telegram_mini_app:false,telegram_website:false});
+if(u.pathname==='/api/v1/performers/7/')return send({id:7,name:'Тестовый исполнитель',about:'Синтетический профиль без рейтинга и статистики.'});
+if(u.pathname==='/api/v1/services/'){const q=u.searchParams.get('search')||'';if(q==='fail')return send({detail:'Fixture error'},503);if(q==='empty')return send({count:0,next:null,previous:null,results:[]});const ids=u.searchParams.get('ids');const all=ids===null?[service(42),service(43)]:[service(42),service(43)].filter(s=>ids.split(',').includes(String(s.id)));const page=u.searchParams.get('page')==='2';return send({count:all.length,next:!ids&&!page?'http://127.0.0.1:18005/api/v1/services/?page=2':null,previous:!ids&&page?'http://127.0.0.1:18005/api/v1/services/':null,results:ids?all:[all[page?1:0]].filter(Boolean)});}
+const m=u.pathname.match(/^\/api\/v1\/services\/(\d+)\/(quote\/)?$/);if(!m)return send({detail:'Not found'},404);const id=Number(m[1]);if([401,403,404,500].includes(id))return send({detail:'Fixture error'},id);if(id===502){res.end('bad json');return;}if(id===503)return send({id});if(m[2])return send({service_id:id,service_revision:1,price_amount:'1000.00',currency:'RUB',is_demo:false,buyer_fee_percent:'3.00',buyer_fee_amount:'30.00',total_amount:'1030.00'});if(id===49)return setTimeout(()=>send(service(id)),6000);return send(service(id));
+}).listen(18005,'127.0.0.1',()=>console.log('READ-ONLY TEST FIXTURE on 18005'));

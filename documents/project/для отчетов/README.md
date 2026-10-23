@@ -1,8 +1,20 @@
 # STUDLY — отчёты Frontend
 
+- [Исправления F1/F2/F3 и обновлённый кандидат —23.10.2026](frontend/redesign/2026-10-23_17-12_f123-closure.md)
+
+- [Завершение пользовательских сценариев STUDLY2.0 и Demo admin —23.10.2026](frontend/redesign/2026-10-23_10-42_frontend-scenarios-completion.md)
+
+- [STUDLY: аудит полного пользовательского Frontend, решения PO и scope на согласование —22.10.2026](frontend/redesign/2026-10-22_18-09_frontend-scenarios-progress.md)
+
+- [STUDLY 2.0: исправления технической приёмки P2/P3 — 22.10.2026](frontend/redesign/2026-10-22_02-55_technical-acceptance-fixes.md)
+
 По актуальному указанию пользователя от 16 октября 2026 года основной каталог — `documents/project/для отчетов/`. Отчёты публикуются вместе с Frontend. Старые внешние отчёты остаются историей и автоматически не копируются. Время — Europe/Moscow, секреты не записываются.
 
 ## Сеансы
+
+- [STUDLY 2.0: полный редизайн всех 22 маршрутов, общий прогресс и регрессия — 21.10.2026](frontend/redesign/2026-10-21_22-18_full-redesign-progress.md)
+
+- [STUDLY 2.0: редизайн детальной страницы услуги /service/[id] — 19.10.2026](frontend/redesign/2026-10-19_00-24_campus-service-detail.md)
 
 - [Инструкция локального запуска Demo/Live](../../../LOCAL_START.md)
 - [Настройка и проверка двух команд запуска — 18.10.2026](frontend/local-launch/2026-10-18_14-42_demo-live-startup.md)

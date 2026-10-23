@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { demoMode } from "@/lib/data-mode";
 import { useRegistration } from "@/context/RegistrationContext";
 import SpecializationPicker, { type SpecializationSource } from "./SpecializationPicker";
+import services from "@/data/services";
 import styles from "./registration.module.css";
 
 export default function PerformerForm() {
   const { draft, dispatch, client, saveStep } = useRegistration();
   const performer = draft.performer;
-  const [source, setSource] = useState<SpecializationSource>({ status: demoMode ? "unavailable" : "loading" });
+  const [source, setSource] = useState<SpecializationSource>(demoMode ? {status:"available",options:[...new Set(services.map(s=>s.category))].map((title,index)=>({id:`demo-category-${index}`,title}))} : {status:"loading"});
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     if (demoMode) return;
@@ -23,7 +24,7 @@ export default function PerformerForm() {
   }, [client, attempt]);
 
   return <form className={styles.form} onSubmit={event => { event.preventDefault(); void saveStep("performer"); }}>
-    <SpecializationPicker source={source} selected={performer.specializations}
+    <SpecializationPicker demo={demoMode} source={source} selected={performer.specializations}
       onChange={specializations => dispatch({ type: "performer", patch: { specializations } })}
       onRetry={() => { setSource({ status: "loading" }); setAttempt(value => value + 1); }} />
     <div className={styles.field}>
@@ -38,6 +39,7 @@ export default function PerformerForm() {
     </div>
     <div className={styles.field}>
       <label htmlFor="portfolio" className={styles.label}>Портфолио <span className={styles.optional}>необязательно</span></label>
+      {demoMode && <p className={styles.hint}>Эта заметка сохранится в кабинете. Для проверки профиля добавьте отдельные примеры работ после регистрации.</p>}
       <textarea id="portfolio" className={styles.textarea} placeholder="Ссылки или краткое описание ваших работ" maxLength={10000} value={performer.portfolio}
         onChange={event => dispatch({ type: "performer", patch: { portfolio: event.target.value } })} />
     </div>

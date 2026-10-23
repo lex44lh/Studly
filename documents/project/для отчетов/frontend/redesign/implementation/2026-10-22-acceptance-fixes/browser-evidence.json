@@ -1,0 +1,438 @@
+[
+  {
+    "scenario": "orders-list",
+    "scrollWidth": 1280,
+    "statuses": [
+      {
+        "class": "activity-status activity-status--unspecified",
+        "text": "Статус не указан"
+      },
+      {
+        "class": "activity-status activity-status--unspecified",
+        "text": "Статус не указан"
+      },
+      {
+        "class": "activity-status activity-status--unspecified",
+        "text": "Статус недоступен"
+      },
+      {
+        "class": "activity-status activity-status--unspecified",
+        "text": "Статус недоступен"
+      },
+      {
+        "class": "activity-status activity-status--unspecified",
+        "text": "Статус недоступен"
+      },
+      {
+        "class": "activity-status activity-status--unspecified",
+        "text": "Статус недоступен"
+      },
+      {
+        "class": "activity-status activity-status--pending",
+        "text": "Ожидает"
+      },
+      {
+        "class": "activity-status activity-status--in_progress",
+        "text": "В работе"
+      },
+      {
+        "class": "activity-status activity-status--review",
+        "text": "На рассмотрении"
+      },
+      {
+        "class": "activity-status activity-status--completed",
+        "text": "Завершён"
+      }
+    ],
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат"
+    ],
+    "error": false,
+    "heading": "QA missing",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/orders/862200",
+    "scrollWidth": 1280,
+    "status": "Статус не указан",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "Не указан",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/chats/862200",
+    "scrollWidth": 1280,
+    "status": "Статус не указан",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат"
+    ],
+    "error": false,
+    "heading": "QA None",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/orders/862201",
+    "scrollWidth": 1280,
+    "status": "Статус не указан",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "Не указан",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/chats/862201",
+    "scrollWidth": 1280,
+    "status": "Статус не указан",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат"
+    ],
+    "error": false,
+    "heading": "QA 42",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/orders/862202",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "Не указан",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/chats/862202",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат"
+    ],
+    "error": false,
+    "heading": "QA {}",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/orders/862203",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "Не указан",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/chats/862203",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат"
+    ],
+    "error": false,
+    "heading": "QA UNRECOGNIZED",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/orders/862204",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "Не указан",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/chats/862204",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат"
+    ],
+    "error": false,
+    "heading": "QA __proto__",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/orders/862205",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "Не указан",
+    "modifier": "activity-status activity-status--unspecified",
+    "scenario": "/chats/862205",
+    "scrollWidth": 1280,
+    "status": "Статус недоступен",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат",
+      "Принять заказ"
+    ],
+    "error": false,
+    "heading": "QA PENDING",
+    "modifier": "activity-status activity-status--pending",
+    "scenario": "/orders/862206",
+    "scrollWidth": 1280,
+    "status": "Ожидает",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "QA Исполнитель",
+    "modifier": "activity-status activity-status--pending",
+    "scenario": "/chats/862206",
+    "scrollWidth": 1280,
+    "status": "Ожидает",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат",
+      "Работа выполнена"
+    ],
+    "error": false,
+    "heading": "QA IN_PROGRESS",
+    "modifier": "activity-status activity-status--in_progress",
+    "scenario": "/orders/862207",
+    "scrollWidth": 1280,
+    "status": "В работе",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "QA Исполнитель",
+    "modifier": "activity-status activity-status--in_progress",
+    "scenario": "/chats/862207",
+    "scrollWidth": 1280,
+    "status": "В работе",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат",
+      "Всё в порядке"
+    ],
+    "error": false,
+    "heading": "QA REVIEW",
+    "modifier": "activity-status activity-status--review",
+    "scenario": "/orders/862208",
+    "scrollWidth": 1280,
+    "status": "На рассмотрении",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "QA Исполнитель",
+    "modifier": "activity-status activity-status--review",
+    "scenario": "/chats/862208",
+    "scrollWidth": 1280,
+    "status": "На рассмотрении",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Открыть чат",
+      "Удалить заказ"
+    ],
+    "error": false,
+    "heading": "QA COMPLETED",
+    "modifier": "activity-status activity-status--completed",
+    "scenario": "/orders/862209",
+    "scrollWidth": 1280,
+    "status": "Завершён",
+    "width": 1280
+  },
+  {
+    "actions": [
+      "Назад",
+      "Подробнее",
+      "",
+      "",
+      ""
+    ],
+    "error": false,
+    "heading": "QA Исполнитель",
+    "modifier": "activity-status activity-status--completed",
+    "scenario": "/chats/862209",
+    "scrollWidth": 1280,
+    "status": "Завершён",
+    "width": 1280
+  },
+  {
+    "activeHref": "#campus-content",
+    "activeTag": "A",
+    "mainTabIndex": -1,
+    "scenario": "search-error-tab",
+    "targetCount": 1
+  },
+  {
+    "activeId": "campus-content",
+    "errorTitle": true,
+    "hash": "#campus-content",
+    "routeTitle": false,
+    "scenario": "search-error-enter"
+  },
+  {
+    "error": false,
+    "restored": true,
+    "scenario": "search-reset",
+    "target": true
+  },
+  {
+    "activeHref": "#campus-content",
+    "scenario": "service-error-tab",
+    "targetCount": 1,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "activeId": "campus-content",
+    "error": true,
+    "headingAbsent": true,
+    "scenario": "service-error-enter",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "error": false,
+    "restored": true,
+    "scenario": "service-reset"
+  },
+  {
+    "route": "/orders/862206",
+    "scenario": "order-transition",
+    "status": "В работе"
+  },
+  {
+    "route": "/orders/862206",
+    "scenario": "order-transition",
+    "status": "На рассмотрении"
+  },
+  {
+    "route": "/orders/862206",
+    "scenario": "order-transition",
+    "status": "Завершён"
+  },
+  {
+    "message": "QA: локальная проверка отправки03:05",
+    "route": "/chats/862206",
+    "scenario": "chat-message-reload",
+    "status": "Завершён"
+  },
+  {
+    "scenario": "normal-skip-after-clean-build",
+    "route": "/search",
+    "before": {
+      "activeTag": "BODY",
+      "href": null
+    },
+    "after": {
+      "activeId": "campus-content",
+      "mainFocusable": true
+    },
+    "next": {
+      "label": null,
+      "tag": "INPUT",
+      "text": ""
+    }
+  },
+  {
+    "scenario": "normal-skip-after-clean-build",
+    "route": "/service/1",
+    "before": {
+      "activeTag": "A",
+      "href": "#campus-content"
+    },
+    "after": {
+      "activeId": "campus-content",
+      "mainFocusable": true
+    },
+    "next": {
+      "label": null,
+      "tag": "BUTTON",
+      "text": "Назад"
+    }
+  }
+]

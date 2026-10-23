@@ -1,0 +1,61 @@
+✔ registration adapter: reload restores the real profile form fields (76.784125ms)
+✔ registration adapter: hydration blocks the actual form and prerequisite navigation (21.788583ms)
+✔ registration adapter: queued autosaves preserve the latest edited draft (20.166041ms)
+✔ registration adapter: failed persistence retains input and never navigates or completes (21.105375ms)
+✔ registration adapter: step navigation happens only after the confirmed save (21.408167ms)
+✔ registration adapter: completing a customer creates the Demo account then opens its cabinet (13.251333ms)
+✔ registration adapter: a clean open form follows an incoming canonical draft (15.120125ms)
+✔ registration adapter: a dirty form cannot overwrite an incoming newer draft (13.578667ms)
+✔ registration adapter: an incoming avatar-only update is restored behind the loading guard (20.644875ms)
+✔ registration adapter: a late avatar restore after unmount does not leak its blob URL (11.223291ms)
+✔ registration adapter: replaced and removed form avatar previews are released (12.8955ms)
+✖ F2: retry after a cross-tab conflict waits for the saved avatar and blocks edit autosave/Next (27.801541ms)
+✖ F2: retry reloads the same avatar ID and a failed read retains its reference and input (11.9215ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 11
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 425.123792
+
+✖ failing tests:
+
+test at apps/web/tests/demo-registration-adapter.test.cjs:251:1
+✖ F2: retry after a cross-tab conflict waits for the saved avatar and blocks edit autosave/Next (27.801541ms)
+  AssertionError [ERR_ASSERTION]: retry must restart the loading lifecycle before the read resolves
+  
+  false !== true
+  
+      at /Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:260:12
+      at async withBlobUrls (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:107:9)
+      at async TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:252:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-registration-adapter.test.cjs:271:1
+✖ F2: retry reloads the same avatar ID and a failed read retains its reference and input (11.9215ms)
+  AssertionError [ERR_ASSERTION]: same-ID retry must not reuse an absent preview
+  
+  1 !== 2
+  
+      at /Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:277:12
+      at async withBlobUrls (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:107:9)
+      at async TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:272:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

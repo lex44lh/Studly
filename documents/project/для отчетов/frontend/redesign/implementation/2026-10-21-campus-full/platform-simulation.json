@@ -1,0 +1,31 @@
+{
+  "header": {
+    "bottom": 92,
+    "height": 92,
+    "left": 0,
+    "right": 390,
+    "top": 0,
+    "width": 390,
+    "x": 0,
+    "y": 0
+  },
+  "nav": {
+    "bottom": 844,
+    "height": 108,
+    "left": 0,
+    "right": 390,
+    "top": 736,
+    "width": 390,
+    "x": 0,
+    "y": 736
+  },
+  "scrollWidth": 390,
+  "width": 390,
+  "workspacePaddingBottom": "134px",
+  "workspacePaddingLeft": "30px",
+  "reduced": {
+    "animation": "none",
+    "transition": "0s"
+  },
+  "ruleResult": "Reduced Motion rules: 4"
+}

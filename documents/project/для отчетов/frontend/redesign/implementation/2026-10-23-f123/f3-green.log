@@ -1,0 +1,28 @@
+✔ admin avatar: a delayed asset resolved after unmount creates no object URL or late state write (94.482958ms)
+✔ admin avatar: changing assetId invalidates the pending old read and only displays the current image (62.180167ms)
+✔ admin avatar: repeated card open and close revokes every allocated URL and ignores late reads (167.314667ms)
+✔ admin avatar: replacing and removing a loaded avatar releases each URL before showing initials (53.593625ms)
+✔ admin avatar: missing, unsupported and failed assets retain initials without allocating URLs (91.53875ms)
+✔ disabled admin sandbox renders a closed state and exposes no canonical account data or actions (145.888375ms)
+✔ enabled sandbox still requires an explicit start and rendering never invokes commands (197.673334ms)
+✔ initial storage errors show retry instead of an endless loading skeleton (82.73775ms)
+✔ profile rejection requires a reason and a separate confirmation before the canonical command runs (81.470458ms)
+✔ service moderation uses the shared canonical service and never a manual order or payment command (75.659ms)
+✔ a queued change between the profile confirmation check and repository execution cannot be approved (62.114375ms)
+✔ a queued change between the service confirmation check and repository execution cannot be approved (73.867708ms)
+✔ a workspace change after reviewing a profile blocks the old confirmation until another review (71.240792ms)
+✔ failed persistence keeps the moderation reason and never displays a successful decision (58.8435ms)
+✔ finance view shows preserved money snapshots without exposing private results or messages (52.25275ms)
+✔ support security view has no general chat browser, AI monitoring, working sanctions or fake cases (51.218125ms)
+✔ view scopes restrict projections and global search to available sections (43.364875ms)
+✔ metrics derive users, permitted reviews and money from canonical records without reading messages (38.354458ms)
+✔ filtering combines section/global query, statuses, roles and MSK dates without mutating records (31.320583ms)
+✔ pagination and per-section query survive navigating away and back without changing canonical data (63.797333ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1362.495834

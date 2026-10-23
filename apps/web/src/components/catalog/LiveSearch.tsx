@@ -2,7 +2,7 @@
 
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import services from "@/data/services";
+import { useDemoCatalog } from "@/features/demo-workspace/catalog";
 import { catalogClient, demoMode, money } from "@/lib/api/catalog";
 import { ApiError, apiErrorMessage, pagePath } from "@/lib/api/client";
 import { useApiResource } from "@/components/catalog/ApiState";
@@ -15,7 +15,7 @@ import {
   type DurationFilter, type SortOption,
 } from "@/lib/catalog/search";
 
-const categories = [...new Set(services.map(service => service.category))];
+
 
 function SearchSkeleton() {
   return (
@@ -28,6 +28,8 @@ function SearchSkeleton() {
 }
 
 function SearchContent({ initialQuery }: { initialQuery: string }) {
+  const services = useDemoCatalog();
+  const categories = [...new Set(services.map(service => service.category))];
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState("");
   const [minPrice, setMinPrice] = useState("");
@@ -48,7 +50,7 @@ function SearchContent({ initialQuery }: { initialQuery: string }) {
     id: service.id, title: service.title, description: service.description, price: money(service.price_amount, service.currency),
     priceNumber: Number(service.price_amount), seller: service.performer.name, rating: "", category: "", profileId: service.performer.id,
     duration: `${service.duration_days} дн.`, durationDays: service.duration_days, included: service.included, isDemo: service.is_demo,
-  })), [data]);
+  })), [data, services]);
 
   const values = useMemo(() => ({ query, category, minPrice, maxPrice, duration, rating47, sort }), [query, category, minPrice, maxPrice, duration, rating47, sort]);
   const price = validatePriceRange(minPrice, maxPrice);

@@ -1,0 +1,18 @@
+{
+  "order": {
+    "base": 1200,
+    "extra": 400,
+    "total": 1600,
+    "days": 6,
+    "statusSequence": [
+      "PENDING",
+      "IN_PROGRESS",
+      "REVIEW",
+      "COMPLETED"
+    ],
+    "finalText": "Завершён"
+  },
+  "message": "Отправлено локальное Demo-сообщение, оно сохранено после навигации",
+  "paymentDisabled": true,
+  "favoritesSeparatedFromLive": true
+}

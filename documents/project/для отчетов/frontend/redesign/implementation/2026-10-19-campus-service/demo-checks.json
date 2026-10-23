@@ -1,0 +1,23 @@
+{
+  "order": {
+    "total": "900 ₽",
+    "duration": "4 дня",
+    "extra": "Подробный отчёт",
+    "status": "PENDING",
+    "observedIn": "Demo order detail"
+  },
+  "navigation": {
+    "current": "location",
+    "price": "Стоимость услуги900 ₽Срок выполнения4 дня",
+    "route": "/service/2",
+    "skipFocus": {
+      "active": "service-title"
+    }
+  },
+  "favoriteAfterNavigation": true,
+  "favoriteAfterReload": true,
+  "chat": "Открыт существующий Demo-чат, связанный с локальным заказом",
+  "profile": "Переход /service/1 → /profile/1 подтверждён",
+  "back": "Клавиатурный Back: сначала отменён #service-title, затем возврат /search",
+  "search": "17 карточек; Python → одна услуга /service/2; после перехода в /search aria-current=page, внутри услуги location"
+}

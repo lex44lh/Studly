@@ -2,6 +2,8 @@
 import { demoMode } from "@/lib/data-mode";
 
 import BackButton from "@/components/BackButton";
+import { Icon } from "@/components/studly/Icon";
+import "@/components/studly/activity.css";
 
 type NotificationItem = {
   id: number;
@@ -38,134 +40,22 @@ const notifications: NotificationItem[] = [
 export default function NotificationsPage() {
   const visibleNotifications = demoMode ? notifications : [];
   return (
-    <div>
+    <div className="activity-page activity-page--narrow">
       <BackButton />
-
-      <h1
-        style={{
-          marginTop: "16px",
-          marginBottom: "20px",
-        }}
-      >
-        Уведомления
-      </h1>
-
+      <header className="activity-header"><div><p className="activity-kicker">События кампуса</p><h1>Уведомления</h1><p className="activity-intro">Важные обновления о Ваших заказах.</p></div></header>
       {visibleNotifications.length === 0 ? (
-        <div
-          style={{
-            textAlign: "center",
-            padding:
-              "60px 20px",
-            color: "#6B7280",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "40px",
-              marginBottom:
-                "12px",
-            }}
-          >
-            🔔
-          </div>
-
-          <p
-            style={{
-              margin: 0,
-            }}
-          >
-            У Вас пока нет
-            уведомлений
-          </p>
-        </div>
+        <div className="activity-empty"><span className="activity-empty-icon"><Icon name="bell" /></span><h2>Пока тихо</h2><p>У Вас пока нет уведомлений. Новые события появятся здесь.</p></div>
       ) : (
-        <div>
-          {visibleNotifications.map(
-            (notification) => (
-              <div
-                key={
-                  notification.id
-                }
-                style={{
-                  borderBottom:
-                    "1px solid #E5E7EB",
-                  padding:
-                    "16px 4px",
-                  display: "flex",
-                  gap: "12px",
-                }}
-              >
-                <div
-                  style={{
-                    width: "10px",
-                    height: "10px",
-                    borderRadius:
-                      "50%",
-                    background:
-                      notification.unread
-                        ? "#3547B8"
-                        : "transparent",
-                    marginTop:
-                      "6px",
-                    flexShrink: 0,
-                  }}
-                />
-
-                <div
-                  style={{
-                    flex: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent:
-                        "space-between",
-                      gap: "12px",
-                    }}
-                  >
-                    <strong>
-                      {
-                        notification.title
-                      }
-                    </strong>
-
-                    <span
-                      style={{
-                        fontSize:
-                          "12px",
-                        color:
-                          "#9CA3AF",
-                        whiteSpace:
-                          "nowrap",
-                      }}
-                    >
-                      {
-                        notification.time
-                      }
-                    </span>
-                  </div>
-
-                  <p
-                    style={{
-                      margin:
-                        "6px 0 0",
-                      color:
-                        "#6B7280",
-                      fontSize:
-                        "14px",
-                      lineHeight:
-                        1.4,
-                    }}
-                  >
-                    {
-                      notification.text
-                    }
-                  </p>
-                </div>
+        <div className="activity-list">
+          {visibleNotifications.map((notification) => (
+            <article key={notification.id} className={`activity-card activity-notification${notification.unread ? " is-unread" : ""}`}>
+              <span className="activity-notification-icon"><Icon name={notification.id === 3 ? "book" : "bell"} /></span>
+              <div className="activity-card-main">
+                <div className="activity-row"><h2>{notification.title}{notification.unread && <><span className="activity-unread-dot" aria-hidden="true" /><span className="sr-only">, непрочитано</span></>}</h2><time className="activity-timestamp">{notification.time}</time></div>
+                <p>{notification.text}</p>
               </div>
-            )
-          )}
+            </article>
+          ))}
         </div>
       )}
     </div>

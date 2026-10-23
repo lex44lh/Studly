@@ -1,0 +1,108 @@
+/* Shared Campus surfaces for migrated pages; reference search/detail styles stay scoped separately. */
+.studly-app .campus-page { width:100%; max-width:1120px; margin:auto; min-width:0; overflow-wrap:anywhere; }
+.studly-app .page-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin-bottom:28px; }
+.studly-app .page-eyebrow { margin:0 0 10px; color:var(--muted); font-size:11px; letter-spacing:.12em; font-weight:700; }
+.studly-app .page-heading h1 { margin:0; font-size:clamp(28px,3.4vw,42px); font-weight:750; line-height:1.14; letter-spacing:-.04em; }
+.studly-app .page-intro { max-width:650px; margin-top:14px; color:var(--muted); line-height:1.65; }
+.studly-app .page-intro p { margin:0; }
+.studly-app .page-panel { padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow); min-width:0; }
+.studly-app .page-panel h2 { font-size:22px; line-height:1.3; font-weight:700; letter-spacing:-.025em; margin:0 0 16px; }
+.studly-app .page-panel h3 { font-size:17px; font-weight:650; margin:0 0 12px; }
+.studly-app .page-muted { color:var(--muted); }
+.studly-app .page-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.studly-app .page-button,.studly-app .page-button-secondary { min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 18px; border-radius:12px; background:var(--accent); color:var(--accent-text); font-weight:650; font-size:14px; text-align:center; }
+.studly-app .page-button-secondary { background:var(--surface-2); color:var(--accent-ink); border:1px solid var(--line); }
+.studly-app .page-back { display:inline-flex; align-items:center; gap:10px; min-height:44px; padding:8px 0; margin:0 0 20px; background:transparent; color:var(--muted); font-size:14px; }
+.studly-app .page-back .icon { transform:rotate(180deg); }
+.studly-app .page-mode-note { max-width:1120px; margin:0 auto 24px; font-size:12px; color:var(--muted); }
+.studly-app .page-capability-note { max-width:1120px; margin:0 auto 24px; padding:16px 20px; border:1px solid var(--line); border-left:3px solid var(--accent-ink); border-radius:12px; background:var(--surface); color:var(--muted); font-size:14px; line-height:1.6; }
+.studly-app .page-disabled-preview { border:0; padding:0; margin:0; min-width:0; }
+.studly-app .page-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.studly-app .page-section { margin-top:32px; }
+.studly-app .page-section-title { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:0 0 20px; }
+.studly-app .page-section-title h2 { margin:0; font-size:23px; font-weight:700; letter-spacing:-.025em; }
+.studly-app .page-section-title a { display:inline-flex; align-items:center; min-height:44px; color:var(--accent-ink); font-size:14px; }
+.studly-app .page-empty { text-align:center; padding:48px 24px; }
+.studly-app .page-empty>.icon { width:32px; height:32px; color:var(--accent-ink); margin:0 auto 20px; display:block; }
+.studly-app .page-empty h2 { margin-bottom:12px; }
+.studly-app .page-empty p { color:var(--muted); margin:0 auto 24px; max-width:480px; }
+.studly-app .page-pagination { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; margin-top:24px; }
+.studly-app .page-pagination button { min-height:44px; padding:10px 16px; border:1px solid var(--line); border-radius:10px; color:var(--accent-ink); background:var(--surface); }
+.studly-app .page-resource { padding:24px; margin:16px 0; border-radius:var(--radius); border:1px solid var(--line); background:var(--surface); }
+.studly-app .page-resource p { margin:0 0 12px; color:var(--muted); }
+.studly-app .page-resource button { min-height:44px; padding:10px 16px; background:var(--accent-soft); color:var(--accent-ink); border-radius:10px; }
+.studly-app .home-hero { display:grid; grid-template-columns:minmax(0,1fr) 220px; padding:36px; gap:28px; position:relative; overflow:hidden; }
+.studly-app .home-hero h1 { font-size:clamp(30px,4.2vw,50px); max-width:650px; }
+.studly-app .home-hero h1 span { color:var(--accent-ink); }
+.studly-app .home-ribbon { align-self:center; display:grid; place-items:center; color:var(--accent-ink); background:var(--accent-soft); border-radius:34px; height:190px; transform:rotate(-6deg); }
+.studly-app .home-ribbon svg { width:90px; height:120px; }
+.studly-app .home-search { display:flex; align-items:center; gap:12px; padding:8px 8px 8px 18px; margin-top:28px; background:var(--surface); border:1px solid var(--line); border-radius:15px; }
+.studly-app .home-search input { flex:1; min-width:0; border:0; background:transparent; font-size:16px; min-height:44px; width:100%; }
+.studly-app .home-categories { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+.studly-app .home-category { display:flex; flex-direction:column; gap:18px; padding:20px; min-height:145px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); font-weight:650; }
+.studly-app .home-category>.icon { width:26px; height:26px; color:var(--accent-ink); }
+.studly-app .home-category .icon:last-child { margin-left:auto; width:18px; height:18px; }
+.studly-app .category-search { display:flex; gap:10px; margin-bottom:20px; }
+.studly-app .category-search input { flex:1; min-width:0; background:var(--surface); border:1px solid var(--line); border-radius:12px; min-height:48px; padding:12px 16px; font-size:16px; }
+.studly-app .category-filters { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-bottom:24px; }
+.studly-app .category-filter { min-width:0; border:0; padding:0; margin:0; }
+.studly-app .category-filter legend,.studly-app .category-filter>label { display:block; font-size:14px; font-weight:650; margin-bottom:12px; }
+.studly-app .category-price { display:flex; gap:8px; }
+.studly-app .category-price input,.studly-app .category-filter select { min-width:0; width:100%; background:var(--bg); border:1px solid var(--line); border-radius:10px; min-height:44px; padding:10px 12px; font-size:16px; }
+.studly-app .category-option { display:flex; gap:10px; align-items:center; min-height:44px; font-size:14px; }
+.studly-app .category-option input { width:18px; height:18px; min-height:18px; accent-color:var(--accent); }
+.studly-app .page-error { color:#a32437; font-size:14px; }
+.studly-app[data-theme=dark] .page-error { color:#ffacb9; }
+.studly-app .performer-layout { display:grid; grid-template-columns:300px minmax(0,1fr); gap:24px; align-items:start; }
+.studly-app .performer-summary { position:sticky; top:24px; }
+.studly-app .performer-initials { display:flex; align-items:center; justify-content:center; width:76px; height:76px; border-radius:24px; background:var(--cover-b); color:var(--cover-b-ink); font-weight:700; font-size:25px; margin-bottom:24px; }
+.studly-app .performer-summary h1 { font-size:30px; font-weight:750; line-height:1.2; letter-spacing:-.04em; margin:0 0 14px; }
+.studly-app .performer-summary p { color:var(--muted); margin:0 0 14px; }
+.studly-app .performer-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:24px 0; }
+.studly-app .performer-stats>div { border:1px solid var(--line); border-radius:12px; padding:16px; color:var(--muted); font-size:13px; }
+.studly-app .performer-stats strong { color:var(--text); display:block; font-size:24px; margin-bottom:6px; }
+.studly-app .performer-services { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.studly-app.campus-shell-onboarding .workspace { max-width:1240px; width:100%; }
+.studly-app.campus-shell-standard .workspace { width:100%; }
+.studly-app.campus-shell-onboarding .topbar { justify-content:space-between; }
+.studly-app.campus-shell-onboarding .workspace { padding-bottom:40px; }
+@media(max-width:1000px) {
+  .studly-app .home-categories { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .studly-app .page-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .studly-app .performer-layout { grid-template-columns:260px minmax(0,1fr); }
+  .studly-app .performer-services { grid-template-columns:1fr; }
+}
+@media(max-width:800px) {
+  .studly-app .home-hero { grid-template-columns:1fr; }
+  .studly-app .home-ribbon { display:none; }
+  .studly-app .performer-layout { grid-template-columns:1fr; }
+  .studly-app .performer-summary { position:static; }
+  .studly-app .performer-services { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:700px) {
+  .studly-app .page-heading { margin-bottom:24px; gap:16px; flex-wrap:wrap; }
+  .studly-app .page-heading h1 { font-size:30px; }
+  .studly-app .page-intro { font-size:14px; }
+  .studly-app .page-panel { padding:22px 20px; }
+  .studly-app .page-grid,.studly-app .performer-services { grid-template-columns:1fr; }
+  .studly-app .page-section { margin-top:28px; }
+  .studly-app .page-section-title h2 { font-size:21px; }
+  .studly-app .home-hero { padding:24px 20px; }
+  .studly-app .home-search { margin-top:24px; gap:8px; padding-left:12px; }
+  .studly-app .home-search button { padding:12px; }
+  .studly-app .home-search button span { display:none; }
+  .studly-app .home-category { padding:16px; min-height:140px; font-size:14px; }
+  .studly-app .category-filters { grid-template-columns:1fr; gap:20px; }
+  .studly-app .page-mode-note { font-size:11px; margin-bottom:20px; }
+  .studly-app.campus-shell-onboarding .app .workspace { padding-bottom:calc(28px + var(--safe-bottom)); }
+}
+@media(prefers-reduced-motion:reduce) { .studly-app .page-back:active,.studly-app .campus-page button:active { transform:none!important; } }
+@media(prefers-color-scheme:dark) { .studly-app[data-theme=auto] .page-error { color:#ffacb9; } }
+.studly-app .campus-page h1.page-heading { display:block; font-size:clamp(28px,3.4vw,42px); font-weight:750; line-height:1.14; letter-spacing:-.04em; margin:0 0 18px; }
+
+.studly-app .campus-menu-subtitle { margin:20px 0 14px; font-size:16px; font-weight:650; }
+.studly-app { --campus-error:#a32437; }
+.studly-app[data-theme=dark] { --campus-error:#ffacb9; }
+@media(prefers-color-scheme:dark) { .studly-app[data-theme=auto] { --campus-error:#ffacb9; } }
+
+.studly-app .page-disabled-preview .page-back { display:none; }

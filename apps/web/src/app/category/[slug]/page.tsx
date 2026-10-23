@@ -1,4 +1,7 @@
 "use client";
+import Link from "next/link";
+import { PageHeading } from "@/components/studly/PageHeading";
+import { Icon } from "@/components/studly/Icon";
 import { demoMode } from "@/lib/api/catalog";
 
 import {
@@ -8,7 +11,7 @@ import {
 } from "react";
 import ServiceCard from "@/components/ServiceCard";
 import BackButton from "@/components/BackButton";
-import services from "@/data/services";
+import { useDemoCatalog } from "@/features/demo-workspace/catalog";
 
 type Props = {
   params: Promise<{
@@ -60,6 +63,7 @@ const categoryNamesWithoutEmoji: Record<
 function DemoCategoryPage({
   params,
 }: Props) {
+  const services = useDemoCatalog();
   const { slug } = use(params);
 
   const [query, setQuery] =
@@ -100,7 +104,7 @@ function DemoCategoryPage({
       (service) =>
         service.category === categoryName
     );
-  }, [categoryName]);
+  }, [categoryName, services]);
 
   const normalizedQuery =
     query.trim().toLowerCase();
@@ -249,446 +253,31 @@ function DemoCategoryPage({
     setSort("relevance");
   };
 
-  return (
-    <div>
-      <BackButton />
-
-      <h1>{title}</h1>
-
-      {/* Поиск + фильтры */}
-      <div
-        style={{
-          display: "flex",
-          gap: "8px",
-          marginBottom: filtersOpen
-            ? "12px"
-            : "20px",
-        }}
-      >
-        <input
-          type="search"
-          value={query}
-          onChange={(event) =>
-            setQuery(event.target.value)
-          }
-          placeholder="Поиск в категории..."
-          style={{
-            flex: 1,
-            height: "44px",
-            border: "1px solid #E5E7EB",
-            borderRadius: "12px",
-            padding: "0 12px",
-            fontSize: "14px",
-            outline: "none",
-            boxSizing: "border-box",
-          }}
-        />
-
-        {query && (
-          <button
-            type="button"
-            onClick={() => setQuery("")}
-            style={{
-              width: "44px",
-              height: "44px",
-              border:
-                "1px solid #E5E7EB",
-              borderRadius: "12px",
-              background: "#FFFFFF",
-              cursor: "pointer",
-              fontSize: "18px",
-              flexShrink: 0,
-            }}
-            aria-label="Очистить поиск"
-          >
-            ×
-          </button>
-        )}
-
-        <button
-          type="button"
-          onClick={() =>
-            setFiltersOpen(
-              (value) => !value
-            )
-          }
-          style={{
-            width: "44px",
-            height: "44px",
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "12px",
-            background: "#FFFFFF",
-            cursor: "pointer",
-            fontSize: filtersOpen
-              ? "22px"
-              : "16px",
-            flexShrink: 0,
-          }}
-          aria-label={
-            filtersOpen
-              ? "Закрыть фильтры"
-              : "Открыть фильтры"
-          }
-        >
-          {filtersOpen ? "×" : "⚙️"}
-        </button>
-      </div>
-
-      {/* Фильтры */}
-      {filtersOpen && (
-        <div
-          style={{
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "16px",
-            padding: "16px",
-            marginBottom: "20px",
-            background: "#FFFFFF",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent:
-                "space-between",
-              marginBottom: "16px",
-            }}
-          >
-            <strong
-              style={{
-                fontSize: "16px",
-              }}
-            >
-              Фильтры
-            </strong>
-
-            {hasActiveFilters && (
-              <button
-                type="button"
-                onClick={resetFilters}
-                style={{
-                  border: "none",
-                  background: "none",
-                  padding: 0,
-                  color: "#3547B8",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Сбросить
-              </button>
-            )}
-          </div>
-
-          {/* Цена */}
-          <div
-            style={{
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "8px",
-              }}
-            >
-              Цена
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                gap: "8px",
-              }}
-            >
-              <input
-                type="number"
-                min="0"
-                value={minPrice}
-                aria-invalid={hasInvalidMinPrice || hasInvalidPriceRange}
-                aria-label="Минимальная цена"
-                onChange={(event) =>
-                  setMinPrice(
-                    event.target.value
-                  )
-                }
-                placeholder="От ₽"
-                style={{
-                  width: "50%",
-                  height: "44px",
-                  border:
-                    "1px solid #E5E7EB",
-                  borderRadius: "10px",
-                  padding: "0 12px",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                }}
-              />
-
-              <input
-                type="number"
-                min="0"
-                value={maxPrice}
-                aria-invalid={hasInvalidMaxPrice || hasInvalidPriceRange}
-                aria-label="Максимальная цена"
-                onChange={(event) =>
-                  setMaxPrice(
-                    event.target.value
-                  )
-                }
-                placeholder="До ₽"
-                style={{
-                  width: "50%",
-                  height: "44px",
-                  border:
-                    "1px solid #E5E7EB",
-                  borderRadius: "10px",
-                  padding: "0 12px",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
-            {priceError && (
-              <p
-                role="alert"
-                style={{
-                  margin: "8px 0 0",
-                  color: "#B42318",
-                  fontSize: "13px",
-                }}
-              >
-                {priceError}
-              </p>
-            )}
-          </div>
-
-          {/* Срок */}
-          <div
-            style={{
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "10px",
-              }}
-            >
-              Срок выполнения
-            </div>
-
-            {[
-              ["1", "До 1 дня"],
-              ["3", "До 3 дней"],
-              ["7", "До 7 дней"],
-              ["any", "Любой"],
-            ].map(([value, label]) => (
-              <label
-                key={value}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  marginBottom: "10px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                <input
-                  type="radio"
-                  name="duration"
-                  value={value}
-                  checked={
-                    duration === value
-                  }
-                  onChange={() =>
-                    setDuration(
-                      value as DurationFilter
-                    )
-                  }
-                />
-
-                {label}
-              </label>
-            ))}
-          </div>
-
-          {/* Рейтинг */}
-          <div
-            style={{
-              marginBottom: "20px",
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "10px",
-              }}
-            >
-              Рейтинг исполнителя
-            </div>
-
-            <label
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                fontSize: "14px",
-                cursor: "pointer",
-              }}
-            >
-              <input
-                type="checkbox"
-                checked={rating47}
-                onChange={(event) =>
-                  setRating47(
-                    event.target.checked
-                  )
-                }
-              />
-
-              4,7+
-            </label>
-          </div>
-
-          {/* Сортировка */}
-          <div>
-            <div
-              style={{
-                fontWeight: 600,
-                fontSize: "14px",
-                marginBottom: "8px",
-              }}
-            >
-              Сортировка
-            </div>
-
-            <select
-              value={sort}
-              onChange={(event) =>
-                setSort(
-                  event.target.value as SortOption
-                )
-              }
-              style={{
-                width: "100%",
-                height: "44px",
-                border:
-                  "1px solid #E5E7EB",
-                borderRadius: "10px",
-                padding: "0 12px",
-                fontSize: "14px",
-                background: "#FFFFFF",
-              }}
-            >
-              <option value="relevance">
-                По релевантности
-              </option>
-              <option value="priceAsc">
-                Сначала дешевле
-              </option>
-              <option value="priceDesc">
-                Сначала дороже
-              </option>
-              <option value="rating">
-                По рейтингу
-              </option>
-              <option value="duration">
-                По сроку выполнения
-              </option>
-            </select>
-          </div>
-        </div>
-      )}
-
-      <p
-        style={{
-          color: "#6B7280",
-          fontSize: "14px",
-          marginBottom: "16px",
-        }}
-      >
-        Найдено услуг:{" "}
-        {filteredServices.length}
-      </p>
-
-      {filteredServices.length > 0 ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-          }}
-        >
-          {filteredServices.map(
-            (service) => (
-              <ServiceCard
-                key={service.id}
-                id={service.id}
-                title={service.title}
-                price={service.price}
-                seller={service.seller}
-                rating={service.rating}
-              />
-            )
-          )}
-        </div>
-      ) : (
-        <div
-          style={{
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "16px",
-            padding: "32px 20px",
-            textAlign: "center",
-            background: "#FFFFFF",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "32px",
-              marginBottom: "12px",
-            }}
-          >
-            🔍
-          </div>
-
-          <h3
-            style={{
-              marginTop: 0,
-              marginBottom: "8px",
-            }}
-          >
-            Ничего не найдено
-          </h3>
-
-          <p
-            style={{
-              margin: 0,
-              color: "#6B7280",
-              fontSize: "14px",
-              lineHeight: 1.5,
-            }}
-          >
-            В этой категории нет услуг,
-            соответствующих Вашему запросу
-            или параметрам фильтрации.
-          </p>
-        </div>
-      )}
+  return <div className="campus-page"><BackButton /><PageHeading title={title.replace(/^[^А-Яа-яA-Za-z]+/, "")}>Предложения в выбранной категории.</PageHeading>
+    <div className="category-search">
+      <label htmlFor="category-query" className="sr-only">Поиск в категории</label>
+      <input id="category-query" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Поиск в категории…" />
+      {query && <button className="icon-btn" type="button" onClick={() => setQuery("")} aria-label="Очистить поиск"><Icon name="close" /></button>}
+      <button className="icon-btn" type="button" onClick={() => setFiltersOpen(value => !value)} aria-label={filtersOpen ? "Закрыть фильтры" : "Открыть фильтры"} aria-expanded={filtersOpen} aria-controls="category-filters"><Icon name={filtersOpen ? "close" : "filter"} /></button>
     </div>
-  );
+    {filtersOpen && <section id="category-filters" className="page-panel category-filters" aria-label="Фильтры категории">
+      <fieldset className="category-filter"><legend>Цена</legend><div className="category-price">
+        <input type="number" min="0" value={minPrice} aria-invalid={hasInvalidMinPrice || hasInvalidPriceRange} aria-label="Минимальная цена" onChange={event => setMinPrice(event.target.value)} placeholder="От ₽" />
+        <input type="number" min="0" value={maxPrice} aria-invalid={hasInvalidMaxPrice || hasInvalidPriceRange} aria-label="Максимальная цена" onChange={event => setMaxPrice(event.target.value)} placeholder="До ₽" />
+      </div>{priceError && <p className="page-error" role="alert">{priceError}</p>}</fieldset>
+      <fieldset className="category-filter"><legend>Срок выполнения</legend>{[["1", "До 1 дня"], ["3", "До 3 дней"], ["7", "До 7 дней"], ["any", "Любой"]].map(([value,label]) => <label className="category-option" key={value}><input type="radio" name="duration" value={value} checked={duration===value} onChange={() => setDuration(value as DurationFilter)} />{label}</label>)}</fieldset>
+      <div className="category-filter"><label htmlFor="category-sort">Сортировка</label><select id="category-sort" value={sort} onChange={event => setSort(event.target.value as SortOption)}><option value="relevance">По релевантности</option><option value="priceAsc">Сначала дешевле</option><option value="priceDesc">Сначала дороже</option><option value="rating">По рейтингу</option><option value="duration">По сроку выполнения</option></select>
+      <label className="category-option"><input type="checkbox" checked={rating47} onChange={event => setRating47(event.target.checked)} />Рейтинг 4,7+</label>{hasActiveFilters && <button type="button" className="page-button-secondary" onClick={resetFilters}>Сбросить</button>}</div>
+    </section>}
+    <p className="page-muted" role="status">Найдено услуг: {filteredServices.length}</p>
+    {filteredServices.length ? <div className="page-grid">{filteredServices.map(service => <ServiceCard key={service.id} {...service} isDemo />)}</div> : <div className="page-panel page-empty"><Icon name="search" /><h2>Ничего не найдено</h2><p>В этой категории нет услуг, соответствующих Вашему запросу или параметрам фильтрации.</p></div>}
+  </div>;
 }
 
 export default function CategoryPage({ params }: Props) {
   return demoMode ? <DemoCategoryPage params={params} /> : <>
-    <p role="note">Серверный каталог категорий ещё не подключён. Демонстрационные услуги в LIVE не подставляются.</p>
-    <fieldset disabled style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}><DemoCategoryPage params={params} /></fieldset>
+    <p className="page-capability-note" role="note">Серверный каталог категорий ещё не подключён. Демонстрационные услуги в LIVE не подставляются.</p>
+    <div className="campus-page page-actions"><BackButton /><Link href="/search" className="page-button-secondary">Перейти к поиску</Link></div>
+    <fieldset disabled className="page-disabled-preview"><DemoCategoryPage params={params} /></fieldset>
   </>;
 }

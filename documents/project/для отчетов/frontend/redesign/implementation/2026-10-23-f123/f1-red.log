@@ -1,0 +1,105 @@
+✖ profile avatar: unsaved text then avatar upload then save survives reload (46.197834ms)
+✖ profile avatar: unsaved text then avatar removal then save survives reload (31.8585ms)
+✖ profile avatar: external change before upload rejects avatar and keeps dirty input (23.185ms)
+✖ profile avatar: external transaction while upload is pending cannot be overwritten (19.046541ms)
+✖ profile avatar: external transaction after avatar commit still rejects stale text (21.58625ms)
+✔ profile avatar: a failed avatar write does not advance the text form revision (17.112709ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 1
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 358.608792
+
+✖ failing tests:
+
+test at apps/web/tests/demo-account-avatar.test.cjs:89:1
+✖ profile avatar: unsaved text then avatar upload then save survives reload (46.197834ms)
+  AssertionError [ERR_ASSERTION]: avatar command must use the text form revision
+  
+  undefined !== 2
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-account-avatar.test.cjs:92:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-account-avatar.test.cjs:101:1
+✖ profile avatar: unsaved text then avatar removal then save survives reload (31.8585ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 2
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-account-avatar.test.cjs:105:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-account-avatar.test.cjs:113:1
+✖ profile avatar: external change before upload rejects avatar and keeps dirty input (23.185ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'avatar-fixture'
+  - undefined
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-account-avatar.test.cjs:117:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'avatar-fixture',
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-account-avatar.test.cjs:122:1
+✖ profile avatar: external transaction while upload is pending cannot be overwritten (19.046541ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'avatar-fixture'
+  - undefined
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-account-avatar.test.cjs:127:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'avatar-fixture',
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-account-avatar.test.cjs:132:1
+✖ profile avatar: external transaction after avatar commit still rejects stale text (21.58625ms)
+  AssertionError [ERR_ASSERTION]: use the returned own revision rather than the newest observed revision
+  
+  3 !== 4
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-account-avatar.test.cjs:139:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,250 @@
+.page {
+  max-width: 1020px;
+  margin-inline: auto;
+}
+
+.heading {
+  margin-bottom: 28px;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 56px);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.heroIcon,
+.stateIcon,
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+}
+
+.heroIcon {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+
+.heroNumber {
+  position: absolute;
+  z-index: -1;
+  right: -10px;
+  bottom: -48px;
+  color: var(--accent-soft);
+  font-size: clamp(160px, 23vw, 280px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.08em;
+  user-select: none;
+}
+
+.accent {
+  color: var(--accent-ink);
+}
+
+.lead {
+  max-width: 520px;
+  color: var(--muted);
+  margin: 20px 0 28px;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(28px, 6vw, 60px);
+  min-width: 0;
+}
+
+.stateIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  margin-bottom: 24px;
+}
+
+.sage {
+  color: var(--cover-a-ink);
+  background: var(--cover-a);
+}
+
+.status {
+  display: inline-block;
+  width: fit-content;
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: var(--muted);
+  background: var(--surface-2);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.state h2,
+.profileState h2 {
+  font-size: clamp(21px, 3vw, 28px);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+
+.state > p:not(:global(.page-eyebrow)),
+.profileState p {
+  max-width: 530px;
+  color: var(--muted);
+  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.links {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.linkCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  min-width: 0;
+  min-height: 96px;
+  transition: border-color var(--motion-feedback) var(--motion-ease), background-color var(--motion-feedback) var(--motion-ease);
+}
+
+.linkCard > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+
+.linkCard > svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.linkCard strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.linkCard small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cardIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+}
+
+.profileState {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.profileState .stateIcon,
+.profileState p {
+  margin-bottom: 0;
+}
+
+.catalogLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 22px;
+  color: var(--accent-ink);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.errorCode {
+  display: block;
+  font-size: clamp(84px, 16vw, 140px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  color: var(--accent-ink);
+  margin-bottom: 28px;
+}
+
+@media (hover: hover) {
+  .linkCard:hover {
+    border-color: var(--accent-ink);
+    background: var(--surface-2);
+  }
+}
+
+@media (max-width: 900px) {
+  .links {
+    grid-template-columns: 1fr;
+  }
+
+  .linkCard {
+    min-height: 82px;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 24px;
+  }
+
+  .heroNumber {
+    display: none;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .heading {
+    margin-bottom: 22px;
+  }
+
+  .profileState {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .state {
+    padding: 28px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linkCard {
+    transition: none;
+  }
+}

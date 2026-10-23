@@ -9,7 +9,8 @@ export type SpecializationSource =
   | { status: "loading" | "unavailable" | "error" }
   | { status: "available"; options: Specialization[] };
 
-export default function SpecializationPicker({ source, selected, onChange, onRetry }: {
+export default function SpecializationPicker({ demo=false, source, selected, onChange, onRetry }: {
+  demo?:boolean;
   source: SpecializationSource;
   selected: Specialization[];
   onChange: (selected: Specialization[]) => void;
@@ -44,6 +45,6 @@ export default function SpecializationPicker({ source, selected, onChange, onRet
       {selected.map(item => <button className={styles.chip} type="button" key={item.id} aria-label={`Убрать специализацию ${item.title}`}
         onClick={() => onChange(toggleSpecialization(selected, item))}>{item.title} ×</button>)}
     </div>
-    <p className={styles.hint}>Можно выбрать любое количество. Перед публикацией профиля или услуги потребуется хотя бы одна специализация.</p>
+    <p className={styles.hint}>{demo?"Локальные Demo-категории. Можно выбрать любое количество; для проверки профиля понадобятся имя, описание и пример работы.":"Можно выбрать любое количество. Перед публикацией профиля или услуги потребуется хотя бы одна специализация."}</p>
   </fieldset>;
 }

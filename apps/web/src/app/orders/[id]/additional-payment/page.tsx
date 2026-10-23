@@ -2,6 +2,9 @@
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import BackButton from "@/components/BackButton";
+import { Icon } from "@/components/studly/Icon";
+import "@/components/studly/activity.css";
 
 type AdditionalService = {
   id: string;
@@ -60,34 +63,7 @@ export default function AdditionalPaymentPage() {
     );
 
   if (!additionalService) {
-    return (
-      <div
-        style={{
-          padding: "20px",
-        }}
-      >
-        <h1>
-          Дополнительная услуга не найдена
-        </h1>
-
-        <button
-          type="button"
-          onClick={() => router.back()}
-          style={{
-            width: "100%",
-            height: "48px",
-            border: "none",
-            borderRadius: "12px",
-            background: "#3547B8",
-            color: "#FFFFFF",
-            fontWeight: 600,
-            cursor: "pointer",
-          }}
-        >
-          Вернуться
-        </button>
-      </div>
-    );
+    return <div className="activity-page activity-page--narrow"><BackButton /><div className="activity-empty"><span className="activity-empty-icon"><Icon name="book" /></span><h1>Дополнительная услуга не найдена</h1><button type="button" onClick={() => router.back()} className="primary-btn">Вернуться</button></div></div>;
   }
 
   const paymentAvailable = false;
@@ -236,142 +212,20 @@ export default function AdditionalPaymentPage() {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "520px",
-        margin: "0 auto",
-      }}
-    >
-      <h1
-        style={{
-          fontSize: "24px",
-          marginBottom: "20px",
-        }}
-      >
-        Оплата дополнительной услуги
-      </h1>
-
-      <div
-        style={{
-          border: "1px solid #E5E7EB",
-          borderRadius: "14px",
-          padding: "16px",
-          marginBottom: "20px",
-        }}
-      >
-        <div
-          style={{
-            fontSize: "18px",
-            fontWeight: 600,
-            marginBottom: "8px",
-          }}
-        >
-          {additionalService.title}
+    <div className="activity-page activity-page--narrow">
+      <BackButton />
+      <header className="activity-header"><div><p className="activity-kicker">Детали заказа</p><h1>Дополнительная услуга</h1><p className="activity-intro">Проверьте стоимость и изменение срока.</p></div></header>
+      <section className="activity-panel" aria-labelledby="additional-service-title">
+        <h2 id="additional-service-title">{additionalService.title}</h2>
+        <p className="activity-duration"><Icon name="clock" />Срок: {additionalService.extraDays > 0 ? `+${additionalService.extraDays} день` : "без изменения"}</p>
+        <div className="activity-line-item"><span>Дополнительная услуга</span><strong>{additionalService.price} ₽</strong></div>
+        <div className="activity-line-item activity-line-item--total"><strong>Итого к оплате</strong><strong>{additionalService.price} ₽</strong></div>
+        <p className="activity-note" role="note">Оплата в предпросмотре отключена. Деньги не списываются, состав заказа не изменяется.</p>
+        <div className="activity-action-stack">
+          <button type="button" onClick={pay} disabled={!paymentAvailable || paying} className="primary-btn">{paying ? "Обработка оплаты..." : "Оплата отключена в предпросмотре"}</button>
+          <button type="button" onClick={() => router.back()} disabled={paying} className="secondary-btn">Отмена</button>
         </div>
-
-        <div
-          style={{
-            color: "#6B7280",
-            fontSize: "14px",
-          }}
-        >
-          Срок:{" "}
-          {additionalService.extraDays > 0
-            ? `+${additionalService.extraDays} день`
-            : "без изменения"}
-        </div>
-      </div>
-
-      <div
-        style={{
-          borderTop:
-            "1px solid #E5E7EB",
-          paddingTop: "16px",
-          marginBottom: "24px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent:
-              "space-between",
-            marginBottom: "10px",
-          }}
-        >
-          <span>
-            Дополнительная услуга
-          </span>
-
-          <strong>
-            {additionalService.price} ₽
-          </strong>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent:
-              "space-between",
-            fontSize: "18px",
-          }}
-        >
-          <strong>
-            Итого к оплате
-          </strong>
-
-          <strong
-            style={{
-              color: "#3547B8",
-            }}
-          >
-            {additionalService.price} ₽
-          </strong>
-        </div>
-      </div>
-
-      <button
-        type="button"
-        onClick={pay}
-        disabled={!paymentAvailable || paying}
-        style={{
-          width: "100%",
-          height: "52px",
-          border: "none",
-          borderRadius: "12px",
-          background: "#3547B8",
-          color: "#FFFFFF",
-          fontWeight: 600,
-          cursor: paying
-            ? "not-allowed"
-            : "pointer",
-          opacity: paying ? 0.7 : 1,
-        }}
-      >
-        {paying
-          ? "Обработка оплаты..."
-          : "Оплата отключена в предпросмотре"}
-      </button>
-
-      <button
-        type="button"
-        onClick={() => router.back()}
-        disabled={paying}
-        style={{
-          width: "100%",
-          height: "48px",
-          border: "1px solid #E5E7EB",
-          borderRadius: "12px",
-          background: "#FFFFFF",
-          color: "#374151",
-          fontWeight: 600,
-          cursor: paying
-            ? "not-allowed"
-            : "pointer",
-          marginTop: "10px",
-        }}
-      >
-        Отмена
-      </button>
+      </section>
     </div>
   );
 }
