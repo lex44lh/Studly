@@ -1,0 +1,797 @@
+{
+  "phase": "live",
+  "startedAt": "2026-10-25T15:29:02.683Z",
+  "browser": "installed Chrome headless / fresh nonpersistent context",
+  "djangoTested": false,
+  "checks": [
+    {
+      "name": "Live offline route smoke 390 dark",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Live offline route smoke 1440 light",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "46 Live route checks; production closes admin and all registration gates even with explicit admin flag",
+      "pass": true
+    },
+    {
+      "name": "Live API and external HTTP requests were blocked; no Django connection attempted",
+      "pass": true,
+      "blockedApi": 60
+    }
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Детали услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Профиль"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "acceptedErrorStateException": "LivePerformer.tsx:12 from accepted5db64a2; one visible network-error alert and retry, h1=0",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/orders/order-offline-smoke",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Заказ не найден"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/orders/order-offline-smoke/additional-payment?serviceId=urgent",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-offline-smoke",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Чат не найден"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Создание услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Регистрация скоро появится"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Регистрация скоро появится"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Регистрация скоро появится"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Детали услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Профиль"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "acceptedErrorStateException": "LivePerformer.tsx:12 from accepted5db64a2; one visible network-error alert and retry, h1=0",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/orders/order-offline-smoke",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Заказ не найден"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/orders/order-offline-smoke/additional-payment?serviceId=urgent",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-offline-smoke",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Чат не найден"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Создание услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Регистрация скоро появится"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Регистрация скоро появится"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Регистрация скоро появится"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    }
+  ],
+  "apiRequests": [
+    "/api/v1/services/",
+    "/api/v1/auth/me/",
+    "/api/v1/services/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/services/1/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/performers/101/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/services/",
+    "/api/v1/auth/me/",
+    "/api/v1/services/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/services/1/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/performers/101/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/"
+  ],
+  "blockedExternalRequests": [
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js"
+  ],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-live-offline-service-390-dark.jpg",
+    "browser-live-closed-registration-390-dark.jpg"
+  ],
+  "adjustedExpectation": {
+    "route": "/profile/101",
+    "condition": "Deliberately aborted API; accepted offline branch",
+    "expected": "h1=0; exactly one main/topbar/visible network alert and retry; zero Demo fallback/errors/overflow",
+    "source": "apps/web/src/components/catalog/LivePerformer.tsx:12, byte-identical to accepted5db64a2",
+    "initialEvidence": "browser-live-initial-h1-expectation.json",
+    "reason": "Initial global h1 assertion did not match accepted offline markup; root reviewed and narrowed expectation; no product change"
+  },
+  "pass": true,
+  "finishedAt": "2026-10-25T15:29:16.145Z"
+}

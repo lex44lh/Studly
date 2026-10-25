@@ -1,0 +1,2490 @@
+{
+  "phase": "default",
+  "startedAt": "2026-10-25T15:20:47.667Z",
+  "browser": "installed Chrome headless / fresh nonpersistent context",
+  "djangoTested": false,
+  "checks": [
+    {
+      "name": "Default production Demo admin closed",
+      "pass": true
+    },
+    {
+      "name": "UI registration persists both roles",
+      "pass": true,
+      "accountId": "demo-self"
+    },
+    {
+      "name": "Profile avatar and name persist after reload",
+      "pass": true
+    },
+    {
+      "name": "Catalog UI search",
+      "pass": true
+    },
+    {
+      "name": "Catalog UI favorites",
+      "pass": true
+    },
+    {
+      "name": "UI simulated order and chat message persist after reload",
+      "pass": true,
+      "orderPath": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "chatPath": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da"
+    },
+    {
+      "name": "Matrix 320 light",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Matrix 320 dark",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Matrix 390 light",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Matrix 390 dark",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Matrix 768 light",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Matrix 768 dark",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Matrix 1440 light",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "Matrix 1440 dark",
+      "pass": true,
+      "routes": 23
+    },
+    {
+      "name": "184 route/viewport/theme combinations; Demo makes zero API requests",
+      "pass": true
+    },
+    {
+      "name": "Unknown route HTTP404",
+      "pass": true
+    }
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 320,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 320,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 320,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 768,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 768,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 768,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Integration QA Updated"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/profile/101",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Максим Козлов"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Мои заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/orders/order-0a865900-e752-463b-b944-bfc55dfb07da/additional-payment?serviceId=urgent",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Дополнительная услуга"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Чаты"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/chats/conversation-0a865900-e752-463b-b944-bfc55dfb07da",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/create-service",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Нужен режим исполнителя"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/welcome",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Добропожаловать!"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/roles",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Как вы хотите использовать STUDLY?"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Давайте познакомимся!"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Расскажите, чем вы занимаетесь"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/notifications",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Уведомления"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Свои люди.Нужные навыки."
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/rules",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Правила платформы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/safety",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/support",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Поддержка"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Раздел закрыт"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "pass": true
+    }
+  ],
+  "apiRequests": [],
+  "blockedExternalRequests": [],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-default-profile-1440-light.jpg",
+    "browser-default-chat-390-light.jpg",
+    "browser-default-service-390-dark.jpg",
+    "browser-default-profile-390-dark.jpg",
+    "browser-default-home-1440-light.jpg"
+  ],
+  "pass": true,
+  "finishedAt": "2026-10-25T15:21:19.984Z"
+}

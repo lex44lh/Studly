@@ -1,0 +1,8 @@
+{
+  "phase": "demo-default",
+  "adminFlag": "",
+  "assertions": {
+    "adminClosed": true,
+    "registrationProductionGateAbsent": true
+  }
+}

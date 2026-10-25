@@ -1,0 +1,124 @@
+{
+  "acceptedCommit": "5db64a2437ce0b000f32de51bc730a9708be5178",
+  "checkpointCommit": "79842a8cd4d97107d923f5d9cb16bc6371549b42",
+  "mergeCommit": "824c8792d6faf08167284ae7275fd4531b485d10",
+  "manifestSHA256": "ef7afc71711a6341238c0cab3e99ccbe4ebe2187012e8f516532cfb204022e65",
+  "manifestFiles": 507,
+  "exactManifestFiles": 506,
+  "allowedManifestDifferences": [
+    "documents/project/для отчетов/README.md"
+  ],
+  "transferredPaths": 352,
+  "frontendPaths": 83,
+  "sourcePaths": 70,
+  "addedTestFiles": 13,
+  "cjsTests": 220,
+  "registrationTsTests": 8,
+  "automatedTestsPassed": 228,
+  "eslintErrors": 0,
+  "preExistingEslintWarnings": 2,
+  "typescriptPassed": true,
+  "buildsPassed": [
+    "demo-default",
+    "demo-admin-enabled",
+    "live-admin-enabled"
+  ],
+  "browserCombinations": {
+    "demo": 184,
+    "adminSections": 48,
+    "liveArtifact": 46
+  },
+  "djangoIntegratedOrTested": false,
+  "productSourcesModifiedBeyondAccepted": false,
+  "browserHarnessNotes": [
+    "Mobile admin select located by actual select options after initial label-selector mismatch.",
+    "LivePerformer accepted offline screen has alert/retry and no h1; initial generic h1 expectation preserved separately, corrected narrowly without product change.",
+    "Full-page mobile chat capture duplication was capture artifact; DOM has single topbar/main and viewport capture verified."
+  ],
+  "evidenceSHA256": {
+    "browser-admin-admin-1440-dark.jpg": "02d62e3e5a3b17cc19a8eb6becbb02e17a3a48389f398af5a319ae0049f82240",
+    "browser-admin-admin-1440-light.jpg": "5767fdc305088eb9514f4697bb23a5661693196ab1472dbebcc647ebba808771",
+    "browser-admin-admin-390-dark.jpg": "3ce9fd72c48cfe0ce820b927ffd705dd41378aa0ff4e21eab3833ab05e557b6d",
+    "browser-admin-admin-390-light.jpg": "8970976555c7b1a4319f6e57a3451265b3399f8d9a94dc4805e32429f3f25ee7",
+    "browser-admin-admin-user-avatar-reopened.jpg": "4cce913e60c880ed1b4c9a99643d40e2235e7325a81e498d693112bc52c01603",
+    "browser-admin-profile-1440-light.jpg": "38b9ea437a768f1daa6865516096482c68e6314156f07e9bcaaa63e9a23b27c7",
+    "browser-admin.json": "e9be1e66700b7e2dbbfe0609c597c3fe6d8e12efad960af14e1bf44348ed8ff6",
+    "browser-capture-chat-390-light.jpg": "47ebca4219d0cd3450b45690b6d70606e9dda66092553056b5b45c18c4834ff1",
+    "browser-capture-chat-390-viewport.jpg": "8120e1635360d6b11ae9dc8443e2a82aa1886c336d675af1a6e51c902d5f5adf",
+    "browser-capture-profile-1440-light.jpg": "8e8063b018f1d4d0e1583c4c72e0df5cae433a4cba220ac10369bf31fa7462c7",
+    "browser-capture.json": "805ac9a6d8bc456a674ee4db921f757f5505fe86362ec76bcd812de190331661",
+    "browser-default-chat-390-light.jpg": "568793542105046ac5dfe7a994b8fdbf67de5b2314b8364457c3859fbe198fc1",
+    "browser-default-home-1440-light.jpg": "4fd461532ee2862a9dd337e979fe6d3fbc34990db3767935940176c345b61d5c",
+    "browser-default-profile-1440-light.jpg": "cd9d1394c904e24449c597845b858581a43cd2393c9e9e307e668e3e907f42c7",
+    "browser-default-profile-390-dark.jpg": "38742e676f7d5966ba0f5a264d1aa1c14118e627a188d33c665b8b4c20a6ebaa",
+    "browser-default-service-390-dark.jpg": "6eaf6a2517098c8ea28dad97213f6463ad9d2f8703a97ff2f87ea8a5e4deaca4",
+    "browser-default.json": "ee07c94ff3c5a92c37aeb92d55ef958fea28c6df9a51d7dba04abee53daccbd5",
+    "browser-live-closed-registration-390-dark.jpg": "8a71d3c567914747f73e9901ae8ebde281d45fa8733d266703d3f7da6c1eec70",
+    "browser-live-initial-h1-expectation.jpg": "aec96534f8e0bfb136cc6f160eb18a3297e4599791cfd361aa99c530ee301f6c",
+    "browser-live-initial-h1-expectation.json": "37df78163d44ad3002de026a0e537f0f786d4c56625451baa3cfa1d90d72c1a6",
+    "browser-live-offline-service-390-dark.jpg": "063c102111cc2b9840d4fed6219e6c4955619812759a2b4556a74477f5d7aa4f",
+    "browser-live.json": "8a276f4ad389a2cd156f21017913c11c0bfb90d326f77ae6522406efb9acd898",
+    "browser-smoke.cjs": "576ce2ce559f31d2d973d2c8f9f15feb0c8bbcf77e5085adadad90818d088d6b",
+    "build-demo-admin.log": "72204f538ebe5d21c1fc43354834d448ac7c3d50a27c6056318797e3a762e29e",
+    "build-demo.log": "4e07e888ad758466432358ee37353d97621249c7c2e9e14b20c4c97bbc895c5c",
+    "build-live.log": "a98b53f626fa9849a68e91a69553e843dcf62fa07ea9c6b85ab7f2dbb353a579",
+    "eslint.log": "2c26585c2acc59614f233b537f7463125bb5e84277bb2c6a92369c3c5f423f0c",
+    "gates-demo-admin.json": "ba5720733eff09f9831a572bdd93ac8451746452234676a4c943c68ecfc82869",
+    "gates-demo-default.json": "12e04851e86c1785d656dccd76c45c82f1857d2cca30ed4ed918abf93cc2bbd2",
+    "gates-live.json": "d71b37892a3e34726554917a5bc4b8413751751e128691b640764360eed74451",
+    "registration-tests.log": "7a3b7d878925930701cfc537802e4763ef64484a4f1e830172a4fe9ea4ef5e45",
+    "registration-transpile.cjs": "b9a5cc2c0274d7cb0651476b7b162744bf2d8b79d5b440ff65abd7ee268a6450",
+    "tests-cjs.log": "6bb55eb98744ed1bf39fb8a1858f38f7a3c42f415b72e2cea4052ed096e8d55b",
+    "typescript.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "publicationGate": {
+    "status": "passed",
+    "scope": "Pre-push publication checks; actual commit/push/remote confirmation is reported in final response.",
+    "checkedAt": "2026-10-25T23:54:57+03:00",
+    "stagedDiffCheckExitCode": 0,
+    "unstagedDiffCheckExitCode": 0,
+    "logsNormalized": true,
+    "evidenceHashesVerified": 34,
+    "allLinksVerified": 57,
+    "stagedPathsVerified": 37,
+    "publishedCandidatePathsScanned": 391,
+    "secretScan": "passed",
+    "productSourcesUnchanged": true,
+    "previousApplicationChecksReused": true,
+    "pushAuthorized": true
+  },
+  "publicationLogNormalization": {
+    "date": "2026-10-25",
+    "scope": "Only CR, trailing spaces/tabs and extra blank EOF lines; application and test sources unchanged.",
+    "files": {
+      "build-demo-admin.log": {
+        "beforeSHA256": "349383b23662c35a77ff21a0c5ac5dfc8479fb6f8d18007156c0a4925aa090af",
+        "afterSHA256": "72204f538ebe5d21c1fc43354834d448ac7c3d50a27c6056318797e3a762e29e",
+        "beforeBytes": 1226,
+        "afterBytes": 1219,
+        "nonEmptyMessagesUnchanged": true
+      },
+      "build-demo.log": {
+        "beforeSHA256": "66ae6b345e58e50dbb89f2f7db05c3b0e3ee1db0f12e4939b5b285beff534fe9",
+        "afterSHA256": "4e07e888ad758466432358ee37353d97621249c7c2e9e14b20c4c97bbc895c5c",
+        "beforeBytes": 1226,
+        "afterBytes": 1219,
+        "nonEmptyMessagesUnchanged": true
+      },
+      "build-live.log": {
+        "beforeSHA256": "840fb0bd0991b00ba839d7ced3b5776902a134ee5a8210044460b35ea43a8f80",
+        "afterSHA256": "a98b53f626fa9849a68e91a69553e843dcf62fa07ea9c6b85ab7f2dbb353a579",
+        "beforeBytes": 1226,
+        "afterBytes": 1219,
+        "nonEmptyMessagesUnchanged": true
+      },
+      "eslint.log": {
+        "beforeSHA256": "0fdc1edb971f882471d3400be06c043b0c2e2198539ba466d5aca66680fcb876",
+        "afterSHA256": "2c26585c2acc59614f233b537f7463125bb5e84277bb2c6a92369c3c5f423f0c",
+        "beforeBytes": 806,
+        "afterBytes": 805,
+        "nonEmptyMessagesUnchanged": true
+      }
+    }
+  }
+}

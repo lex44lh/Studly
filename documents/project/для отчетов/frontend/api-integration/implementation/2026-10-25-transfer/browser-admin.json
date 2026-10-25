@@ -1,0 +1,734 @@
+{
+  "phase": "admin",
+  "startedAt": "2026-10-25T15:24:47.603Z",
+  "browser": "installed Chrome headless / fresh nonpersistent context",
+  "djangoTested": false,
+  "checks": [
+    {
+      "name": "UI registration persists both roles",
+      "pass": true,
+      "accountId": "demo-self"
+    },
+    {
+      "name": "Profile avatar and name persist after reload",
+      "pass": true
+    },
+    {
+      "name": "F3 admin user avatar persists across detail close and reopen",
+      "pass": true
+    },
+    {
+      "name": "12 admin sections 1440 light",
+      "pass": true
+    },
+    {
+      "name": "12 admin sections 1440 dark",
+      "pass": true
+    },
+    {
+      "name": "12 admin sections 390 light",
+      "pass": true
+    },
+    {
+      "name": "12 admin sections 390 dark",
+      "pass": true
+    }
+  ],
+  "routes": [
+    {
+      "route": "/admin#dashboard",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Обзор"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#users",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Пользователи"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#profiles",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Профили на проверке"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#services",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#orders",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#disputes",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Обращения и споры"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#security",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Жалобы и безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#reviews",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Отзывы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#finance",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Финансы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#analytics",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Аналитика"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#events",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "История решений"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#settings",
+      "width": 1440,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Настройки"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#dashboard",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Обзор"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#users",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Пользователи"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#profiles",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Профили на проверке"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#services",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#orders",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#disputes",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Обращения и споры"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#security",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Жалобы и безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#reviews",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Отзывы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#finance",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Финансы"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#analytics",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Аналитика"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#events",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "История решений"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#settings",
+      "width": 1440,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Настройки"
+      ],
+      "main": 1,
+      "scrollWidth": 1440,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#dashboard",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Обзор"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#users",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Пользователи"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#profiles",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Профили на проверке"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#services",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#orders",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#disputes",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Обращения и споры"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#security",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Жалобы и безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#reviews",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Отзывы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#finance",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Финансы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#analytics",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Аналитика"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#events",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "История решений"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#settings",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Настройки"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#dashboard",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Обзор"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#users",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Пользователи"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#profiles",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Профили на проверке"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#services",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#orders",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Заказы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#disputes",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Обращения и споры"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#security",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Жалобы и безопасность"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#reviews",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Отзывы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#finance",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Финансы"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#analytics",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Аналитика"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#events",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "История решений"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/admin#settings",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Настройки"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    }
+  ],
+  "apiRequests": [],
+  "blockedExternalRequests": [],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-admin-profile-1440-light.jpg",
+    "browser-admin-admin-user-avatar-reopened.jpg",
+    "browser-admin-admin-1440-light.jpg",
+    "browser-admin-admin-1440-dark.jpg",
+    "browser-admin-admin-390-light.jpg",
+    "browser-admin-admin-390-dark.jpg"
+  ],
+  "pass": true,
+  "finishedAt": "2026-10-25T15:24:50.961Z",
+  "harnessAdjustments": [
+    {
+      "initialFailure": "Mobile getByLabel(Раздел, exact:true) timed out after 24 desktop checks; wrapped label includes option text.",
+      "correction": "Use select:has(option[value=\"dashboard\"]) in temporary browser runner only.",
+      "productSourceChanged": false,
+      "successfulRerun": "48 desktop/mobile theme section checks plus UI registration/profile/F3 passed.",
+      "failureScreenshot": "browser-admin-failure.jpg"
+    }
+  ]
+}

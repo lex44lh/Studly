@@ -5,9 +5,11 @@
 - Задача: проверить приложенные материалы и фактические Git-снимки перед полной интеграцией STUDLY 2.0. Указания Backend handoff рассматриваются как сведения о контракте, а не самостоятельное разрешение на Git, изменения Backend, публикацию или операции с данными.
 - Cwd / Git root: `/Users/alekspih/Projects/studly-integration`.
 - Ветка: `codex/frontend-api-integration`; назначенный порт 3002.
-- HEAD / policy revision: `1888b9194827d00317fb9cf9d27218ef702999cb`.
+- Исходный HEAD / policy revision: `1888b9194827d00317fb9cf9d27218ef702999cb`.
 
-## Главный результат
+**Текущее обновление:** блокер публикации устранён, проверки публикации пройдены. Нормализовано только форматирование четырёх evidence-логов и обновлены их SHA-256; перенос и результаты проверок приложения сохранены. Финальное продолжение описано в разделе 9, фактические commit/push/local=remote подтверждаются в итоговом ответе. Разделы 1–6 — первоначальный аудит, раздел 7 — перенос, раздел 8 — история остановки без push.
+
+## Результат первоначального аудита 16:34–16:42
 
 **Принятый Redesign не перенесён в Integration. Реализация API на старых страницах не начата.** Этап 2 переданного задания требует сначала подготовить отчёт и безопасный план переноса, а большой patch/merge/import допускает только после отдельного разрешения PO. Этот документ и точный список путей подготовлены для такого решения.
 
@@ -148,3 +150,108 @@ Workspace OpenAPI действительно содержит 42 path и 54 сх
 Созданы: этот Markdown и `2026-10-25_16-34_redesign-transfer-audit.json`. Изменён только индекс отчётов README. Два прежних untracked отчёта 19 октября сохранены без правок. Commit/push/merge/rebase/reset/stash не выполнялись. Готовность к полной технической приёмке Live не заявляется; следующий необходимый шаг — отдельное решение PO о переносе принятой UI-базы и сохранении текущей документации.
 
 Окончание анализа и финальной проверки: **25.10.2026, 16:42:04 Europe/Moscow**, системные часы. HEAD остался `1888b91`. Рабочее дерево содержит изменённый индекс и четыре untracked файла отчётности: два прежних и два этого этапа. Изменений исходников нет.
+
+## 7. Перенос и проверка после разрешения PO
+
+**Результат: принятый STUDLY 2.0 целиком находится в Integration и проверен.** Новых P0/P1/P2-блокеров в выполненном объёме не обнаружено. На этом этапе Django API не подключался. Разрешение PO включает checkpoint, прямой обычный merge как исключение из маршрута main-dev, проверки, необходимые commits и обычный push только в `origin/codex/frontend-api-integration`.
+
+Начало этапа: **25.10.2026 18:14:54 Europe/Moscow**, системные часы. Перед записью повторно проверены cwd/root/ветка/status/worktrees/remote/fetch. Remote Integration оставался на `1888b91`, accepted Redesign — на `5db64a2`; посторонних изменений нет. В checkpoint вошли ровно пять согласованных путей: индекс, два отчёта 19 октября, этот progress report и JSON-аудит.
+
+Созданы:
+
+- **`79842a8`** — `docs(integration): checkpoint verified handoff and transfer audit`.
+- **`824c8792d6faf08167284ae7275fd4531b485d10`** — `merge: import accepted STUDLY 2.0 redesign into integration`, обычный двухродительский merge `5db64a2`. Конфликтов не было; README объединён Git и отдельно проверен.
+- Итоговый commit доказательств проверки **не создан** из-за финального staged diff-check; push не выполнялся. См. раздел 8.
+
+Перенесены **352 пути Redesign: 312 добавлений, 40 изменений, 0 удалений**. Из них **83 Frontend-файла: 70 исходников и 13 новых файлов тестов**. Присутствуют все 19 файлов Demo workspace, регистрация/кабинеты/админка/заказы/чаты и точные принятые исправления F1/F2/F3. После merge исходники дополнительно не правились.
+
+### Целостность и разрешённые отличия
+
+- Accepted manifest SHA-256 остаётся `ef7afc71711a6341238c0cab3e99ccbe4ebe2187012e8f516532cfb204022e65`.
+- **506/507** manifest-файлов точны по SHA-256/размеру/filesystem mode. Единственное разрешённое отличие — общий README отчётов с сохранёнными ссылками Integration; **Git modes 507/507** совпадают. Сам manifest и оба публикационных документа также присутствуют.
+- Все **83/83** Frontend-пути совпадают с accepted по содержимому и Git mode. Пять прежних tracked API-отчётов и оба отчёта 19 октября сохранены. Их SHA-256 из первоначального аудита не изменились.
+- Индекс сохраняет все accepted ссылки Redesign и checkpoint ссылки Integration; добавлена ссылка на текущую проверку.
+- Отличия от accepted вне README — только собственная разрешённая Integration-отчётность и доказательства этого этапа. Backend, API lib, AuthContext, data-mode, next.config, package/lock, AGENTS/TEAM_WORKFLOW/LOCAL_START не менялись относительно исходной базы.
+- Секреты/реальные initData и запрещённые env/cache/архивы не обнаружены в публикуемом наборе. Совпадение credential URL в принятом тесте — намеренно некорректная fixture с placeholder/example.test, не секрет.
+
+### Проверки
+
+| Проверка | Результат |
+|---|---|
+| `npm run test -w apps/web` | **220/220 PASS**, exit 0, без skipped/cancelled |
+| Существующие TS registration tests, изолированный transpileModule + `node --test` | **8/8 PASS**, exit 0; всего **228/228** |
+| `tsc --noEmit --incremental false -p apps/web/tsconfig.json` | PASS, exit 0 |
+| `npm run lint -w apps/web` | PASS, 0 errors, 2 прежних no-img-element warnings `create-service/page.tsx:194/228` |
+| Production Demo default, admin flag пустой | PASS, Webpack build exit 0; админка закрыта, Demo-регистрация доступна |
+| Production Demo QA, admin flag enabled | PASS, build exit 0; sandbox проверен в браузере после hydration |
+| Production Live, admin flag enabled | PASS, build exit 0; все три registration gates и admin gate закрыты несмотря на flag |
+| Demo browser matrix | **184/184 PASS**: 23 route templates × 320/390/768/1440 × light/dark, плюс отдельный HTTP 404 |
+| Demo Admin browser | **48/48 PASS**: 12 разделов × desktop/mobile × light/dark; повторное открытие avatar в карточке пользователя успешно |
+| Live artifact browser | **46/46 PASS**: 23 маршрута × mobile dark/desktop light; gates и отсутствие Demo fallback подтверждены |
+| Итог браузерных комбинаций | **278 PASS**; в финальных прогонах 0 pageerrors, hydration errors и horizontal overflow |
+| Native Demo UI | Обе роли, avatar/name save + reload, поиск, избранное, реальный для Demo ID заказа/чата, сообщение + reload — PASS |
+| Demo/Live isolation | Demo не отправил API-запросов. В Live 60 API-запросов и 46 запросов внешнего Telegram SDK блокированы до сети; Django/production не использовались |
+| Сохранность пользовательских данных | Новые непостоянные browser contexts, без удаления/очистки пользовательских хранилищ; использованы только синтетические QA-данные |
+| Истинная Django/Telegram/платёжная интеграция | **Не запускалась**, не входит в этот этап |
+
+Браузер использовал установленный Chrome headless через Playwright в отдельных непостоянных contexts. Production previews запускались последовательно на loopback:3002 из текущего worktree; одновременно сборка/сервер одного `.next` не выполнялись. Все три собственных preview остановлены Ctrl+C, порт 3002 свободен на проверке. Exit 130 при остановке — ожидаемый SIGINT, не ошибка продукта.
+
+Уточнения временного browser harness сохранены явно: мобильный select админки выбирается по реальной структуре control; принятый offline `/profile/101` возвращает alert и retry без h1, поэтому избыточное общее ожидание h1 заменено узким ожиданием именно этого error state. Первоначальный результат и screenshot сохранены отдельно. Исходник LivePerformer при этом байт-в-байт accepted, gate/fallback не ослаблялись. Повторное изображение header на одном full-page mobile capture оказалось capture artifact: DOM содержит один global header/main; viewport screenshot проверен визуально. Это корректировки проверяющего harness, без изменения продуктового кода.
+
+Sandbox сначала блокировал FETCH_HEAD/bind/запуск Chrome; разрешённые повторы выполнены успешно. Временная проверка наличия client-only admin entry в статическом HTML была неприменима до IndexedDB hydration; реальный browser проверил entry и все разделы. Итоговые проверки приложения завершены успешно; ошибки продукта не обходились. Последующий staged diff-check сохранённых evidence не прошёл — публикация остановлена, подробности ниже.
+
+### Доказательства и публикация
+
+[Сводка проверок и SHA-256 evidence](implementation/2026-10-25-transfer/verification-summary.json), [CJS](implementation/2026-10-25-transfer/tests-cjs.log), [TS](implementation/2026-10-25-transfer/registration-tests.log), [TypeScript](implementation/2026-10-25-transfer/typescript.log), [ESLint](implementation/2026-10-25-transfer/eslint.log), [Demo build](implementation/2026-10-25-transfer/build-demo.log), [Demo QA build](implementation/2026-10-25-transfer/build-demo-admin.log), [Live build](implementation/2026-10-25-transfer/build-live.log).
+
+[Browser runner](implementation/2026-10-25-transfer/browser-smoke.cjs), [Demo browser](implementation/2026-10-25-transfer/browser-default.json), [Admin browser](implementation/2026-10-25-transfer/browser-admin.json), [Live browser](implementation/2026-10-25-transfer/browser-live.json), [уточнение Live error state](implementation/2026-10-25-transfer/browser-live-initial-h1-expectation.json), [диагностика mobile capture](implementation/2026-10-25-transfer/browser-capture.json), [Live gates](implementation/2026-10-25-transfer/gates-live.json).
+
+Визуально просмотрены desktop home, mobile chat, desktop/mobile admin и закрытая Live-регистрация: [главная](implementation/2026-10-25-transfer/browser-default-home-1440-light.jpg), [чат viewport](implementation/2026-10-25-transfer/browser-capture-chat-390-viewport.jpg), [админка desktop](implementation/2026-10-25-transfer/browser-admin-admin-1440-light.jpg), [админка mobile](implementation/2026-10-25-transfer/browser-admin-admin-390-dark.jpg), [Live gate](implementation/2026-10-25-transfer/browser-live-closed-registration-390-dark.jpg).
+
+Изменения этого этапа после merge: только обновление этого progress report, индекса и собственные логи/JSON/screenshots/runner в `implementation/2026-10-25-transfer/`. Исходники не менялись; ни один Backend/Redesign/main checkout не редактировался. Main merge, deployment, production-данные и денежные операции не выполнялись. Frontend готов к следующему отдельному этапу — подключению Django по актуальному контракту; реальная сессионная интеграция пока не подтверждена.
+
+Финальная проверка перед публикацией завершена **25.10.2026 18:34:41 Europe/Moscow**, системные часы: source diff к accepted пуст, `git diff --check` прошёл, 50 локальных ссылок существуют. Независимо перепроверены 35 собственных evidence-файлов (34 заявленных SHA-256 точны), 83 Frontend-файла, manifest и сохранность отчётов. Проверен весь публикуемый набор из 391 пути: 214 текстовых и 177 бинарных; подозрительных секретов/initData/запрещённых путей нет. Итоговые собственные изменения ограничены этим отчётом, индексом и evidence. Финальный fetch подтвердил неизменность remote Integration `1888b91` и accepted Redesign `5db64a2`. Подтверждение push, окончательного local/remote HEAD и чистоты дерева — в финальном ответе.
+
+## 8. Остановка публикации на staged diff-check
+
+**25.10.2026 18:36:15 Europe/Moscow**, системные часы: отдельный повтор `git diff --cached --check` подтвердил **exit 2**. После staging новых evidence впервые проверены Git-ом сами ранее untracked raw-логи. Проверка до staging охватывала только изменённые tracked Markdown; её успех не означал чистоту ещё не добавленных логов.
+
+Проблемы ограничены форматированием четырёх собственных evidence-файлов:
+
+- `build-demo-admin.log`: trailing whitespace/CR на строках 14–16, новая пустая строка EOF 51;
+- `build-demo.log`: те же строки 14–16 и EOF 51;
+- `build-live.log`: те же строки 14–16 и EOF 51;
+- `eslint.log`: новая пустая строка EOF 11.
+
+Это сохранённый терминальный progress-вывод, не ошибка сборки или исходников. Однако `git diff --check` входит в обязательные проверки. PO прямо потребовал при её провале остановиться без push — это условие исполнено. Логи после обнаружения не нормализовывались, новый commit и push не выполнялись.
+
+Фактический local HEAD — `824c8792d6faf08167284ae7275fd4531b485d10`, последний fetched remote Integration — `1888b9194827d00317fb9cf9d27218ef702999cb`; они не совпадают. Рабочее дерево **не чистое**: в index 37 проверенных путей отчётности/evidence, а этот итог остановки и publication gate JSON обновлены дополнительно в рабочем дереве. Backend и принятые исходники не менялись.
+
+Для завершения требуется отдельное продолжение после этой остановки: нормализовать только whitespace четырёх логов, пересчитать их SHA-256 в verification-summary, повторить staged diff-check/границы/secret scan, создать итоговый docs commit и выполнить ранее предусмотренный обычный push с проверкой remote. Повтор тестов/сборок нужен только при изменении исходников или появлении нового основания; сейчас их успешные результаты сохранены. Этап публикации не считается завершённым, переход к Django не начат.
+
+## 9. Завершение прерванной публикации
+
+Начало продолжения: **25.10.2026 23:52:01 Europe/Moscow**, системные часы. PO отдельно подтвердил завершение публикации без нового переноса/merge и без повторного запуска уже успешных проверок приложения. Local HEAD при возобновлении — `824c8792d6faf08167284ae7275fd4531b485d10`; после безопасного fetch remote остался `1888b9194827d00317fb9cf9d27218ef702999cb`, accepted Redesign — `5db64a2437ce0b000f32de51bc730a9708be5178`. Remote является предком local, поэтому обычный push допустим. Подтверждены ровно 37 staged путей отчётности/evidence и два ожидаемых unstaged обновления после остановки; посторонних файлов или изменений исходников не обнаружено.
+
+Нормализованы только CR, trailing spaces/tabs и лишние пустые строки EOF в четырёх логах. Все содержательные строки, сообщения, предупреждения и результаты сохранены; исходные и новые SHA-256/размеры записаны в `publicationLogNormalization` сводного JSON. Остальные 30 хешей evidence не менялись, все 34 записи повторно проверены.
+
+| Файл | Новый SHA-256 |
+|---|---|
+| `build-demo-admin.log` | `72204f538ebe5d21c1fc43354834d448ac7c3d50a27c6056318797e3a762e29e` |
+| `build-demo.log` | `4e07e888ad758466432358ee37353d97621249c7c2e9e14b20c4c97bbc895c5c` |
+| `build-live.log` | `a98b53f626fa9849a68e91a69553e843dcf62fa07ea9c6b85ab7f2dbb353a579` |
+| `eslint.log` | `2c26585c2acc59614f233b537f7463125bb5e84277bb2c6a92369c3c5f423f0c` |
+
+Прежние результаты **228 тестов PASS, TypeScript PASS, ESLint PASS, три production-сборки PASS и 278 браузерных комбинаций PASS** используются из сохранённых доказательств. В этом продолжении тесты/сборки/браузер **не запускались**, поскольку исходники не менялись. Новых Django-запросов, миграций, изменений конфигурации или deployment нет.
+
+Проверки публикации завершены **25.10.2026 23:54:57 Europe/Moscow**, системные часы:
+
+- `git diff --check` и `git diff --cached --check` — PASS, exit 0;
+- staged whitelist — ровно 37 путей отчётности/evidence; ни одного приложения, теста, конфигурации или Backend;
+- все 34 evidence SHA-256 и 57 ссылок (включая локальные пути и Git-объекты Backend) проверены;
+- accepted manifest сохранил исходный digest, прежние Integration-отчёты/JSON-аудит сохранены; source diff к accepted пуст;
+- проверены 391 публикуемый путь: 214 текстовых и 177 бинарных; секреты и запрещённые env/cache/архивы не обнаружены;
+- remote после fetch — прежний `1888b91`, являющийся предком local; обычный fast-forward push допустим;
+- publication gate в verification-summary — PASS, это снимок проверок перед commit/push.
+
+Разрешённый итоговый commit: `docs(integration): record verified STUDLY 2.0 redesign transfer`. Его SHA, фактическое завершение push, совпадение local/remote и чистота рабочего дерева сообщаются в финальном ответе; для post-push статуса новый docs commit не требуется. Отдельный перенос/merge не повторялся. Следующее действие после публикации — самостоятельный этап подключения Django API; в этом задании он не начинался.

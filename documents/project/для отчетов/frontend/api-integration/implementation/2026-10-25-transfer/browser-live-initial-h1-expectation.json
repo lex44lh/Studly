@@ -1,0 +1,126 @@
+{
+  "phase": "live",
+  "startedAt": "2026-10-25T15:26:24.541Z",
+  "browser": "installed Chrome headless / fresh nonpersistent context",
+  "djangoTested": false,
+  "checks": [],
+  "routes": [
+    {
+      "route": "/",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Твоя задача.Чья-то сильная сторона."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/search",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Найди своегоисполнителя."
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/category/programming",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Программирование"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/service/1",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Детали услуги"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Избранное"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "width": 390,
+      "theme": "dark",
+      "status": 200,
+      "h1": [
+        "Профиль"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    }
+  ],
+  "apiRequests": [
+    "/api/v1/services/",
+    "/api/v1/auth/me/",
+    "/api/v1/services/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/services/1/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/auth/me/",
+    "/api/v1/performers/101/",
+    "/api/v1/auth/me/"
+  ],
+  "blockedExternalRequests": [
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js"
+  ],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-live-offline-service-390-dark.jpg",
+    "browser-live-failure.jpg"
+  ],
+  "pass": false,
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('h1').first() to be visible\u001b[22m\n\n    at settle (/private/tmp/studly-transfer-20261025-1814/browser-smoke.cjs:15:110)\n    at async go (/private/tmp/studly-transfer-20261025-1814/browser-smoke.cjs:16:153)\n    at async live (/private/tmp/studly-transfer-20261025-1814/browser-smoke.cjs:23:611)\n    at async /private/tmp/studly-transfer-20261025-1814/browser-smoke.cjs:24:1266",
+  "finishedAt": "2026-10-25T15:26:56.954Z"
+}

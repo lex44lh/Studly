@@ -1,0 +1,9 @@
+{
+  "phase": "demo-admin",
+  "assertions": {
+    "adminClosedGateAbsent": true,
+    "registrationGateAbsent": true
+  },
+  "clientAdminEntry": "Required separate browser check after IndexedDB hydration; see browser-admin.json.",
+  "harnessNote": "Initial static entry-text assertion was inapplicable: AdminWorkspace is client-side and waits for local storage hydration. No product source changed."
+}

@@ -1,0 +1,110 @@
+{
+  "phase": "capture",
+  "startedAt": "2026-10-25T15:25:01.420Z",
+  "browser": "installed Chrome headless / fresh nonpersistent context",
+  "djangoTested": false,
+  "checks": [
+    {
+      "name": "UI registration persists both roles",
+      "pass": true,
+      "accountId": "demo-self"
+    },
+    {
+      "name": "Profile avatar and name persist after reload",
+      "pass": true
+    },
+    {
+      "name": "Catalog UI search",
+      "pass": true
+    },
+    {
+      "name": "Catalog UI favorites",
+      "pass": true
+    },
+    {
+      "name": "UI simulated order and chat message persist after reload",
+      "pass": true,
+      "orderPath": "/orders/order-6524b6c0-a3ba-4ca1-9c9b-e04170914ee9",
+      "chatPath": "/chats/conversation-6524b6c0-a3ba-4ca1-9c9b-e04170914ee9"
+    },
+    {
+      "name": "Chat has exactly one header.topbar/main/h1; viewport screenshot captured",
+      "pass": true,
+      "topbarCount": 1,
+      "mainCount": 1,
+      "h1Count": 1,
+      "bodyHeight": 1127,
+      "viewportHeight": 844,
+      "scrollY": 162,
+      "topbar": [
+        {
+          "text": "STUDLY\nДЕМО",
+          "rect": "{\"x\":0,\"y\":-162,\"width\":390,\"height\":68,\"top\":-162,\"right\":390,\"bottom\":-94,\"left\":0}"
+        }
+      ],
+      "headers": [
+        {
+          "text": "STUDLY\nДЕМО",
+          "className": "topbar"
+        },
+        {
+          "text": "Помогу с C++\n\nIntegration QA Updated · Иван Петров\n\nЗаказ · Ожидает принятия",
+          "className": "commerce_chatHead__bwW5H"
+        }
+      ],
+      "scrollHeight": 1127
+    }
+  ],
+  "routes": [
+    {
+      "route": "/chats/conversation-6524b6c0-a3ba-4ca1-9c9b-e04170914ee9",
+      "width": 390,
+      "theme": "light",
+      "status": 200,
+      "h1": [
+        "Помогу с C++"
+      ],
+      "main": 1,
+      "scrollWidth": 390,
+      "contentId": "campus-content",
+      "topbars": 1,
+      "pass": true
+    }
+  ],
+  "apiRequests": [],
+  "blockedExternalRequests": [],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-capture-profile-1440-light.jpg",
+    "browser-capture-chat-390-light.jpg",
+    "browser-capture-chat-390-viewport.jpg"
+  ],
+  "chatGeometry": {
+    "topbarCount": 1,
+    "mainCount": 1,
+    "h1Count": 1,
+    "bodyHeight": 1127,
+    "viewportHeight": 844,
+    "scrollY": 162,
+    "topbar": [
+      {
+        "text": "STUDLY\nДЕМО",
+        "rect": "{\"x\":0,\"y\":-162,\"width\":390,\"height\":68,\"top\":-162,\"right\":390,\"bottom\":-94,\"left\":0}"
+      }
+    ],
+    "headers": [
+      {
+        "text": "STUDLY\nДЕМО",
+        "className": "topbar"
+      },
+      {
+        "text": "Помогу с C++\n\nIntegration QA Updated · Иван Петров\n\nЗаказ · Ожидает принятия",
+        "className": "commerce_chatHead__bwW5H"
+      }
+    ],
+    "scrollHeight": 1127
+  },
+  "pass": true,
+  "finishedAt": "2026-10-25T15:25:04.083Z"
+}

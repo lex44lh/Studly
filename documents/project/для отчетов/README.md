@@ -40,3 +40,5 @@
 - [Инициализация API Integration — 19.10.2026](frontend/api-integration/2026-10-19_00-21_session-initialization.md)
 - [План локального Django и проверки Live на 3002 — 19.10.2026](frontend/api-integration/2026-10-19_00-44_django-live-plan.md)
 - [STUDLY 2.0: проверка Backend и блокировка переноса принятого Redesign — 25.10.2026](frontend/api-integration/2026-10-25_16-34_integration-progress.md)
+- [STUDLY 2.0: разрешённый перенос Redesign, тесты, сборки и браузерная проверка — 25.10.2026](frontend/api-integration/2026-10-25_16-34_integration-progress.md#7-перенос-и-проверка-после-разрешения-po)
+- [STUDLY 2.0: завершение прерванной публикации Integration — 25.10.2026](frontend/api-integration/2026-10-25_16-34_integration-progress.md#9-завершение-прерванной-публикации)

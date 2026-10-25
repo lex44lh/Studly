@@ -1,0 +1,11 @@
+{
+  "phase": "live",
+  "adminFlag": "enabled",
+  "assertions": {
+    "adminClosedDespiteEnabledFlag": true,
+    "rolesGateClosed": true,
+    "profileGateClosed": true,
+    "performerGateClosed": true
+  },
+  "djangoTested": false
+}
