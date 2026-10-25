@@ -3,7 +3,7 @@
 import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import BrandMark from "@/components/BrandMark";
+import { Icon } from "@/components/studly/Icon";
 import { demoMode } from "@/lib/data-mode";
 import { useAuth } from "@/context/AuthContext";
 import { useRegistration } from "@/context/RegistrationContext";
@@ -24,30 +24,36 @@ export function RegistrationStep({ step, title, intro, children }: {
   const number = step === "roles" ? 1 : step === "profile" ? 2 : 3;
   const total = draft.roles.includes("performer") ? 3 : 2;
   return (
-    <main className={styles.screen}>
+    <section className={styles.screen} aria-label="Регистрация STUDLY">
       <div className={styles.container}>
-        <div className={styles.brand}><BrandMark size={36} /><span>STUDLY</span></div>
+        <p className={styles.eyebrow}>Знакомство со STUDLY</p>
+        <div className={styles.panel}>
         {!demoMode && auth.status !== "authenticated" ? <>
-          <p role={auth.status === "error" ? "alert" : "status"}>{auth.message}</p>
+          <div className={styles.stateIcon}><Icon name="user" /></div>
+          <h1 className={styles.title}>Вход в STUDLY</h1>
+          <p className={styles.intro} role={auth.status === "error" ? "alert" : "status"}>{auth.message}</p>
           {auth.status !== "loading" && <button type="button" className={styles.secondary} onClick={refresh}>Повторить вход</button>}
-        </> : loading ? <p role="status">Восстанавливаем регистрацию…</p> : error && !ready ? <>
+        </> : loading ? <p className={styles.intro} role="status">Восстанавливаем регистрацию…</p> : error && !ready ? <>
           <p role="alert">{error}</p><button type="button" className={styles.secondary} onClick={retry}>Повторить загрузку</button>
         </> : target ? <p role="status">Открываем предыдущий шаг…</p> : <>
           <nav aria-label="Навигация регистрации" className={styles.navigation}>
             <Link onClick={event => { if (busy) event.preventDefault(); }} aria-disabled={busy} className={styles.back} href={step === "roles" ? "/welcome" : step === "profile" ? "/register/roles" : "/register/profile"}>← Назад</Link>
             <span className={styles.step}>Шаг {number} из {total}</span>
           </nav>
+          <div className={styles.progress} aria-hidden="true">{Array.from({ length: total }, (_, index) => <span key={index} className={index < number ? styles.progressComplete : undefined} />)}</div>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.intro}>{intro}</p>
-          {demoMode && <p className={styles.notice}>DEMO · Данные формы остаются в этой вкладке. Аккаунт не создаётся.</p>}
+          {demoMode && <p className={styles.notice}>DEMO · Прогресс сохраняется локально в этом браузере. Серверный аккаунт не создаётся.</p>}
           {error && <p className={styles.error} role="alert">{error}</p>}
           <fieldset disabled={busy} className={styles.fieldset} aria-busy={busy}>
           {previewComplete ? <RegistrationPreviewEnd onBack={returnToForm} /> : children}
           </fieldset>
-          {busy && <p role="status">Сохраняем…</p>}
+          {busy && <p className={styles.hint} role="status">Сохраняем…</p>}
         </>}
+        </div>
+        <p className={styles.footnote}>Твой кампус. Твои возможности.</p>
       </div>
-    </main>
+    </section>
   );
 }
 

@@ -1,0 +1,194 @@
+[
+  {
+    "actualWidth": 320,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "label": "registration-performer-dev",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "label": "registration-profile-dev",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "label": "registration-roles-dev",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "theme": "dark",
+    "width": 1440
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "capturedAt": "2026-10-23T17:31:22+03:00",
+  "initialManifestSha256": "6d7c86a330b1cb417809eeae941f9f0c4995440ff659d90d45e46de121bc2cce",
+  "initialRepositoryFilesAndModesVerified": 467,
+  "initialMismatches": [],
+  "outsideTargetExistingFileMismatchesBeforeReportUpdate": [],
+  "targetExistingFiles": [
+    "apps/web/src/features/demo-workspace/AccountWorkspace.tsx",
+    "apps/web/src/features/demo-workspace/AdminWorkspace.tsx",
+    "apps/web/src/features/demo-workspace/Provider.tsx",
+    "apps/web/src/features/demo-workspace/RegistrationAdapter.tsx",
+    "apps/web/tests/demo-registration-adapter.test.cjs"
+  ],
+  "currentBackendReference": "d7a5ffa5abc1537301ced7275da9e45282d6b4f3",
+  "policyHead": "1888b9194827d00317fb9cf9d27218ef702999cb",
+  "checks": {
+    "cjsTests": {
+      "passed": 220,
+      "failed": 0
+    },
+    "registrationTypeScriptTests": {
+      "passed": 8,
+      "failed": 0
+    },
+    "typescript": "PASS --noEmit --incremental false",
+    "eslint": "PASS 0 errors /2 pre-existing warnings",
+    "productionDemo": "PASS default and QA admin-enabled variants",
+    "productionLive": "PASS registration/admin closed including explicit admin flag",
+    "realDjango": "Not run"
+  },
+  "reviewSource": "/Users/alekspih/Projects/studly/documents/project/для отчетов/frontend/redesign/2026-10-23_11-17_frontend-scenarios-independent-review.md",
+  "independentAcceptance": "PENDING; author does not declare ACCEPTED",
+  "finalCapturedAt": "2026-10-23T17:39:13+03:00",
+  "finalExistingFilesChanged": [
+    "apps/web/src/features/demo-workspace/AccountWorkspace.tsx",
+    "apps/web/src/features/demo-workspace/AdminWorkspace.tsx",
+    "apps/web/src/features/demo-workspace/Provider.tsx",
+    "apps/web/src/features/demo-workspace/RegistrationAdapter.tsx",
+    "apps/web/tests/demo-registration-adapter.test.cjs",
+    "documents/project/для отчетов/README.md",
+    "documents/project/для отчетов/frontend/redesign/2026-10-23_10-42_frontend-scenarios-completion.md",
+    "documents/project/для отчетов/frontend/redesign/README.md"
+  ],
+  "finalUnexpectedExistingFileOrModeChanges": [],
+  "finalOldManifestUnchanged": true,
+  "finalGit": {
+    "modifiedTracked": 40,
+    "untrackedIncludingNewManifest": 310,
+    "staged": 0,
+    "deleted": 0
+  },
+  "finalErrorRecoveryButton": {
+    "realRenderedOnClickTest": "PASS; RED before UI fix",
+    "browserFailureInjection": "Not run"
+  },
+  "finalBuildModes": [
+    "live with admin flag enabled: gates closed",
+    "demo default: registration open / admin closed"
+  ]
+}

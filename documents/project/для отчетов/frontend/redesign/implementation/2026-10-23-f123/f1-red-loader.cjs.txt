@@ -1,0 +1,1 @@
+const fs=require('node:fs');const original=fs.readFileSync;fs.readFileSync=function(file,...args){if(String(file).endsWith('/features/demo-workspace/AccountWorkspace.tsx'))return original.call(this,'/private/tmp/studly-f1-original.tsx',...args);return original.call(this,file,...args);};

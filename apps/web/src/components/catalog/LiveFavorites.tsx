@@ -1,4 +1,7 @@
 "use client";
+import Link from "next/link";
+import { PageHeading } from "@/components/studly/PageHeading";
+import { Icon } from "@/components/studly/Icon";
 import { useState } from "react";
 import { useFavorites } from "@/context/FavoritesContext";
 import BackButton from "@/components/BackButton";
@@ -9,7 +12,7 @@ function FavoritePages({ ids }: { ids: number[] }) {
   const count = Math.ceil(ids.length / 100);
   return <>
     <ServiceList key={`${group}:${ids.join(",")}`} query={page || `ids=${ids.slice(group * 100, (group + 1) * 100).join(",")}`} onPage={setPage} />
-    {count > 1 && <div>
+    {count > 1 && <div className="page-pagination">
       <p>Группа {group + 1} из {count}</p>
       <button type="button" disabled={!group} onClick={() => { setGroup(group - 1); setPage(""); }}>Предыдущая группа</button>
       <button type="button" disabled={group + 1 >= count} onClick={() => { setGroup(group + 1); setPage(""); }}>Следующая группа</button>
@@ -18,7 +21,7 @@ function FavoritePages({ ids }: { ids: number[] }) {
 }
 export default function LiveFavorites() {
   const { favorites, isHydrated } = useFavorites();
-  return <div><BackButton /><h1>Избранное ❤️</h1><p>Список сохраняется только в этом браузере.</p>
-    {!isHydrated ? <p>Загрузка…</p> : !favorites.length ? <p>У Вас пока нет избранных услуг</p> : <FavoritePages key={favorites.join(",")} ids={favorites} />}
+  return <div className="campus-page"><BackButton /><PageHeading title="Избранное">Список сохраняется только в этом браузере.</PageHeading>
+    {!isHydrated ? <div className="page-resource" role="status">Загрузка…</div> : !favorites.length ? <div className="page-panel page-empty"><Icon name="heart" /><h2>Здесь пока пусто</h2><p>У Вас пока нет избранных услуг.</p><Link className="page-button" href="/search">Найти услугу <Icon name="arrow" /></Link></div> : <FavoritePages key={favorites.join(",")} ids={favorites} />}
   </div>;
 }

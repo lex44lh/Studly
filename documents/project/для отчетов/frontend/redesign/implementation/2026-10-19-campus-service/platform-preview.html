@@ -1,0 +1,9 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>STUDLY · Test-only platform preview</title>
+<style>body{margin:0;background:#dfe4ee;font:14px system-ui}header{padding:8px;display:flex;gap:10px;align-items:center}button{min-height:44px}iframe{border:0;display:block;background:white}</style>
+<header><strong>Только QA · эмуляция CSS</strong><button id="safe">Safe area 24 / 34 / 30</button><button id="motion">Reduced Motion rules</button><output id="result"></output></header>
+<iframe title="Страница услуги" src="/service/42?qa=platform" width="390" height="844"></iframe>
+<script>
+const frame=document.querySelector('iframe');
+document.querySelector('#safe').onclick=()=>{const root=frame.contentDocument.querySelector('.studly-app');for(const [edge,value] of [['top',24],['bottom',34],['left',30],['right',30]])root.style.setProperty('--studly-safe-'+edge,value+'px','important');document.querySelector('#result').textContent='Safe area применена';};
+document.querySelector('#motion').onclick=()=>{let count=0;function visit(rules){for(const rule of rules){if(rule.media&&rule.conditionText.includes('prefers-reduced-motion')){rule.media.mediaText='all';count++;}else if(rule.cssRules)visit(rule.cssRules);}}for(const sheet of frame.contentDocument.styleSheets){try{visit(sheet.cssRules);}catch{}}document.querySelector('#result').textContent='Reduced Motion: '+count+' media rules активированы';};
+</script></html>

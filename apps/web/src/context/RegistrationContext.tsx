@@ -1,5 +1,6 @@
 "use client";
 
+import { DemoRegistrationBridge } from "@/features/demo-workspace/RegistrationAdapter";
 import { createContext, useCallback, useContext, useEffect, useReducer, useRef, useState, type Dispatch, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { demoMode } from "@/lib/data-mode";
@@ -127,5 +128,6 @@ export function useRegistration() {
 
 export function RegistrationProvider({ children }: { children: ReactNode }) {
   const { state: auth } = useAuth();
+  if (demoMode) return <DemoRegistrationBridge context={RegistrationContext}>{children}</DemoRegistrationBridge>;
   return <RegistrationSession key={auth.user?.id ?? "anonymous"}>{children}</RegistrationSession>;
 }

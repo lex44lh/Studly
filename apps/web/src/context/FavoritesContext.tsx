@@ -7,6 +7,8 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
+import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
+import { NEXT_SERVICE_ID } from "@/features/demo-workspace/model";
 import services from "@/data/services";
 import { demoMode } from "@/lib/api/catalog";
 const storageKey = demoMode ? "favorites" : "studly-api-favorites";
@@ -38,7 +40,7 @@ function parseFavorites(value: string | null): number[] {
           typeof id === "number" &&
           Number.isSafeInteger(id) &&
           id > 0 &&
-          (!demoMode || serviceIds.has(id))
+          (!demoMode || serviceIds.has(id) || id >= NEXT_SERVICE_ID)
       )
     )];
   } catch {
@@ -72,6 +74,7 @@ export function FavoritesProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const workspace = useOptionalDemoWorkspace();
   const [favorites, setFavorites] = useState<number[]>(readFavorites);
 
   useEffect(() => {
@@ -106,7 +109,7 @@ export function FavoritesProvider({
   }, []);
 
   const toggleFavorite = (id: number) => {
-    if (!Number.isSafeInteger(id) || (demoMode && !serviceIds.has(id))) {
+    if (!Number.isSafeInteger(id) || (demoMode && !serviceIds.has(id) && !workspace?.state?.services.some(service => service.id === id && service.status === "approved"))) {
       return;
     }
 

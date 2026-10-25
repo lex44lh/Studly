@@ -1,0 +1,163 @@
+[
+  {
+    "error": false,
+    "heading": "Твоя задача.Чья-то сильная сторона.",
+    "mainCount": 1,
+    "route": "/",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Свои люди.Нужные навыки.",
+    "mainCount": 1,
+    "route": "/about",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Программирование",
+    "mainCount": 1,
+    "route": "/category/programming",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Чаты",
+    "mainCount": 1,
+    "route": "/chats",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Не указан",
+    "mainCount": 1,
+    "route": "/chats/862200",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Создание услуги",
+    "mainCount": 1,
+    "route": "/create-service",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Избранное",
+    "mainCount": 1,
+    "route": "/favorites",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Уведомления",
+    "mainCount": 1,
+    "route": "/notifications",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Заказы",
+    "mainCount": 1,
+    "route": "/orders",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "QA missing",
+    "mainCount": 1,
+    "route": "/orders/862200",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Дополнительная услуга не найдена",
+    "mainCount": 1,
+    "route": "/orders/862200/additional-payment",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Профиль",
+    "mainCount": 1,
+    "route": "/profile",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Иван Петров",
+    "mainCount": 1,
+    "route": "/profile/1",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Регистрация скоро появится",
+    "mainCount": 1,
+    "route": "/register/performer",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Регистрация скоро появится",
+    "mainCount": 1,
+    "route": "/register/profile",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Регистрация скоро появится",
+    "mainCount": 1,
+    "route": "/register/roles",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Правила платформы",
+    "mainCount": 1,
+    "route": "/rules",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Безопасность",
+    "mainCount": 1,
+    "route": "/safety",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Найди своегоисполнителя.",
+    "mainCount": 1,
+    "route": "/search",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Помогу с C++",
+    "mainCount": 1,
+    "route": "/service/1",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Поддержка",
+    "mainCount": 1,
+    "route": "/support",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Добропожаловать!",
+    "mainCount": 1,
+    "route": "/welcome",
+    "targetCount": 1
+  },
+  {
+    "error": false,
+    "heading": "Страница не найдена",
+    "mainCount": 1,
+    "route": "/acceptance-not-found",
+    "targetCount": 1
+  }
+]

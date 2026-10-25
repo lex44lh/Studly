@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { AdditionalService } from "./AdditionalServicesSelector";
+import { DemoOrderStatus, demoPerformerName } from "./studly/DemoOrderPresentation";
+import { Icon } from "./studly/Icon";
+import "./studly/activity.css";
 
 type Message = {
   id: number;
@@ -34,16 +37,6 @@ type Order = {
   totalDurationDays?: number;
 
   additionalServices?: AdditionalService[];
-};
-
-const statusLabels: Record<
-  Order["status"],
-  string
-> = {
-  PENDING: "🟡 Ожидает",
-  IN_PROGRESS: "🔵 В работе",
-  REVIEW: "🟣 На рассмотрении",
-  COMPLETED: "🟢 Завершён",
 };
 
 /*
@@ -78,6 +71,7 @@ export default function ChatWindow({
   orderId,
 }: Props) {
   const router = useRouter();
+  const performerName = demoPerformerName(user);
 
   const [message, setMessage] = useState("");
 
@@ -176,7 +170,7 @@ export default function ChatWindow({
    */
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   }, [messages]);
 
@@ -379,545 +373,65 @@ export default function ChatWindow({
       order.status === "IN_PROGRESS");
 
   return (
-    <div
-      style={{
-        height:
-          "calc(100vh - 140px)",
-        display: "flex",
-        flexDirection: "column",
-        minHeight: 0,
-      }}
-    >
-      {/* Верхняя панель */}
-      <div
-        style={{
-          borderBottom:
-            "1px solid #E5E7EB",
-          marginBottom: "12px",
-          flexShrink: 0,
-        }}
-      >
-        {/* Основная строка */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent:
-              "space-between",
-            gap: "8px",
-            paddingBottom: "10px",
-          }}
-        >
-          <div
-            style={{
-              minWidth: 0,
-              flex: 1,
-            }}
-          >
-            <h2
-              style={{
-                margin: 0,
-                marginBottom: "4px",
-                fontSize: "18px",
-                lineHeight: 1.2,
-              }}
-            >
-              {service}
-            </h2>
-
-            {order ? (
-              <p
-                style={{
-                  margin: 0,
-                  color: "#3547B8",
-                  fontSize: "14px",
-                }}
-              >
-                {statusLabels[
-                  order.status
-                ]}
-              </p>
-            ) : (
-              <p
-                style={{
-                  margin: 0,
-                  color: "#6B7280",
-                  fontSize: "13px",
-                }}
-              >
-                Чат с {user}
-              </p>
-            )}
+    <section className="activity-chat" aria-label={`Переписка с ${performerName}`}>
+      <header className="activity-chat-heading">
+        <div className="activity-row">
+          <div className="activity-card-main">
+            <h1>{performerName}</h1>
+            <p>{service}</p>
           </div>
-
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "4px",
-              flexShrink: 0,
-            }}
-          >
-            {order && (
-              <button
-                type="button"
-                onClick={() =>
-                  setDetailsOpen(
-                    (prev) => !prev
-                  )
-                }
-                style={{
-                  border: "none",
-                  background:
-                    "transparent",
-                  color: "#3547B8",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  padding:
-                    "8px 4px",
-                  whiteSpace:
-                    "nowrap",
-                }}
-              >
-                Подробнее{" "}
-                {detailsOpen
-                  ? "⌃"
-                  : "⌄"}
-              </button>
-            )}
-
-            <button
-              type="button"
-              onClick={deleteChat}
-              aria-label="Удалить чат"
-              title="Удалить чат"
-              style={{
-                width: "36px",
-                height: "36px",
-                border: "none",
-                borderRadius: "8px",
-                background:
-                  "transparent",
-                color: "#6B7280",
-                cursor: "pointer",
-                fontSize: "18px",
-                flexShrink: 0,
-              }}
-            >
-              🗑️
-            </button>
+          <div className="activity-chat-tools">
+            {order && <button type="button" onClick={() => setDetailsOpen((prev) => !prev)} className="secondary-btn" aria-expanded={detailsOpen} aria-controls="chat-order-details">{detailsOpen ? "Скрыть" : "Подробнее"}<Icon name="book" /></button>}
+            <button type="button" onClick={deleteChat} aria-label="Удалить чат" title="Удалить чат" className="activity-delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5" /></svg></button>
           </div>
         </div>
-
-        {/* Раскрытая информация о заказе */}
-        {order && detailsOpen && (
-          <div
-            style={{
-              paddingBottom: "12px",
-            }}
-          >
-            {/* Сумма и срок */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  "1fr 1fr",
-                gap: "8px",
-                marginBottom: "14px",
-              }}
-            >
-              <div
-                style={{
-                  padding: "10px",
-                  borderRadius: "10px",
-                  background:
-                    "#F9FAFB",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#6B7280",
-                    marginBottom: "3px",
-                  }}
-                >
-                  Сумма
-                </div>
-
-                <strong>
-                  {totalPrice} ₽
-                </strong>
-              </div>
-
-              <div
-                style={{
-                  padding: "10px",
-                  borderRadius: "10px",
-                  background:
-                    "#F9FAFB",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#6B7280",
-                    marginBottom: "3px",
-                  }}
-                >
-                  Срок
-                </div>
-
-                <strong>
-                  {totalDurationDays !=
-                  null
-                    ? `${totalDurationDays} ${
-                        totalDurationDays ===
-                        1
-                          ? "день"
-                          : totalDurationDays <
-                            5
-                          ? "дня"
-                          : "дней"
-                      }`
-                    : "—"}
-                </strong>
-              </div>
-            </div>
-
-            {/* Дополнительные услуги */}
-            {canBuyAdditionalServices && (
-              <div>
-                <h3
-                  style={{
-                    margin: "0 0 8px",
-                    fontSize: "15px",
-                  }}
-                >
-                  Дополнительные услуги
-                </h3>
-
-                {availableAdditionalServices.map(
-                  (additionalService) => {
-                    const alreadyAdded =
-                      (
-                        order.additionalServices ??
-                        []
-                      ).some(
-                        (item) =>
-                          item.id ===
-                          additionalService.id
-                      );
-
-                    return (
-                      <div
-                        key={
-                          additionalService.id
-                        }
-                        style={{
-                          display: "flex",
-                          alignItems:
-                            "center",
-                          justifyContent:
-                            "space-between",
-                          gap: "10px",
-                          padding:
-                            "9px 0",
-                          borderTop:
-                            "1px solid #E5E7EB",
-                        }}
-                      >
-                        <div
-                          style={{
-                            minWidth: 0,
-                            flex: 1,
-                          }}
-                        >
-                          <div
-                            style={{
-                              fontSize:
-                                "14px",
-                              fontWeight: 600,
-                            }}
-                          >
-                            {
-                              additionalService.title
-                            }
-                          </div>
-
-                          <div
-                            style={{
-                              marginTop:
-                                "2px",
-                              fontSize:
-                                "12px",
-                              color:
-                                "#6B7280",
-                            }}
-                          >
-                            {additionalService.extraDays >
-                            0
-                              ? `+${additionalService.extraDays} ${
-                                  additionalService.extraDays ===
-                                  1
-                                    ? "день"
-                                    : "дня"
-                                } к сроку`
-                              : "Без изменения срока"}
-                          </div>
-                        </div>
-
-                        {alreadyAdded ? (
-                          <span
-                            style={{
-                              color:
-                                "#1B8A5A",
-                              fontSize:
-                                "13px",
-                              fontWeight: 600,
-                              whiteSpace:
-                                "nowrap",
-                            }}
-                          >
-                            ✓ Заказано
-                          </span>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() =>
-                              startAdditionalServicePayment(
-                                additionalService
-                              )
-                            }
-                            style={{
-                              border: "none",
-                              borderRadius:
-                                "8px",
-                              padding:
-                                "7px 10px",
-                              background:
-                                "#3547B8",
-                              color:
-                                "#FFFFFF",
-                              fontSize:
-                                "13px",
-                              fontWeight: 600,
-                              cursor:
-                                "pointer",
-                              whiteSpace:
-                                "nowrap",
-                            }}
-                          >
-                            Заказать ·{" "}
-                            {
-                              additionalService.price
-                            }{" "}
-                            ₽
-                          </button>
-                        )}
-                      </div>
-                    );
-                  }
-                )}
-              </div>
-            )}
+        {order && <div className="activity-card-meta"><DemoOrderStatus status={order.status} /><span>Заказ № {order.id}</span></div>}
+      </header>
+      {order && detailsOpen && (
+        <div className="activity-chat-details" id="chat-order-details">
+          <div className="activity-chat-stats">
+            <div className="activity-chat-stat"><small>Сумма</small><strong>{totalPrice} ₽</strong></div>
+            <div className="activity-chat-stat"><small>Срок</small><strong>{totalDurationDays != null ? `${totalDurationDays} ${totalDurationDays === 1 ? "день" : totalDurationDays < 5 ? "дня" : "дней"}` : "—"}</strong></div>
           </div>
-        )}
-      </div>
-
-      {/* Сообщения */}
-      <div
-        style={{
-          flex: 1,
-          minHeight: 0,
-          overflowY: "auto",
-          display: "flex",
-          flexDirection:
-            "column",
-          gap: "12px",
-          paddingBottom: "4px",
-        }}
-      >
+          {canBuyAdditionalServices && (
+            <div>
+              <h2>Дополнительные услуги</h2>
+              {availableAdditionalServices.map((additionalService) => {
+                const alreadyAdded = (order.additionalServices ?? []).some((item) => item.id === additionalService.id);
+                return <div key={additionalService.id} className="activity-addon">
+                  <div><strong>{additionalService.title}</strong><small>{additionalService.extraDays > 0 ? `+${additionalService.extraDays} ${additionalService.extraDays === 1 ? "день" : additionalService.extraDays < 5 ? "дня" : "дней"}` : "Без изменения срока"}</small></div>
+                  {alreadyAdded ? <span className="activity-addon-added">Уже добавлено</span> : <button type="button" onClick={() => startAdditionalServicePayment(additionalService)} className="primary-btn">Заказать · {additionalService.price} ₽</button>}
+                </div>;
+              })}
+            </div>
+          )}
+        </div>
+      )}
+      <div className="activity-messages" role="log" aria-label="Сообщения" aria-live="polite" aria-relevant="additions text">
         {messages.length === 0 ? (
-          <p
-            style={{
-              textAlign: "center",
-              color: "#9CA3AF",
-              marginTop: "40px",
-            }}
-          >
-            Начните переписку
-          </p>
+          <div className="activity-message-empty"><Icon name="chat" /><strong>Начните переписку</strong><p>Обсудите задачу и детали работы.</p></div>
         ) : (
-          <>
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                style={{
-                  alignSelf:
-                    msg.mine
-                      ? "flex-end"
-                      : "flex-start",
-                  background:
-                    msg.mine
-                      ? "#3547B8"
-                      : "#F3F4F6",
-                  color:
-                    msg.mine
-                      ? "#FFFFFF"
-                      : "#111827",
-                  padding: "12px",
-                  borderRadius:
-                    "12px",
-                  maxWidth: "80%",
-                  wordBreak:
-                    "break-word",
-                }}
-              >
-                <div>
-                  {msg.text}
-                </div>
-
-                <div
-                  style={{
-                    fontSize: "11px",
-                    marginTop: "6px",
-                    opacity: 0.7,
-                    textAlign: "right",
-                  }}
-                >
-                  {msg.time}
-                </div>
-              </div>
-            ))}
-
-            <div
-              ref={messagesEndRef}
-            />
-          </>
+          <>{messages.map((msg) => <div key={msg.id} className={`activity-bubble${msg.mine ? " is-mine" : ""}`}><div>{msg.text}</div><time>{msg.time}</time></div>)}<div ref={messagesEndRef} /></>
         )}
       </div>
-
-      {/* Поле сообщения */}
-      <div
-        style={{
-          display: "flex",
-          gap: "8px",
-          borderTop:
-            "1px solid #E5E7EB",
-          paddingTop: "12px",
-          marginTop: "12px",
-          flexShrink: 0,
-        }}
-      >
-        <input
-          value={message}
-          onChange={(e) =>
-            setMessage(
-              e.target.value
-            )
-          }
-          onKeyDown={(e) => {
-            if (
-              e.key === "Enter"
-            ) {
-              sendMessage();
-            }
-          }}
-          placeholder="Введите сообщение..."
-          style={{
-            flex: 1,
-            minWidth: 0,
-            height: "48px",
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "12px",
-            padding: "0 12px",
-            outline: "none",
-          }}
-        />
-
-        <button
-          type="button"
-          onClick={() =>
-            fileInputRef.current?.click()
-          }
-          style={{
-            width: "48px",
-            border:
-              "1px solid #E5E7EB",
-            borderRadius: "12px",
-            background:
-              "#FFFFFF",
-            cursor: "pointer",
-            fontSize: "20px",
-            flexShrink: 0,
-          }}
-          aria-label="Прикрепить файл"
-          title="Прикрепить файл"
-        >
-          📎
-        </button>
-
-        <input
-          ref={fileInputRef}
-          type="file"
-          hidden
-          onChange={(e) => {
-            const file =
-              e.target.files?.[0];
-
-            if (!file) return;
-
-            const newMessage: Message =
-              {
-                id: Date.now(),
-                text: `📎 ${file.name}`,
-                mine: true,
-                time: new Date().toLocaleTimeString(
-                  "ru-RU",
-                  {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  }
-                ),
-              };
-
-            setMessages(
-              (prev) => [
-                ...prev,
-                newMessage,
-              ]
-            );
-
-            e.target.value = "";
-          }}
-        />
-
-        <button
-          type="button"
-          onClick={sendMessage}
-          disabled={!message.trim()}
-          style={{
-            width: "60px",
-            border: "none",
-            borderRadius: "12px",
-            background:
-              "#3547B8",
-            color: "#FFFFFF",
-            cursor:
-              message.trim()
-                ? "pointer"
-                : "not-allowed",
-            opacity:
-              message.trim()
-                ? 1
-                : 0.5,
-            flexShrink: 0,
-          }}
-        >
-          ➤
-        </button>
+      <div className="activity-composer">
+        <label className="sr-only" htmlFor="chat-message">Сообщение</label>
+        <input id="chat-message" value={message} onChange={(e) => setMessage(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { sendMessage(); } }} placeholder="Сообщение…" className="activity-message-input" autoComplete="off" />
+        <button type="button" onClick={() => fileInputRef.current?.click()} className="activity-attach" aria-label="Прикрепить файл" title="Прикрепить файл"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 6-6a3.5 3.5 0 0 1 5 5l-8 8a5 5 0 0 1-7-7l8-8M8 12l5-5a1.5 1.5 0 0 1 2 2l-6 6" /></svg></button>
+        <input ref={fileInputRef} type="file" hidden onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (!file) return;
+          const newMessage: Message = {
+            id: Date.now(),
+            text: `📎 ${file.name}`,
+            mine: true,
+            time: new Date().toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }),
+          };
+          setMessages((prev) => [...prev, newMessage]);
+          e.target.value = "";
+        }} />
+        <button type="button" onClick={sendMessage} disabled={!message.trim()} className="primary-btn" aria-label="Отправить сообщение" title="Отправить сообщение"><Icon name="arrow" /></button>
       </div>
-    </div>
+    </section>
   );
 }

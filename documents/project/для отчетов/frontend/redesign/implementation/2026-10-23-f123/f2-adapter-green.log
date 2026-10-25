@@ -1,0 +1,25 @@
+✔ registration adapter: reload restores the real profile form fields (83.44675ms)
+✔ registration adapter: hydration blocks the actual form and prerequisite navigation (33.325375ms)
+✔ registration adapter: queued autosaves preserve the latest edited draft (22.102542ms)
+✔ registration adapter: failed persistence retains input and never navigates or completes (23.16125ms)
+✔ registration adapter: step navigation happens only after the confirmed save (23.573208ms)
+✔ registration adapter: completing a customer creates the Demo account then opens its cabinet (13.504833ms)
+✔ registration adapter: a clean open form follows an incoming canonical draft (21.521041ms)
+✔ registration adapter: a dirty form cannot overwrite an incoming newer draft (14.955083ms)
+✔ registration adapter: an incoming avatar-only update is restored behind the loading guard (20.29925ms)
+✔ registration adapter: a late avatar restore after unmount does not leak its blob URL (13.105208ms)
+✔ registration adapter: replaced and removed form avatar previews are released (16.795ms)
+✔ F2: retry after a cross-tab conflict waits for the saved avatar and blocks edit autosave/Next (23.572ms)
+✔ F2: retry reloads the same avatar ID and a failed read retains its reference and input (16.037083ms)
+✔ F2: a failed preview can be explicitly removed, and only that action clears its reference (15.349209ms)
+✔ F2: restored avatar is preserved through Next and a new adapter mount after recovery (34.949125ms)
+✔ F2: a clean incoming text revision keeps the ready preview for the same saved avatar (13.213ms)
+✔ F2: retry clears the rejected write chain so Next works without another edit (14.206542ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 604.511833

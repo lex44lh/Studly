@@ -1,0 +1,26 @@
+✖ F2: a failed preview can be explicitly removed, and only that action clears its reference (86.280792ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 231.258708
+
+✖ failing tests:
+
+test at apps/web/tests/demo-registration-adapter.test.cjs:294:1
+✖ F2: a failed preview can be explicitly removed, and only that action clears its reference (86.280792ms)
+  AssertionError [ERR_ASSERTION]: Rendered button: Удалить недоступный аватар
+      at Object.clickButton (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:105:39)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-registration-adapter.test.cjs:299:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

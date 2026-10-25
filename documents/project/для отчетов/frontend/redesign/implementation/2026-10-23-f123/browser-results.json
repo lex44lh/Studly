@@ -1,0 +1,53 @@
+[
+  {
+    "id": "F2-delayed-retry",
+    "formHidden": true,
+    "nextHidden": true,
+    "loadingText": "Восстанавливаем регистрацию…"
+  },
+  {
+    "id": "F2-retry-next-reload",
+    "savedAvatarBefore": "9e9fdba1-3689-48eb-b2c3-728ab633f0e2",
+    "after": "9e9fdba1-3689-48eb-b2c3-728ab633f0e2",
+    "accountAvatar": "9e9fdba1-3689-48eb-b2c3-728ab633f0e2",
+    "unchanged": true
+  },
+  {
+    "id": "F1-upload-name-reload",
+    "name": "Демо Имя и аватар",
+    "avatar": true,
+    "files": 2
+  },
+  {
+    "id": "F1-remove-name-reload",
+    "name": "Демо Имя после удаления",
+    "noAvatarRef": true,
+    "filesPreserved": true
+  },
+  {
+    "id": "F1-external-conflict",
+    "localInput": "Несохранённое имя A",
+    "savedName": "Подтверждённое имя B",
+    "conflict": true,
+    "avatarRetained": true
+  },
+  {
+    "id": "F3-delayed-admin",
+    "closedBeforeAssetRead": 3,
+    "reopenWithBlobImage": true,
+    "escapeClosed": true,
+    "urlRevokeCounts": "Verified by actual effect tests, not browser heap instrumentation"
+  },
+  {
+    "id": "file-integrity",
+    "retainedAssetCount": 3,
+    "allPriorAvatarFilesRetained": true,
+    "currentAvatarExists": true
+  },
+  {
+    "id": "F2-native-conflict-before-retry",
+    "observed": true,
+    "retainedLocalInput": "Несохранённый город A",
+    "method": "Two real registration tabs; queued native transaction writers; no mocked application callbacks"
+  }
+]

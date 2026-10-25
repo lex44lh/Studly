@@ -1,0 +1,36 @@
+{
+  "composer": {
+    "bottom": 399,
+    "height": 73,
+    "left": 19,
+    "right": 371,
+    "top": 326,
+    "width": 352,
+    "x": 19,
+    "y": 326
+  },
+  "height": 500,
+  "input": {
+    "bottom": 387,
+    "height": 48,
+    "left": 31,
+    "right": 259,
+    "top": 339,
+    "width": 228,
+    "x": 31,
+    "y": 339
+  },
+  "nav": {
+    "bottom": 500,
+    "height": 74,
+    "left": 0,
+    "right": 390,
+    "top": 426,
+    "width": 390,
+    "x": 0,
+    "y": 426
+  },
+  "scrollWidth": 390,
+  "scrollY": 98.5,
+  "width": 390
+}

@@ -1,0 +1,3 @@
+"use client";
+import {useState} from "react";
+export default function ErrorQA(){const [fail,setFail]=useState(false);if(fail)throw Error("STUDLY isolated error boundary QA");return <div className="campus-page"><h1>Error boundary QA</h1><button className="page-button" onClick={()=>setFail(true)}>Trigger isolated boundary error</button></div>;}

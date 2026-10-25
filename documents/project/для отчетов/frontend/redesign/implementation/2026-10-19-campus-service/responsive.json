@@ -1,0 +1,194 @@
+[
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "demoBadge": {
+      "bottom": 2301.984375,
+      "height": 21,
+      "left": 26,
+      "right": 69.8125,
+      "top": 2280.984375,
+      "width": 43.8125,
+      "x": 26,
+      "y": 2280.984375
+    },
+    "dock": {
+      "bottom": 770,
+      "height": 73,
+      "left": 0,
+      "right": 320,
+      "top": 697,
+      "width": 320,
+      "x": 0,
+      "y": 697
+    },
+    "heading": "Помогу с C++",
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "demoBadge": {
+      "bottom": 2301.984375,
+      "height": 21,
+      "left": 26,
+      "right": 69.8125,
+      "top": 2280.984375,
+      "width": 43.8125,
+      "x": 26,
+      "y": 2280.984375
+    },
+    "dock": {
+      "bottom": 770,
+      "height": 73,
+      "left": 0,
+      "right": 320,
+      "top": 697,
+      "width": 320,
+      "x": 0,
+      "y": 697
+    },
+    "heading": "Помогу с C++",
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "demoBadge": {
+      "bottom": 2036.34375,
+      "height": 21,
+      "left": 26,
+      "right": 69.8125,
+      "top": 2015.34375,
+      "width": 43.8125,
+      "x": 26,
+      "y": 2015.34375
+    },
+    "dock": {
+      "bottom": 770,
+      "height": 73,
+      "left": 0,
+      "right": 390,
+      "top": 697,
+      "width": 390,
+      "x": 0,
+      "y": 697
+    },
+    "heading": "Помогу с C++",
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "scrollY": 0,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "demoBadge": {
+      "bottom": 2036.34375,
+      "height": 21,
+      "left": 26,
+      "right": 69.8125,
+      "top": 2015.34375,
+      "width": 43.8125,
+      "x": 26,
+      "y": 2015.34375
+    },
+    "dock": {
+      "bottom": 770,
+      "height": 73,
+      "left": 0,
+      "right": 390,
+      "top": 697,
+      "width": 390,
+      "x": 0,
+      "y": 697
+    },
+    "heading": "Помогу с C++",
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "scrollY": 0,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "actualWidth": 1440,
+    "scrollWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "final": true
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "actualWidth": 1440,
+    "scrollWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "final": true
+  },
+  {
+    "width": 768,
+    "theme": "light",
+    "actualWidth": 768,
+    "scrollWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "final": true
+  },
+  {
+    "width": 768,
+    "theme": "dark",
+    "actualWidth": 768,
+    "scrollWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "final": true
+  }
+]

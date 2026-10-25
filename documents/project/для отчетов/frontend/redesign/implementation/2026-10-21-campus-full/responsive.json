@@ -1,0 +1,3994 @@
+[
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Твоя задача.Чья-то сильная сторона."
+    ],
+    "label": "home",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Найди своегоисполнителя."
+    ],
+    "label": "search",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Программирование"
+    ],
+    "label": "category",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Избранное"
+    ],
+    "label": "favorites",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "performer",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Профиль"
+    ],
+    "label": "profile",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Заказы"
+    ],
+    "label": "orders",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Монтаж видео"
+    ],
+    "label": "order-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Чаты"
+    ],
+    "label": "chats",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "composer": {
+      "bottom": 743,
+      "height": 73,
+      "left": 19,
+      "right": 301,
+      "top": 670,
+      "width": 282,
+      "x": 19,
+      "y": 670
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "composer": {
+      "bottom": 748,
+      "height": 73,
+      "left": 19,
+      "right": 301,
+      "top": 675,
+      "width": 282,
+      "x": 19,
+      "y": 675
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "composer": {
+      "bottom": 731.5,
+      "height": 73,
+      "left": 19,
+      "right": 371,
+      "top": 658.5,
+      "width": 352,
+      "x": 19,
+      "y": 658.5
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "composer": {
+      "bottom": 731.5,
+      "height": 73,
+      "left": 19,
+      "right": 371,
+      "top": 658.5,
+      "width": 352,
+      "x": 19,
+      "y": 658.5
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "composer": {
+      "bottom": 771,
+      "height": 81,
+      "left": 33,
+      "right": 735,
+      "top": 690,
+      "width": 702,
+      "x": 33,
+      "y": 690
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "composer": {
+      "bottom": 839,
+      "height": 81,
+      "left": 33,
+      "right": 735,
+      "top": 758,
+      "width": 702,
+      "x": 33,
+      "y": 758
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "composer": {
+      "bottom": 949.5,
+      "height": 81,
+      "left": 241,
+      "right": 1199,
+      "top": 868.5,
+      "width": 958,
+      "x": 241,
+      "y": 868.5
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "composer": {
+      "bottom": 989.5,
+      "height": 81,
+      "left": 241,
+      "right": 1199,
+      "top": 908.5,
+      "width": 958,
+      "x": 241,
+      "y": 908.5
+    },
+    "headings": [
+      "Максим Козлов"
+    ],
+    "label": "chat-detail",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Дополнительная услуга"
+    ],
+    "label": "payment",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Создание услуги"
+    ],
+    "label": "create-service",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Уведомления"
+    ],
+    "label": "notifications",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Добропожаловать!"
+    ],
+    "label": "welcome",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-roles",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-profile",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Регистрация скоро появится"
+    ],
+    "label": "register-performer",
+    "mainCount": 1,
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Свои люди.Нужные навыки."
+    ],
+    "label": "about",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Правила платформы"
+    ],
+    "label": "rules",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Безопасность"
+    ],
+    "label": "safety",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Поддержка"
+    ],
+    "label": "support",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "light",
+    "width": 320
+  },
+  {
+    "actualWidth": 320,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 320,
+      "top": 770,
+      "width": 320,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 320,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 320
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "light",
+    "width": 390
+  },
+  {
+    "actualWidth": 390,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 844,
+      "height": 74,
+      "left": 0,
+      "right": 390,
+      "top": 770,
+      "width": 390,
+      "x": 0,
+      "y": 770
+    },
+    "scrollWidth": 390,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 390
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "light",
+    "width": 768
+  },
+  {
+    "actualWidth": 768,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 768,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 768
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(246, 247, 251)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "light",
+    "width": 1440
+  },
+  {
+    "actualWidth": 1440,
+    "background": "rgb(17, 24, 39)",
+    "headings": [
+      "Страница не найдена"
+    ],
+    "label": "not-found",
+    "mainCount": 1,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "scrollWidth": 1440,
+    "smallControls": [],
+    "theme": "dark",
+    "width": 1440
+  }
+]

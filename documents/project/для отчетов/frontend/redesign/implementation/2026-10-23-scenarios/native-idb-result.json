@@ -1,0 +1,37 @@
+{
+  "database": "studly-native-qa-6d4a948f-d271-41d0-a490-e90c58ec70c1",
+  "results": [
+    {
+      "title": "native empty state",
+      "pass": true
+    },
+    {
+      "title": "native persistent registration",
+      "pass": true
+    },
+    {
+      "title": "native serial writers reject stale revision",
+      "pass": true
+    },
+    {
+      "title": "native order/conversation one atomic record",
+      "pass": true
+    },
+    {
+      "title": "native idempotent replay after independent load",
+      "pass": true
+    },
+    {
+      "title": "native Blob and metadata persist together",
+      "pass": true
+    },
+    {
+      "title": "native aborted asset transaction preserves state and Blob stores",
+      "pass": true
+    },
+    {
+      "title": "native malformed record blocks reads and writes without clearing",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "platformEmulation": "Не запускалась: перезапуск тестовой фикстуры отклонён",
+  "reducedMotionCurrently": false,
+  "reducedRules": [
+    {
+      "condition": "(prefers-reduced-motion: reduce)",
+      "rules": "@media (prefers-reduced-motion: reduce) {\n  .studly-app *, .studly-app ::after, .studly-app ::before { animation: auto ease 0s 1 normal none running none !important; transition: none !important; scroll-behavior: auto !important; }\n}"
+    },
+    {
+      "condition": "(prefers-reduced-motion: reduce)",
+      "rules": "@media (prefers-reduced-motion: reduce) {\n  .studly-app *, .studly-app ::after, .studly-app ::before { animation: auto ease 0s 1 normal none running none !important; transition: none !important; scroll-behavior: auto !important; }\n  .studly-app .favorite-btn:hover, .studly-app .service-card:hover, .studly-app :is(.publish-btn, .search-submit, .detail-btn, .category-chip):active { transform: none; }\n}"
+    },
+    {
+      "condition": "(prefers-reduced-motion: reduce)",
+      "rules": "@media (prefers-reduced-motion: reduce) {\n  .studly-app dialog[open] { animation: auto ease 0s 1 normal none running none; }\n  .studly-app *, .studly-app ::after, .studly-app ::before { animation: auto ease 0s 1 normal none running none !important; transition: none !important; scroll-behavior: auto !important; }\n}"
+    },
+    {
+      "condition": "(prefers-reduced-motion: reduce)",
+      "rules": "@media (prefers-reduced-motion: reduce) {\n  .studly-app .service-detail button:active:not(:disabled) { transform: none; }\n}"
+    }
+  ],
+  "safeTokens": {
+    "bottom": "max(0px,0px)",
+    "top": "max(0px,0px)"
+  },
+  "screenReaderAudit": "Не запускалась",
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover"
+}

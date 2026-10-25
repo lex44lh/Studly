@@ -1,0 +1,639 @@
+Functions are not valid as a React child. This may happen if you return Object instead of <Object /> from render. Or maybe you meant to call this function rather than return it.
+Functions are not valid as a React child. This may happen if you return Object instead of <Object /> from render. Or maybe you meant to call this function rather than return it.
+✖ orders list: renders persisted missing status without inventing an action (44.521375ms)
+✖ orders list: renders persisted null status without inventing an action (8.573458ms)
+✖ orders list: renders persisted 42 status without inventing an action (13.520042ms)
+✖ orders list: renders persisted true status without inventing an action (8.303667ms)
+✖ orders list: renders persisted {} status without inventing an action (10.146583ms)
+✖ orders list: renders persisted [] status without inventing an action (6.153083ms)
+✖ orders list: renders persisted "UNRECOGNIZED" status without inventing an action (9.048125ms)
+✖ orders list: renders persisted "__proto__" status without inventing an action (7.273834ms)
+✖ orders list: renders persisted "constructor" status without inventing an action (5.585875ms)
+✖ orders list: renders persisted "" status without inventing an action (14.207625ms)
+✔ orders list: preserves PENDING label, styling and existing action (12.19675ms)
+✔ orders list: preserves IN_PROGRESS label, styling and existing action (5.102417ms)
+✔ orders list: preserves REVIEW label, styling and existing action (4.302167ms)
+✔ orders list: preserves COMPLETED label, styling and existing action (4.754625ms)
+✖ order detail: renders persisted missing status without inventing an action (9.889167ms)
+✖ order detail: renders persisted null status without inventing an action (13.578291ms)
+✖ order detail: renders persisted 42 status without inventing an action (7.004625ms)
+✖ order detail: renders persisted true status without inventing an action (11.894167ms)
+✖ order detail: renders persisted {} status without inventing an action (7.505541ms)
+✖ order detail: renders persisted [] status without inventing an action (9.504541ms)
+✖ order detail: renders persisted "UNRECOGNIZED" status without inventing an action (8.445417ms)
+✖ order detail: renders persisted "__proto__" status without inventing an action (22.790583ms)
+✖ order detail: renders persisted "constructor" status without inventing an action (5.54825ms)
+✖ order detail: renders persisted "" status without inventing an action (5.799583ms)
+✔ order detail: preserves PENDING label, styling and existing action (5.823041ms)
+✔ order detail: preserves IN_PROGRESS label, styling and existing action (6.008333ms)
+✔ order detail: preserves REVIEW label, styling and existing action (6.869209ms)
+✔ order detail: preserves COMPLETED label, styling and existing action (5.799208ms)
+✖ linked chat: renders persisted missing status without inventing an action (8.677833ms)
+✖ linked chat: renders persisted null status without inventing an action (6.959708ms)
+✖ linked chat: renders persisted 42 status without inventing an action (6.028083ms)
+✖ linked chat: renders persisted true status without inventing an action (6.056375ms)
+✖ linked chat: renders persisted {} status without inventing an action (6.001708ms)
+✖ linked chat: renders persisted [] status without inventing an action (6.941042ms)
+✖ linked chat: renders persisted "UNRECOGNIZED" status without inventing an action (12.343166ms)
+✖ linked chat: renders persisted "__proto__" status without inventing an action (6.926833ms)
+✖ linked chat: renders persisted "constructor" status without inventing an action (6.612833ms)
+✖ linked chat: renders persisted "" status without inventing an action (6.067791ms)
+✔ linked chat: preserves PENDING label, styling and existing action (6.753833ms)
+✔ linked chat: preserves IN_PROGRESS label, styling and existing action (7.033375ms)
+✔ linked chat: preserves REVIEW label, styling and existing action (6.6945ms)
+✔ linked chat: preserves COMPLETED label, styling and existing action (5.941417ms)
+✖ order detail and chats: safe performer presentation for missing (4.018458ms)
+✖ order detail and chats: safe performer presentation for null (16.522042ms)
+✖ order detail and chats: safe performer presentation for 42 (5.03125ms)
+✖ order detail and chats: safe performer presentation for {} (4.05575ms)
+✖ order detail and chats: safe performer presentation for "" (4.09875ms)
+✖ order detail and chats: safe performer presentation for "   " (3.968875ms)
+✖ order detail and chats: safe performer presentation for "Анна" (13.990542ms)
+ℹ tests 49
+ℹ suites 0
+ℹ pass 12
+ℹ fail 37
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 615.915083
+
+✖ failing tests:
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted missing status without inventing an action (44.521375ms)
+  TypeError: Cannot read properties of undefined (reading 'toLowerCase')
+      at eval (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:2478)
+      at Array.map (<anonymous>)
+      at OrdersPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:1782)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted null status without inventing an action (8.573458ms)
+  TypeError: Cannot read properties of null (reading 'toLowerCase')
+      at eval (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:2478)
+      at Array.map (<anonymous>)
+      at OrdersPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:1782)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted 42 status without inventing an action (13.520042ms)
+  TypeError: order.status.toLowerCase is not a function
+      at eval (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:2478)
+      at Array.map (<anonymous>)
+      at OrdersPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:1782)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted true status without inventing an action (8.303667ms)
+  TypeError: order.status.toLowerCase is not a function
+      at eval (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:2478)
+      at Array.map (<anonymous>)
+      at OrdersPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:1782)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted {} status without inventing an action (10.146583ms)
+  TypeError: order.status.toLowerCase is not a function
+      at eval (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:2478)
+      at Array.map (<anonymous>)
+      at OrdersPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:1782)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted [] status without inventing an action (6.153083ms)
+  TypeError: order.status.toLowerCase is not a function
+      at eval (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:2478)
+      at Array.map (<anonymous>)
+      at OrdersPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:39:1782)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted "UNRECOGNIZED" status without inventing an action (9.048125ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Статус (?:не указан|недоступен)/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--unrecognized"></span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:85:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--unrecognized"></span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Статус (?:не указан|недоступен)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted "__proto__" status without inventing an action (7.273834ms)
+  Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6474:17)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+      at renderNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6905:18)
+      at renderElement (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:5619:18)
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6417:31)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+      at renderNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6905:18)
+      at renderChildrenArray (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6674:11)
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6441:13)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted "constructor" status without inventing an action (5.585875ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Статус (?:не указан|недоступен)/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--constructor"></span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:85:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--constructor"></span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Статус (?:не указан|недоступен)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ orders list: renders persisted "" status without inventing an action (14.207625ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Статус (?:не указан|недоступен)/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--"></span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:85:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--"></span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Статус (?:не указан|недоступен)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted missing status without inventing an action (9.889167ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted null status without inventing an action (13.578291ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted 42 status without inventing an action (7.004625ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted true status without inventing an action (11.894167ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted {} status without inventing an action (7.505541ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted [] status without inventing an action (9.504541ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted "UNRECOGNIZED" status without inventing an action (8.445417ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted "__proto__" status without inventing an action (22.790583ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted "constructor" status without inventing an action (5.54825ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ order detail: renders persisted "" status without inventing an action (5.799583ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at OrderPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:129:636)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted missing status without inventing an action (8.677833ms)
+  TypeError: Cannot read properties of undefined (reading 'toLowerCase')
+      at ChatWindow (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:243:1491)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted null status without inventing an action (6.959708ms)
+  TypeError: Cannot read properties of null (reading 'toLowerCase')
+      at ChatWindow (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:243:1491)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted 42 status without inventing an action (6.028083ms)
+  TypeError: order.status.toLowerCase is not a function
+      at ChatWindow (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:243:1491)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted true status without inventing an action (6.056375ms)
+  TypeError: order.status.toLowerCase is not a function
+      at ChatWindow (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:243:1491)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted {} status without inventing an action (6.001708ms)
+  TypeError: order.status.toLowerCase is not a function
+      at ChatWindow (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:243:1491)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted [] status without inventing an action (6.941042ms)
+  TypeError: order.status.toLowerCase is not a function
+      at ChatWindow (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:243:1491)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:84:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted "UNRECOGNIZED" status without inventing an action (12.343166ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Статус (?:не указан|недоступен)/. Input:
+  
+  '<section class="activity-chat" aria-label="Переписка с undefined"><header class="activity-chat-heading"><div class="activity-row"><div class="activity-card-main"><h1></h1><p>Fixture</p></div><div class="activity-chat-tools"><button type="button" class="secondary-btn" aria-expanded="false" aria-controls="chat-order-details">Подробнее<svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3Z"></path><path d="M12 6v16"></path></svg></button><button type="button" aria-label="Удалить чат" title="Удалить чат" class="activity-delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"></path></svg></button></div></div><div class="activity-card-meta"><span class="activity-status activity-status--unrecognized"></span><span>Заказ № 1</span></div></header><div class="activity-messages" role="log" aria-label="Сообщения" aria-live="polite" aria-relevant="additions text"><div class="activity-message-empty"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-10a9 9 0 0 1 19-.5Z"></path><path d="M7 10h10M7 14h6"></path></svg><strong>Начните переписку</strong><p>Обсудите задачу и детали работы.</p></div></div><div class="activity-composer"><label class="sr-only" for="chat-message">Сообщение</label><input id="chat-message" placeholder="Сообщение…" class="activity-message-input" autoComplete="off" value=""/><button type="button" class="activity-attach" aria-label="Прикрепить файл" title="Прикрепить файл"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 6-6a3.5 3.5 0 0 1 5 5l-8 8a5 5 0 0 1-7-7l8-8M8 12l5-5a1.5 1.5 0 0 1 2 2l-6 6"></path></svg></button><input type="file" hidden=""/><button type="button" disabled="" class="primary-btn" aria-label="Отправить сообщение" title="Отправить сообщение"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div></section>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:85:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<section class="activity-chat" aria-label="Переписка с undefined"><header class="activity-chat-heading"><div class="activity-row"><div class="activity-card-main"><h1></h1><p>Fixture</p></div><div class="activity-chat-tools"><button type="button" class="secondary-btn" aria-expanded="false" aria-controls="chat-order-details">Подробнее<svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3Z"></path><path d="M12 6v16"></path></svg></button><button type="button" aria-label="Удалить чат" title="Удалить чат" class="activity-delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"></path></svg></button></div></div><div class="activity-card-meta"><span class="activity-status activity-status--unrecognized"></span><span>Заказ № 1</span></div></header><div class="activity-messages" role="log" aria-label="Сообщения" aria-live="polite" aria-relevant="additions text"><div class="activity-message-empty"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-10a9 9 0 0 1 19-.5Z"></path><path d="M7 10h10M7 14h6"></path></svg><strong>Начните переписку</strong><p>Обсудите задачу и детали работы.</p></div></div><div class="activity-composer"><label class="sr-only" for="chat-message">Сообщение</label><input id="chat-message" placeholder="Сообщение…" class="activity-message-input" autoComplete="off" value=""/><button type="button" class="activity-attach" aria-label="Прикрепить файл" title="Прикрепить файл"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 6-6a3.5 3.5 0 0 1 5 5l-8 8a5 5 0 0 1-7-7l8-8M8 12l5-5a1.5 1.5 0 0 1 2 2l-6 6"></path></svg></button><input type="file" hidden=""/><button type="button" disabled="" class="primary-btn" aria-label="Отправить сообщение" title="Отправить сообщение"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div></section>',
+    expected: /Статус (?:не указан|недоступен)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted "__proto__" status without inventing an action (6.926833ms)
+  Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6474:17)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+      at renderNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6905:18)
+      at renderElement (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:5619:18)
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6417:31)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+      at renderNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6905:18)
+      at renderChildrenArray (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6674:11)
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6441:13)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted "constructor" status without inventing an action (6.612833ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Статус (?:не указан|недоступен)/. Input:
+  
+  '<section class="activity-chat" aria-label="Переписка с undefined"><header class="activity-chat-heading"><div class="activity-row"><div class="activity-card-main"><h1></h1><p>Fixture</p></div><div class="activity-chat-tools"><button type="button" class="secondary-btn" aria-expanded="false" aria-controls="chat-order-details">Подробнее<svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3Z"></path><path d="M12 6v16"></path></svg></button><button type="button" aria-label="Удалить чат" title="Удалить чат" class="activity-delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"></path></svg></button></div></div><div class="activity-card-meta"><span class="activity-status activity-status--constructor"></span><span>Заказ № 1</span></div></header><div class="activity-messages" role="log" aria-label="Сообщения" aria-live="polite" aria-relevant="additions text"><div class="activity-message-empty"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-10a9 9 0 0 1 19-.5Z"></path><path d="M7 10h10M7 14h6"></path></svg><strong>Начните переписку</strong><p>Обсудите задачу и детали работы.</p></div></div><div class="activity-composer"><label class="sr-only" for="chat-message">Сообщение</label><input id="chat-message" placeholder="Сообщение…" class="activity-message-input" autoComplete="off" value=""/><button type="button" class="activity-attach" aria-label="Прикрепить файл" title="Прикрепить файл"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 6-6a3.5 3.5 0 0 1 5 5l-8 8a5 5 0 0 1-7-7l8-8M8 12l5-5a1.5 1.5 0 0 1 2 2l-6 6"></path></svg></button><input type="file" hidden=""/><button type="button" disabled="" class="primary-btn" aria-label="Отправить сообщение" title="Отправить сообщение"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div></section>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:85:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<section class="activity-chat" aria-label="Переписка с undefined"><header class="activity-chat-heading"><div class="activity-row"><div class="activity-card-main"><h1></h1><p>Fixture</p></div><div class="activity-chat-tools"><button type="button" class="secondary-btn" aria-expanded="false" aria-controls="chat-order-details">Подробнее<svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3Z"></path><path d="M12 6v16"></path></svg></button><button type="button" aria-label="Удалить чат" title="Удалить чат" class="activity-delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"></path></svg></button></div></div><div class="activity-card-meta"><span class="activity-status activity-status--constructor"></span><span>Заказ № 1</span></div></header><div class="activity-messages" role="log" aria-label="Сообщения" aria-live="polite" aria-relevant="additions text"><div class="activity-message-empty"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-10a9 9 0 0 1 19-.5Z"></path><path d="M7 10h10M7 14h6"></path></svg><strong>Начните переписку</strong><p>Обсудите задачу и детали работы.</p></div></div><div class="activity-composer"><label class="sr-only" for="chat-message">Сообщение</label><input id="chat-message" placeholder="Сообщение…" class="activity-message-input" autoComplete="off" value=""/><button type="button" class="activity-attach" aria-label="Прикрепить файл" title="Прикрепить файл"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 6-6a3.5 3.5 0 0 1 5 5l-8 8a5 5 0 0 1-7-7l8-8M8 12l5-5a1.5 1.5 0 0 1 2 2l-6 6"></path></svg></button><input type="file" hidden=""/><button type="button" disabled="" class="primary-btn" aria-label="Отправить сообщение" title="Отправить сообщение"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div></section>',
+    expected: /Статус (?:не указан|недоступен)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:81:5
+✖ linked chat: renders persisted "" status without inventing an action (6.067791ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Статус (?:не указан|недоступен)/. Input:
+  
+  '<section class="activity-chat" aria-label="Переписка с undefined"><header class="activity-chat-heading"><div class="activity-row"><div class="activity-card-main"><h1></h1><p>Fixture</p></div><div class="activity-chat-tools"><button type="button" class="secondary-btn" aria-expanded="false" aria-controls="chat-order-details">Подробнее<svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3Z"></path><path d="M12 6v16"></path></svg></button><button type="button" aria-label="Удалить чат" title="Удалить чат" class="activity-delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"></path></svg></button></div></div><div class="activity-card-meta"><span class="activity-status activity-status--"></span><span>Заказ № 1</span></div></header><div class="activity-messages" role="log" aria-label="Сообщения" aria-live="polite" aria-relevant="additions text"><div class="activity-message-empty"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-10a9 9 0 0 1 19-.5Z"></path><path d="M7 10h10M7 14h6"></path></svg><strong>Начните переписку</strong><p>Обсудите задачу и детали работы.</p></div></div><div class="activity-composer"><label class="sr-only" for="chat-message">Сообщение</label><input id="chat-message" placeholder="Сообщение…" class="activity-message-input" autoComplete="off" value=""/><button type="button" class="activity-attach" aria-label="Прикрепить файл" title="Прикрепить файл"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 6-6a3.5 3.5 0 0 1 5 5l-8 8a5 5 0 0 1-7-7l8-8M8 12l5-5a1.5 1.5 0 0 1 2 2l-6 6"></path></svg></button><input type="file" hidden=""/><button type="button" disabled="" class="primary-btn" aria-label="Отправить сообщение" title="Отправить сообщение"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div></section>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:85:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<section class="activity-chat" aria-label="Переписка с undefined"><header class="activity-chat-heading"><div class="activity-row"><div class="activity-card-main"><h1></h1><p>Fixture</p></div><div class="activity-chat-tools"><button type="button" class="secondary-btn" aria-expanded="false" aria-controls="chat-order-details">Подробнее<svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3Z"></path><path d="M12 6v16"></path></svg></button><button type="button" aria-label="Удалить чат" title="Удалить чат" class="activity-delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"></path></svg></button></div></div><div class="activity-card-meta"><span class="activity-status activity-status--"></span><span>Заказ № 1</span></div></header><div class="activity-messages" role="log" aria-label="Сообщения" aria-live="polite" aria-relevant="additions text"><div class="activity-message-empty"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2v-10a9 9 0 0 1 19-.5Z"></path><path d="M7 10h10M7 14h6"></path></svg><strong>Начните переписку</strong><p>Обсудите задачу и детали работы.</p></div></div><div class="activity-composer"><label class="sr-only" for="chat-message">Сообщение</label><input id="chat-message" placeholder="Сообщение…" class="activity-message-input" autoComplete="off" value=""/><button type="button" class="activity-attach" aria-label="Прикрепить файл" title="Прикрепить файл"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 6-6a3.5 3.5 0 0 1 5 5l-8 8a5 5 0 0 1-7-7l8-8M8 12l5-5a1.5 1.5 0 0 1 2 2l-6 6"></path></svg></button><input type="file" hidden=""/><button type="button" disabled="" class="primary-btn" aria-label="Отправить сообщение" title="Отправить сообщение"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div></section>',
+    expected: /Статус (?:не указан|недоступен)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:105:3
+✖ order detail and chats: safe performer presentation for missing (4.018458ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Не указан/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:108:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Не указан/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:105:3
+✖ order detail and chats: safe performer presentation for null (16.522042ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Не указан/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:108:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Не указан/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:105:3
+✖ order detail and chats: safe performer presentation for 42 (5.03125ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Не указан/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: 42</p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:108:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: 42</p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Не указан/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:105:3
+✖ order detail and chats: safe performer presentation for {} (4.05575ms)
+  Error: Objects are not valid as a React child (found: object with keys {}). If you meant to render a collection of children, use an array instead.
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6474:17)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+      at renderNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6905:18)
+      at renderChildrenArray (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6674:11)
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6441:13)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+      at renderNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6905:18)
+      at renderElement (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:5619:18)
+      at retryNode (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6417:31)
+      at renderNodeDestructive (/Users/alekspih/Projects/studly-redesign/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:6367:11)
+
+test at apps/web/tests/demo-order-rendering.test.cjs:105:3
+✖ order detail and chats: safe performer presentation for "" (4.09875ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Не указан/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:108:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель: </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Не указан/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:105:3
+✖ order detail and chats: safe performer presentation for "   " (3.968875ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Не указан/. Input:
+  
+  '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель:    </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>'
+  
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:108:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="activity-page"><button type="button" class="page-back"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg>Назад</button><header class="activity-header"><div><p class="activity-kicker">Мой кампус</p><h1>Заказы</h1><p class="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div><div class="activity-count" aria-label="Всего заказов: 1">1<small>всего</small></div></header><div class="activity-list"><button type="button" class="activity-card activity-card-link"><div class="activity-row"><div class="activity-card-main"><h2>Fixture</h2><p>Исполнитель:    </p><div class="activity-card-meta"><span class="activity-status activity-status--pending">Ожидает</span><span>Заказ № 1</span></div></div><span class="activity-card-arrow"><svg class="icon " viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></div></button></div></div>',
+    expected: /Не указан/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at apps/web/tests/demo-order-rendering.test.cjs:105:3
+✖ order detail and chats: safe performer presentation for "Анна" (13.990542ms)
+  TypeError: Cannot read properties of undefined (reading 'slice')
+      at eval (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:80:2737)
+      at Array.map (<anonymous>)
+      at ChatsPage (eval at load (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:53:5), <anonymous>:80:2480)
+      at mount (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:63:18)
+      at TestContext.<anonymous> (/Users/alekspih/Projects/studly-redesign/apps/web/tests/demo-order-rendering.test.cjs:107:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)

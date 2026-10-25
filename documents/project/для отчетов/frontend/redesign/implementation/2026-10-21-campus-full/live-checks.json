@@ -1,0 +1,96 @@
+[
+  {
+    "case": "favorites",
+    "service42": true,
+    "demoService101": 0
+  },
+  {
+    "case": "performer",
+    "statsAbsent": true,
+    "services": 1
+  },
+  {
+    "case": "quote",
+    "text": "Стоимость услуги\n1 000,00 ₽\nКомиссия STUDLY 3.00%\n30,00 ₽\nИтого\n1 030,00 ₽\nОформление заказа пока недоступно",
+    "disabled": true
+  },
+  {
+    "backOutsidePreview": true,
+    "demoOrderVisible": false,
+    "enabledFormControls": 0,
+    "previewDisabled": true,
+    "route": "/orders",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "backOutsidePreview": true,
+    "demoOrderVisible": false,
+    "enabledFormControls": 0,
+    "previewDisabled": true,
+    "route": "/chats",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "backOutsidePreview": true,
+    "demoOrderVisible": false,
+    "enabledFormControls": 0,
+    "previewDisabled": true,
+    "route": "/notifications",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "backOutsidePreview": true,
+    "demoOrderVisible": false,
+    "enabledFormControls": 0,
+    "previewDisabled": true,
+    "route": "/create-service",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "backOutsidePreview": true,
+    "demoOrderVisible": false,
+    "enabledFormControls": 0,
+    "previewDisabled": true,
+    "route": "/category/programming",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "case": "search-empty",
+    "width": 390,
+    "text": "Найди своего\nисполнителя.\n\nОт учёбы до творчества — нужная помощь рядом.\n\nПоиск услуг и исполнителей\nВсе услуги\nКатегории пока не подключены к API.\nУслугиПоказано: 0 на этой странице · Всего: 0\nСортировка услуг\nПо релевантности\nСначала дешевле\nСначала дороже\nПо рейтингу\nСначала быстрее\n\nЦена, срок и сортировка применяются к текущей странице. Рейтинг пока недоступен.\n\nПока ничего не нашлось\n\nПопробуй другой запрос или убери часть фильтров.\n\nСбросить поиск и фильтры",
+    "demoTitleCount": 0
+  },
+  {
+    "case": "search-error",
+    "width": 390,
+    "text": "Найди своего\nисполнителя.\n\nОт учёбы до творчества — нужная помощь рядом.\n\nПоиск услуг и исполнителей\nВсе услуги\nКатегории пока не подключены к API.\nУслугиНе удалось загрузить услуги\nСортировка услуг\nПо релевантности\nСначала дешевле\nСначала дороже\nПо рейтингу\nСначала быстрее\n\nЦена, срок и сортировка применяются к текущей странице. Рейтинг пока недоступен.\n\nНе удалось загрузить услуги\n\nСервер временно недоступен. Повторите попытку позже.\n\nПовторить загрузку",
+    "demoTitleCount": 0
+  },
+  {
+    "case": "performer-error",
+    "width": 390,
+    "text": "Назад\n\nЗапись не найдена или больше недоступна.",
+    "demoTitleCount": 0
+  },
+  {
+    "case": "service-error",
+    "width": 390,
+    "text": "Назад\nКаталог услуг\nSTUDLY · УСЛУГА\nДетали услуги\n\nЗапись не найдена или больше недоступна.\n\nВернуться в каталог",
+    "demoTitleCount": 0
+  },
+  {
+    "case": "bad-service",
+    "width": 390,
+    "text": "Назад\nКаталог услуг\nSTUDLY · УСЛУГА\nДетали услуги\n\nСервер временно недоступен. Повторите попытку позже.\n\nПовторить загрузку\nВернуться в каталог",
+    "demoTitleCount": 0
+  },
+  {
+    "case": "loading",
+    "text": "Назад\nКаталог услуг\nSTUDLY · УСЛУГА\nДетали услуги\n\nЗагрузка…\n\nВернуться в каталог"
+  }
+]

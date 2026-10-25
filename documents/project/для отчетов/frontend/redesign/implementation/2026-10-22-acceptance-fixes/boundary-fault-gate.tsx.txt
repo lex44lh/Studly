@@ -1,0 +1,7 @@
+"use client";
+import { useState, type ReactNode } from "react";
+export default function AcceptanceFaultGate({ children }: { children: ReactNode }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) throw new Error("STUDLY acceptance: intentional one-shot render fault");
+  return <><button type="button" onClick={() => setFailed(true)}>QA: вызвать ошибку</button>{children}</>;
+}

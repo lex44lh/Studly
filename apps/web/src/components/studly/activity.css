@@ -1,0 +1,139 @@
+/* Campus activity screens. Keep all selectors local to the activity presentation. */
+.studly-app .activity-page{width:100%;max-width:1080px;margin:0 auto;min-width:0}
+.studly-app .activity-page--narrow{max-width:680px}
+.studly-app .activity-page--chat{max-width:960px}
+.studly-app .activity-header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:20px 0 28px}
+.studly-app .activity-header h1{font-size:clamp(28px,3.3vw,42px);font-weight:750;line-height:1.12;letter-spacing:-.045em;margin:0;overflow-wrap:anywhere}
+.studly-app .activity-kicker{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 9px}
+.studly-app .activity-intro{color:var(--muted);margin:12px 0 0;max-width:560px;font-size:15px;line-height:1.6}
+.studly-app .activity-count{background:var(--surface);border:1px solid var(--line);border-radius:14px;min-width:72px;padding:12px 18px;text-align:center;font-size:24px;font-weight:750;font-variant-numeric:tabular-nums}
+.studly-app .activity-count small{display:block;font-size:11px;font-weight:500;color:var(--muted)}
+.studly-app .activity-list{display:grid;gap:14px}
+.studly-app .activity-card{display:block;width:100%;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0;color:var(--text);text-align:left}
+.studly-app button.activity-card{border:1px solid var(--line)}
+.studly-app .activity-card-link{transition:border-color var(--motion-feedback) ease,background var(--motion-feedback) ease}
+.studly-app .activity-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0}
+.studly-app .activity-row--top{align-items:flex-start}
+.studly-app .activity-card-main{flex:1;min-width:0}
+.studly-app .activity-card h2,.studly-app .activity-card h3{font-size:19px;line-height:1.35;letter-spacing:-.025em;margin:0 0 9px;overflow-wrap:anywhere}
+.studly-app .activity-card p{margin:0;color:var(--muted);line-height:1.55}
+.studly-app .activity-card-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:18px;font-size:13px;color:var(--muted)}
+.studly-app .activity-card-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:var(--accent-ink);background:var(--accent-soft);flex-shrink:0}
+.studly-app .activity-status{display:inline-flex;align-items:center;gap:7px;width:fit-content;padding:6px 10px;border-radius:8px;color:var(--accent-ink);background:var(--accent-soft);font-size:12px;font-weight:650;line-height:1.35}
+.studly-app .activity-status::before{content:"";width:6px;height:6px;background:currentColor;border-radius:50%;flex-shrink:0}
+.studly-app .activity-status--completed{background:var(--cover-a);color:var(--cover-a-ink)}
+.studly-app .activity-status--review{background:var(--cover-b);color:var(--cover-b-ink)}
+.studly-app .activity-status--pending,.studly-app .activity-status--unspecified{background:var(--surface-2);color:var(--muted)}
+.studly-app .activity-empty{display:flex;align-items:center;flex-direction:column;justify-content:center;min-height:280px;text-align:center;padding:40px 24px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+.studly-app .activity-empty-icon{width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:20px;background:var(--accent-soft);color:var(--accent-ink);margin-bottom:20px}
+.studly-app .activity-empty-icon .icon{width:28px;height:28px}
+.studly-app .activity-empty h1,.studly-app .activity-empty h2{font-size:23px;line-height:1.25;letter-spacing:-.03em;margin:0 0 12px}
+.studly-app .activity-empty p{color:var(--muted);max-width:370px;margin:0;line-height:1.6}
+.studly-app .activity-empty button{margin-top:24px}
+.studly-app .activity-order-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,1fr);gap:24px;align-items:start}
+.studly-app .activity-panel{padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--surface);min-width:0;box-shadow:var(--shadow)}
+.studly-app .activity-panel h2{margin:0 0 24px;font-size:21px;letter-spacing:-.03em}
+.studly-app .activity-line-item{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-top:18px;color:var(--muted)}
+.studly-app .activity-line-item>:first-child{min-width:0;overflow-wrap:anywhere}
+.studly-app .activity-line-item>:last-child{flex-shrink:0;color:var(--text);font-variant-numeric:tabular-nums}
+.studly-app .activity-line-item--total{border-top:1px solid var(--line);padding-top:22px;margin-top:24px;font-size:18px;color:var(--text)}
+.studly-app .activity-line-item--total>:last-child{font-size:30px;font-weight:750;letter-spacing:-.04em;color:var(--accent-ink)}
+.studly-app .activity-duration{display:flex;align-items:center;gap:8px;margin:16px 0 0;color:var(--muted);font-size:13px}
+.studly-app .activity-person{display:flex;gap:12px;align-items:center;margin-top:22px}
+.studly-app .activity-avatar{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:var(--cover-b);color:var(--cover-b-ink);font-weight:700;font-size:18px;flex-shrink:0}
+.studly-app .activity-person small{display:block;margin-bottom:3px;color:var(--muted);font-size:12px}
+.studly-app .activity-person strong{overflow-wrap:anywhere}
+.studly-app .activity-action-stack{display:grid;gap:10px;margin-top:24px}
+.studly-app .activity-action-stack button{width:100%;min-height:50px;display:flex;align-items:center;justify-content:center;gap:9px;text-align:center;line-height:1.35}
+.studly-app .activity-note{font-size:13px;line-height:1.6;color:var(--muted);padding:16px 18px;margin:20px 0 0;background:var(--surface-2);border-radius:12px}
+.studly-app .activity-danger{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+.studly-app .activity-timestamp{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.studly-app .activity-chat-list .activity-card{display:flex;gap:18px;align-items:center}
+.studly-app .activity-chat-list .activity-avatar{width:56px;height:56px;border-radius:18px}
+.studly-app .activity-chat-list h2{font-size:16px;margin:0;line-height:1.35}
+.studly-app .activity-chat-service{font-size:12px;color:var(--accent-ink)!important;margin:6px 0 4px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.studly-app .activity-chat-preview{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+.studly-app .activity-notification{display:flex;align-items:flex-start;gap:18px;position:relative}
+.studly-app .activity-notification-icon{display:flex;align-items:center;justify-content:center;background:var(--surface-2);color:var(--muted);border-radius:14px;width:44px;height:44px;flex-shrink:0}
+.studly-app .activity-notification.is-unread .activity-notification-icon{background:var(--accent-soft);color:var(--accent-ink)}
+.studly-app .activity-notification h2{font-size:17px;margin:0}
+.studly-app .activity-notification p{font-size:14px;margin-top:10px}
+.studly-app .activity-notification .activity-row{flex-wrap:wrap;gap:6px 14px}
+.studly-app .activity-unread-dot{width:7px;height:7px;display:inline-block;vertical-align:middle;margin-left:7px;border-radius:50%;background:var(--accent-ink)}
+.studly-app .activity-chat{height:clamp(340px,calc(var(--studly-viewport-height,100svh) - 240px - var(--safe-top,0px) - var(--safe-bottom,0px)),850px);display:flex;flex-direction:column;min-height:0;border:1px solid var(--line);border-radius:22px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow);margin-top:16px}
+.studly-app .activity-chat-heading{flex-shrink:0;padding:20px 24px;border-bottom:1px solid var(--line)}
+.studly-app .activity-chat-heading h1{margin:0 0 5px;font-size:22px;line-height:1.3;letter-spacing:-.035em;overflow-wrap:anywhere}
+.studly-app .activity-chat-heading p{margin:0;color:var(--muted);font-size:13px}
+.studly-app .activity-chat-heading .activity-row{gap:12px}
+.studly-app .activity-chat-tools{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.studly-app .activity-chat-tools .secondary-btn{font-size:12px;padding:9px 12px;display:flex;align-items:center;gap:6px}
+.studly-app .activity-delete{width:44px;height:44px;background:transparent;border-radius:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.studly-app .activity-delete svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.studly-app .activity-chat-details{flex-shrink:0;padding:18px 24px;border-bottom:1px solid var(--line);max-height:45%;overflow-y:auto;overscroll-behavior:contain;background:var(--surface-2)}
+.studly-app .activity-chat-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.studly-app .activity-chat-stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.studly-app .activity-chat-stat small{color:var(--muted);display:block;font-size:12px;margin-bottom:4px}
+.studly-app .activity-chat-details h2{font-size:15px;margin:0 0 12px}
+.studly-app .activity-addon{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.studly-app .activity-addon>div{min-width:0}
+.studly-app .activity-addon strong{font-size:13px;display:block;overflow-wrap:anywhere}
+.studly-app .activity-addon small{font-size:12px;color:var(--muted);display:block;margin-top:3px}
+.studly-app .activity-addon .primary-btn{padding:9px 12px;font-size:12px;flex-shrink:0}
+.studly-app .activity-addon-added{font-size:12px;color:var(--accent-ink);flex-shrink:0}
+.studly-app .activity-messages{flex:1;min-height:80px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding:24px;overscroll-behavior:contain;scroll-padding:20px}
+.studly-app .activity-message-empty{margin:auto;text-align:center;color:var(--muted);padding:20px}
+.studly-app .activity-message-empty>.icon{width:32px;height:32px;margin:0 auto 12px;color:var(--accent-ink)}
+.studly-app .activity-message-empty p{font-size:13px;margin:8px 0 0}
+.studly-app .activity-bubble{align-self:flex-start;background:var(--surface-2);color:var(--text);padding:12px 16px;border-radius:16px 16px 16px 4px;max-width:80%;overflow-wrap:anywhere;white-space:pre-wrap;font-size:14px;flex-shrink:0}
+.studly-app .activity-bubble.is-mine{align-self:flex-end;background:var(--accent);color:var(--accent-text);border-radius:16px 16px 4px 16px}
+.studly-app .activity-bubble time{display:block;text-align:right;font-size:11px;margin-top:6px;opacity:.8}
+.studly-app .activity-composer{display:flex;gap:10px;padding:16px 24px;border-top:1px solid var(--line);flex-shrink:0;align-items:center;background:var(--surface)}
+.studly-app .activity-message-input{scroll-margin-bottom:calc(110px + var(--safe-bottom,0px));min-width:0;flex:1;width:100%;height:48px;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:var(--bg);font-size:16px;color:var(--text)}
+.studly-app .activity-message-input::placeholder{color:var(--muted);opacity:1}
+.studly-app .activity-composer button{width:46px;height:48px;min-width:46px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:12px;flex-shrink:0}
+.studly-app .activity-attach{background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.studly-app .activity-attach svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.studly-app .activity-card-link:hover{border-color:var(--accent-ink);background:var(--surface-2)}.studly-app .activity-delete:hover,.studly-app .activity-danger:hover{color:var(--text);background:var(--surface-2)}}
+@media(max-width:700px){
+  .studly-app .activity-header{margin:16px 0 22px;gap:12px}
+  .studly-app .activity-header h1{font-size:30px}
+  .studly-app .activity-intro{font-size:13px;margin-top:10px}
+  .studly-app .activity-count{padding:10px 13px;min-width:64px;font-size:21px}
+  .studly-app .activity-card{padding:18px}
+  .studly-app .activity-card h2{font-size:17px}
+  .studly-app .activity-card-meta{font-size:12px;margin-top:14px}
+  .studly-app .activity-row{gap:10px}
+  .studly-app .activity-row--top{flex-wrap:wrap}
+  .studly-app .activity-order-layout{grid-template-columns:minmax(0,1fr);gap:16px}
+  .studly-app .activity-panel{padding:22px 18px}
+  .studly-app .activity-panel h2{font-size:19px;margin-bottom:20px}
+  .studly-app .activity-line-item{font-size:13px;gap:12px}
+  .studly-app .activity-line-item--total{font-size:16px}
+  .studly-app .activity-line-item--total>:last-child{font-size:26px}
+  .studly-app .activity-chat-list .activity-card{gap:12px}
+  .studly-app .activity-chat-list .activity-avatar{width:44px;height:44px;border-radius:14px;font-size:16px}
+  .studly-app .activity-chat-list .activity-row{align-items:flex-start;gap:6px}
+  .studly-app .activity-chat-list h2{font-size:15px}
+  .studly-app .activity-timestamp{font-size:11px}
+  .studly-app .activity-chat-preview{font-size:13px}
+  .studly-app .activity-notification{gap:12px}
+  .studly-app .activity-notification-icon{width:36px;height:40px;border-radius:11px}
+  .studly-app .activity-notification h2{font-size:15px}
+  .studly-app .activity-notification p{font-size:13px}
+  .studly-app .activity-chat{height:clamp(300px,calc(var(--studly-viewport-height,100svh) - 310px - var(--safe-top,0px) - var(--safe-bottom,0px)),800px);border-radius:18px;margin-top:10px}
+  .studly-app .activity-chat-heading{padding:16px}
+  .studly-app .activity-chat-heading>.activity-row{align-items:flex-start;flex-wrap:wrap}
+  .studly-app .activity-chat-heading h1{font-size:18px}
+  .studly-app .activity-chat-heading .activity-card-main{min-width:130px}
+  .studly-app .activity-chat-tools{margin-left:auto}
+  .studly-app .activity-chat-details{padding:16px;max-height:48%}
+  .studly-app .activity-chat-stats{gap:8px;margin-bottom:16px}
+  .studly-app .activity-chat-stat{padding:10px 12px;font-size:13px}
+  .studly-app .activity-addon{gap:10px;flex-wrap:wrap}
+  .studly-app .activity-messages{padding:16px;gap:10px}
+  .studly-app .activity-bubble{max-width:88%;padding:10px 12px;font-size:13px}
+  .studly-app .activity-composer{padding:12px;gap:6px}
+  .studly-app .activity-composer button{width:44px;min-width:44px}
+  .studly-app .activity-message-input{scroll-margin-bottom:calc(110px + var(--safe-bottom,0px));padding:0 10px}
+}
+@media(prefers-reduced-motion:reduce){.studly-app .activity-card-link{transition:none}.studly-app .activity-messages{scroll-behavior:auto}}

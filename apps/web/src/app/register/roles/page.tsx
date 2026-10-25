@@ -4,6 +4,7 @@ import { useRegistration } from "@/context/RegistrationContext";
 import { RegistrationStep } from "@/components/registration/RegistrationShell";
 import styles from "@/components/registration/registration.module.css";
 import type { RegistrationRole } from "@/types/registration";
+import { Icon } from "@/components/studly/Icon";
 
 const roles: { id: RegistrationRole; title: string; description: string }[] = [
   { id: "customer", title: "Ищу помощь", description: "Находите исполнителей для своих задач" },
@@ -23,6 +24,7 @@ export default function RolesPage() {
           {roles.map(role => <label key={role.id} className={styles.role}>
             <input type="checkbox" name="roles" value={role.id} checked={draft.roles.includes(role.id)}
               onChange={() => dispatch({ type: "role", role: role.id })} />
+            <span className={styles.roleIcon}><Icon name={role.id === "customer" ? "search" : "book"} /></span>
             <span><strong>{role.title}</strong><small>{role.description}</small></span>
           </label>)}
         </div>

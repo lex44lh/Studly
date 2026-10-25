@@ -1,7 +1,12 @@
 "use client";
+import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
+import { ChatsRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
 
 import BackButton from "@/components/BackButton";
+import { demoPerformerInitial, demoPerformerName } from "@/components/studly/DemoOrderPresentation";
+import { Icon } from "@/components/studly/Icon";
+import "@/components/studly/activity.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -25,12 +30,14 @@ type ChatWithLastMessage = Chat & {
 };
 
 export default function ChatsPage() {
+  const workspace = useOptionalDemoWorkspace();
+  const canonical = workspace !== null;
   const [chats, setChats] = useState<ChatWithLastMessage[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const loadChats = () => {
-      const saved = demoMode ? localStorage.getItem("studly-chats") : null;
+      const saved = demoMode && !canonical ? localStorage.getItem("studly-chats") : null;
 
       if (!saved) {
         setChats([]);
@@ -90,7 +97,9 @@ export default function ChatsPage() {
     };
 
     loadChats();
-  }, []);
+  }, [canonical]);
+
+  if (workspace) return <ChatsRoute/>;
 
   const formatTime = (timestamp: number) => {
     const date = new Date(timestamp);
@@ -115,116 +124,29 @@ export default function ChatsPage() {
   };
 
   return (
-    <div>
+    <div className="activity-page activity-page--narrow">
       <BackButton />
-
-      <h1>Чаты</h1>
-
+      <header className="activity-header">
+        <div><p className="activity-kicker">На связи</p><h1>Чаты</h1><p className="activity-intro">Обсуждайте детали и возвращайтесь к договорённостям.</p></div>
+        {chats.length > 0 && <div className="activity-count" aria-label={`Всего чатов: ${chats.length}`}>{chats.length}<small>диалогов</small></div>}
+      </header>
       {!loaded ? (
-        <p>Загрузка...</p>
+        <div className="activity-empty" role="status" aria-busy="true"><span className="activity-empty-icon"><Icon name="chat" /></span><h2>Загрузка чатов…</h2><p>Собираем Ваши диалоги.</p></div>
       ) : chats.length === 0 ? (
-        <p
-          style={{
-            color: "#6B7280",
-            marginTop: "24px",
-          }}
-        >
-          У Вас пока нет чатов
-        </p>
+        <div className="activity-empty"><span className="activity-empty-icon"><Icon name="chat" /></span><h2>Пока нет чатов</h2><p>Начните общение на странице услуги. Все диалоги появятся здесь.</p></div>
       ) : (
-        chats.map((chat) => (
-          <Link
-            key={chat.id}
-            href={`/chats/${chat.id}`}
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            <div
-              style={{
-                border: "1px solid #E5E7EB",
-                borderRadius: "16px",
-                padding: "16px",
-                marginBottom: "12px",
-                display: "flex",
-                gap: "12px",
-                alignItems: "center",
-              }}
-            >
-              <div
-                style={{
-                  width: "56px",
-                  height: "56px",
-                  borderRadius: "50%",
-                  background: "#E5E7EB",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "20px",
-                  flexShrink: 0,
-                }}
-              >
-                👤
+        <div className="activity-list activity-chat-list">
+          {chats.map((chat) => (
+            <Link key={chat.id} href={`/chats/${chat.id}`} className="activity-card activity-card-link">
+              <span className="activity-avatar" aria-hidden="true">{demoPerformerInitial(chat.performerName)}</span>
+              <div className="activity-card-main">
+                <div className="activity-row"><h2>{demoPerformerName(chat.performerName)}</h2><time className="activity-timestamp">{formatTime(chat.lastMessageTime)}</time></div>
+                <p className="activity-chat-service">{chat.serviceTitle}</p>
+                <p className="activity-chat-preview">{chat.lastMessage}</p>
               </div>
-
-              <div
-                style={{
-                  flex: 1,
-                  minWidth: 0,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <strong>
-                    {chat.performerName}
-                  </strong>
-
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      color: "#9CA3AF",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {formatTime(
-                      chat.lastMessageTime
-                    )}
-                  </span>
-                </div>
-
-                <p
-                  style={{
-                    margin: "4px 0",
-                    fontSize: "13px",
-                    color: "#3547B8",
-                  }}
-                >
-                  {chat.serviceTitle}
-                </p>
-
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "14px",
-                    color: "#6B7280",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {chat.lastMessage}
-                </p>
-              </div>
-            </div>
-          </Link>
-        ))
+            </Link>
+          ))}
+        </div>
       )}
     </div>
   );

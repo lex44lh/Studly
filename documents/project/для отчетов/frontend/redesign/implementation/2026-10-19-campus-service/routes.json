@@ -1,0 +1,98 @@
+[
+  {
+    "route": "/",
+    "status": 200
+  },
+  {
+    "route": "/search",
+    "status": 200
+  },
+  {
+    "route": "/service/1",
+    "status": 200
+  },
+  {
+    "route": "/service/2",
+    "status": 200
+  },
+  {
+    "route": "/service/999999",
+    "status": 200
+  },
+  {
+    "route": "/profile/1",
+    "status": 200
+  },
+  {
+    "route": "/favorites",
+    "status": 200
+  },
+  {
+    "route": "/orders",
+    "status": 200
+  },
+  {
+    "route": "/orders/1",
+    "status": 200
+  },
+  {
+    "route": "/orders/1/additional-payment",
+    "status": 200
+  },
+  {
+    "route": "/chats",
+    "status": 200
+  },
+  {
+    "route": "/chats/1",
+    "status": 200
+  },
+  {
+    "route": "/create-service",
+    "status": 200
+  },
+  {
+    "route": "/notifications",
+    "status": 200
+  },
+  {
+    "route": "/profile",
+    "status": 200
+  },
+  {
+    "route": "/register/roles",
+    "status": 200
+  },
+  {
+    "route": "/register/profile",
+    "status": 200
+  },
+  {
+    "route": "/register/performer",
+    "status": 200
+  },
+  {
+    "route": "/category/programming",
+    "status": 200
+  },
+  {
+    "route": "/welcome",
+    "status": 200
+  },
+  {
+    "route": "/about",
+    "status": 200
+  },
+  {
+    "route": "/support",
+    "status": 200
+  },
+  {
+    "route": "/safety",
+    "status": 200
+  },
+  {
+    "route": "/rules",
+    "status": 200
+  }
+]

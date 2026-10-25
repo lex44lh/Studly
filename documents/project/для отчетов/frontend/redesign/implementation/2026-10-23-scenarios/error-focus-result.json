@@ -1,0 +1,8 @@
+{
+  "temporaryRoute": "/studly-error-qa",
+  "errorBoundary": "apps/web/src/app/error.tsx",
+  "skipActiveElement": "campus-content",
+  "mainTabIndex": "-1",
+  "resetRestoredOriginalHeading": true,
+  "temporarySourceRemoved": true
+}

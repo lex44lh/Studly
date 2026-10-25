@@ -1,0 +1,285 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Icon, type IconName } from "@/components/studly/Icon";
+import { useDemoWorkspace } from "./Provider";
+import { AssetPreview } from "./ui";
+import { SELF, moderationLabels, ratingFor, rubles, type Account, type Role, type Workspace } from "./model";
+import styles from "./account.module.css";
+
+const roleLabels: Record<Role, string> = { customer: "Ищу помощь", performer: "Оказываю услуги" };
+const maxExampleSize = 10 * 1024 * 1024;
+const exampleMimeTypes = ["image/png", "image/jpeg", "image/webp", "application/pdf"];
+
+function messageFor(error: unknown) {
+  return error instanceof Error ? error.message : "Не удалось выполнить действие. Попробуйте ещё раз.";
+}
+
+function httpLink(value: string) {
+  try {
+    const url = new URL(value.trim());
+    return ["http:", "https:"].includes(url.protocol) && !url.username && !url.password ? url.href : null;
+  } catch { return null; }
+}
+
+function dateLabel(value: number) {
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) ? date.toLocaleDateString("ru-RU") : "Дата не указана";
+}
+
+function AccountAvatar({ account }: { account: Account }) {
+  const { getAsset } = useDemoWorkspace();
+  const [asset, setAsset] = useState<{ id: string; url: string } | null>(null);
+  useEffect(() => {
+    if (!account.avatarAssetId) return;
+    let active = true;
+    let objectUrl: string | undefined;
+    const id = account.avatarAssetId;
+    getAsset(id).then(blob => {
+      if (!active || !blob || !["image/png", "image/jpeg", "image/webp"].includes(blob.type)) return;
+      objectUrl = URL.createObjectURL(blob);
+      setAsset({ id, url: objectUrl });
+    }).catch(() => { /* The initials remain available when a local avatar cannot be read. */ });
+    return () => { active = false; if (objectUrl) URL.revokeObjectURL(objectUrl); };
+  }, [account.avatarAssetId, getAsset]);
+  const initials = account.name.trim().split(/\s+/).slice(0, 2).map(word => word.slice(0, 1)).join("").toUpperCase() || "ST";
+  return <span className={styles.avatar} aria-label={account.avatarAssetId ? "Аватар профиля" : undefined}>
+    {asset && asset.id === account.avatarAssetId ? <Image src={asset.url} alt="Аватар профиля" width={80} height={80} unoptimized /> : <span aria-hidden="true">{initials}</span>}
+  </span>;
+}
+
+function WorkspaceFeedback() {
+  const { error, notice } = useDemoWorkspace();
+  return <>{error && <p className={styles.error} role="alert">{error}</p>}{notice && <p className={styles.success} role="status">{notice}</p>}</>;
+}
+
+function RoleSwitcher({ account }: { account: Account }) {
+  const { busy, run } = useDemoWorkspace();
+  if (account.roles.length < 2) return <p className={styles.singleRole}><Icon name={account.activeRole === "customer" ? "search" : "book"} />{roleLabels[account.activeRole]}</p>;
+  return <fieldset className={styles.roleFieldset} disabled={busy}>
+    <legend>Активный режим</legend>
+    <div className={styles.roleSwitch}>{account.roles.map(role => <button key={role} type="button" aria-pressed={account.activeRole === role} onClick={() => { void run({ type: "role", role }).catch(() => {}); }}>
+      <Icon name={role === "customer" ? "search" : "book"} />{roleLabels[role]}
+    </button>)}</div>
+    <p>Один профиль и общая история. Переключение меняет доступные действия в интерфейсе.</p>
+  </fieldset>;
+}
+
+const customerLinks: { href: string; title: string; text: string; icon: IconName }[] = [
+  { href: "/search", title: "Найти помощь", text: "Каталог студенческих услуг", icon: "search" },
+  { href: "/favorites", title: "Избранное", text: "Сохранённые предложения", icon: "heart" },
+  { href: "/orders", title: "Мои заказы", text: "Состав, сроки и ход работы", icon: "book" },
+  { href: "/chats", title: "Переписки", text: "Все договорённости рядом", icon: "chat" },
+];
+
+function CustomerDashboard({ account }: { account: Account }) {
+  return <section aria-labelledby="customer-space-title">
+    <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Кабинет заказчика</p><h2 id="customer-space-title">Помощь для твоих задач</h2></div></div>
+    <nav className={styles.quickLinks} aria-label="Разделы заказчика">{customerLinks.map(item => <Link href={item.href} className={styles.quickLink} key={item.href}>
+      <span className={styles.linkIcon}><Icon name={item.icon} /></span><span><strong>{item.title}</strong><small>{item.text}</small></span><Icon name="arrow" />
+    </Link>)}</nav>
+    {!account.roles.includes("performer") && <div className={styles.invitation}><span className={styles.linkIcon}><Icon name="pen" /></span><div><h3>Есть чем поделиться?</h3><p>Добавьте роль исполнителя и подготовьте профиль для своих услуг.</p></div><Link href="/register/roles" className={styles.secondary}>Выбрать роли</Link></div>}
+  </section>;
+}
+
+function ModerationPanel({ account }: { account: Account }) {
+  const { busy, run, sandboxEnabled } = useDemoWorkspace();
+  const ready = !!account.name.trim() && !!account.description.trim() && account.examples.length > 0;
+  const canSubmit = ready && ["draft", "rejected", "changes"].includes(account.moderation);
+  const descriptions: Record<Account["moderation"], string> = {
+    draft: ready ? "Профиль заполнен. Отправьте его на проверку, чтобы перейти к подготовке услуг." : "Добавьте имя, описание и хотя бы один пример работы. После этого профиль можно отправить на проверку.",
+    pending: "Профиль отправлен на проверку в Demo. Решение появится после отдельного действия в панели симуляции модерации.",
+    approved: "Профиль одобрен в Demo. Теперь можно подготовить услугу и отправить её на отдельную проверку.",
+    rejected: "Профиль не прошёл проверку. Посмотрите причину, внесите изменения и отправьте его повторно.",
+    changes: "В профиле нужны изменения. Исправьте замечания и отправьте его на повторную проверку.",
+  };
+  return <section className={styles.panel} aria-labelledby="profile-moderation-title">
+    <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Готовность исполнителя</p><h2 id="profile-moderation-title">Проверка профиля</h2></div><span className={`${styles.status} ${account.moderation === "approved" ? styles.statusApproved : ""}`}>{moderationLabels[account.moderation]}</span></div>
+    <p className={styles.muted}>{descriptions[account.moderation]}</p>
+    {account.moderationReason && <p className={styles.reason}><strong>Причина решения</strong>{account.moderationReason}</p>}
+    <ul className={styles.checklist}>
+      <li><span role="img" aria-label={account.name.trim() ? "Заполнено" : "Не заполнено"}>{account.name.trim() ? "✓" : "○"}</span>Имя для отображения</li>
+      <li><span role="img" aria-label={account.description.trim() ? "Заполнено" : "Не заполнено"}>{account.description.trim() ? "✓" : "○"}</span>Описание исполнителя</li>
+      <li><span role="img" aria-label={account.examples.length ? "Добавлен" : "Не добавлен"}>{account.examples.length ? "✓" : "○"}</span>Хотя бы один пример работы</li>
+    </ul>
+    {!["approved", "pending"].includes(account.moderation) && <button type="button" className={styles.primary} disabled={busy || !canSubmit} onClick={() => { void run({ type: "profile.submit" }).catch(() => {}); }}>Отправить профиль на модерацию</button>}
+    {sandboxEnabled && <Link href="/admin" className={styles.textLink}>Открыть Demo-панель модерации <Icon name="arrow" /></Link>}
+  </section>;
+}
+
+function PortfolioEditor({ account }: { account: Account }) {
+  const { busy, saveExample, run } = useDemoWorkspace();
+  const [kind, setKind] = useState<"link" | "file">("link");
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [error, setError] = useState("");
+  const fileInput = useRef<HTMLInputElement>(null);
+  const submitting = useRef(false);
+  const locked = account.moderation === "approved" || account.moderation === "pending";
+  async function addExample(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (locked || busy || submitting.current) return;
+    setError("");
+    if (!title.trim()) { setError("Добавьте название примера работы."); return; }
+    if (kind === "link" && !httpLink(url)) { setError("Укажите полную ссылку с http:// или https:// без логина и пароля."); return; }
+    if (kind === "file" && (!file || !exampleMimeTypes.includes(file.type) || file.size > maxExampleSize)) { setError("Выберите PNG, JPEG, WebP или PDF размером до 10 МиБ."); return; }
+    submitting.current = true;
+    try {
+      await saveExample(kind === "link" ? { title: title.trim(), url: httpLink(url)! } : { title: title.trim(), file: file! });
+      setTitle(""); setUrl(""); setFile(null);
+      if (fileInput.current) fileInput.current.value = "";
+    } catch (cause) { setError(messageFor(cause)); }
+    finally { submitting.current = false; }
+  }
+  return <section className={styles.panel} aria-labelledby="portfolio-title">
+    <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Покажи, что умеешь</p><h2 id="portfolio-title">Примеры работ</h2></div><span className={styles.counter}>{account.examples.length}</span></div>
+    <p className={styles.muted}>Для отправки профиля на модерацию нужен хотя бы один пример. Добавьте ссылку или локальный файл.</p>
+    {locked && <p className={styles.locked} role="note"><Icon name="book" /><span>{account.moderation === "approved" ? "Одобренный профиль и его примеры пока нельзя изменять: правила повторной модерации ещё не согласованы." : "Профиль находится на проверке. Сохранённые примеры доступны для просмотра."}</span></p>}
+    {account.examples.length ? <div className={styles.examples}>{account.examples.map(example => <article key={example.id} className={styles.example}>
+      <h3>{example.title}</h3><AssetPreview example={example} />
+      {!locked && <button type="button" className={styles.remove} disabled={busy} onClick={() => { void run({ type: "example.remove", id: example.id }).catch(() => {}); }} aria-label={`Удалить пример «${example.title}»`}>Удалить пример</button>}
+    </article>)}</div> : <div className={styles.emptyInline}><Icon name="grid" /><h3>Здесь будут ваши работы</h3><p>Покажите пример, который поможет понять ваши навыки.</p></div>}
+    {!locked && <form className={styles.exampleForm} noValidate onSubmit={addExample}>
+      <fieldset disabled={busy} className={styles.fieldset}>
+        <legend className={styles.formLegend}>Добавить пример</legend>
+        <div className={styles.kindSwitch}>
+          <label><input type="radio" name="example-kind" value="link" checked={kind === "link"} onChange={() => { setKind("link"); setError(""); }} />Ссылка</label>
+          <label><input type="radio" name="example-kind" value="file" checked={kind === "file"} onChange={() => { setKind("file"); setError(""); }} />Файл</label>
+        </div>
+        <div className={styles.field}><label htmlFor="example-title">Название примера</label><input id="example-title" value={title} onChange={event => setTitle(event.target.value)} maxLength={255} placeholder="Например: Презентация проекта" aria-required="true" /></div>
+        {kind === "link" ? <div className={styles.field}><label htmlFor="example-url">Ссылка на работу</label><input id="example-url" type="url" inputMode="url" autoComplete="url" value={url} onChange={event => setUrl(event.target.value)} placeholder="https://" aria-required="true" /><p className={styles.hint}>Работа откроется в новой вкладке. Поддерживаются HTTP и HTTPS.</p></div> : <div className={styles.field}><label htmlFor="example-file">Файл с примером работы</label><input id="example-file" ref={fileInput} type="file" accept="image/png,image/jpeg,image/webp,application/pdf" onChange={event => { setFile(event.target.files?.[0] ?? null); setError(""); }} aria-describedby="example-file-hint" /><p id="example-file-hint" className={styles.hint}>PNG, JPEG, WebP или PDF, до 10 МиБ. Файл сохраняется локально в этом браузере, без загрузки на сервер.</p></div>}
+        {error && <p className={styles.error} role="alert">{error}</p>}
+        <button type="submit" className={styles.secondary}>Добавить пример</button>
+      </fieldset>
+    </form>}
+  </section>;
+}
+
+function ProfileEditor({ account }: { account: Account }) {
+  const { state,busy, run, saveAvatar } = useDemoWorkspace();
+  const baseRevision=useRef<number|null>(null);
+  const edit=(patch:Partial<Pick<Account,"name"|"university"|"city"|"about"|"description">>)=>{if(!Object.keys(changes).length)baseRevision.current=state!.revision;setChanges(current=>({...current,...patch}));};
+  const [changes, setChanges] = useState<Partial<Pick<Account, "name" | "university" | "city" | "about" | "description">>>({});
+  const [error, setError] = useState("");
+  const submitting = useRef(false);
+  const locked = account.moderation === "approved" || account.moderation === "pending";
+  const fields = { name: account.name, university: account.university, city: account.city, about: account.about, description: account.description, ...(locked ? {} : changes) };
+  async function saveProfile(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (locked || busy || submitting.current || !Object.keys(changes).length) return;
+    if (!fields.name.trim()) { setError("Укажите имя для отображения."); return; }
+    setError("");
+    submitting.current = true;
+    try { await run({ type: "profile", patch: changes },{expectedRevision:baseRevision.current??state!.revision}); setChanges({});baseRevision.current=null; }
+    catch (cause) { setError(messageFor(cause)); }
+    finally { submitting.current = false; }
+  }
+  async function updateAvatar(file: File | null) {
+    if (locked || busy || submitting.current) return;
+    const expectedRevision = baseRevision.current ?? state!.revision;
+    setError("");
+    submitting.current = true;
+    try {
+      const committedRevision = await saveAvatar(file, { expectedRevision });
+      // Advance only this form's unchanged base after its own successful transaction.
+      // A concurrent write still conflicts with the exact committed revision.
+      if (baseRevision.current === expectedRevision) baseRevision.current = committedRevision;
+    } catch (cause) { setError(messageFor(cause)); }
+    finally { submitting.current = false; }
+  }
+  return <section className={styles.panel} aria-labelledby="account-data-title">
+    <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Один аккаунт</p><h2 id="account-data-title">Данные профиля</h2></div></div>
+    {locked && <p className={styles.locked} role="note"><Icon name="user" /><span>{account.moderation === "approved" ? "Изменение одобренного профиля временно недоступно до согласования правил повторной модерации." : "Профиль на модерации. Данные доступны для просмотра."}</span></p>}
+    <form className={styles.profileForm} onSubmit={saveProfile} noValidate>
+      <fieldset disabled={busy || locked} className={styles.fieldset}>
+        <div className={styles.avatarEditor}><AccountAvatar account={account} /><div className={styles.field}><label htmlFor="account-avatar">Аватар</label><input id="account-avatar" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="account-avatar-hint" onChange={event => {
+          const selected = event.target.files?.[0]; event.target.value = "";
+          if (!selected) return;
+          if (!["image/png", "image/jpeg", "image/webp"].includes(selected.type) || selected.size > 5 * 1024 * 1024) { setError("Выберите PNG, JPEG или WebP размером до 5 МиБ."); return; }
+          void updateAvatar(selected);
+        }} /><p id="account-avatar-hint" className={styles.hint}>PNG, JPEG или WebP, до 5 МиБ. Хранится только в этом браузере.</p>{account.avatarAssetId && <button type="button" className={styles.remove} onClick={() => { void updateAvatar(null); }}>Удалить аватар</button>}</div></div>
+        <div className={styles.field}><label htmlFor="account-name">Имя для отображения <span aria-hidden="true">*</span></label><input id="account-name" value={fields.name} onChange={event => edit({name:event.target.value})} autoComplete="nickname" maxLength={255} aria-required="true" /></div>
+        <div className={styles.fieldColumns}>
+          <div className={styles.field}><label htmlFor="account-university">Университет</label><input id="account-university" value={fields.university} onChange={event => edit({university:event.target.value})} maxLength={255} /></div>
+          <div className={styles.field}><label htmlFor="account-city">Город</label><input id="account-city" value={fields.city} onChange={event => edit({city:event.target.value})} autoComplete="address-level2" maxLength={255} /></div>
+        </div>
+        <div className={styles.field}><label htmlFor="account-about">О себе</label><textarea id="account-about" value={fields.about} onChange={event => edit({about:event.target.value})} maxLength={10000} /></div>
+        {account.roles.includes("performer") && <div className={styles.field}><label htmlFor="account-description">Описание исполнителя</label><textarea id="account-description" value={fields.description} onChange={event => edit({description:event.target.value})} maxLength={10000} /><p className={styles.hint}>Описание нужно для отправки профиля исполнителя на модерацию.</p></div>}
+        {error && <p className={styles.error} role="alert">{error} <button type="button" className={styles.remove} onClick={()=>{setChanges({});baseRevision.current=null;setError("");}}>Загрузить актуальные данные (заменит несохранённые правки)</button></p>}
+        <button type="submit" className={styles.secondary} disabled={!Object.keys(changes).length}>Сохранить данные профиля</button>
+      </fieldset>
+    </form>
+  </section>;
+}
+
+function ReviewSummary({ state, performerId }: { state: Workspace; performerId: string }) {
+  const rating = ratingFor(state, performerId);
+  return <section className={styles.panel} aria-labelledby="performer-reviews-title">
+    <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>По завершённым Demo-заказам</p><h2 id="performer-reviews-title">Отзывы и результаты</h2></div></div>
+    <div className={styles.stats}>
+      <div><strong>{rating.average == null ? "—" : new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 1 }).format(rating.average)}</strong><span>Средняя оценка</span></div>
+      <div><strong>{rating.count}</strong><span>Отзывов</span></div>
+      <div><strong>{rating.completed}</strong><span>Завершено заказов</span></div>
+    </div>
+    {rating.reviews.length ? <div className={styles.reviews}>{rating.reviews.map(review => <article className={styles.review} key={review.id}><div className={styles.reviewHeading}><strong>{review.author}</strong><span aria-label={`Оценка ${review.rating} из 5`}><span aria-hidden="true">★ </span>{review.rating}/5</span></div><time>{dateLabel(review.at)}</time>{review.text && <p>{review.text}</p>}</article>)}</div> : <p className={styles.hint}>Отзывов пока нет. Здесь появятся оценки, оставленные по завершённым заказам этого Demo-профиля.</p>}
+  </section>;
+}
+
+function PerformerDashboard({ state, account }: { state: Workspace; account: Account }) {
+  const ownServices = state.services.filter(service => service.performerId === account.id);
+  return <>
+    <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Кабинет исполнителя</p><h2>Твои знания — чья-то поддержка</h2></div><Link href={`/profile/${account.id}`} className={styles.textLink}>Посмотреть профиль <Icon name="arrow" /></Link></div>
+    {(state.draft.performer.studyYear||state.draft.performer.specializations.length||state.draft.performer.portfolio)&&<section className={styles.panel}><h2>Из знакомства со STUDLY</h2>{state.draft.performer.studyYear&&<p>Курс обучения: {state.draft.performer.studyYear}</p>}{state.draft.performer.specializations.length>0&&<p>Специализации: {state.draft.performer.specializations.map(x=>x.title).join(", ")}</p>}{state.draft.performer.portfolio&&<><h3>Заметка о портфолио</h3><p className={styles.description}>{state.draft.performer.portfolio}</p><p className={styles.hint}>Для проверки добавьте отдельные примеры работ ниже.</p></>}{!["pending","approved"].includes(account.moderation)&&<Link href="/register/performer" className={styles.textLink}>Изменить сведения регистрации</Link>}</section>}
+    <div className={styles.performerGrid}><ModerationPanel account={account} /><PortfolioEditor account={account} /></div>
+    <section className={styles.panel} aria-labelledby="account-services-title">
+      <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Твои предложения</p><h2 id="account-services-title">Услуги</h2></div>{account.moderation === "approved" ? <Link href="/create-service" className={styles.primary}>Создать услугу</Link> : <span className={styles.disabledAction}>Создать услугу</span>}</div>
+      {account.moderation !== "approved" && <p className={styles.hint}>Создание услуг станет доступно после одобрения профиля. Каждая услуга также проходит модерацию.</p>}
+      {ownServices.length ? <div className={styles.serviceList}>{ownServices.map(service => <article className={styles.serviceRow} key={service.id}><div><h3>{service.title}</h3><span className={styles.status}>{moderationLabels[service.status]}</span>{service.reason && <p>{service.reason}</p>}</div><div className={styles.serviceActions}><strong>{rubles(service.price)}</strong>{service.status === "approved" ? <Link href={`/service/${service.id}`} className={styles.textLink}>Открыть <Icon name="arrow" /></Link> : <Link href={`/create-service?edit=${service.id}`} className={styles.textLink}>{service.status === "pending" ? "Посмотреть заявку" : "Открыть черновик"} <Icon name="arrow" /></Link>}</div></article>)}</div> : <div className={styles.emptyInline}><Icon name="book" /><h3>Пока нет услуг</h3><p>После одобрения профиля создайте первое предложение.</p></div>}
+    </section>
+    <nav className={styles.compactLinks} aria-label="Рабочие разделы исполнителя"><Link href="/orders"><Icon name="book" />Заказы <Icon name="arrow" /></Link><Link href="/chats"><Icon name="chat" />Переписки <Icon name="arrow" /></Link></nav>
+    <ReviewSummary state={state} performerId={account.id} />
+    {!account.roles.includes("customer") && <p className={styles.additionalRole}>{["pending", "approved"].includes(account.moderation) ? "Добавление новой роли временно недоступно: правила изменения проверяемого или одобренного профиля ещё не согласованы." : <>Хотите также находить помощь? <Link href="/register/roles">Добавить роль заказчика</Link></>}</p>}
+  </>;
+}
+
+export default function AccountWorkspace() {
+  const { state, ready, busy, error, retry } = useDemoWorkspace();
+  if (!ready && !error) return <section className={styles.state} role="status" aria-busy="true"><Icon name="user" /><h1>Открываем личный кабинет…</h1><p>Восстанавливаем ваши локальные Demo-данные.</p></section>;
+  if (!state) return <section className={styles.state} role="alert"><Icon name="user" /><h1>Не удалось открыть кабинет</h1><p>{error || "Локальные Demo-данные сейчас недоступны."}</p><button type="button" className={styles.secondary} onClick={retry} disabled={busy}>Повторить загрузку</button><Link href="/search" className={styles.textLink}>Вернуться в каталог</Link></section>;
+  const account = state.account;
+  if (!account) return <div className={styles.page}><header className={styles.heading}><p className={styles.eyebrow}>Мой STUDLY · Demo</p><h1>Твой кампус начинается здесь</h1><p>Выберите одну или обе роли и заполните свой профиль.</p></header><WorkspaceFeedback /><section className={styles.state}><Icon name="user" /><h2>Создайте локальный Demo-профиль</h2><p>В Demo можно пройти весь путь и попробовать разные режимы. Настоящий аккаунт и серверная сессия не создаются.</p><Link href={`/register/${state.draft.roles.length ? state.registrationStep : "roles"}`} className={styles.primary}>{state.draft.roles.length ? "Продолжить знакомство" : "Выбрать роли"}<Icon name="arrow" /></Link></section><nav className={styles.compactLinks} aria-label="Доступные разделы"><Link href="/search"><Icon name="search" />Каталог услуг <Icon name="arrow" /></Link><Link href="/welcome"><Icon name="home" />Знакомство со STUDLY <Icon name="arrow" /></Link></nav></div>;
+  return <div className={styles.page}>
+    <header className={styles.heading}><p className={styles.eyebrow}>Мой STUDLY · Demo</p><div className={styles.identity}><AccountAvatar account={account} /><div><h1>{account.name}</h1>{account.university && <p>{account.university}</p>}{account.city && <p className={styles.city}>{account.city}</p>}</div></div></header>
+    <p className={styles.demoNotice} role="note">Демонстрационный аккаунт. Данные и файлы хранятся локально в этом браузере. Реальная регистрация, проверка и платежи не выполняются.</p>
+    <WorkspaceFeedback />
+    <RoleSwitcher account={account} />
+    <div className={styles.sections}>
+      <div hidden={account.activeRole !== "customer"}><CustomerDashboard account={account} /></div>
+      {account.roles.includes("performer") && <div hidden={account.activeRole !== "performer"}><PerformerDashboard state={state} account={account} /></div>}
+      <ProfileEditor key={account.id} account={account} />
+    </div>
+  </div>;
+}
+
+export function PublicDemoPerformer({ performerId }: { performerId: string }) {
+  const { state, ready, error, retry, busy } = useDemoWorkspace();
+  if (!ready && !error) return <section className={styles.state} role="status" aria-busy="true"><Icon name="user" /><h1>Открываем Demo-профиль…</h1></section>;
+  if (!state) return <section className={styles.state} role="alert"><h1>Профиль недоступен</h1><p>{error || "Не удалось прочитать локальные данные."}</p><button type="button" className={styles.secondary} onClick={retry} disabled={busy}>Повторить загрузку</button></section>;
+  const account = state.account;
+  if (!account || performerId !== SELF || account.id !== performerId || !account.roles.includes("performer")) return <section className={styles.state}><Icon name="user" /><h1>Demo-профиль не найден</h1><p>Этот профиль исполнителя недоступен в текущем локальном пространстве.</p><Link href="/search" className={styles.primary}>Вернуться в каталог</Link></section>;
+  const services = state.services.filter(service => service.performerId === performerId && service.status === "approved");
+  return <div className={styles.page}>
+    <Link href="/profile" className={styles.textLink}>← В личный кабинет</Link>
+    <header className={styles.publicHeading}><AccountAvatar account={account} /><div><p className={styles.eyebrow}>Demo-профиль исполнителя</p><h1>{account.name}</h1>{account.university && <p>{account.university}</p>}{account.city && <p className={styles.city}>{account.city}</p>}</div><span className={styles.status}>{moderationLabels[account.moderation]}</span></header>
+    <p className={styles.demoNotice} role="note">Предпросмотр локального Demo-профиля. Эти данные не опубликованы на сервере.</p>
+    <div className={styles.sections}>
+      <section className={styles.panel}><h2>О себе</h2><p className={styles.description}>{account.description || "Описание исполнителя пока не добавлено."}</p>{account.about && <p className={styles.muted}>{account.about}</p>}</section>
+      <section className={styles.panel} aria-labelledby="public-portfolio-title"><h2 id="public-portfolio-title">Примеры работ</h2>{account.examples.length ? <div className={styles.examples}>{account.examples.map(example => <article key={example.id} className={styles.example}><h3>{example.title}</h3><AssetPreview example={example} /></article>)}</div> : <p className={styles.muted}>Примеры работ пока не добавлены.</p>}</section>
+      <section className={styles.panel} aria-labelledby="public-services-title"><h2 id="public-services-title">Опубликованные Demo-услуги</h2>{services.length ? <div className={styles.publicServices}>{services.map(service => <Link key={service.id} href={`/service/${service.id}`} className={styles.publicService}><span className={styles.linkIcon}><Icon name="book" /></span><h3>{service.title}</h3><p>{service.description}</p><strong>{rubles(service.price)}</strong><span>{service.days} дн.</span><span className={styles.textLink}>Подробнее <Icon name="arrow" /></span></Link>)}</div> : <p className={styles.muted}>Одобренных услуг пока нет.</p>}</section>
+      <ReviewSummary state={state} performerId={performerId} />
+    </div>
+  </div>;
+}

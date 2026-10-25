@@ -1,9 +1,14 @@
 "use client";
+import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
+import { OrdersRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import BackButton from "@/components/BackButton";
+import { DemoOrderStatus, demoPerformerName } from "@/components/studly/DemoOrderPresentation";
+import { Icon } from "@/components/studly/Icon";
+import "@/components/studly/activity.css";
 
 type Order = {
   id: number;
@@ -19,6 +24,8 @@ type Order = {
 };
 
 export default function OrdersPage() {
+  const workspace = useOptionalDemoWorkspace();
+  const canonical = workspace !== null;
   const router = useRouter();
 
   const [orders, setOrders] =
@@ -26,7 +33,7 @@ export default function OrdersPage() {
 
   useEffect(() => {
     const saved =
-      demoMode ? localStorage.getItem("studly-orders") : null;
+      demoMode && !canonical ? localStorage.getItem("studly-orders") : null;
 
     if (saved) {
       try {
@@ -38,59 +45,34 @@ export default function OrdersPage() {
         // Ignore malformed local order data instead of breaking the page.
       }
     }
-  }, []);
+  }, [canonical]);
+
+  if (workspace) return <OrdersRoute/>;
 
   return (
-    <div>
+    <div className="activity-page">
       <BackButton />
-
-      <h1>Заказы</h1>
-
+      <header className="activity-header">
+        <div><p className="activity-kicker">Мой кампус</p><h1>Заказы</h1><p className="activity-intro">Услуги, сроки и ход работы — в одном месте.</p></div>
+        {orders.length > 0 && <div className="activity-count" aria-label={`Всего заказов: ${orders.length}`}>{orders.length}<small>всего</small></div>}
+      </header>
       {orders.length === 0 ? (
-        <p>У Вас пока нет заказов</p>
+        <div className="activity-empty"><span className="activity-empty-icon"><Icon name="book" /></span><h2>Пока нет заказов</h2><p>Здесь появятся Ваши заказы и информация о ходе работы.</p></div>
       ) : (
-        orders.map((order) => (
-          <div
-            key={order.id}
-            onClick={() =>
-              router.push(
-                `/orders/${order.id}`
-              )
-            }
-            style={{
-              border: "1px solid #E5E7EB",
-              borderRadius: "16px",
-              padding: "16px",
-              marginBottom: "12px",
-              cursor: "pointer",
-              background: "#FFFFFF",
-            }}
-          >
-            <h3>{order.serviceTitle}</h3>
-
-            <p>
-              Исполнитель:{" "}
-              {order.performerName}
-            </p>
-
-            <p>
-              Статус:{" "}
-              {order.status === "PENDING" &&
-                "🟡 Ожидает"}
-
-              {order.status ===
-                "IN_PROGRESS" &&
-                "🔵 В работе"}
-
-              {order.status === "REVIEW" &&
-                "🟣 На рассмотрении"}
-
-              {order.status ===
-                "COMPLETED" &&
-                "🟢 Завершён"}
-            </p>
-          </div>
-        ))
+        <div className="activity-list">
+          {orders.map((order) => (
+            <button key={order.id} type="button" className="activity-card activity-card-link" onClick={() => router.push(`/orders/${order.id}`)}>
+              <div className="activity-row">
+                <div className="activity-card-main">
+                  <h2>{order.serviceTitle}</h2>
+                  <p>Исполнитель: {demoPerformerName(order.performerName)}</p>
+                  <div className="activity-card-meta"><DemoOrderStatus status={order.status} /><span>Заказ № {order.id}</span></div>
+                </div>
+                <span className="activity-card-arrow"><Icon name="arrow" /></span>
+              </div>
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );
