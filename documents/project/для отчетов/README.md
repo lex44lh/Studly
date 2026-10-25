@@ -24,3 +24,7 @@
 - [Утверждённый регламент](../TEAM_WORKFLOW.md)
 - [Привязка Codex Desktop](../CODEX_DESKTOP.md) и [контекст трёх сессий](../handoffs/README.md)
 - [Этап 1.2: настройка worktree — 18.10.2026](git/2026-10-18_20-34_worktree-setup.md)
+
+- [Инициализация API Integration — 19.10.2026](frontend/api-integration/2026-10-19_00-21_session-initialization.md)
+- [План локального Django и проверки Live на 3002 — 19.10.2026](frontend/api-integration/2026-10-19_00-44_django-live-plan.md)
+- [STUDLY 2.0: проверка Backend и блокировка переноса принятого Redesign — 25.10.2026](frontend/api-integration/2026-10-25_16-34_integration-progress.md)

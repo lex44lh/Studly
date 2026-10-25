@@ -1,0 +1,3661 @@
+{
+  "auditDate": "2026-10-25",
+  "currentHead": "1888b9194827d00317fb9cf9d27218ef702999cb",
+  "acceptedRedesign": "5db64a2437ce0b000f32de51bc730a9708be5178",
+  "backendHead": "8999703fe60ef6714595614413faddc5a9308d44",
+  "manifestPath": "documents/project/для отчетов/frontend/redesign/2026-10-23_17-12_f123-candidate.manifest.json",
+  "manifestSHA256": "ef7afc71711a6341238c0cab3e99ccbe4ebe2187012e8f516532cfb204022e65",
+  "deltaCounts": {
+    "A": 312,
+    "M": 40,
+    "D": 0
+  },
+  "sourceDeltaCount": 70,
+  "testDeltaCount": 13,
+  "preservedUntrackedReportsSHA256": {
+    "documents/project/для отчетов/frontend/api-integration/2026-10-19_00-21_session-initialization.md": "fbd95f594d58466b3b2f182918733bdecdb48a823f39b7098617d90608810d31",
+    "documents/project/для отчетов/frontend/api-integration/2026-10-19_00-44_django-live-plan.md": "f5caf858f3f824f4878110bd2e2ac6f9f17ea771f4c31cbd1fa85ab737b84315"
+  },
+  "changes": [
+    {
+      "status": "M",
+      "path": "apps/web/src/app/about/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "b73419b075aaa5d22edb0a766eb10a417db1c219"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "c65005b960bb4a3f2f5a84a7552e7ec7ec5a96e1"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/app/admin/page.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "afa6c1694273ada9eee068b6bc75457d444f3b30"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/category/[slug]/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "d9e523fe8c95cd46dd5e083a3cd9fc5d70a89095"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "e50c0e05fa23d1966a0a54cd5ee6ab836299b7f9"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/chats/[id]/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "bcbe29be1ceaa585f11ec780fab58171e0c3e606"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "cb5a943596980a8f558d76b741cff8093ad9fa4b"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/chats/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "5d1202585d7a35f78236fa6d052347a3db2579ec"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "f037beb16550b107b1e717bcd836d0434f697959"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/app/create-service/create-service.module.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f58c0f99a8c66c2d6350979e4fc6af10f2912e4a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/create-service/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "ee0ea717ad2d565e60887d905311036ec1c887be"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "3747df1fa908780df7c243e07e4c81be5dd6efb9"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/app/error.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1a1b3bbef95a2d3ac86819d6e66757b0b2aa30f2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/favorites/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "e091e45ae92f49787114df370418a079499409ed"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "ba690d1610c8b34c21511b49057419584cd2503b"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/app/information.module.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7b527a55522f54bdf8f02d6834e1482b6cb91a21"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/layout.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "111215abfc9abc828a2079709d242aa5cc8ab617"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "e65f7eb75e86464434946e922224a9469bab8a94"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/app/not-found.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "db40034a3c4a896e4d30338eccd577889aaca780"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/notifications/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "038d57e8ae711018713527c842eb583023597299"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "1da9fb6d960935165467d29be80dc5fd1b64f4b1"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/orders/[id]/additional-payment/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "7699225eee295ef20bd1294dcc9682174ea12cce"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "24d1ca9e985f10321f60834d4a677a7c6c5d0527"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/orders/[id]/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "0341bf366a3b257bcb1400ff1adc8ac675e48bcd"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "628f85468547dad57cf48c0d6a09cde1f796450c"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/orders/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "ec843b7673a5fe85303c3916f05bc6359fc18cb6"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "32bd09c00469eb71ddb3bfe53d4a2253559341d1"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "6b7542b1e6365d7f6109032981407a0f46069be5"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "0b809b8c55818c407393d51bdcb5d96c113774e2"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/profile/[id]/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "c90f55c5d70e8abc2502f164cc9da63d10c6ac41"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "570fb8899e7966c7e312d644582a35c74c6131c9"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/profile/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "a282bb2846ef510ef74e122092ca63fbbc9b46df"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "432adaebf8d730960163e3de33e3f0bd69fb2561"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/register/layout.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "477ec103bae346e27cb27623c463ef38ba1e5bcc"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "394a5c8974bb281c23d37792ee58263cc57281f0"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/register/roles/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "5994ed373388da5f7c5432ebe72b8851e8a2303b"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "f91aeadd8675246315177362cfe87d3a931dc880"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/rules/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "16167fdb6c4f2aab1c5ef3dcd17474da5a3bfb75"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "35123c5b4acb21c04ead386784d19892e538566e"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/safety/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "09cbfb5c8cb573061aedc8ad52e2418dcb49ce71"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "5dbf730a73df46367b715fd96aa420ebd067da49"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/app/service/[id]/layout.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "749a464ebf1a03addb8a8a3e1d53dc2e3814b313"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/service/[id]/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "23df2f2514c86ae5505a05e78151d6f8c72ccbf9"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "7993e3f318ea2a5db7ef80992b7b43fe179ea76b"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/support/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "5964abea865631562238d5b615baa6739339add3"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "ce6013950774eeb4eb1248bd51f8b6d7f9df28dd"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/app/welcome/page.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "a893cdb93fa71570fa4aafc665769c7c216087f4"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "0d37a38717c3d401e7f06d6aef1eced5db2aeef2"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/app/welcome/welcome.module.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3ddbbcfa96c2cbf1ceebd5e9d7e20b35a778a22c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/AppShell.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "7b5c067d29fbebabca0a7e6fe658c36c6ff14133"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "ed25b1488b2f1cb4b9f5616139f50bfd907d0d84"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/BackButton.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "193ed57010ad36906896b0a5e3b952b40511326d"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "7ba64327eeb621d84cdeaa8d627898728d4d233a"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/ChatWindow.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "969a061de1a7b49c0e3191d83a7b41c7619e12ea"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "4002004723b9f7e8d471a657320e6c29fae3bb45"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/ServiceCard.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "7e64e1439112674771edc791c57209bc76143880"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "e2a84a8f91b056e8a0aadf523f3684eaf755648b"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/catalog/LiveFavorites.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "570f9a40bdde307b7c7ef95bd7903354d4771d37"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "85b2f466293ad04da6069dbbbb508698cc9f0b78"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/catalog/LivePerformer.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "23d444ebcd100aa7ca5ed95493878dbe2cfb26e6"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "9cda9651f6cfeff09dfe356cab065680122ebfd7"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/catalog/LiveSearch.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "adfbba24d105b79ec513e1c4c95178ea9d9df6b5"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "3488d6c4553f8e07f14f588ac558c848f483509a"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/catalog/LiveService.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "faedde832069611334b1058fbe4647914c510949"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "367e1ed0972a62c2fc2bd2f02d75f35cd1299cde"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/components/catalog/ServiceDetail.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1c0cc9f58ad6a6a7fa0b3f706bf48624298fa612"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/catalog/ServiceList.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "63f38b4e9fbf67ca4d4b04451962770b97fee025"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "89b671d19d2d6058d21e8c4d3e174d0175dd60c7"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/components/catalog/service-detail.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "119b824bde8903eddabdc79ff20062bb8d0eaa75"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/registration/PerformerForm.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "9c13d154a575d8c0c718d9b300ccca04172a7c0d"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "b7a8c431d174421733c7ef818c0156b941c833d8"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/registration/ProfileForm.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "6fb9f1d9f13cfb8d16c0006a779906f2681aa028"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "c26a06708afa19d40ea543e1c94fcc012029e78a"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/registration/RegistrationShell.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "443ab65ec54aa5ffbe88a8532876377890844833"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "b02dd4f39557ca301ccefa00330df91451971052"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/registration/SpecializationPicker.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "de5fd4171488bac04fb25315dfc9893774395fef"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "d304d56e14e5d9dbc57f04c70b773a3264ef279e"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/registration/registration.module.css",
+      "current": {
+        "mode": "100644",
+        "blob": "8dcbab133b5d270fd45c1413fcb9c661073ab1c7"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "03236c10b0cf5f6575d84e33ed3f239520a39c28"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/components/studly/CampusShell.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "0c4461e27372665e790aa58e9ba1d2af706898ae"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "933eca49c29371f375b1db65550c905f0956d527"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/components/studly/DemoOrderPresentation.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "56d43585d9ee8209ff9bbb4f7b3cdaf0d5115cd2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/components/studly/PageHeading.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "82c6a80ab7dd6671d6df163d10dd6fd75c014e6f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/components/studly/activity.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "dd7695a96862d4c97bc78f9607131b2d46d09b8c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/components/studly/campus-pages.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fe0293d83476a5d7ecbff27bb46bdb5b8fbf4bdd"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/context/FavoritesContext.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "4d40e2e3b1907512532018de34135c911f14b3be"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "83c70f4bf9a43997074e5a65504428635eac26b9"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "M",
+      "path": "apps/web/src/context/RegistrationContext.tsx",
+      "current": {
+        "mode": "100644",
+        "blob": "e47fb8000d3ba2ab410405b0c86c0db421a18462"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "e10d14bb5476ab7cd1491f882a99c8b57162823a"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/AccountWorkspace.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ea2ccb908301f9286783e89d95ffa6a17e34658e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/AdminWorkspace.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cb0d028b710fdc64f2785ca52d53221570d863bd"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/CommerceWorkspace.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e35d1b69c115d2b05664ea07e4dc1371634df130"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/LegacyHistory.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9fcffd691ecfaa9a9532511cb44eea176ce5f16e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/Provider.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bf6c05c125682506bbb513ca0e3eef3bac42f90f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/PublicPerformer.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2538c0935979631cdd5a1e385a9aba407e95eb3e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/RegistrationAdapter.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fe885aef7f0788527b37023de11714631b514294"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/Routing.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "d381cabdc484a5084892c6f58c409d2842c274c4"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/ServiceWorkspace.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b598ac0cd74855536f54e13e9e969684643cebd2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/WelcomeAction.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8770312666b3f1e908a3cb1e187aa1ca9619da27"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/account.module.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3b20d5132ab1e903b13b5a1afc9a88eb149734b6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/admin.module.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "207f38f29becb1b3e4d143e9783d86869a57415a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/catalog.ts",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "510f0e511b43a72e3ec569e97a1f6a26216be2b0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/commerce.module.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ebe6013f0e6e90c32ad3e86ed253580ed08eb2aa"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/domain.ts",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f0b28d7ea3eca4b1c2efd039246b0c23cbd81485"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/model.ts",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8a275b2c9efa291c5f35d51eaeecca98042bbc9c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/repository.ts",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "291673649610acfcb8f51b72e953170cf9906159"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/ui.tsx",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c4a755144e4960d489fc6e38711d6fc6c3faef09"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/src/features/demo-workspace/workspace.css",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "22d9f61c2a3ede9168e609bd128448bb76771595"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/campus-skip-link.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "039f743e09800eb1f12c60c72c44eb662a773507"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-account-avatar.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a370b85a3518ecc7dea7d0f4d7940b88b3cf7e8e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-account-rendering.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3c477c882ee7e3ad4f1d21150f6054d4fae8fe1f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-admin-avatar-lifecycle.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "87bece76899bf68e31e01aa314e6a877e1ac13eb"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-admin-rendering.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1e95800a74f375d65f871b321f2ab600db70eae1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-catalog-adapter.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "352dcbce39c57a5191cbb3daee091f591516fbc2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-commerce-rendering.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "417cfb2769ee9389d0acde022461905f25643326"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-order-rendering.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "eb0b3f64887916e6b0167b2197a7feee17d22eab"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-provider-avatar.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "83172e8d8f1f3f8f60e29d97fbd970f72fbe1fb6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-registration-adapter.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9ad7c39e1556ed4530abc18f142ccd2dfd0607d0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-repository.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9c49a4566ccda7e843799ccac75ce98a248a5b6b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-route-isolation.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "eedcb70c563956ea9b04e25111776c5d73d00607"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "apps/web/tests/demo-workspace-domain.test.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2c2e731d19c897c30e7864e3f73766c12f419382"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "documents/project/для отчетов/README.md",
+      "current": {
+        "mode": "100644",
+        "blob": "60560aa306fe489be717787968a4e7d9dd3abfd1"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "8ea8bc646bab689134e2837f97f54ca91f5febd9"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-19_00-24_campus-service-detail.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a222ff358671f9da030f09997c441829ead6e12f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-21_22-18_activity-group.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b95d9cc6b6635f29c0f45e6482eefb5236f208fd"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-21_22-18_forms-group.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c33752d4edd4b8a5cdafc7a6eeb07965d151bd48"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-21_22-18_full-redesign-progress.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ee4fa96aa08fd69bf98986702f9ea87bb64be344"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-21_22-18_route-audit.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "adb22e7ca0ae82fd9a63c2da76dc645fe3e3647e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-22_02-55_technical-acceptance-fixes.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a76a51307b79decb9b664a2a9399cf2fffec3d45"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-22_18-09_architecture-coordination.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f9b4b32d887baaf57cc9d57f19c4a95489fb77a0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-22_18-09_backend-handoff.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "55129254f7c533db67e21e3cc61786afb389000e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-22_18-09_frontend-scenarios-progress.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "379e1cdf8b7f2522d7b273513c5fc4ddc7560e62"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-22_18-09_integration-handoff.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4998707b5529cbc270382f363949337e36db0788"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-22_20-51_admin-backend-handoff.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "655686e0da400ff04544deb2dc1584f3bad8812c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-22_20-51_admin-scope-addendum.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e2021edcf424f6c544ba0e1d85c8f955fdee8c0d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-23_10-42_backend-handoff.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "275d4975fa2c471843a702dcdf6e79afc19278e1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-23_10-42_frontend-scenarios-completion.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "21b32c54524c715019e6636dc13f8633b9475b2e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-23_10-42_frontend-scenarios.manifest.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "722b448470435cd09f6b3a09b231ca5c8a3e236d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-23_10-42_integration-handoff.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "09e07c3bc143dd84d0ae2d1a1f6418fadd4ef716"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-23_17-12_f123-candidate.manifest.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9104f44e9f251ca561aac2777599ce9527d892b2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-23_17-12_f123-closure.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a60563a58b46834f42d963227cc2d1e0ab12bdfa"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/2026-10-23_17-12_f123-reacceptance-handoff.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "25e250addb7168cc59be693a7eee0fa09a34cbaa"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "M",
+      "path": "documents/project/для отчетов/frontend/redesign/README.md",
+      "current": {
+        "mode": "100644",
+        "blob": "aeb7b10a64616e2acc4bbb0999a6d245d769cdad"
+      },
+      "accepted": {
+        "mode": "100644",
+        "blob": "496dd7238cd9d83d14f63e346e6364725f68f2e3"
+      },
+      "existsInIntegration": true
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/accessibility-inspection.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "41317fe282acf3a9ea200f0fb5239dc3184be386"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/contrast.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "40292e6b5f22db9311c347b8ddcde12bed14084d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/demo-checks.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "0545f44356912e9f4ca155b2b065315e861a8c10"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/demo-extras-320.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fd001aa32e17553ca534e7c0956cca0ba88d6f6d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/demo-not-found-320.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "164fcb7c32b7c9a4adf9dbdfd8609ec1b359259b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/http-fixture.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8e0843d153d23f4a5ca347d94952d1cc92433f8d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/live-checks.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "82d81c5a442544c9b9440bc9bb04590e1cce7b6c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/live-detail-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "62d982ceabb406da9c7294246c6319f9ecc66606"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/live-errors.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "013d8a3d1b5e2c36cffabca0f623bb872fe6fc15"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/live-loading-320.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b8f743b544e93b4d19191736f51fd36cb137831e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/live-quote-320.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c782e2235f3af56dda55e7cb418b53b6eef8ba7f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/live-unavailable-320.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c4c0b0e389d5d078b68b8bc098633da33ca9b1a4"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/platform-preview.html",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "50c44ef3712577cf870f6ff0a42444d2ef312cce"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/responsive.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "aac088a19584841c62696d8c7f858a9afdd93250"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/routes.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "31856eda60d97fec003bc352e7ec865fd56654ce"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/scope-check.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f6a2199061aff0dd1d4a2805975246384b7621e1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/search-regression-768.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2e81f9e481022f8a264e81a4d54b7960dc9f7c48"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-1440-dark-full.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "24dcc1cfc908b98fef7d4f297192bf297899c858"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9514e578c96502418372ab2cf72a53287aa4ed04"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-1440-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "51cf006dc0886397a737b0d14ceba6a616ef6324"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2bddc81630434acb526da221ba064bca2135d8ac"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "858fe50994b9dc024ed16970563146e2957921d7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5cd4a6238befa6e49b3b7e84698cdfb5f24054c2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cc6789d0629d5321e3e9212c0b1237f24ce27f64"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-768-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "33a74213fc586a023a5b8575362bb6d0f286c92c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-19-campus-service/service-768-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "dedd3f1d77236a963cba31bbc433d78fd34b22ce"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/README.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "29d55ec1fad9aeebfb9ca99df656b71abdac8599"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/about-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "db97c3aefb46448be1900331af72ee975714f684"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/about-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "51714ed617a7b18a47a7157bc4380a3101528190"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/category-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a41671b99da47b6476d4c978696fca169b1b137b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/category-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2ddc63d8aa435352409df8b76c8f32f141bf170a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/category-checks.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2775f625b0ab6e20a12cb47268554de546f545a4"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/changed-files.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ae68d335217fac7350d5fd715cbeff6cc20d9d85"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/chat-detail-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9f94b93f9c105f9f86d76ace673cd5be9291c76c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/chat-detail-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "32afd0affa6c3de0c5d50aea1b91fe9c55d768e1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/chat-short-viewport.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2e4c7569ed3e8e250c568bd7c87aafedfa317956"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/chat-short-viewport.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "6ffd50db0868019d0089a4373bd65edd522d66cb"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/chats-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fc6ca9167ba4540d774d89ea3a42ee52a2aeeedb"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/chats-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b9d30db749871ab2c3125b15e0c6f7aef7376252"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/create-service-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "277eee23ecb316dcda0c530fde46ce91d1b4999e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/create-service-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7c27dc10048de6356b66c5a1e3203bea0445ab84"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/create-service-preview.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3ea439b055d5f1557fa7de39daf6f97c316ab90a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/demo-checks.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4c48bc80f52ca64363e5f991cecc2d329dbc5ea1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/favorites-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4d10862fa05412fd87886b13b03a69b9f1e1e3f1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/favorites-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e4168d134f870ee34498accc7dac9305b7940d51"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/home-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5e4677eec966453242975224c1c789b3cd4c6bfe"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/home-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a626c37c6fea2d57bd2a11fb9bba1b822dd149e9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/http-smoke.py",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "50bd35bd9c4e33ce4f1b83229615f6921dc57f14"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-bad-service.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cd7a524075f61f202af7bc047f6f4ab06301a1b2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-category-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f61982fe9abf346c7a6882f302a79437d0a0158b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-chats-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f4258ea5784549d2f323b391f4ba2a241c978de2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-checks.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1dd27aa2fe61bd7078dbdec119d007b24e462014"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-create-service-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "6086444dbe1cead1e895f2cedfb1abcf27194212"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-fixture.cjs",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "81db96f37165809e7fce8c83b98be6bdeebaffa4"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-loading.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "938eade37306c9427346db83780451de8b6ea1e1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-notifications-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "26f3fcd678e7277ddfeb870d28d70720204bb65d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-orders-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f87c87bef7d48be14294ebce0de462d7121e5a30"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-performer-error.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8160985f681d578b064ecbb5f3935525d350ac05"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-search-empty.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f4245c7e80df196f20596d59178b84851c7a0291"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-search-error.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5745e2ac6d47443604dd866f456e8e58832645f7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/live-service-error.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e33b09153b98f6316a3c5ddc46bb1fd2bdc0a2e7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/menu-checks.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8f02cf19c5a78c03363370094cb62f5d5715e8c5"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/not-found-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "95d2e3d3144b49e1e0ff8c33749701025fc46bc7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/not-found-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7a762eec9357a3cd1bb4629ff025d34f18a6d588"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/notifications-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "500e1bd7a91dbebfd016c6d1b9580f38966ded5e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/notifications-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "6991ecd67e4530bbdd7731ee5df7e852816be226"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/order-completed-demo.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2dc7fc38a3374e23de1d9cd2230e42d09824210d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/order-detail-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "874b261b26d3e249782527537db1199d344fdea3"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/order-detail-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8da51ca9a0ac218457281ff6e72776000c393ca9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/orders-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1da7b92cc3119276e33c0530a9ef4128495d74f4"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/orders-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c6b5f97cb771bef27001edc96ac5bed5087b09f7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/payment-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b1544db4b319d23f23dda8dd9452bd0dfcdc6fa4"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/payment-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a1bdb9f805f365d32356abd9dbb55adcf3671474"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/performer-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "41fb029ed7faec823fcefc8210d72b0797926dcb"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/performer-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "244d68c5a9f1565cb1c5fa2efd3f2c26fcbdafb6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/platform-preview.html",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cf87b64ac90d50c6a9a7df134a58503503e53390"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/platform-simulation.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c83c6234caf54951e368457d05374370f24a2153"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/platform-simulation.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a9141cfb63ceb5a7717f9402177acc8f6add96dc"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/preservation.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e3884997c9362a214d033ce937e4384d45165940"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/profile-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "322b0cc0b1eee2dca48e553765cbde9c112e81b0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/profile-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5787877fc4b0bcf3f71e09e34d97661796fcb3e5"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/register-performer-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "283d3dcfe328fbc1ddd0052fbf381ea1d9c7f8a8"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/register-performer-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "34169d1d86d7a7d1d8602494c52c67d45e843949"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/register-profile-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "283d3dcfe328fbc1ddd0052fbf381ea1d9c7f8a8"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/register-profile-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "34169d1d86d7a7d1d8602494c52c67d45e843949"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/register-roles-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "283d3dcfe328fbc1ddd0052fbf381ea1d9c7f8a8"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/register-roles-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c2e43604541ca3b36dbbdb10bd1d551fd1718fac"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-checks.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ae5c8d788f37ada709e20a43d9a65bcb91426753"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-performer-dev-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "56b97620bfc225e1fd14ef9c25c289ddda22897c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-performer-dev-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f99c090fcb5fdd5a749b17eaa60f7ada7830dfe9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-performer-dev-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3d901b7d5b9819b04f18d6701d8d949441bef56c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-preview-end.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c19f22ddb5f56f6ff5b6dcc4ede69d18c945270b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-profile-dev-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "643c8a620d9644692b14635f15393632e4363613"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-profile-dev-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9bce49debb35624f8c429721ba8fcb6659a2a694"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-profile-dev-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "907aa8f9d98b14275110c2fb583208f111dcae24"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-responsive.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ee76f75f02c53bdc6e9610165b70a7164d6dccc9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-roles-dev-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "31c7ab1fe845e5a2a7ee81edd3f43b907338e7aa"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-roles-dev-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ea40c4e1a7f7bede87459575d1c309dec877de03"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-roles-dev-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "649e6fbceeb2316af4c3e99f51bae35e864d682b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/registration-roles-dev-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7532d35683aab81b4077361e1a657328a114766d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/responsive.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "d3720363022b3c9cec17892a86ff792e1e8f3125"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/routes-input.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a6cc1d184964d63f72f772e73e17d6f403ba04ff"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/routes.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4f6fd4932954d682e42978d2fb4cfa39e037c0ff"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/rules-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "d630301e91970fac444697a83eba2bf4c5ae48cc"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/rules-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ffc15121c161bc9b1b630d45e7676e9da6abe807"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/safety-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "78fb83cbe32c08f800cabe80c52b7b4fb5b555a5"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/safety-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9b8b7908eb45bc8c3200b95eb6d4a75b123c3053"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/search-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a7f16fef668949a27d6c3ff638e50ab8d95cbf4e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/search-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "790621896713a9b5f996401193e53c618a1b2011"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/service-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "49bb26b39cd533048c3e3da2d556461a91ca3b0c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/service-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "57f531a4c7e7fad3b5508e9b32396e6f1e751423"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/support-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "871227f350ce55c56f83f7c4321f2341fee62956"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/support-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "0af55bcd6d6775b77d54a4363917694bafd81fd6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/welcome-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "53735f78340d027836ea47f33a45dddfeaa4114e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-21-campus-full/welcome-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "12c8ca793854120e301cc9ae6503464018252cb9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/README.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "15846bd260cd07b02f8e841073c85832fad94e7a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/boundary-fault-gate.tsx.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b8e4604f88a9620897ae4bd8a9f55251f6e20162"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/browser-evidence.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e4bbd53472fde208b0730bea3cc1b2834caf099a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/chat-missing-light-390.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ea6acbf16972d7044cd6f2e5465e61e2498fbc72"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/demo-seed.html.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5f3ac0ab12777672427b657ea1792383e02ea254"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/git-state.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5d0171d2b90b74c863273077dd6cce71491d52da"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/order-missing-dark-390.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fd58a9f776afaf3d2d95bd797062591049f0478a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/orders-list-desktop.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "0456f4765c563f3ecaaa6f70e43de4a0540e4c8a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/orders-list-light-320.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "de054ade21a65925925207f21b37dcc64691cda0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/preservation.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "760c3a5def44e9c3c7e2ea5f42b78c0ba249360d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/responsive.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9a525557f4def2a081d1fca8c6874e2a9190c37e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/route-smoke.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ae35e405bd30b419708213e6bb46200358ebd14a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/search-error-focused-desktop.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cb9e8e8bc2c57f154e10a2549afc25be4dc4ba2b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/search-light-1440.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bfe33ca7a86709edf48205d77a656c288ecf24e2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/service-error-dark-390.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8a6aeba985e71402974fd37880c054ef74cf611f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/service-light-1440.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "68a5f02906d9784a28b5704f0c1e0784604d500c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/studly-fixes-demo-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fe95bd1a75a180c17e8ba220ec8286fe377faace"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/studly-fixes-final-demo-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cde06d1c25bc64c218788e25c0c86e96051a8b3a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/studly-fixes-lint.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5628d7d7b6b47232cf9330c8edea98e42f8c6de6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/studly-fixes-live-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "050f9dd5ff8e68d07438157e43087e584fa26ccd"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/studly-fixes-tests.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e0a418b52e9a1832a3d29959fab55b3a584190e6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/studly-r1-after.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9d9ea8e928ad5fc9eb250b8457d95cd4ae9d921c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-22-acceptance-fixes/studly-r1-before.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c986b8633ba96b8662b4be7494567a39654bb947"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/README.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f3077d7c116363cf0ae4286e63e39ed3ef20d50e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/avatar-lock-controller.html.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "68836d8833743e4920549ad0c57dea72fe4217eb"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/browser-gates.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c25280095286c73fde24ddbace707cfa5f4acf51"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/browser-results.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bd9a2753ab69746a57e5bbb611007ed440c82e79"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/demo-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1c22ac828eed0592adb7e27b99ca0193df1adb26"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/demo-qa-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4cc4154ec5f7e5411d2d6d78f7b2ad43d0adf608"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/eslint.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "20ffc7b0d0467e4eafc96077ec4ef5e0e317f297"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f1-frozen-original.tsx.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e9f6f6f177be5e0d36d10f25424e238633a34cd3"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f1-red-loader.cjs.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8ac2004ff4b92121f2e91672d0d5e11441514963"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f1-red.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5acf3eeec0f9b08b16e2601e542dd3d14e9f777f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f1-remove-name-reload.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cd244d1db24e93f4e28641348fdd55434ac24c31"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f1-true-conflict-retained-input.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c61a84e67eb5fceb1ab083cadcd77d1e1495f2b0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f1-upload-name-reload.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "0128d0ecec88a23b4949ab3af7167959e8440f47"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f123-source-delta.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1f59a285361ccd416a6da91e0c81a4e531d7f56d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f2-adapter-green.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "02b15bdb5200bb1cfbfd20b498d5b44c92708272"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f2-after-reload.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "0d95d24effb5a8204be7839bc18bc78f9f5b4dae"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f2-red.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "977f548180a884ab6091e6c518a1d22845a15f50"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f2-remove-button-red.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "eec375a35c18a09ac0b502c30a2278664def6946"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f2-retry-loading.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7206a89bb8f849142351d9bdc0f7f917c2268108"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f3-admin-reopened-avatar.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7300e0d174fe4c22c8d3ca689969f7eb1d632e19"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f3-green.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bcfcec076a37afa78cf72da54f7bc3940fac163a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/f3-red.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4c6c52b2d93f7b32a516a0b7fcd936832567b696"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/live-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7f1a96a803b2024f9d8a450e80055e4863dcecb1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/preserved-demo-content.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "69b2487aaaed364ef3daf58304996b8b05578735"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/production-demo-gate.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "41d938378f74410db6c75c94efd5bf402828c923"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/production-demo-gates.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "03e09590d5bb55dd16c292244bbdd27451dd3925"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/production-live-gates.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "94fd055b82d898809b5c5e299befd7698c2c1baf"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/profile-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fb40cda24010efaf2dc809451f5aac9c162a8f0d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/registration-tests.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e667ff0d5eb44d3a94fe27b47468e8d61215f645"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/source-changes.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3a1a76a8819c6a2893d0d50f8cd2dd7cd60e4e48"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/source-delta.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ae9ca5d8652040f3f2c36d110d2205479938bb90"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/tests.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "90fdfdc09a127fe00dd13880755a4fa3284f4ee8"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/typescript.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-f123/verification.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "53050626d7f3d63041c38f2df312109e287518b2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/README.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e73d24c5b053af9768e06ab0ece69b7c2c5eda14"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c3f742344aea4f97ebfdc25568834f5bfb94a5b0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-1440-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f133f683758981c7c9a7e6974b38ebfccb34e4c2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9e7f772946ec3ef741c564930c8f699b0b5b2c69"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fcfe9bfb539bb49374fe14594a64855bd8b52685"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1b0372bca6c1274d7000bf91f7208b5ffb6940a7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "0d3bc03e7f2728026ddacc641af6fa542873ded9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-768-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "67b87dc770ca3eb2e28a38a79f2fe19ce6c492b0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-768-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f208f672775598a2bd9128fe2b2536e7e19f7b8b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-sections.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "326d24dca8776c996b00ac642e1986880f1a66b5"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/admin-users-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ec98641ac42172491fbf5428cf6029e912d3cb55"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "5fa353803e278bf36a2c1ed4a3f3c81059d32f47"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-1440-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e5a1fc27ecdcb76cc7a8d96585be75d1106a7c2f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "50c2b99b4c89b076a5c4ece0a4ddd8ae4f45898c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "84baa6cfea462d213682e383ee91d40e7cc77fe1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c30e80ef8f8086a812c0a45be5226e889cb0e1d5"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c74c149ba9fb0a90b5afe83eacadb779d3a4a3c2"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-768-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "86276b99b65ff6202e6b3087e2e72d88a69d2690"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-768-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a6d7347114f86a2686aa0ac814793b447d8bedf9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/chat-desktop-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4da6be94e95ced41d320d27802b245e82f2f601b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "287c77d31abacdc1226f97c7832d1398db01358b"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-1440-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cf44574b2ee36f24f52d6e16ddf5ff65095152c9"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "570325864ef97e9d6c7d8480dfafd3f3d5c6c7af"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "97bcd4ba71e2f35e2dfe04fe497c73019de0b660"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bb4dded8c804be9a4a9513e7c8b9dc204d8aa69e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "65497a2a98966118219b577314b2dc5122e1e475"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-768-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bdf5bc2f0d37b45575092f008d6e9365ed7eaea3"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/create-768-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "aa64e18903d4eee4989f13ffaea8f4f6a3891098"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/error-focus-result.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f8f01400a09951194d19c932d1048031f969da64"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/error-qa.tsx.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8303c0f7c4ccce0716cdf232192cad49cb872537"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/error-skip-focus.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1e22303681a6642664bfe4c89c8199e33015a3a6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/eslint.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "20ffc7b0d0467e4eafc96077ec4ef5e0e317f297"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/native-idb-result.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "2ce4fdd4c098c0912b6faea8dfaf5f78539908b6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/native-qa.html.txt",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "218246c76a7235dd2ad63f933f6c0a5ab18415ae"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/order-completed-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "fc1d6d9d089bfb5967e316b8782abaf30e93994d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/production-demo-admin-closed.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bdd3757acc8f5d20622026d1b7cf509737e020a6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/production-demo-default-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a06375360b3af830c9a7158f6e4fc6e29d813402"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/production-demo-gates.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8280e7c9ec8178a3a007951c81217ccaa44d141a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/production-demo-qa-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "d0228d44f9b694c2e544166ac9a4fbd08c246bfb"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/production-live-build.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "93735014caf22444fc52d2546194eee0c8611b45"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/production-live-gates.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "09cd8974842f41019d21baaf913e927da1bd7537"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "d395a7bf6deef4d8e2ac6e2d7c7d8bf8b20267ae"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-1440-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "11418c1c8c3427100c3d324c2f0523a8ce3a0894"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b3bc6f209f7d0dd2444e93ad614025a7d0a7c6cc"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ffe27e74b066a43a1d299238f7bd8a39868135ee"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "e8bdc9a21a433ae19e907b29def65b3df3a304bc"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7e820fca622c3ecd6b4e27c52e6dc4ac7b07b714"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-768-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "9b5028d87a1ab170ea81d8a14188fce03de5c562"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-768-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "91c8c4d9cbaabcef3d015b836e3004fce666277f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/profile-cross-tab-conflict.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "ab5864171be98d088ae69e9d36a75ec5a90787a6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/protected-boundaries.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "85bf544f5dc47d77000f191faf18c7647a5d8d8f"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/registration-cross-tab.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "61b576acc258090aa29f8e008d9efc3eecd0410c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/registration-tests.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "23ccdde17cde7ff14f11b753cc0a944a71ff4df7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/responsive-matrix.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "7c2d32454b14516f59a864f55b74d72f832f023c"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "8381854fb79683e70ce95aaab8414f7f14717b92"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-1440-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "4dbdcdcb35ccf730a9aa36d26ed2f3c13ffd66ce"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "74c3f42533227efa771f7cc13c542ee57f6a3d1d"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "b90518d88051462b5fb65d36c3e28257e9408112"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "f4c34af7bfbdc23c31d0c38670cfc72fb5464ce4"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3830e07efc786f2fbfa70a280745272708cb1742"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-768-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "bf2e55e990db0607788355ca4217c29c78565b71"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/search-768-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3168415dcdba657a3c76abdaf35c3b151d588165"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-1440-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "cb8631d3990ac922acdb2a0bd5f0709c0c9556d6"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-1440-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "c8a4e74c0ca9f2091b50768e9d15cbb925b8d30e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-320-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3dfab235c50f16cfaf75be7f8428d1707b97ce21"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-320-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "3ea5397f1d24fc08b12d9d660c240ebf50683cf7"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "1c142ccce64731526e523ae561d4deda98d0a1d3"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-390-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "13a6973afe8c148fcfca01b7bfdbad09bad258f1"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-768-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "52b9fe46aebdd3416760d5ff9e9cecbb0a89b6c0"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-768-light.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "d7f29b9aeb83893748e00a5a2ca4b84b0947ba0a"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/service-partial-390-dark.jpg",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "6d16c3d981f646e9fb5dcc253f3a9e82c1230120"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/source-changes.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "22681fe7f902ddc76c26bc499152027897464f34"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/source-delta.json",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "18cbcbd737503f76a48a3615806b15983d7cc879"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/frontend/redesign/implementation/2026-10-23-scenarios/tests.log",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a2a25464af54f0f1f155e229c175b4ca253c9436"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/git/2026-10-23_18-25_accepted-redesign-publication.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "a614bbf1a4591c3728525c1cfdaf27caf465f27e"
+      },
+      "existsInIntegration": false
+    },
+    {
+      "status": "A",
+      "path": "documents/project/для отчетов/git/README.md",
+      "current": null,
+      "accepted": {
+        "mode": "100644",
+        "blob": "82a81f2113c5424511ec6be040f37567f66992d5"
+      },
+      "existsInIntegration": false
+    }
+  ]
+}
