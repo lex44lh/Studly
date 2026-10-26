@@ -1,4 +1,6 @@
 "use client";
+import { demoMode } from "@/lib/data-mode";
+import LiveServiceEditor from "@/features/live-services/LiveServiceEditor";
 import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import { CreateServiceRoute } from "@/features/demo-workspace/Routing";
 
@@ -6,7 +8,8 @@ import { useState } from "react";
 import { Icon } from "@/components/studly/Icon";
 import styles from "./create-service.module.css";
 
-export default function CreateServicePage() {
+export default function CreateServicePage() { return demoMode ? <DemoCreateServicePage /> : <LiveServiceEditor />; }
+function DemoCreateServicePage() {
   const workspace = useOptionalDemoWorkspace();
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");

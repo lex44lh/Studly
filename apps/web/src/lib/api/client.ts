@@ -5,15 +5,22 @@ export class ApiError extends Error {
 }
 
 export async function apiRequest<T>(path: string, options: {
-  method?: "GET" | "POST" | "PATCH" | "DELETE";
+  method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
+  version?: 1 | 2;
   body?: unknown;
   signal?: AbortSignal;
   csrfToken?: string;
 } = {}): Promise<T> {
+  // Paths are resource-relative. Never let DTO pagination or asset URLs select an origin.
+  if (!path || path.startsWith("/") || /[\\\x00-\x1f#]/.test(path) || /[%:]/.test(path.split("?", 1)[0]) ||
+      path.split("?", 1)[0].split("/").some(part => part === "." || part === "..")) {
+    throw new ApiError(502, null);
+  }
   let response: Response;
   try {
-    response = await fetch(`/api/v1/${path}`, {
+    response = await fetch(`/api/v${options.version ?? 1}/${path}`, {
       method: options.method ?? "GET", credentials: "same-origin", cache: "no-store",
+      redirect: "error",
       signal: options.signal,
       headers: { Accept: "application/json", ...(options.body !== undefined && !(options.body instanceof FormData) ? { "Content-Type": "application/json" } : {}),
         ...(options.csrfToken ? { "X-CSRFToken": options.csrfToken } : {}) },
@@ -31,10 +38,10 @@ export async function apiRequest<T>(path: string, options: {
 }
 
 // Refresh before every write. Never retry a mutation automatically after a 403/network error.
-export async function apiMutation<T>(path: string, method: "POST" | "PATCH" | "DELETE", body?: unknown, signal?: AbortSignal): Promise<T> {
+export async function apiMutation<T>(path: string, method: "POST" | "PATCH" | "PUT" | "DELETE", body?: unknown, signal?: AbortSignal, version: 1 | 2 = 1): Promise<T> {
   const token = await apiRequest<{ csrf_token: string }>("auth/csrf/", { signal });
   if (!token || typeof token.csrf_token !== "string" || !token.csrf_token) throw new ApiError(502, null);
-  return apiRequest<T>(path, { method, body, signal, csrfToken: token.csrf_token });
+  return apiRequest<T>(path, { method, body, signal, csrfToken: token.csrf_token, version });
 }
 
 export function apiErrorMessage(error: unknown): string {
@@ -49,8 +56,19 @@ export function apiErrorMessage(error: unknown): string {
 }
 
 // DRF may return an internal host in next. Keep cookies on our origin and constrain the path.
-export function pagePath(next: string, resource: string): string {
-  const url = new URL(next, "http://studly.invalid");
-  if (url.pathname !== `/api/v1/${resource}`) throw new ApiError(502, null);
+export function pagePath(next: string, resource: string, version: 1 | 2 = 1): string {
+  let url: URL;
+  try { url = new URL(next, "http://studly.invalid"); } catch { throw new ApiError(502, null); }
+  if (!["http:", "https:"].includes(url.protocol) || url.username || url.password || url.hash ||
+      url.pathname !== `/api/v${version}/${resource}`) throw new ApiError(502, null);
   return resource + url.search;
+}
+
+/** One key per explicit user intention; callers retain it across an unknown outcome. */
+export function requestKey(): string {
+  if (typeof crypto.randomUUID === "function") return crypto.randomUUID();
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  bytes[6] = (bytes[6] & 15) | 64; bytes[8] = (bytes[8] & 63) | 128;
+  const value = Array.from(bytes, byte => byte.toString(16).padStart(2, "0")).join("");
+  return `${value.slice(0, 8)}-${value.slice(8, 12)}-${value.slice(12, 16)}-${value.slice(16, 20)}-${value.slice(20)}`;
 }

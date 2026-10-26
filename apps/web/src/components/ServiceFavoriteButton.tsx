@@ -20,6 +20,7 @@ export default function ServiceFavoriteButton({
       <button
         type="button"
         disabled
+        aria-label="Избранное недоступно: требуется вход или загрузка серверного списка"
         style={{
           border: "none",
           background: "transparent",
@@ -38,6 +39,8 @@ export default function ServiceFavoriteButton({
   return (
     <button
       type="button"
+      aria-label={favorite ? "Убрать из избранного" : "Добавить в избранное"}
+      aria-pressed={favorite}
       onClick={() =>
         toggleFavorite(serviceId)
       }

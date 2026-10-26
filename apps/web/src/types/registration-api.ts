@@ -8,8 +8,9 @@ export type RegistrationResponse = {
   status: { is_complete: boolean; completed_at: string | null; missing_fields: string[]; performer_ready: boolean; performer_missing_fields: string[] };
 };
 export type RegistrationPatch = {
+  performer_revision?: number;
   roles?: RegistrationRole[];
   profile?: Partial<Omit<RegistrationResponse["profile"], "avatar_url">>;
-  performer?: { description: string; study_year: string; portfolio: string; specialization_ids: string[] };
+  performer?: { description?: string; study_year?: string; portfolio?: string; specialization_ids?: string[] };
   progress?: { current_step?: RegistrationStep; performer_skipped?: boolean };
 };

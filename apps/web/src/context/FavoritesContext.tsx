@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
   useSyncExternalStore,
 } from "react";
@@ -11,13 +12,20 @@ import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import { NEXT_SERVICE_ID } from "@/features/demo-workspace/model";
 import services from "@/data/services";
 import { demoMode } from "@/lib/api/catalog";
-const storageKey = demoMode ? "favorites" : "studly-api-favorites";
+import type { Service } from "@/lib/api/catalog";
+import { favoritesClient } from "@/lib/api/services";
+import { useAuth } from "@/context/AuthContext";
+const storageKey = "favorites";
 
 type FavoritesContextType = {
   favorites: number[];
   isHydrated: boolean;
   toggleFavorite: (id: number) => void;
   isFavorite: (id: number) => boolean;
+  serverServices?: Service[];
+  error?: unknown;
+  pendingIds?: number[];
+  refresh?: () => void;
 };
 
 const serviceIds = new Set(services.map((service) => service.id));
@@ -69,7 +77,7 @@ const FavoritesContext =
     null
   );
 
-export function FavoritesProvider({
+function DemoFavoritesProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -141,6 +149,58 @@ export function FavoritesProvider({
       {children}
     </FavoritesContext.Provider>
   );
+}
+
+function ServerFavoritesProvider({ children }: { children: React.ReactNode }) {
+  const { state } = useAuth();
+  const authenticated = state.status === "authenticated";
+  const [snapshot, setSnapshot] = useState<{ services?: Service[]; error?: unknown; attempt?: number }>({});
+  const [attempt, setAttempt] = useState(0);
+  const [pendingIds, setPendingIds] = useState<number[]>([]);
+  const inFlight = useRef(new Set<number>());
+  const lifetime = useRef<AbortController | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    lifetime.current = controller;
+    if (authenticated) {
+      favoritesClient.all(controller.signal).then(serverServices => {
+        if (!controller.signal.aborted) setSnapshot({ services: serverServices, attempt });
+      }).catch(error => {
+        if (!controller.signal.aborted) setSnapshot({ error, attempt });
+      });
+    }
+    return () => { controller.abort(); lifetime.current = null; };
+  }, [authenticated, attempt]);
+  const favorites = snapshot.services?.map(service => service.id) ?? [];
+  const toggleFavorite = (id: number) => {
+    const controller = lifetime.current;
+    if (!authenticated || !snapshot.services || snapshot.attempt !== attempt || !controller || controller.signal.aborted || inFlight.current.size || !Number.isSafeInteger(id) || id < 1) return;
+    inFlight.current.add(id);
+    setPendingIds([...inFlight.current]);
+    const remove = favorites.includes(id);
+    void (remove ? favoritesClient.remove(id, controller.signal) : favoritesClient.add(id, controller.signal))
+      .then(() => favoritesClient.all(controller.signal))
+      .then(serverServices => { if (!controller.signal.aborted) setSnapshot({ services: serverServices, attempt }); })
+      .catch(error => { if (!controller.signal.aborted) setSnapshot(previous => ({ ...previous, error })); })
+      .finally(() => {
+        inFlight.current.delete(id);
+        if (!controller.signal.aborted) setPendingIds([...inFlight.current]);
+      });
+  };
+  return <FavoritesContext.Provider value={{ favorites, isHydrated: authenticated && Boolean(snapshot.services) && snapshot.attempt === attempt && !pendingIds.length, toggleFavorite,
+    isFavorite: id => favorites.includes(id), serverServices: snapshot.services, error: snapshot.error, pendingIds,
+    refresh: () => { if (!inFlight.current.size) setAttempt(value => value + 1); } }}>{children}</FavoritesContext.Provider>;
+}
+
+function LiveFavoritesProvider({ children }: { children: React.ReactNode }) {
+  const { state } = useAuth();
+  // Remount immediately on logout/session refresh/account switch, so private
+  // membership and pending writes cannot cross an authentication boundary.
+  return <ServerFavoritesProvider key={`${state.status}:${state.user?.id ?? "guest"}`}>{children}</ServerFavoritesProvider>;
+}
+
+export function FavoritesProvider({ children }: { children: React.ReactNode }) {
+  return demoMode ? <DemoFavoritesProvider>{children}</DemoFavoritesProvider> : <LiveFavoritesProvider>{children}</LiveFavoritesProvider>;
 }
 
 export function useFavorites() {

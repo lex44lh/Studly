@@ -2,9 +2,12 @@
 import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import { OrdersRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
+import { LiveOrders } from "@/features/live-commerce";
+import { initialOrderRole } from "@/features/live-commerce/protocol";
+import { LiveState } from "@/features/live/shared";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import BackButton from "@/components/BackButton";
 import { DemoOrderStatus, demoPerformerName } from "@/components/studly/DemoOrderPresentation";
 import { Icon } from "@/components/studly/Icon";
@@ -23,7 +26,13 @@ type Order = {
   createdAt: number;
 };
 
-export default function OrdersPage() {
+export default function OrdersPage() { return demoMode ? <DemoOrdersPage /> : <Suspense fallback={<LiveState loading />}><LiveOrdersQuery /></Suspense>; }
+function LiveOrdersQuery() {
+  const parameters = useSearchParams();
+  const role = initialOrderRole(parameters.get("role"));
+  return <LiveOrders key={role} initialRole={role} />;
+}
+function DemoOrdersPage() {
   const workspace = useOptionalDemoWorkspace();
   const canonical = workspace !== null;
   const router = useRouter();

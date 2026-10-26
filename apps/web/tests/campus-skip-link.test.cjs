@@ -29,7 +29,7 @@ function components(pathname, demoMode = true) {
     const localRequire = request => {
       if (request === 'next/link') return ({ children, ...props }) => React.createElement('a', props, children);
       if (request === 'next/navigation') return { usePathname: () => pathname, useRouter: () => ({ back() {} }) };
-      if (request === '@/context/AuthContext') return { useAuth: () => ({ sdkReady: false }) };
+      if (request === '@/context/AuthContext') return { useAuth: () => ({ sdkReady: false, state: { status: 'anonymous', user: null, message: 'Test session' } }) };
       if (request === '@/lib/data-mode' || request === '@/lib/api/catalog') return { demoMode };
       if (request.endsWith('.css')) return { page: 'information-page', state: 'information-state', stateIcon: 'information-icon' };
       if (request.startsWith('@/') || request.startsWith('.')) {

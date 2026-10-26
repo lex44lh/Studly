@@ -2,14 +2,15 @@ import type { RegistrationDraft, Specialization } from "@/types/registration";
 import type { RegistrationPatch, RegistrationResponse } from "@/types/registration-api";
 import { ApiError, apiMutation, apiRequest, pagePath } from "./client";
 
-function readRegistration(value: RegistrationResponse): RegistrationResponse {
+export function readRegistration(value: RegistrationResponse): RegistrationResponse {
   if (!value || !Array.isArray(value.roles) || value.roles.some(role => !["customer", "performer"].includes(role)) ||
       !value.profile || !["display_name", "university", "city", "about"].every(key => typeof value.profile[key as keyof typeof value.profile] === "string") ||
       (value.profile.avatar_url !== null && value.profile.avatar_url !== "/api/v1/registration/avatar/") ||
-      (value.performer !== null && value.performer.specializations?.some(item => typeof item.id !== "string" || typeof item.title !== "string")) ||
+      (value.performer !== null && (!value.performer || !Array.isArray(value.performer.specializations) || value.performer.specializations.some(item => !item || typeof item.id !== "string" || typeof item.title !== "string"))) ||
       !value.progress || !["roles", "profile", "performer"].includes(value.progress.current_step) ||
       typeof value.progress.performer_skipped !== "boolean" || !value.status || typeof value.status.is_complete !== "boolean" ||
-      typeof value.status.performer_ready !== "boolean" || !Array.isArray(value.status.missing_fields) ||
+      typeof value.status.performer_ready !== "boolean" || !Array.isArray(value.status.missing_fields) || value.status.missing_fields.some(item => typeof item !== "string") ||
+      !Array.isArray(value.status.performer_missing_fields) || value.status.performer_missing_fields.some(item => typeof item !== "string") ||
       (value.performer !== null && (!Array.isArray(value.performer?.specializations) ||
         ![value.performer.description, value.performer.study_year, value.performer.portfolio].every(item => typeof item === "string")))) {
     throw new ApiError(502, null);
@@ -24,6 +25,16 @@ export function toDraft(value: RegistrationResponse): RegistrationDraft {
     performer: { specializations: value.performer?.specializations ?? [], description: value.performer?.description ?? "",
       studyYear: value.performer?.study_year ?? "", portfolio: value.performer?.portfolio ?? "" },
   };
+}
+// Mirrors only accounts.moderation.moderated_fields, not progress/customer-only role.
+// The registration response has no revision; never adopt a later GET as our own write.
+export function registrationModeratedFields(value: RegistrationResponse): string {
+  return JSON.stringify([value.roles.includes("performer"), value.profile.display_name, value.profile.about,
+    value.profile.university, value.profile.city, value.performer?.description ?? "", value.performer?.study_year ?? "",
+    value.performer?.portfolio ?? "", (value.performer?.specializations ?? []).map(item => item.id).sort()]);
+}
+export function registrationRevisionAfterSave(before: RegistrationResponse, after: RegistrationResponse, revision: number): number {
+  return revision + (after.performer !== null && registrationModeratedFields(before) !== registrationModeratedFields(after) ? 1 : 0);
 }
 export const registrationClient = {
   async loadDraft(signal?: AbortSignal) { return readRegistration(await apiRequest<RegistrationResponse>("registration/", { signal })); },

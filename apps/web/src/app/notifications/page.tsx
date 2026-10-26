@@ -44,7 +44,7 @@ export default function NotificationsPage() {
       <BackButton />
       <header className="activity-header"><div><p className="activity-kicker">События кампуса</p><h1>Уведомления</h1><p className="activity-intro">Важные обновления о Ваших заказах.</p></div></header>
       {visibleNotifications.length === 0 ? (
-        <div className="activity-empty"><span className="activity-empty-icon"><Icon name="bell" /></span><h2>Пока тихо</h2><p>У Вас пока нет уведомлений. Новые события появятся здесь.</p></div>
+        <div className="activity-empty"><span className="activity-empty-icon"><Icon name="bell" /></span><h2>{demoMode ? "Пока тихо" : "Уведомления пока недоступны"}</h2><p>{demoMode ? "У Вас пока нет уведомлений. Новые события появятся здесь." : "Серверные уведомления ещё не поддерживаются. Актуальные заказы и переписки доступны в своих разделах."}</p></div>
       ) : (
         <div className="activity-list">
           {visibleNotifications.map((notification) => (

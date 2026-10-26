@@ -11,10 +11,10 @@ export { demoMode } from "../data-mode";
 export function money(amount: string, currency: string) {
   return new Intl.NumberFormat("ru-RU", { style: "currency", currency }).format(Number(amount));
 }
-function readService(value: Service): Service {
+export function readService(value: Service): Service {
   if (!value || !Number.isSafeInteger(value.id) || typeof value.title !== "string" || typeof value.description !== "string" ||
-      !/^\d+\.\d{2}$/.test(value.price_amount) || value.currency !== "RUB" || !Number.isInteger(value.duration_days) ||
-      !value.performer || !Number.isSafeInteger(value.performer.id) || typeof value.performer.name !== "string" ||
+      typeof value.price_amount !== "string" || !/^\d+\.\d{2}$/.test(value.price_amount) || value.currency !== "RUB" || !Number.isInteger(value.duration_days) ||
+      value.id <= 0 || value.duration_days < 1 || !value.performer || !Number.isSafeInteger(value.performer.id) || value.performer.id <= 0 || typeof value.performer.name !== "string" ||
       typeof value.is_demo !== "boolean" || !Array.isArray(value.included) || value.included.some(item => typeof item !== "string")) throw new ApiError(502, null);
   return value;
 }

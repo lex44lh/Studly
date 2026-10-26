@@ -2,6 +2,7 @@
 import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import { ChatRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
+import { LiveConversation } from "@/features/live-commerce";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -21,6 +22,10 @@ type Chat = {
 };
 
 export default function ChatPage() {
+  const params = useParams<{ id: string }>();
+  return demoMode ? <DemoChatPage /> : <LiveConversation id={params.id} />;
+}
+function DemoChatPage() {
   const workspace = useOptionalDemoWorkspace();
   const canonical = workspace !== null;
   const params = useParams();

@@ -78,7 +78,7 @@ export function ServiceDetail({ service, extras, order, chat, isDemoMode }: {
           {extras || <p className="sd-muted">Дополнительные услуги пока недоступны.</p>}
         </section>
 
-        <section className="sd-conditions" aria-labelledby="conditions-title"><Icon name="book" /><div><h2 id="conditions-title">Перед оформлением</h2><p>{isDemoMode ? "Можно обсудить детали в демо-чате. Заказ сохранится только в этом браузере. Настоящих платежей нет." : "Срок и состав указаны выше. Расчёт стоимости предварительный: цена не резервируется. Оформление заказа и чат на этой странице пока недоступны."}</p></div></section>
+        <section className="sd-conditions" aria-labelledby="conditions-title"><Icon name="book" /><div><h2 id="conditions-title">Перед оформлением</h2><p>{isDemoMode ? "Можно обсудить детали в демо-чате. Заказ сохранится только в этом браузере. Настоящих платежей нет." : "Проверьте серверный расчёт и выбранные дополнения перед оформлением. Если условия изменятся, потребуется новый расчёт и ваше согласие. Оплата пока недоступна."}</p></div></section>
       </div>
 
       <aside className="sd-aside">

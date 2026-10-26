@@ -2,6 +2,7 @@
 import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import { OrderRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
+import { LiveOrderDetail } from "@/features/live-commerce";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -47,6 +48,10 @@ type Chat = {
 };
 
 export default function OrderPage() {
+  const params = useParams<{ id: string }>();
+  return demoMode ? <DemoOrderPage /> : <LiveOrderDetail id={params.id} />;
+}
+function DemoOrderPage() {
   const workspace = useOptionalDemoWorkspace();
   const canonical = workspace !== null;
   const params = useParams<{ id: string }>();

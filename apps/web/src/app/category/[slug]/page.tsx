@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import LiveSearch from "@/components/catalog/LiveSearch";
 import { PageHeading } from "@/components/studly/PageHeading";
 import { Icon } from "@/components/studly/Icon";
 import { demoMode } from "@/lib/api/catalog";
@@ -275,9 +275,11 @@ function DemoCategoryPage({
 }
 
 export default function CategoryPage({ params }: Props) {
-  return demoMode ? <DemoCategoryPage params={params} /> : <>
-    <p className="page-capability-note" role="note">Серверный каталог категорий ещё не подключён. Демонстрационные услуги в LIVE не подставляются.</p>
-    <div className="campus-page page-actions"><BackButton /><Link href="/search" className="page-button-secondary">Перейти к поиску</Link></div>
-    <fieldset disabled className="page-disabled-preview"><DemoCategoryPage params={params} /></fieldset>
-  </>;
+  return demoMode ? <DemoCategoryPage params={params} /> : <LiveCategoryPage params={params} />;
+}
+function LiveCategoryPage({ params }: Props) {
+  const { slug } = use(params);
+  const category = categoryNamesWithoutEmoji[slug];
+  if (!category) return <div className="campus-page"><BackButton /><PageHeading title="Категория не найдена">Откройте поиск услуг.</PageHeading></div>;
+  return <div className="campus-page"><BackButton /><PageHeading title={category}>Предложения в выбранной категории.</PageHeading><LiveSearch initialCategory={category} compact /></div>;
 }

@@ -41,6 +41,7 @@ function mount(relativePath, order, props = {}) {
     }).outputText;
     const localRequire = name => {
       if (name === 'react') return hooks;
+      if (name === '@/features/live-commerce') return new Proxy({}, { get: () => () => { throw new Error('A Demo regression view must not render a Live commerce branch'); } });
       if (name === '@/features/demo-workspace/Provider') return { useOptionalDemoWorkspace: () => null };
       if (name === 'next/navigation') return { useRouter: () => ({ push() {}, back() {} }), useParams: () => ({ id: String(order.id) }) };
       if (name === 'next/link') return { __esModule: true, default: ({ children, ...rest }) => React.createElement('a', rest, children) };
@@ -58,11 +59,18 @@ function mount(relativePath, order, props = {}) {
   try {
     global.localStorage = { getItem: key => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) };
     const Component = load(path.join(__dirname, '../src', relativePath)).default;
-    Component(props); // Initial render collects storage effects.
+    // Route components now select a separate Demo/Live child. Execute the real
+    // selected Demo view before collecting its legacy storage effects.
+    const renderView = () => {
+      let tree = Component(props);
+      while (React.isValidElement(tree) && typeof tree.type === 'function') tree = tree.type(tree.props);
+      return tree;
+    };
+    renderView(); // Initial render collects storage effects.
     effects.forEach(effect => effect());
     collectEffects = false;
     cursor = 0;
-    const tree = Component(props);
+    const tree = renderView();
     const html = renderToStaticMarkup(tree);
     assert.equal(storage.get('studly-orders'), initialOrders, 'rendering must not rewrite persisted orders');
     assert.equal(storage.get('studly-chats'), initialChats, 'rendering must not rewrite persisted chats');

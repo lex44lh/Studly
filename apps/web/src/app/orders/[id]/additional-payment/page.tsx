@@ -1,4 +1,5 @@
 "use client";
+import { demoMode } from "@/lib/data-mode";
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -42,6 +43,9 @@ const availableAdditionalServices: AdditionalService[] = [
 ];
 
 export default function AdditionalPaymentPage() {
+  return demoMode ? <DemoAdditionalPaymentPage /> : <div className="activity-page"><BackButton /><header className="activity-header"><h1>Дополнительная оплата</h1></header><section className="activity-panel"><h2>Оплата пока недоступна</h2><p>Сервер не поддерживает оплату дополнений к существующему заказу. Финансовые операции не выполняются.</p></section></div>;
+}
+function DemoAdditionalPaymentPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();

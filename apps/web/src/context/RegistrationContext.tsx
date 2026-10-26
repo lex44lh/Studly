@@ -5,12 +5,14 @@ import { createContext, useCallback, useContext, useEffect, useReducer, useRef, 
 import { useRouter } from "next/navigation";
 import { demoMode } from "@/lib/data-mode";
 import { useAuth } from "@/context/AuthContext";
-import { registrationClient, toDraft } from "@/lib/api/registration";
+import { registrationClient, registrationModeratedFields, registrationRevisionAfterSave, toDraft } from "@/lib/api/registration";
+import { accountClient } from "@/lib/api/account";
 import { authClient } from "@/lib/api/auth";
 import { apiErrorMessage, ApiError } from "@/lib/api/client";
 import { createDraftState, draftReducer, type DraftAction } from "@/lib/registration/draft";
 import type { RegistrationDraft } from "@/types/registration";
 import type { RegistrationResponse, RegistrationStep } from "@/types/registration-api";
+import type { RegistrationPatch } from "@/types/registration-api";
 
 const RegistrationContext = createContext<{
   draft: RegistrationDraft; dispatch: Dispatch<DraftAction>; client: typeof registrationClient;
@@ -38,24 +40,27 @@ function RegistrationSession({ children }: { children: ReactNode }) {
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
   const server = useRef<RegistrationResponse | null>(null);
+  const performerRevision = useRef<number | null>(null);
   const active = useRef<AbortController | null>(null);
   const draft = state.draft;
 
   useEffect(() => {
     if (demoMode || auth.status !== "authenticated") return;
     const controller = new AbortController();
-    registrationClient.loadDraft(controller.signal).then(value => {
+    accountClient.registrationSnapshot(controller.signal).then(({ registration: value, moderation }) => {
       if (controller.signal.aborted) return;
+      if (moderation.user_id !== auth.user?.id) throw new ApiError(409, { code: "profile_snapshot_changed" });
       server.current = value;
+      performerRevision.current = moderation.revision;
       setReady(true);
       dispatch({ type: "restore", draft: toDraft(value) });
       setError(""); setLoading(false);
-      if (value.status.is_complete) { router.replace("/"); return; }
+      if (value.status.is_complete) { router.replace("/profile"); return; }
       const step = !value.roles.length ? "roles" : !value.profile.display_name.trim() && value.progress.current_step === "performer"
         ? "profile" : value.progress.current_step === "performer" && !value.roles.includes("performer") ? "profile" : value.progress.current_step;
       router.replace(`/register/${step}`);
     }).catch(error => {
-      if (!controller.signal.aborted) { setError(validationMessage(error)); setLoading(false); }
+      if (!controller.signal.aborted) { performerRevision.current = null; setReady(false); setError(validationMessage(error)); setLoading(false); }
     });
     return () => { controller.abort(); active.current?.abort(); active.current = null; };
   }, [auth.status, auth.user?.id, attempt, router]);
@@ -69,42 +74,70 @@ function RegistrationSession({ children }: { children: ReactNode }) {
       else setPreviewComplete(true);
       return;
     }
-    if (active.current || loading || auth.status !== "authenticated" || !server.current) return;
+    if (active.current || loading || auth.status !== "authenticated" || !server.current || performerRevision.current === null) return;
     const controller = new AbortController(); active.current = controller;
     setBusy(true); setError("");
     try {
+      const saveGuarded = async (patch: RegistrationPatch) => {
+        const before = server.current!;
+        const revision = performerRevision.current!;
+        const value = await registrationClient.save({ ...patch, performer_revision: revision }, controller.signal);
+        const expected = registrationRevisionAfterSave(before, value, revision);
+        // A successful PATCH response is canonical, but a following GET can already
+        // contain another writer's revision. Accept only this operation's exact touch.
+        performerRevision.current = null;
+        const observed = await accountClient.moderation(controller.signal);
+        if (observed.user_id !== auth.user?.id || observed.revision !== expected) {
+          throw new ApiError(409, { code: "profile_changed_after_save" });
+        }
+        server.current = value; performerRevision.current = expected;
+        return value;
+      };
       let response: RegistrationResponse;
       if (step === "roles") {
-        response = await registrationClient.save({ roles: draft.roles, progress: { current_step: "profile" } }, controller.signal);
+        response = await saveGuarded({ roles: draft.roles, progress: { current_step: "profile" } });
         server.current = response;
         if (!controller.signal.aborted) router.push("/register/profile");
         return;
       }
       if (step === "profile") {
         if (draft.profile.avatarFile) {
+          const hadPerformer = server.current.performer !== null;
+          const before = registrationModeratedFields(server.current);
           const uploaded = await registrationClient.uploadAvatar(draft.profile.avatarFile, controller.signal);
+          if (registrationModeratedFields(uploaded) !== before) {
+            performerRevision.current = null;
+            throw new ApiError(409, { code: "profile_changed_during_avatar" });
+          }
           server.current = uploaded;
+          // Avatar v1 has no revision input. Advance only its known own touch, not a later observed revision.
+          if (hadPerformer) performerRevision.current! += 1;
           if (!controller.signal.aborted) dispatch({ type: "profile", patch: { avatarFile: null, avatarUrl: `${uploaded.profile.avatar_url}?v=${Date.now()}` } });
         } else if (!draft.profile.avatarUrl && server.current.profile.avatar_url) {
+          const hadPerformer = server.current.performer !== null;
           await registrationClient.deleteAvatar(controller.signal);
+          if (hadPerformer) performerRevision.current! += 1;
           server.current = { ...server.current, profile: { ...server.current.profile, avatar_url: null } };
         }
         const performer = draft.roles.includes("performer");
-        response = await registrationClient.save({ profile: { display_name: draft.profile.displayName, university: draft.profile.university,
-          city: draft.profile.city, about: draft.profile.about }, progress: { current_step: performer ? "performer" : "profile" } }, controller.signal);
+        response = await saveGuarded({ profile: { display_name: draft.profile.displayName, university: draft.profile.university,
+          city: draft.profile.city, about: draft.profile.about }, progress: { current_step: performer ? "performer" : "profile" } });
         server.current = response;
         if (performer) { if (!controller.signal.aborted) router.push("/register/performer"); return; }
       } else {
-        response = await registrationClient.save({ ...(skip ? {} : { performer: {
+        response = await saveGuarded({ ...(skip ? {} : { performer: {
           description: draft.performer.description, study_year: draft.performer.studyYear, portfolio: draft.performer.portfolio,
           specialization_ids: draft.performer.specializations.map(item => item.id),
-        } }), progress: { current_step: "performer", performer_skipped: skip } }, controller.signal);
+        } }), progress: { current_step: "performer", performer_skipped: skip } });
         server.current = response;
       }
       server.current = await registrationClient.complete(controller.signal);
-      if (!controller.signal.aborted) router.replace("/");
+      if (!controller.signal.aborted) router.replace("/profile");
     } catch (error) {
       if (!controller.signal.aborted) {
+        if (performerRevision.current === null || error instanceof ApiError && error.status === 409) {
+          performerRevision.current = null; setReady(false);
+        }
         setError(validationMessage(error));
         // Read-only diagnostic on 403; never replay a write automatically.
         if (error instanceof ApiError && [401, 403].includes(error.status)) {
@@ -115,7 +148,7 @@ function RegistrationSession({ children }: { children: ReactNode }) {
     } finally {
       if (active.current === controller) { active.current = null; setBusy(false); }
     }
-  }, [draft, loading, auth.status, router]);
+  }, [draft, loading, auth.status, auth.user?.id, router]);
 
   return <RegistrationContext.Provider value={{ draft, dispatch, client: registrationClient, previewComplete, returnToForm: () => setPreviewComplete(false), ready, loading, busy, error,
     retry: () => { setLoading(true); setError(""); setAttempt(value => value + 1); }, saveStep }}>{children}</RegistrationContext.Provider>;

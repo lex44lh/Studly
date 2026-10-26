@@ -2,6 +2,7 @@
 import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import { ChatsRoute } from "@/features/demo-workspace/Routing";
 import { demoMode } from "@/lib/data-mode";
+import { LiveConversations } from "@/features/live-commerce";
 
 import BackButton from "@/components/BackButton";
 import { demoPerformerInitial, demoPerformerName } from "@/components/studly/DemoOrderPresentation";
@@ -29,7 +30,8 @@ type ChatWithLastMessage = Chat & {
   lastMessageTime: number;
 };
 
-export default function ChatsPage() {
+export default function ChatsPage() { return demoMode ? <DemoChatsPage /> : <LiveConversations />; }
+function DemoChatsPage() {
   const workspace = useOptionalDemoWorkspace();
   const canonical = workspace !== null;
   const [chats, setChats] = useState<ChatWithLastMessage[]>([]);
