@@ -1,0 +1,224 @@
+{
+  "kind": "synthetic browser contract smoke",
+  "phase": "role-query",
+  "djangoTested": false,
+  "realTelegramTested": false,
+  "backendReference": "8999703fe60ef6714595614413faddc5a9308d44",
+  "fixtureSources": [
+    "apps/web/tests/live-account.test.cjs",
+    "apps/web/tests/live-services.test.cjs",
+    "apps/web/tests/live-commerce.test.cjs",
+    "apps/web/tests/live-staff.test.cjs"
+  ],
+  "startedAt": "2026-10-26T10:01:15.907Z",
+  "assertions": 52,
+  "checks": [
+    {
+      "name": "Order query ?role=customer initializes customer and matching API filter",
+      "pass": true
+    },
+    {
+      "name": "Order query ?role=performer initializes performer and matching API filter",
+      "pass": true
+    },
+    {
+      "name": "Order query ?role=staff initializes all and matching API filter",
+      "pass": true
+    },
+    {
+      "name": "Order query absent initializes all and matching API filter",
+      "pass": true
+    },
+    {
+      "name": "Poisoned Demo localStorage remains isolated; no Demo IndexedDB",
+      "pass": true
+    }
+  ],
+  "routes": [
+    {
+      "route": "/orders?role=customer",
+      "width": 1440,
+      "theme": "light",
+      "main": 1,
+      "h1": [
+        "Мои заказы"
+      ],
+      "topbar": 1,
+      "scrollWidth": 1440,
+      "pass": true
+    },
+    {
+      "route": "/orders?role=performer",
+      "width": 1440,
+      "theme": "light",
+      "main": 1,
+      "h1": [
+        "Мои заказы"
+      ],
+      "topbar": 1,
+      "scrollWidth": 1440,
+      "pass": true
+    },
+    {
+      "route": "/orders?role=staff",
+      "width": 390,
+      "theme": "dark",
+      "main": 1,
+      "h1": [
+        "Мои заказы"
+      ],
+      "topbar": 1,
+      "scrollWidth": 390,
+      "pass": true
+    },
+    {
+      "route": "/orders",
+      "width": 390,
+      "theme": "dark",
+      "main": 1,
+      "h1": [
+        "Мои заказы"
+      ],
+      "topbar": 1,
+      "scrollWidth": 390,
+      "pass": true
+    }
+  ],
+  "requests": [
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/",
+      "query": "?role=customer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    }
+  ],
+  "blockedExternal": [
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js"
+  ],
+  "unhandledApi": [],
+  "fixtureErrors": [],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-live-role-query-390-dark.jpg"
+  ],
+  "pass": true,
+  "finishedAt": "2026-10-26T10:01:17.242Z"
+}

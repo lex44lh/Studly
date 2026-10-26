@@ -1,0 +1,34 @@
+{
+  "kind": "Frontend production gate HTML checks",
+  "djangoTested": false,
+  "startedAt": "2026-10-26T10:01:17.886Z",
+  "checks": [
+    {
+      "route": "/register/roles",
+      "status": 200,
+      "closed": true,
+      "pass": true
+    },
+    {
+      "route": "/register/profile",
+      "status": 200,
+      "closed": true,
+      "pass": true
+    },
+    {
+      "route": "/register/performer",
+      "status": 200,
+      "closed": true,
+      "pass": true
+    },
+    {
+      "route": "/admin",
+      "status": 200,
+      "closed": true,
+      "demoAdminFlag": "enabled at Live build; no Live permission granted",
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "finishedAt": "2026-10-26T10:01:17.921Z"
+}

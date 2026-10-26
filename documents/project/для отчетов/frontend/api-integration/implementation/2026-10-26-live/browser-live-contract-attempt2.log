@@ -1,0 +1,19 @@
+PASS Both-role account switches cabinet without changing authenticated account
+PASS Profile PATCH, refetch and browser reload restore the fixture server state
+PASS Portfolio link POST uses private account version and appears after server refetch
+PASS Owned service v2 editor PATCH and reload preserve revision and draft
+PASS Catalog uses v2 server search/category/sort query
+PASS Favorites PUT then private list uses Django fixture data
+PASS Pre-order discussion uses a separate conversation
+PASS Quote 409 requires new calculation and fresh explicit consent
+PASS Unknown order response has explicit same-key retry and one server receipt
+PASS Actual performer identity accepts v2 order with optimistic revision
+PASS Held message is private to sender in recipient fixture response and UI
+PASS Cursor messages append by server ID and sequence
+PASS Held sender reads case and posts revisioned appeal
+locator.isDisabled: Timeout 12000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('Сообщение', { exact: true })[22m
+
+    at orderAndChatFlow (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:157:322)
+    at async /Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:192:66

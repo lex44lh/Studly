@@ -1,0 +1,24 @@
+PASS Both-role account switches cabinet without changing authenticated account
+PASS Profile PATCH, refetch and browser reload restore the fixture server state
+PASS Portfolio link POST uses private account version and appears after server refetch
+locator.fill: Timeout 12000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('Название услуги', { exact: true })[22m
+[2m    - locator resolved to <input maxlength="200" value="Contract own draft" class="commerce_input__Ly0J2"/>[22m
+[2m    - fill("Contract own draft updated")[22m
+[2m  - attempting fill action[22m
+[2m    2 × waiting for element to be visible, enabled and editable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying fill action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and editable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying fill action[22m
+[2m      - waiting 100ms[22m
+[2m    24 × waiting for element to be visible, enabled and editable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying fill action[22m
+[2m       - waiting 500ms[22m
+
+    at profileFlow (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:138:200)
+    at async /Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:191:5

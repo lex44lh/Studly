@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "base": "d447c317eb5efa28bac65489da9b88a5d19a039d",
+  "backendReference": "8999703fe60ef6714595614413faddc5a9308d44",
+  "generatedAtEuropeMoscow": "2026-10-26T13:00:18.424854+03:00",
+  "files": [
+    {
+      "path": "apps/web/src/app/admin/page.tsx",
+      "mode": "100644",
+      "sha256": "4867e40b89e1c0f09ca0755e7b5b3e4c727ad0775e78855e35ad514bcf70a791",
+      "size": 1040
+    },
+    {
+      "path": "apps/web/src/app/category/[slug]/page.tsx",
+      "mode": "100644",
+      "sha256": "1265074fc95cf4a562dc40c1815dca8ea4079dbfd775c61e0846c0a40300dfdb",
+      "size": 10388
+    },
+    {
+      "path": "apps/web/src/app/chats/[id]/page.tsx",
+      "mode": "100644",
+      "sha256": "fc37c9a2dc2f2b290294ffeaa022e62af70c90cc548cf78cf8504ee42806633e",
+      "size": 2773
+    },
+    {
+      "path": "apps/web/src/app/chats/page.tsx",
+      "mode": "100644",
+      "sha256": "a92360f6fc3bf194ad28718508df51976d108fae4b30d35f1eda7c944b5eda06",
+      "size": 5058
+    },
+    {
+      "path": "apps/web/src/app/create-service/page.tsx",
+      "mode": "100644",
+      "sha256": "b624a7bf65ca89f3b22d16f269b5f9c085523caa445e547534a897f1348104dc",
+      "size": 14007
+    },
+    {
+      "path": "apps/web/src/app/notifications/page.tsx",
+      "mode": "100644",
+      "sha256": "2aba8e3b3a2e9839e577e658914c4a701f3e7126c638ccea6fd427a526141801",
+      "size": 2892
+    },
+    {
+      "path": "apps/web/src/app/orders/[id]/additional-payment/page.tsx",
+      "mode": "100644",
+      "sha256": "8000b470d6399775f50b443b86a8bc50a809194c41c3790d2a6aeaf02fda37cf",
+      "size": 7075
+    },
+    {
+      "path": "apps/web/src/app/orders/[id]/page.tsx",
+      "mode": "100644",
+      "sha256": "fe42d045c72cfecbbd6d058f1c5c838e36eeb81c110f5141475e317dd0ccd42e",
+      "size": 8941
+    },
+    {
+      "path": "apps/web/src/app/orders/page.tsx",
+      "mode": "100644",
+      "sha256": "f979aaabe95d7be8981300f5e7438c5bae18a743cd7c7421e45c57cb6976c465",
+      "size": 3635
+    },
+    {
+      "path": "apps/web/src/app/profile/page.tsx",
+      "mode": "100644",
+      "sha256": "da59d50c0cd00b0111f7ff6cef137f402e04cf42a864bcd6d2d1697e41124f53",
+      "size": 323
+    },
+    {
+      "path": "apps/web/src/app/search/page.tsx",
+      "mode": "100644",
+      "sha256": "a6571b4200b1c9bfcdd21dff95a9b9a8863134054564d86273d78ef6e64e56d7",
+      "size": 343
+    },
+    {
+      "path": "apps/web/src/app/staff/page.tsx",
+      "mode": "100644",
+      "sha256": "68afceb224073b730c01ce04b200975f4dfeff88026c514f2e082f74fac50188",
+      "size": 572
+    },
+    {
+      "path": "apps/web/src/components/AppShell.tsx",
+      "mode": "100644",
+      "sha256": "02fdb2c885d3f56aa6d3440234c64c543b4c86927fe05cc2ddebe797374f9575",
+      "size": 1718
+    },
+    {
+      "path": "apps/web/src/components/ServiceFavoriteButton.tsx",
+      "mode": "100644",
+      "sha256": "dadab7fd333712be583e283bad1c9c2dc58ae747bc3b54a30dad6711266b3388",
+      "size": 1252
+    },
+    {
+      "path": "apps/web/src/components/catalog/LiveFavorites.tsx",
+      "mode": "100644",
+      "sha256": "4da6ab2e9ceb24d6f925a0fe5a539046bcd2c3efa2c52a3ad4950235bd8182cb",
+      "size": 1788
+    },
+    {
+      "path": "apps/web/src/components/catalog/LivePerformer.tsx",
+      "mode": "100644",
+      "sha256": "147619afa4d8118b931854b11a54ecf8b3d387b3098c98ffa434ab3960e52780",
+      "size": 1756
+    },
+    {
+      "path": "apps/web/src/components/catalog/LiveSearch.tsx",
+      "mode": "100644",
+      "sha256": "4d11296eaa4da8570b78105aeee1e793ea82dca52c7772bfd070315cddc71e7c",
+      "size": 14238
+    },
+    {
+      "path": "apps/web/src/components/catalog/LiveService.tsx",
+      "mode": "100644",
+      "sha256": "07ad9dea487c921bd1fd0d963c5b0f320961ed714399a4598e6e82b49222173b",
+      "size": 3089
+    },
+    {
+      "path": "apps/web/src/components/catalog/ServiceDetail.tsx",
+      "mode": "100644",
+      "sha256": "59f8882993dad6310f7917dbb5a1b04cfa88f51694637f1bf1ccd15d0ac0ead0",
+      "size": 7108
+    },
+    {
+      "path": "apps/web/src/components/catalog/ServiceList.tsx",
+      "mode": "100644",
+      "sha256": "0d91aadb46631443264f0eaab51113b878a3867492dae1a2cb150c0e07e38d3d",
+      "size": 1989
+    },
+    {
+      "path": "apps/web/src/context/FavoritesContext.tsx",
+      "mode": "100644",
+      "sha256": "612f6c2d6b133d38f277750001ccb781d531cefcbd7005dd4b61936b1b2e690e",
+      "size": 6957
+    },
+    {
+      "path": "apps/web/src/context/RegistrationContext.tsx",
+      "mode": "100644",
+      "sha256": "e354b39c510b2453320af1175aac1f3f05116b82556cfc0ad554a70941a84b6a",
+      "size": 9907
+    },
+    {
+      "path": "apps/web/src/features/demo-workspace/WelcomeAction.tsx",
+      "mode": "100644",
+      "sha256": "751e313915617132de14b6fbb130b517e80aab6938d3ab68f15984ab0c5532a8",
+      "size": 714
+    },
+    {
+      "path": "apps/web/src/features/live-account/LiveAccountWorkspace.tsx",
+      "mode": "100644",
+      "sha256": "68a582dc0aa5c8faa86f5bd0a9929d3715962a6c1ac96273885da30b3e41f1cb",
+      "size": 28683
+    },
+    {
+      "path": "apps/web/src/features/live-account/useAccountWriter.ts",
+      "mode": "100644",
+      "sha256": "e76f12d10617b85e56653d7dbc0c194303933a8ec13c434cf7252d3bd9cc6095",
+      "size": 3033
+    },
+    {
+      "path": "apps/web/src/features/live-commerce/commerce.module.css",
+      "mode": "100644",
+      "sha256": "c248a3b8201b08edf5952e8cd7aa2291df3d6716b73d7aa4c59b15df61e4064d",
+      "size": 4780
+    },
+    {
+      "path": "apps/web/src/features/live-commerce/index.tsx",
+      "mode": "100644",
+      "sha256": "d12f9de6b464ba549daa943bc8c2730e264be36186947a8dae9aa055bcad04f2",
+      "size": 29908
+    },
+    {
+      "path": "apps/web/src/features/live-commerce/protocol.ts",
+      "mode": "100644",
+      "sha256": "ca2514d5865505c89ce2ec9e66d2a6c9cddee6d160c0fae4194b6c6cad8ade9d",
+      "size": 1892
+    },
+    {
+      "path": "apps/web/src/features/live-commerce/useWrite.ts",
+      "mode": "100644",
+      "sha256": "47dc24e38fcd8b213452f9064e78711c7f9a49d4732870a725da6a0c44f2921a",
+      "size": 2662
+    },
+    {
+      "path": "apps/web/src/features/live-services/LiveFavoriteFeedback.tsx",
+      "mode": "100644",
+      "sha256": "ae0c85b528280da108d6eb1540661424fad93da62c6a1eadc73042b767e513c1",
+      "size": 794
+    },
+    {
+      "path": "apps/web/src/features/live-services/LiveOwnServices.tsx",
+      "mode": "100644",
+      "sha256": "7acc53ef70340a742153d13397b4f2234d3b8f7d2f87512ad3db6247235f812b",
+      "size": 2707
+    },
+    {
+      "path": "apps/web/src/features/live-services/LiveServiceEditor.tsx",
+      "mode": "100644",
+      "sha256": "0971497ae004fee7d9ac3adabbdeac5ef0a137357763b92ce494d6540e9e87d7",
+      "size": 14083
+    },
+    {
+      "path": "apps/web/src/features/live-services/model.ts",
+      "mode": "100644",
+      "sha256": "dea3cae5e49559b0699103fa6350e1fdce42564ceeec6d308d8aebfb45b833e0",
+      "size": 2927
+    },
+    {
+      "path": "apps/web/src/features/live-services/search.ts",
+      "mode": "100644",
+      "sha256": "a1515a97cf4bcef5bcc2513fe65d954668f024854f35e9e3038d07ef5ac2f0a4",
+      "size": 872
+    },
+    {
+      "path": "apps/web/src/features/live-staff/LiveStaffWorkspace.tsx",
+      "mode": "100644",
+      "sha256": "3cd133acf30a783ae23a8d331d92a93a7ddbc6f202ef4df8e535466141661e05",
+      "size": 18758
+    },
+    {
+      "path": "apps/web/src/features/live/shared.tsx",
+      "mode": "100644",
+      "sha256": "22be2b929838a2935e20dd8d0c49525820695a068976a6669340f7f20c7e5d59",
+      "size": 3820
+    },
+    {
+      "path": "apps/web/src/lib/api/account.ts",
+      "mode": "100644",
+      "sha256": "4f5aa7a412dcd7f23709f06ef3b0a8f2de66e08ec5d642cc38bc4f350b635ce3",
+      "size": 8929
+    },
+    {
+      "path": "apps/web/src/lib/api/catalog.ts",
+      "mode": "100644",
+      "sha256": "43eff59d4f279632c258a68d72194673f1a46aadfc7ba80977c773fd12a5ae14",
+      "size": 3315
+    },
+    {
+      "path": "apps/web/src/lib/api/client.ts",
+      "mode": "100644",
+      "sha256": "620b2e9b7aae50f96d1ab84ef9d85e451b136adc2f7fa41f0387d00db7b794a1",
+      "size": 4564
+    },
+    {
+      "path": "apps/web/src/lib/api/commerce.ts",
+      "mode": "100644",
+      "sha256": "698d2fc10f91c58289beef799e131e77592a5f60c293305e1896c00f06799668",
+      "size": 12711
+    },
+    {
+      "path": "apps/web/src/lib/api/registration.ts",
+      "mode": "100644",
+      "sha256": "ab37f05bcd9fdd4cb10e4896df937c91a691470637a73825717ec245cf88a4af",
+      "size": 4950
+    },
+    {
+      "path": "apps/web/src/lib/api/services.ts",
+      "mode": "100644",
+      "sha256": "56ffcc9b9342df39ad00b49e683082bdaaaff655b4fd80dee47ba308ebd68492",
+      "size": 5441
+    },
+    {
+      "path": "apps/web/src/lib/api/staff.ts",
+      "mode": "100644",
+      "sha256": "56cca567da0da29768932f24e4b437a53fb1a32e14d3578199ba78ab78cebc6c",
+      "size": 6634
+    },
+    {
+      "path": "apps/web/src/types/registration-api.ts",
+      "mode": "100644",
+      "sha256": "fee9710e7b288c4e5f5c2e73a1978ceb4c4f3cd62413314d1fb11baaab3083a5",
+      "size": 1058
+    },
+    {
+      "path": "apps/web/tests/campus-skip-link.test.cjs",
+      "mode": "100644",
+      "sha256": "33ce3d968280e6ddd168f94499ac3c7077a3e37ba0ebe6aa4317d8897322eeca",
+      "size": 6970
+    },
+    {
+      "path": "apps/web/tests/demo-order-rendering.test.cjs",
+      "mode": "100644",
+      "sha256": "60cd72ded42405866f512a2ad664fdfb82dd93fa037050225716be37f41c078b",
+      "size": 6871
+    },
+    {
+      "path": "apps/web/tests/demo-route-isolation.test.cjs",
+      "mode": "100644",
+      "sha256": "a46e2ec9bbb11d024ca9169e222b05c66f5249272943f9f50fb4835a9f4576aa",
+      "size": 2801
+    },
+    {
+      "path": "apps/web/tests/live-account.test.cjs",
+      "mode": "100644",
+      "sha256": "1786c1e72ce522311142b2abff3755cdca045dd45048b19a372c306867dbe5d7",
+      "size": 35364
+    },
+    {
+      "path": "apps/web/tests/live-commerce.test.cjs",
+      "mode": "100644",
+      "sha256": "81ea636b9497f1b8dd5eeeadb3e9ea8463a4375e09c4571806f610be242aa812",
+      "size": 32615
+    },
+    {
+      "path": "apps/web/tests/live-route-wiring.test.cjs",
+      "mode": "100644",
+      "sha256": "8439da33bce797f87b62da048539295eb9a6003803e179333d72897dcf8d8106",
+      "size": 2778
+    },
+    {
+      "path": "apps/web/tests/live-services.test.cjs",
+      "mode": "100644",
+      "sha256": "927da6682c1e6ce9cc9b6607d8fcefcea5cd655eb00d694132987031256b8ec5",
+      "size": 13369
+    },
+    {
+      "path": "apps/web/tests/live-shared.test.cjs",
+      "mode": "100644",
+      "sha256": "7a0c71f9e51c6366e63dda448a437bacb32c3a449144ce40c936622319f52c21",
+      "size": 17094
+    },
+    {
+      "path": "apps/web/tests/live-staff.test.cjs",
+      "mode": "100644",
+      "sha256": "6615d89537c21bcce2161cad382026a6d48db46c62a76e9fc72b288274970d85",
+      "size": 17900
+    }
+  ],
+  "sourceCommit": "90a7eac83ec834da44c44666c89b136a054f0cec"
+}

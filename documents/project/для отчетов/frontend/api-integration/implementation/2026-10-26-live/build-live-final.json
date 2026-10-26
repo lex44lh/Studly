@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "environment": {
+    "NEXT_PUBLIC_STUDLY_DATA_MODE": "live",
+    "NEXT_PUBLIC_STUDLY_DEMO_ADMIN": "enabled"
+  },
+  "exit_code": 0,
+  "startedAt": "2026-10-26T09:59:47.168003+00:00",
+  "finishedAt": "2026-10-26T09:59:53.957642+00:00"
+}

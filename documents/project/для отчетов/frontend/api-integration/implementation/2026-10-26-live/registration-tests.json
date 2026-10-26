@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "/private/tmp/studly-live-20261026/registration-compiled/tests/registration.test.js"
+  ],
+  "exit_code": 0,
+  "startedAt": "2026-10-25T21:27:23.186561+00:00",
+  "finishedAt": "2026-10-25T21:27:23.244418+00:00"
+}

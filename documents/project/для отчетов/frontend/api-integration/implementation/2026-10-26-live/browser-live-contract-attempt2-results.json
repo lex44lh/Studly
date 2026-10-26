@@ -1,0 +1,1200 @@
+{
+  "kind": "synthetic browser contract smoke",
+  "djangoTested": false,
+  "realTelegramTested": false,
+  "backendReference": "8999703fe60ef6714595614413faddc5a9308d44",
+  "fixtureSources": [
+    "apps/web/tests/live-account.test.cjs",
+    "apps/web/tests/live-services.test.cjs",
+    "apps/web/tests/live-commerce.test.cjs",
+    "apps/web/tests/live-staff.test.cjs"
+  ],
+  "startedAt": "2026-10-26T09:50:24.509Z",
+  "assertions": 59,
+  "checks": [
+    {
+      "name": "Both-role account switches cabinet without changing authenticated account",
+      "pass": true
+    },
+    {
+      "name": "Profile PATCH, refetch and browser reload restore the fixture server state",
+      "pass": true
+    },
+    {
+      "name": "Portfolio link POST uses private account version and appears after server refetch",
+      "pass": true
+    },
+    {
+      "name": "Owned service v2 editor PATCH and reload preserve revision and draft",
+      "pass": true
+    },
+    {
+      "name": "Catalog uses v2 server search/category/sort query",
+      "pass": true
+    },
+    {
+      "name": "Favorites PUT then private list uses Django fixture data",
+      "pass": true
+    },
+    {
+      "name": "Pre-order discussion uses a separate conversation",
+      "pass": true
+    },
+    {
+      "name": "Quote 409 requires new calculation and fresh explicit consent",
+      "pass": true
+    },
+    {
+      "name": "Unknown order response has explicit same-key retry and one server receipt",
+      "pass": true
+    },
+    {
+      "name": "Actual performer identity accepts v2 order with optimistic revision",
+      "pass": true
+    },
+    {
+      "name": "Held message is private to sender in recipient fixture response and UI",
+      "pass": true
+    },
+    {
+      "name": "Cursor messages append by server ID and sequence",
+      "pass": true
+    },
+    {
+      "name": "Held sender reads case and posts revisioned appeal",
+      "pass": true
+    }
+  ],
+  "routes": [],
+  "requests": [
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=customer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/specializations/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/registration/",
+      "query": "",
+      "method": "PATCH",
+      "actor": 9,
+      "bodyKeys": [
+        "performer_revision",
+        "profile"
+      ],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/specializations/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "revision",
+        "request_key",
+        "title",
+        "url"
+      ],
+      "request_key": "d342d41f-00c1-4aca-87b3-297b5b531742",
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/43/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/43/",
+      "query": "",
+      "method": "PATCH",
+      "actor": 9,
+      "bodyKeys": [
+        "title",
+        "category",
+        "description",
+        "included",
+        "price_amount",
+        "duration_days",
+        "portfolio_example_ids",
+        "extras",
+        "revision",
+        "request_key"
+      ],
+      "request_key": "7a14d287-1b1b-484a-b1f0-996d468f93a8",
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/43/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/",
+      "query": "?ordering=id",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/",
+      "query": "?ordering=id",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/",
+      "query": "?ordering=id",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/",
+      "query": "?search=Python&ordering=id",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/",
+      "query": "?search=Python&category=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5&ordering=id",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/",
+      "query": "?search=Python&category=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5&ordering=price_asc",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/42/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/42/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/42/",
+      "query": "",
+      "method": "PUT",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/42/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/services/42/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/discussions/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "service_id",
+        "request_key"
+      ],
+      "request_key": "29a4ee8e-84ed-43cf-a5ef-b044eb036d2a",
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/quotes/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "service_id",
+        "extra_ids"
+      ],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "quote_id",
+        "request_key"
+      ],
+      "request_key": "c0c2b618-5af3-4ac8-bec2-cdad12044ca3",
+      "quote_id": "10000000-0000-4000-8000-000000000001",
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/quotes/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "service_id",
+        "extra_ids"
+      ],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "quote_id",
+        "request_key"
+      ],
+      "request_key": "2ce80742-927d-4130-8cb9-3bae780d1e9b",
+      "quote_id": "10000000-0000-4000-8000-000000000002",
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "quote_id",
+        "request_key"
+      ],
+      "request_key": "2ce80742-927d-4130-8cb9-3bae780d1e9b",
+      "quote_id": "10000000-0000-4000-8000-000000000002",
+      "csrf": true
+    },
+    {
+      "path": "/api/v2/orders/12/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/orders/12/conversation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/orders/12/events/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/12/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/orders/12/conversation/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/orders/12/events/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/orders/12/accept/",
+      "query": "",
+      "method": "POST",
+      "actor": 7,
+      "bodyKeys": [
+        "revision",
+        "request_key"
+      ],
+      "request_key": "b7c53e9c-12b0-474d-9862-27b1372e98f4",
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/orders/12/events/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/conversations/00000000-0000-4000-8000-000000000001/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/conversations/00000000-0000-4000-8000-000000000001/messages/",
+      "query": "",
+      "method": "GET",
+      "actor": 7,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/conversations/00000000-0000-4000-8000-000000000001/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/conversations/00000000-0000-4000-8000-000000000001/messages/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/conversations/00000000-0000-4000-8000-000000000001/messages/",
+      "query": "?cursor=synthetic-next",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/security-cases/4/appeal/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/security-cases/4/appeal/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "revision",
+        "request_key",
+        "reason"
+      ],
+      "request_key": "5db888d5-db1e-4ba7-b82f-3b080cd44e18",
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/conversations/00000000-0000-4000-8000-000000000001/messages/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "client_message_id",
+        "text"
+      ],
+      "request_key": "8172bead-3077-46bc-9e78-bc8ba25ce233",
+      "quote_id": null,
+      "csrf": true
+    }
+  ],
+  "blockedExternal": [
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js"
+  ],
+  "unhandledApi": [],
+  "fixtureErrors": [],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-live-contract-failure.jpg"
+  ],
+  "pass": false,
+  "error": "locator.isDisabled: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Сообщение', { exact: true })\u001b[22m\n\n    at orderAndChatFlow (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:157:322)\n    at async /Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:192:66",
+  "finishedAt": "2026-10-26T09:50:40.149Z"
+}

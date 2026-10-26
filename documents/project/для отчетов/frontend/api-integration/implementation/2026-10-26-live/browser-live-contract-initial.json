@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "/Users/alekspih/Projects/studly-integration/documents/project/\u0434\u043b\u044f \u043e\u0442\u0447\u0435\u0442\u043e\u0432/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs"
+  ],
+  "exit_code": 1,
+  "startedAt": "2026-10-26T09:46:35.000858+00:00",
+  "finishedAt": "2026-10-26T09:46:49.976248+00:00"
+}

@@ -1,0 +1,463 @@
+{
+  "kind": "synthetic browser contract smoke",
+  "djangoTested": false,
+  "realTelegramTested": false,
+  "backendReference": "8999703fe60ef6714595614413faddc5a9308d44",
+  "fixtureSources": [
+    "apps/web/tests/live-account.test.cjs",
+    "apps/web/tests/live-services.test.cjs",
+    "apps/web/tests/live-commerce.test.cjs",
+    "apps/web/tests/live-staff.test.cjs"
+  ],
+  "startedAt": "2026-10-26T09:46:35.180Z",
+  "assertions": 9,
+  "checks": [
+    {
+      "name": "Both-role account switches cabinet without changing authenticated account",
+      "pass": true
+    },
+    {
+      "name": "Profile PATCH, refetch and browser reload restore the fixture server state",
+      "pass": true
+    },
+    {
+      "name": "Portfolio link POST uses private account version and appears after server refetch",
+      "pass": true
+    }
+  ],
+  "routes": [],
+  "requests": [
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=customer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/specializations/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/registration/",
+      "query": "",
+      "method": "PATCH",
+      "actor": 9,
+      "bodyKeys": [
+        "performer_revision",
+        "profile"
+      ],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/me/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/favorites/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/specializations/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/auth/csrf/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "POST",
+      "actor": 9,
+      "bodyKeys": [
+        "revision",
+        "request_key",
+        "title",
+        "url"
+      ],
+      "request_key": "40264fb4-41be-41a6-901c-d36a884e67fc",
+      "quote_id": null,
+      "csrf": true
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/performer/moderation/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/cabinet/",
+      "query": "?role=performer",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/account/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v2/my/services/43/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    },
+    {
+      "path": "/api/v1/portfolio/",
+      "query": "",
+      "method": "GET",
+      "actor": 9,
+      "bodyKeys": [],
+      "request_key": null,
+      "quote_id": null,
+      "csrf": false
+    }
+  ],
+  "blockedExternal": [
+    "https://telegram.org/js/telegram-web-app.js",
+    "https://telegram.org/js/telegram-web-app.js"
+  ],
+  "unhandledApi": [],
+  "fixtureErrors": [],
+  "pageErrors": [],
+  "hydrationErrors": [],
+  "screenshots": [
+    "browser-live-contract-failure.jpg"
+  ],
+  "pass": false,
+  "error": "locator.fill: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Название услуги', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input maxlength=\"200\" value=\"Contract own draft\" class=\"commerce_input__Ly0J2\"/>\u001b[22m\n\u001b[2m    - fill(\"Contract own draft updated\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    24 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at profileFlow (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:138:200)\n    at async /Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:191:5",
+  "finishedAt": "2026-10-26T09:46:49.723Z"
+}

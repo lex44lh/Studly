@@ -12,6 +12,8 @@
 
 ## Сеансы
 
+- STUDLY 2.0: Django Live Integration — 26.10.2026: [основной отчёт](frontend/api-integration/2026-10-26_00-08_django-live-integration.md), [Frontend ROUTE_API_MATRIX](frontend/api-integration/2026-10-26_00-08_ROUTE_API_MATRIX.md), [зависимости Backend и запрос сотруднику](frontend/api-integration/2026-10-26_00-08_backend-dependencies.md). Реальные Django E2E требуют изолированного окружения; итоговые проверки и публикация фиксируются в отчёте.
+
 - [STUDLY 2.0: полный редизайн всех 22 маршрутов, общий прогресс и регрессия — 21.10.2026](frontend/redesign/2026-10-21_22-18_full-redesign-progress.md)
 
 - [STUDLY 2.0: редизайн детальной страницы услуги /service/[id] — 19.10.2026](frontend/redesign/2026-10-19_00-24_campus-service-detail.md)

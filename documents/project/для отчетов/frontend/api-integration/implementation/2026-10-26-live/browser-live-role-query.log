@@ -1,0 +1,6 @@
+PASS Order query ?role=customer initializes customer and matching API filter
+PASS Order query ?role=performer initializes performer and matching API filter
+PASS Order query ?role=staff initializes all and matching API filter
+PASS Order query absent initializes all and matching API filter
+PASS Poisoned Demo localStorage remains isolated; no Demo IndexedDB
+COMPLETE synthetic Live contract {"assertions":52,"checks":5,"routes":4,"requests":12,"djangoTested":false}

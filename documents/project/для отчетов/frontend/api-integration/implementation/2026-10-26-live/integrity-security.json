@@ -1,0 +1,17 @@
+{
+  "phase": "pre-staging content review",
+  "base": "d447c317eb5efa28bac65489da9b88a5d19a039d",
+  "frontendFiles": 53,
+  "changedFilesAtReview": 129,
+  "allChangesInAllowedBoundaries": true,
+  "backendUnchanged": true,
+  "configurationAndPoliciesUnchanged": true,
+  "oldReportsPreserved": 395,
+  "oldReportsMismatch": [],
+  "acceptedManifestSha256": "ef7afc71711a6341238c0cab3e99ccbe4ebe2187012e8f516532cfb204022e65",
+  "secrets": {
+    "scan": "targeted credential patterns + manual diff review; not an external secret-scanner certification",
+    "findings": []
+  },
+  "generatedAtEuropeMoscow": "2026-10-26T13:00:18.434337+03:00"
+}

@@ -1,0 +1,25 @@
+PASS Both-role account switches cabinet without changing authenticated account
+PASS Profile PATCH, refetch and browser reload restore the fixture server state
+PASS Portfolio link POST uses private account version and appears after server refetch
+PASS Owned service v2 editor PATCH and reload preserve revision and draft
+PASS Catalog uses v2 server search/category/sort query
+PASS Favorites PUT then private list uses Django fixture data
+PASS Pre-order discussion uses a separate conversation
+PASS Quote 409 requires new calculation and fresh explicit consent
+PASS Unknown order response has explicit same-key retry and one server receipt
+PASS Actual performer identity accepts v2 order with optimistic revision
+PASS Held message is private to sender in recipient fixture response and UI
+PASS Cursor messages append by server ID and sequence
+PASS Held sender reads case and posts revisioned appeal
+PASS Unknown message retries original client_message_id and renders stored status
+PASS Buyer can cancel accepted unpaid order; no fake payment or completed state
+PASS Nonstaff 403 cannot acquire workspace through Demo flags
+PASS All 12 staff sections route through real permissions or honest unavailable states
+PASS Staff profile approval requires current detail and explicit confirmation
+PASS Staff service approval uses saved revision and server publication state
+locator.selectOption: Timeout 12000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('Действие', { exact: true })[22m
+
+    at staffFlow (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:168:584)
+    at async /Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-live-contract.cjs:192:92

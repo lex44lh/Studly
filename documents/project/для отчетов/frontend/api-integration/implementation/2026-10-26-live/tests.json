@@ -1,0 +1,10 @@
+{
+  "command": [
+    "npm",
+    "test"
+  ],
+  "environment": {},
+  "exit_code": 0,
+  "startedAt": "2026-10-26T09:58:10.615965+00:00",
+  "finishedAt": "2026-10-26T09:58:19.367716+00:00"
+}
