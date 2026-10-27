@@ -1,3 +1,5 @@
+import { assertWriteIdentity, identitySignal, IdentityChangedError, verifyWriteIdentity } from "./session";
+
 export class ApiError extends Error {
   constructor(public readonly status: number, public readonly payload: unknown) {
     super(status === 0 ? "Не удалось связаться с сервером." : `Ошибка API (${status}).`);
@@ -17,34 +19,44 @@ export async function apiRequest<T>(path: string, options: {
     throw new ApiError(502, null);
   }
   let response: Response;
+  const mutation = options.method && options.method !== "GET";
+  if (mutation && path !== "auth/telegram/mini-app/") assertWriteIdentity(options.signal);
+  const signal = identitySignal(options.signal);
   try {
     response = await fetch(`/api/v${options.version ?? 1}/${path}`, {
       method: options.method ?? "GET", credentials: "same-origin", cache: "no-store",
       redirect: "error",
-      signal: options.signal,
+      signal,
       headers: { Accept: "application/json", ...(options.body !== undefined && !(options.body instanceof FormData) ? { "Content-Type": "application/json" } : {}),
         ...(options.csrfToken ? { "X-CSRFToken": options.csrfToken } : {}) },
       body: options.body instanceof FormData ? options.body : options.body === undefined ? undefined : JSON.stringify(options.body),
     });
   } catch (error) {
-    if (options.signal?.aborted || (error instanceof Error && error.name === "AbortError")) throw error;
+    if (signal?.aborted || (error instanceof Error && error.name === "AbortError")) throw error;
     throw new ApiError(0, null);
   }
+  signal?.throwIfAborted();
+  if (mutation && path !== "auth/telegram/mini-app/") assertWriteIdentity(options.signal);
   if (response.status === 204) return undefined as T;
   let payload: unknown;
   try { payload = await response.json(); } catch { throw new ApiError(response.ok ? 502 : response.status, null); }
+  signal?.throwIfAborted();
   if (!response.ok) throw new ApiError(response.status, payload);
   return payload as T;
 }
 
 // Refresh before every write. Never retry a mutation automatically after a 403/network error.
 export async function apiMutation<T>(path: string, method: "POST" | "PATCH" | "PUT" | "DELETE", body?: unknown, signal?: AbortSignal, version: 1 | 2 = 1): Promise<T> {
+  await verifyWriteIdentity(signal);
   const token = await apiRequest<{ csrf_token: string }>("auth/csrf/", { signal });
   if (!token || typeof token.csrf_token !== "string" || !token.csrf_token) throw new ApiError(502, null);
+  // Session cookies may change while obtaining CSRF. This remains a client fence, not an atomic server guard.
+  await verifyWriteIdentity(signal);
   return apiRequest<T>(path, { method, body, signal, csrfToken: token.csrf_token, version });
 }
 
 export function apiErrorMessage(error: unknown): string {
+  if (error instanceof IdentityChangedError) return error.message;
   if (!(error instanceof ApiError)) return "Не удалось выполнить запрос. Повторите попытку.";
   if (error.status === 0) return "Не удалось связаться с сервером. Проверьте соединение.";
   if (error.status === 401) return "Сессия истекла. Выполните вход заново.";

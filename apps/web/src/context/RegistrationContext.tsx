@@ -9,6 +9,7 @@ import { registrationClient, registrationModeratedFields, registrationRevisionAf
 import { accountClient } from "@/lib/api/account";
 import { authClient } from "@/lib/api/auth";
 import { apiErrorMessage, ApiError } from "@/lib/api/client";
+import { captureIdentity, createIdentityController } from "@/lib/api/session";
 import { createDraftState, draftReducer, type DraftAction } from "@/lib/registration/draft";
 import type { RegistrationDraft } from "@/types/registration";
 import type { RegistrationResponse, RegistrationStep } from "@/types/registration-api";
@@ -32,6 +33,7 @@ function validationMessage(error: unknown) {
 function RegistrationSession({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(draftReducer, undefined, createDraftState);
   const { state: auth } = useAuth();
+  const [identity] = useState(() => captureIdentity(auth.user?.id ?? null));
   const router = useRouter();
   const [previewComplete, setPreviewComplete] = useState(false);
   const [ready, setReady] = useState(demoMode);
@@ -46,7 +48,8 @@ function RegistrationSession({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (demoMode || auth.status !== "authenticated") return;
-    const controller = new AbortController();
+    const controller = createIdentityController(identity);
+    if (controller.signal.aborted) return;
     accountClient.registrationSnapshot(controller.signal).then(({ registration: value, moderation }) => {
       if (controller.signal.aborted) return;
       if (moderation.user_id !== auth.user?.id) throw new ApiError(409, { code: "profile_snapshot_changed" });
@@ -63,7 +66,7 @@ function RegistrationSession({ children }: { children: ReactNode }) {
       if (!controller.signal.aborted) { performerRevision.current = null; setReady(false); setError(validationMessage(error)); setLoading(false); }
     });
     return () => { controller.abort(); active.current?.abort(); active.current = null; };
-  }, [auth.status, auth.user?.id, attempt, router]);
+  }, [auth.status, auth.user?.id, attempt, router, identity]);
 
   const avatarUrl = draft.profile.avatarUrl;
   useEffect(() => () => { if (avatarUrl.startsWith("blob:")) URL.revokeObjectURL(avatarUrl); }, [avatarUrl]);
@@ -75,7 +78,9 @@ function RegistrationSession({ children }: { children: ReactNode }) {
       return;
     }
     if (active.current || loading || auth.status !== "authenticated" || !server.current || performerRevision.current === null) return;
-    const controller = new AbortController(); active.current = controller;
+    const controller = createIdentityController(identity);
+    if (controller.signal.aborted) return;
+    active.current = controller;
     setBusy(true); setError("");
     try {
       const saveGuarded = async (patch: RegistrationPatch) => {
@@ -148,7 +153,7 @@ function RegistrationSession({ children }: { children: ReactNode }) {
     } finally {
       if (active.current === controller) { active.current = null; setBusy(false); }
     }
-  }, [draft, loading, auth.status, auth.user?.id, router]);
+  }, [draft, loading, auth.status, auth.user?.id, router, identity]);
 
   return <RegistrationContext.Provider value={{ draft, dispatch, client: registrationClient, previewComplete, returnToForm: () => setPreviewComplete(false), ready, loading, busy, error,
     retry: () => { setLoading(true); setError(""); setAttempt(value => value + 1); }, saveStep }}>{children}</RegistrationContext.Provider>;
@@ -162,5 +167,5 @@ export function useRegistration() {
 export function RegistrationProvider({ children }: { children: ReactNode }) {
   const { state: auth } = useAuth();
   if (demoMode) return <DemoRegistrationBridge context={RegistrationContext}>{children}</DemoRegistrationBridge>;
-  return <RegistrationSession key={auth.user?.id ?? "anonymous"}>{children}</RegistrationSession>;
+  return <RegistrationSession key={`${auth.status}:${auth.user?.id ?? "anonymous"}:${auth.identityEpoch ?? 0}`}>{children}</RegistrationSession>;
 }

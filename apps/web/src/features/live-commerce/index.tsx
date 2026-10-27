@@ -7,7 +7,8 @@ import { ApiError, apiErrorMessage, requestKey } from "@/lib/api/client";
 import { money } from "@/lib/api/catalog";
 import { commerceClient, mergeMessages, type Conversation, type Message, type MoneySnapshot, type OrderAction, type OrderV2, type QuoteExtra, type QuoteV2 } from "@/lib/api/commerce";
 import { LiveAccess, LiveState, useLiveResource } from "@/features/live/shared";
-import { allowedOrderActions, outcomeUnknown, purchaseStorageKey, readPurchaseIntent, savePurchaseIntent, type OrderRole } from "./protocol";
+import { allowedOrderActions, clearPurchaseIntent, discoverPurchaseIntent, outcomeUnknown, pendingPurchaseStorageKey, savePurchaseIntent, type OrderRole } from "./protocol";
+import { currentMessages, currentOrder, findPurchaseOrder } from "./reconcile";
 import { useWrite } from "./useWrite";
 import styles from "./commerce.module.css";
 
@@ -34,14 +35,17 @@ function Snapshot({ value }: { value: MoneySnapshot }) {
   </dl><p className={styles.muted}>Срок: {value.duration_days} дн. · Тариф: {value.tariff_code}. Суммы и срок рассчитаны сервером.</p></>;
 }
 
-export function LiveQuote(props: { serviceId: string; extras: QuoteExtra[]; onLockChange?: (locked: boolean) => void }) {
-  return <LiveAccess><QuoteContent {...props} /></LiveAccess>;
+type QuoteProps = { serviceId: string; extras: QuoteExtra[]; serviceRevision?: number; performerId?: number; onRestoreExtras?: (ids: string[]) => void; onLockChange?: (locked: boolean) => void };
+export function LiveQuote(props: QuoteProps) {
+  return <LiveAccess><QuoteContent key={props.serviceId} {...props} /></LiveAccess>;
 }
-function QuoteContent({ serviceId, extras, onLockChange }: { serviceId: string; extras: QuoteExtra[]; onLockChange?: (locked: boolean) => void }) {
+function QuoteContent({ serviceId, extras, serviceRevision, performerId, onRestoreExtras, onLockChange }: QuoteProps) {
   const viewer = useViewer()!;
   const selectedIds = extras.map(extra => extra.id).sort();
   const signature = `${serviceId}:${selectedIds.join(",")}`;
-  const storageKey = purchaseStorageKey(viewer, serviceId, selectedIds);
+  const storageKey = pendingPurchaseStorageKey(viewer, serviceId);
+  const restorationScope = `${storageKey}:${serviceRevision ?? ""}:${performerId ?? ""}`;
+  const initialSelection = useRef(selectedIds);
   const quoteWrite = useWrite(`quote:${viewer}:${signature}`);
   const orderWrite = useWrite(`purchase:${viewer}:${serviceId}`);
   const [quote, setQuote] = useState<{ signature: string; value: QuoteV2; requestKey?: string } | null>(null);
@@ -49,36 +53,46 @@ function QuoteContent({ serviceId, extras, onLockChange }: { serviceId: string; 
   const [order, setOrder] = useState<OrderV2 | null>(null);
   const [notice, setNotice] = useState("");
   const [restoring, setRestoring] = useState(true);
+  const [restoredScope, setRestoredScope] = useState("");
+  const [storageBlocked, setStorageBlocked] = useState(false);
   const [restoreAttempt, setRestoreAttempt] = useState(0);
   const [restoredAttempted, setRestoredAttempted] = useState(false);
-  const quoteCurrent = quote?.signature === signature ? quote : null;
-  const unresolved = orderWrite.busy || orderWrite.unknown || restoredAttempted;
+  const quoteCurrent = quote && (restoredAttempted || quote.signature === signature) ? quote : null;
+  const unresolved = restoring || restoredScope !== restorationScope || storageBlocked || orderWrite.busy || orderWrite.unknown || restoredAttempted;
   // Opaque purchase IDs survive reload. GET restores the actual server snapshot;
   // consent is always fresh and no POST is replayed during restoration.
   useEffect(() => {
     const controller = new AbortController();
-    const saved = readPurchaseIntent(storageKey);
-    if (saved) {
-      Promise.resolve().then(() => {
-        if (controller.signal.aborted) return undefined;
-        setRestoredAttempted(saved.attempted);
-        return commerceClient.quoteDetail(saved.quoteId, controller.signal);
-      }).then(value => {
-        if (!value) return;
-        if (!controller.signal.aborted && value.service_id === Number(serviceId) && value.selected_extras.map(x => x.id).sort().join(",") === selectedIds.join(",")) {
-          setQuote({ signature, value, requestKey: saved.requestKey });
-          setRestoredAttempted(saved.attempted);
-          setNotice("Восстановлен предыдущий расчёт. Проверьте свои заказы перед повтором; повтор использует прежний ключ. Просмотрите условия и подтвердите согласие заново.");
-        }
-      }).catch(error => { if (!controller.signal.aborted) setNotice(apiErrorMessage(error)); }).finally(() => { if (!controller.signal.aborted) setRestoring(false); });
-    } else {
-      // Deferred state update keeps initial render free of side effects.
-      queueMicrotask(() => { if (!controller.signal.aborted) setRestoring(false); });
-    }
+    Promise.resolve().then(async () => {
+      if (controller.signal.aborted) return;
+      setRestoring(true); setConsent(null);
+      const discovery = discoverPurchaseIntent(viewer, serviceId, initialSelection.current);
+      setStorageBlocked(discovery.blocked);
+      if (discovery.blocked) { setNotice(discovery.error); return; }
+      const saved = discovery.intent;
+      if (!saved) return;
+      setRestoredAttempted(saved.attempted);
+      if (saved.attempted) {
+        const existing = await findPurchaseOrder(viewer, serviceId, saved, controller.signal);
+        if (controller.signal.aborted) return;
+        if (existing) { onRestoreExtras?.(existing.selected_extras.map(item => item.id)); setOrder(existing); clearPurchaseIntent(viewer, serviceId, saved); setRestoredAttempted(false); return; }
+      }
+      const value = await commerceClient.quoteDetail(saved.quoteId, controller.signal);
+      if (controller.signal.aborted) return;
+      if (value.quote_id !== saved.quoteId || value.service_id !== Number(serviceId) || value.performer_id === viewer || (performerId !== undefined && value.performer_id !== performerId)) {
+        setStorageBlocked(true); throw new ApiError(502, null);
+      }
+      if (!saved.attempted && serviceRevision !== undefined && value.service_revision !== serviceRevision) {
+        clearPurchaseIntent(viewer, serviceId, saved); setQuote(null); setNotice("Редакция услуги изменилась. Получите новый расчёт и просмотрите его условия."); return;
+      }
+      const restoredIds = value.selected_extras.map(item => item.id).sort();
+      setQuote({ signature: `${serviceId}:${restoredIds.join(",")}`, value, requestKey: saved.requestKey });
+      onRestoreExtras?.(restoredIds);
+      setNotice(saved.attempted ? "Восстановлено прежнее намерение покупки с исходными дополнениями. Новое оформление заблокировано до выяснения результата. Просмотрите сохранённый расчёт и подтвердите повтор с прежним ключом." : "Восстановлен предыдущий расчёт. Просмотрите условия и подтвердите согласие заново.");
+    }).catch(error => { if (!controller.signal.aborted) { setStorageBlocked(true); setNotice(`${apiErrorMessage(error)} Новое оформление заблокировано до проверки предыдущего намерения.`); } })
+      .finally(() => { if (!controller.signal.aborted) { setRestoredScope(restorationScope); setRestoring(false); } });
     return () => controller.abort();
-    // The exact selected-ID signature owns this restoration, independent of array identity.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storageKey, signature, serviceId, restoreAttempt]);
+  }, [storageKey, restorationScope, serviceId, viewer, serviceRevision, performerId, onRestoreExtras, restoreAttempt]);
   useEffect(() => { onLockChange?.(unresolved); return () => onLockChange?.(false); }, [onLockChange, unresolved]);
 
   async function calculate() {
@@ -88,37 +102,62 @@ function QuoteContent({ serviceId, extras, onLockChange }: { serviceId: string; 
     if (result?.ok) {
       const key = requestKey();
       setQuote({ signature, value: result.value, requestKey: key });
-      if (!savePurchaseIntent(storageKey, { quoteId: result.value.quote_id, requestKey: key, attempted: false })) setNotice(storageWarning);
+      if (!savePurchaseIntent(storageKey, { quoteId: result.value.quote_id, requestKey: key, attempted: false })) { setStorageBlocked(true); setNotice(storageWarning); }
     }
   }
   async function purchase() {
-    if (!quoteCurrent || consent !== quoteCurrent.value.quote_id || orderWrite.busy || order) return;
+    if (!quoteCurrent || quoteCurrent.value.service_id !== Number(serviceId) || consent !== quoteCurrent.value.quote_id || orderWrite.busy || order || storageBlocked || restoring || restoredScope !== restorationScope) return;
     const value = quoteCurrent.value;
-    const result = await orderWrite.run(value.quote_id, (key, signal) => {
-      if (!savePurchaseIntent(storageKey, { quoteId: value.quote_id, requestKey: key, attempted: true })) setNotice(storageWarning);
-      return commerceClient.purchase(value.quote_id, key, signal);
+    const wasAttempted = restoredAttempted || orderWrite.unknown;
+    const result = await orderWrite.run(value.quote_id, async (key, signal) => {
+      if (!savePurchaseIntent(storageKey, { quoteId: value.quote_id, requestKey: key, attempted: true })) { setStorageBlocked(true); setNotice(storageWarning); throw new ApiError(400, null); }
+      setRestoredAttempted(true);
+      try {
+        const receipt = await commerceClient.purchase(value.quote_id, key, signal);
+        // The receipt may predate a later accept/cancel. Never publish it as current.
+        try {
+          const current = await currentOrder(receipt.id, viewer, signal);
+          if (current.buyer.id !== viewer || current.quote_id !== value.quote_id || current.request_key !== key || current.service_id !== Number(serviceId)) throw new ApiError(502, null);
+          return current;
+        }
+        catch { throw new Error("Не удалось перечитать текущее состояние подтверждённого заказа."); }
+      } catch (error) {
+        if (error instanceof ApiError && error.status === 409) {
+          try {
+            const existing = await findPurchaseOrder(viewer, serviceId, { quoteId: value.quote_id, requestKey: key, attempted: true }, signal);
+            if (existing) return existing;
+          } catch { throw new Error("Не удалось проверить результат предыдущей покупки."); }
+        }
+        throw error;
+      }
     }, quoteCurrent.requestKey);
-    if (result?.ok) { setOrder(result.value); setConsent(null); setRestoredAttempted(false); savePurchaseIntent(storageKey, null); }
+    if (result?.ok) { setOrder(result.value); setConsent(null); setRestoredAttempted(false); clearPurchaseIntent(viewer, serviceId, { quoteId: value.quote_id, requestKey: result.value.request_key, attempted: true }); }
     else if (result && result.error instanceof ApiError && result.error.status === 409) {
-      setQuote(null); setConsent(null); setRestoredAttempted(false); savePurchaseIntent(storageKey, null);
+      if (wasAttempted) {
+        setConsent(null); setRestoredAttempted(true);
+        setNotice("Сервер сообщил о конфликте, но результат предыдущего оформления пока не подтверждён. Новое оформление заблокировано. Проверьте свои заказы и повторите чтение прежнего намерения; при сохранении конфликта потребуется проверка Backend.");
+        return;
+      }
+      setQuote(null); setConsent(null); setRestoredAttempted(false); if (quoteCurrent.requestKey) clearPurchaseIntent(viewer, serviceId, { quoteId: value.quote_id, requestKey: quoteCurrent.requestKey, attempted: true });
       setNotice("Условия изменились или по этому расчёту уже создан заказ. Проверьте список заказов. Для нового заказа запросите новый расчёт, просмотрите его и подтвердите новое согласие.");
     }
-    else if (result && !outcomeUnknown(result.error)) {
+    else if (result && !wasAttempted && !outcomeUnknown(result.error)) {
       setRestoredAttempted(false);
       if (quoteCurrent.requestKey) savePurchaseIntent(storageKey, { quoteId: value.quote_id, requestKey: quoteCurrent.requestKey, attempted: false });
     }
   }
   if (order) return <div role="status"><p>Заказ №{order.id} сохранён сервером. {statuses[order.status]}.</p><Link className={styles.primary} href={`/orders/${order.id}`}>Открыть заказ</Link></div>;
   return <div className={styles.checkout}>
-    <p className={styles.muted}>Выбранные дополнения: {extras.length ? extras.map(x => x.title).join(", ") : "нет"}. Сначала получите сохранённый расчёт сервера.</p>
+    <p className={styles.muted}>Выбранные дополнения: {(restoredAttempted && quoteCurrent ? quoteCurrent.value.selected_extras : extras).map(x => x.title).join(", ") || "нет"}. Сначала получите сохранённый расчёт сервера.</p>
     <button className={styles.secondary} type="button" disabled={restoring || quoteWrite.busy || unresolved} onClick={() => { void calculate(); }}>{quoteWrite.busy ? "Получаем расчёт…" : quoteCurrent ? "Обновить расчёт" : "Получить расчёт"}</button>
-    {!quoteCurrent && restoredAttempted && <button className={styles.secondary} type="button" disabled={orderWrite.busy} onClick={() => setRestoreAttempt(value => value + 1)}>Повторить чтение сохранённого расчёта</button>}
+    {(storageBlocked || restoredAttempted) && <button className={styles.secondary} type="button" disabled={orderWrite.busy || restoring} onClick={() => setRestoreAttempt(value => value + 1)}>Повторить чтение сохранённого расчёта</button>}
     {notice && <p className={styles.note} role="status">{notice}</p>}
     <WriteError error={quoteWrite.error} unknown={quoteWrite.unknown} />
     {quoteCurrent && <div className={styles.stack}><h3>{quoteCurrent.value.title}</h3><p>{quoteCurrent.value.description}</p>
       <ul>{quoteCurrent.value.included.map((item, index) => <li key={index}>{item}</li>)}</ul><Snapshot value={quoteCurrent.value} />
-      <label className={styles.check}><input type="checkbox" checked={consent === quoteCurrent.value.quote_id} disabled={orderWrite.busy} onChange={event => setConsent(event.target.checked ? quoteCurrent.value.quote_id : null)} /><span>Я просмотрел состав, срок и итоговую сумму этого расчёта и согласен создать неоплаченный заказ.</span></label>
-      <button type="button" className={styles.primary} disabled={consent !== quoteCurrent.value.quote_id || orderWrite.busy} onClick={() => { void purchase(); }}>{orderWrite.busy ? "Создаём заказ…" : orderWrite.unknown ? "Повторить создание с прежним ключом" : "Создать заказ"}</button>
+      {serviceRevision !== undefined && quoteCurrent.value.service_revision !== serviceRevision && <p className={styles.note}>Редакция услуги изменилась. Показаны исходные условия сохранённого намерения; доступна только проверка или повтор с прежним ключом.</p>}
+      <label className={styles.check}><input type="checkbox" checked={consent === quoteCurrent.value.quote_id} disabled={orderWrite.busy || storageBlocked} onChange={event => setConsent(event.target.checked ? quoteCurrent.value.quote_id : null)} /><span>Я просмотрел состав, срок и итоговую сумму этого расчёта и согласен создать неоплаченный заказ.</span></label>
+      <button type="button" className={styles.primary} disabled={consent !== quoteCurrent.value.quote_id || orderWrite.busy || storageBlocked || restoring} onClick={() => { void purchase(); }}>{orderWrite.busy ? "Создаём заказ…" : orderWrite.unknown || restoredAttempted ? "Повторить создание с прежним ключом" : "Создать заказ"}</button>
     </div>}
     <WriteError error={orderWrite.error} unknown={orderWrite.unknown} />
     {(orderWrite.unknown || quote?.requestKey) && <Link className={styles.secondary} href="/orders">Проверить мои заказы</Link>}
@@ -169,7 +208,11 @@ function OrderContent({ id }: { id: string }) {
   async function change(action: OrderAction) {
     if (!confirmation || confirmation.action !== action || (!write.unknown && (confirmation.revision !== order.revision || !allowed.includes(action)))) return;
     const revision = confirmation.revision;
-    const result = await write.run(`${action}:${revision}`, (key, signal) => commerceClient.orderAction(order.id, action, revision, key, signal));
+    const result = await write.run(`${action}:${revision}`, async (key, signal) => {
+      await commerceClient.orderAction(order.id, action, revision, key, signal);
+      try { return await currentOrder(order.id, viewer, signal); }
+      catch { throw new Error("Действие подтверждено, но текущее состояние заказа ещё не проверено."); }
+    });
     if (result?.ok) { setUpdated(result.value); setConfirmation(null); }
     else if (result && result.error instanceof ApiError && result.error.status === 409) setConfirmation(null);
   }
@@ -228,8 +271,12 @@ function MessageStream({ conversation, viewer }: { conversation: Conversation; v
   }
   async function send() {
     if (!text.trim() || text.length > 4000 || write.busy) return;
-    const result = await write.run(`${id}:${text}`, (key, signal) => commerceClient.send(id, key, text, signal));
-    if (result?.ok) { setAdded(previous => ({ rows: mergeMessages(previous?.rows ?? [], [result.value], id, viewer), next: previous ? previous.next : data?.next ?? null })); setText(""); }
+    const result = await write.run(`${id}:${text}`, async (key, signal) => {
+      const receipt = await commerceClient.send(id, key, text, signal);
+      try { return await currentMessages(id, viewer, receipt, signal); }
+      catch { throw new Error("Сообщение сохранено, но его текущее состояние ещё не проверено."); }
+    });
+    if (result?.ok) { setAdded({ rows: result.value, next: null }); setText(""); }
   }
   function refresh() { generation.current++; setAdded(null); reload(); }
   return <div className={styles.stack}><section className={styles.panel} aria-label="Сообщения"><div className={styles.row}><h2>Переписка</h2><button className={styles.secondary} type="button" disabled={paging.busy} onClick={refresh}>Обновить сообщения</button></div><p className={styles.muted}>«Сохранено» означает запись на сервере, а не прочтение адресатом. Обновляйте переписку вручную; уведомления и вложения пока недоступны.</p>
@@ -251,5 +298,9 @@ function AppealForm({ message }: { message: Message }) {
   if (!value) return <LiveState error={error} loading={loading} retry={reload} />;
   if (value.message_id !== message.id || value.conversation_id !== message.conversation_id) return <p role="alert">Случай не соответствует сообщению.</p>;
   if (value.appealed || value.decision) return <p className={styles.note}>{value.appealed ? "Обжалование сохранено." : "Рассмотрение завершено."}{value.decision && ` Решение: ${value.decision === "release" ? "разрешить выдачу сообщения" : "оставить удержанным"}. ${value.decision_reason}`}</p>;
-  return <form onSubmit={event => { event.preventDefault(); if (!reason.trim()) return; void write.run(`${value.revision}:${reason}`, (key, signal) => commerceClient.appeal(id, value.revision, key, reason, signal)).then(response => { if (response?.ok) setResult(response.value); }); }}><label className={styles.field}>Причина обжалования<textarea className={styles.textarea} value={reason} maxLength={2000} disabled={write.busy || write.unknown} onChange={event => setReason(event.target.value)} /></label><button className={styles.secondary} type="submit" disabled={!reason.trim() || write.busy}>{write.unknown ? "Повторить обжалование с прежним ключом" : "Отправить обжалование"}</button><WriteError error={write.error} unknown={write.unknown} /><button className={styles.secondary} type="button" disabled={write.busy} onClick={reload}>Обновить состояние случая</button></form>;
+  return <form onSubmit={event => { event.preventDefault(); if (!reason.trim()) return; void write.run(`${value.revision}:${reason}`, async (key, signal) => {
+    await commerceClient.appeal(id, value.revision, key, reason, signal);
+    try { return await commerceClient.securityCase(id, signal); }
+    catch { throw new Error("Обжалование сохранено, но его текущее состояние ещё не проверено."); }
+  }).then(response => { if (response?.ok) setResult(response.value); }); }}><label className={styles.field}>Причина обжалования<textarea className={styles.textarea} value={reason} maxLength={2000} disabled={write.busy || write.unknown} onChange={event => setReason(event.target.value)} /></label><button className={styles.secondary} type="submit" disabled={!reason.trim() || write.busy}>{write.unknown ? "Повторить обжалование с прежним ключом" : "Отправить обжалование"}</button><WriteError error={write.error} unknown={write.unknown} /><button className={styles.secondary} type="button" disabled={write.busy} onClick={reload}>Обновить состояние случая</button></form>;
 }

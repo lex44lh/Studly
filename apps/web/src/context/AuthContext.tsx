@@ -5,8 +5,9 @@ import Script from "next/script";
 import { authClient, getTelegramInitData, type SessionUser } from "@/lib/api/auth";
 import { demoMode } from "@/lib/data-mode";
 import { ApiError } from "@/lib/api/client";
+import { captureIdentity, configureIdentityGuard, confirmIdentity, createIdentityController, identityChangedMessage, invalidateIdentity } from "@/lib/api/session";
 
-type AuthState = { status: "loading" | "anonymous" | "authenticated" | "error"; user: SessionUser | null; message: string };
+type AuthState = { status: "loading" | "anonymous" | "authenticated" | "error"; user: SessionUser | null; message: string; identityEpoch?: number };
 const initial: AuthState = { status: "loading", user: null, message: "Проверяем сессию…" };
 const AuthContext = createContext<{ state: AuthState; sdkReady: boolean; refresh: () => void; logout: () => void } | null>(null);
 
@@ -28,23 +29,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const loggedOut = useRef(false);
   const verified = useRef(false);
 
+  const confirmedActor = useRef<number | null>(null);
+  const announce = useRef<() => void>(() => {});
+  const background = useRef<AbortController | null>(null);
+
+  const accept = useCallback((user: SessionUser) => {
+    const changed = confirmedActor.current !== user.id;
+    const identityEpoch = confirmIdentity(user.id);
+    confirmedActor.current = user.id; verified.current = true;
+    setState({ status: "authenticated", user, identityEpoch, message: "Вход подтверждён сервером." });
+    if (changed) announce.current();
+  }, []);
+
   const run = useCallback(async (logout = false) => {
     if (demoMode || active.current) return;
-    const controller = new AbortController();
+    background.current?.abort(); background.current = null;
+    const controller = logout ? createIdentityController(captureIdentity(confirmedActor.current)) : new AbortController();
+    if (controller.signal.aborted) return;
     active.current = controller;
-    setState(previous => ({ status: "loading", user: previous.user, message: logout ? "Выходим…" : "Проверяем сессию…" }));
+    setState({ status: "loading", user: null, message: logout ? "Выходим…" : "Проверяем сессию…" });
     try {
       if (logout) {
         await authClient.logout(controller.signal);
-        loggedOut.current = true;
-        verified.current = false;
+        if (controller.signal.aborted) return;
+        loggedOut.current = true; verified.current = false; confirmedActor.current = null;
+        confirmIdentity(null); announce.current();
         setState({ status: "anonymous", user: null, message: "Вы вышли из аккаунта." });
         return;
       }
       try {
         const { user } = await authClient.me(controller.signal);
-        verified.current = true;
-        setState({ status: "authenticated", user, message: "Вход подтверждён сервером." });
+        if (!controller.signal.aborted) accept(user);
         return;
       } catch (error) {
         // Only /me/ uses 403 for an absent session. Never swallow login/CSRF 403.
@@ -55,25 +70,72 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!loggedOut.current && options.telegram_mini_app && initData) {
         await authClient.login(initData, controller.signal);
         const { user } = await authClient.me(controller.signal);
-        verified.current = true;
-        setState({ status: "authenticated", user, message: "Вход подтверждён сервером." });
-      } else {
+        if (!controller.signal.aborted) { accept(user); announce.current(); }
+      } else if (!controller.signal.aborted) {
+        confirmIdentity(null); confirmedActor.current = null;
         setState({ status: "anonymous", user: null, message: !options.telegram_mini_app
           ? "Вход Mini App не настроен на сервере." : "Для входа откройте STUDLY в Telegram." });
       }
     } catch (error) {
-      if (!controller.signal.aborted) setState({ status: "error", user: null, message: messageFor(error) });
+      if (!controller.signal.aborted) {
+        confirmIdentity(null); confirmedActor.current = null;
+        setState({ status: "error", user: null, message: messageFor(error) });
+      }
     } finally {
       if (active.current === controller) active.current = null;
     }
+  }, [accept]);
+
+  useEffect(() => {
+    if (demoMode) return;
+    const cleanup = configureIdentityGuard({
+      readActor: async signal => {
+        try { return (await authClient.me(signal)).user.id; }
+        catch (error) { if (error instanceof ApiError && [401, 403].includes(error.status)) return null; throw error; }
+      },
+      onInvalidated: () => {
+        active.current?.abort(); active.current = null;
+        background.current?.abort(); background.current = null;
+        verified.current = false; loggedOut.current = true; confirmedActor.current = null;
+        setState({ status: "error", user: null, message: identityChangedMessage });
+      },
+    });
+    // Events are hints to re-read /me, never proof of an identity supplied by another tab.
+    const check = async () => {
+      if (active.current || background.current || !verified.current) return;
+      const expected = confirmedActor.current;
+      const controller = new AbortController(); background.current = controller;
+      try {
+        const { user } = await authClient.me(controller.signal);
+        if (!controller.signal.aborted && !active.current && confirmedActor.current === expected && user.id !== expected) invalidateIdentity();
+      } catch {
+        if (!controller.signal.aborted && !active.current && confirmedActor.current === expected) invalidateIdentity();
+      } finally { if (background.current === controller) background.current = null; }
+    };
+    const onFocus = () => { if (document.visibilityState !== "hidden") void check(); };
+    const key = "studly.session.changed";
+    const onStorage = (event: StorageEvent) => { if (event.key === key) void check(); };
+    const channel = typeof BroadcastChannel === "undefined" ? null : new BroadcastChannel(key);
+    if (channel) channel.onmessage = () => { void check(); };
+    announce.current = () => {
+      channel?.postMessage("changed");
+      try { localStorage.setItem(key, crypto.randomUUID()); } catch { /* Broadcast/focus still work when storage is unavailable. */ }
+    };
+    window.addEventListener("focus", onFocus); window.addEventListener("pageshow", onFocus);
+    document.addEventListener("visibilitychange", onFocus); window.addEventListener("storage", onStorage);
+    return () => {
+      active.current?.abort(); active.current = null; background.current?.abort(); background.current = null;
+      window.removeEventListener("focus", onFocus); window.removeEventListener("pageshow", onFocus);
+      document.removeEventListener("visibilitychange", onFocus); window.removeEventListener("storage", onStorage);
+      announce.current = () => {}; channel?.close(); cleanup();
+    };
   }, []);
 
   useEffect(() => {
-    if (demoMode || verified.current) return;
+    if (demoMode || verified.current || loggedOut.current) return;
     const timer = setTimeout(() => { void run(); }, 0);
     return () => clearTimeout(timer);
   }, [run, sdkReady]);
-  useEffect(() => () => { active.current?.abort(); active.current = null; }, []);
 
   return <AuthContext.Provider value={{ state: demoMode ? { status: "anonymous", user: null, message: "Демо: вход и серверная сессия не выполняются." } : state, sdkReady, refresh: () => { loggedOut.current = false; void run(); }, logout: () => { void run(true); } }}>
     {!demoMode && <Script src="https://telegram.org/js/telegram-web-app.js?64" strategy="afterInteractive"

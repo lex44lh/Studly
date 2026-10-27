@@ -28,7 +28,7 @@ function Avatar({ registration, revision }: { registration: RegistrationResponse
     : registration.profile.display_name.trim().slice(0, 1).toUpperCase() || <Icon name="user" />}</span>;
 }
 
-export function LiveProfileEditor({ snapshot, writer }: { snapshot: Snapshot; writer: AccountWriter }) {
+export function LiveProfileEditor({ snapshot, writer, onDirtyChange }: { snapshot: Snapshot; writer: AccountWriter; onDirtyChange?: (dirty: boolean) => void }) {
   const registration = snapshot.account.registration;
   const base = useRef<number | null>(null);
   const [changes, setChanges] = useState<Partial<Record<"display_name" | "university" | "city" | "about" | "description" | "study_year" | "portfolio", string>>>({});
@@ -38,26 +38,36 @@ export function LiveProfileEditor({ snapshot, writer }: { snapshot: Snapshot; wr
   const specializations = useLiveResource("account-specializations", signal => registrationClient.listSpecializations(signal));
   const [avatarError, setAvatarError] = useState("");
   const [avatarStamp, setAvatarStamp] = useState(0);
+  const [validation, setValidation] = useState<{ name?: string; roles?: string }>({});
   const dirty = Object.keys(changes).length > 0 || roles !== null || specializationIds !== null;
   const fields = { ...registration.profile, description: registration.performer?.description ?? "", study_year: registration.performer?.study_year ?? "", portfolio: registration.performer?.portfolio ?? "", ...changes };
   function edit(key: keyof typeof changes, value: string) {
     if (base.current === null) base.current = snapshot.moderation.revision;
+    onDirtyChange?.(true); setValidation({});
     setChanges(current => ({ ...current, [key]: value }));
   }
   function toggleRole(role: RegistrationRole) {
     if (base.current === null) base.current = snapshot.moderation.revision;
+    onDirtyChange?.(true); setValidation({});
     const current = roles ?? registration.roles;
     setRoles(current.includes(role) ? current.filter(item => item !== role) : [...current, role]);
   }
   async function save(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!dirty || writer.blocked) return;
-    const profile = Object.fromEntries(Object.entries(changes).filter(([key]) => ["display_name", "university", "city", "about"].includes(key)));
+    const invalid = registration.status.is_complete ? {
+      ...(!fields.display_name.trim() ? { name: "Укажите непустое имя для отображения. Завершённый профиль нельзя сохранить без имени." } : {}),
+      ...(!(roles ?? registration.roles).length ? { roles: "Оставьте хотя бы одну роль: заказчик или исполнитель." } : {}),
+    } : {};
+    setValidation(invalid);
+    if (Object.keys(invalid).length) return;
+    const profile = Object.fromEntries(Object.entries(changes).filter(([key]) => ["display_name", "university", "city", "about"].includes(key))
+      .map(([key, value]) => [key, key === "display_name" ? value.trim() : value]));
     const performer = { ...Object.fromEntries(Object.entries(changes).filter(([key]) => ["description", "study_year", "portfolio"].includes(key))),
       ...(specializationIds ? { specialization_ids: specializationIds } : {}) };
     const patch = { performer_revision: base.current ?? snapshot.moderation.revision, ...(roles ? { roles } : {}),
       ...(Object.keys(profile).length ? { profile } : {}), ...(Object.keys(performer).length ? { performer } : {}) };
-    if (await writer.execute(signal => registrationClient.save(patch, signal), false)) { setChanges({}); setRoles(null); setSpecializationIds(null); base.current = null; }
+    if (await writer.execute(signal => registrationClient.save(patch, signal), false)) { setChanges({}); setRoles(null); setSpecializationIds(null); base.current = null; onDirtyChange?.(false); }
   }
   async function avatar(file: File | null) {
     if (writer.blocked) return;
@@ -72,23 +82,24 @@ export function LiveProfileEditor({ snapshot, writer }: { snapshot: Snapshot; wr
   return <section className={styles.panel} aria-labelledby="live-account-data-title">
     <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Один аккаунт</p><h2 id="live-account-data-title">Данные профиля</h2></div></div>
     {["approved", "pending"].includes(snapshot.moderation.status) && <p className={styles.locked}>Изменение модерируемых данных или аватара отправит профиль на повторную проверку. Услуги будут скрыты до одобрения.</p>}
-    <form className={styles.profileForm} onSubmit={save}>
+    <form className={styles.profileForm} onSubmit={save} noValidate>
       <fieldset className={styles.fieldset} disabled={writer.blocked}>
         <div className={styles.avatarEditor}><Avatar registration={registration} revision={snapshot.moderation.revision + avatarStamp} /><div className={styles.field}><label htmlFor="live-account-avatar">Аватар</label><input id="live-account-avatar" type="file" accept="image/png,image/jpeg,image/webp" disabled={dirty} onChange={event => { const file = event.target.files?.[0]; event.target.value = ""; if (file) void avatar(file); }} /><p className={styles.hint}>PNG, JPEG или WebP, до 5 МиБ. Сначала сохраните правки текста и ролей. После загрузки аватара данные перечитываются с сервера.</p>{registration.profile.avatar_url && <button className={styles.remove} type="button" disabled={dirty} onClick={() => { void avatar(null); }}>Удалить аватар</button>}</div></div>
         {avatarError && <p className={styles.error} role="alert">{avatarError}</p>}
-        <fieldset className={styles.roleFieldset}><legend>Роли аккаунта</legend><div className={styles.kindSwitch}>{(["customer", "performer"] as const).map(role => <label key={role}><input type="checkbox" checked={selectedRoles.includes(role)} onChange={() => toggleRole(role)} />{role === "customer" ? "Заказчик" : "Исполнитель"}</label>)}</div><p>Вы можете использовать обе роли. Доступ к разделам и новым действиям подтверждает Django.</p></fieldset>
-        <div className={styles.field}><label htmlFor="live-account-name">Имя для отображения</label><input id="live-account-name" value={fields.display_name} maxLength={255} autoComplete="nickname" onChange={event => edit("display_name", event.target.value)} /></div>
+        <fieldset className={styles.roleFieldset} aria-describedby={validation.roles ? "live-account-roles-error" : undefined}><legend>Роли аккаунта</legend><div className={styles.kindSwitch}>{(["customer", "performer"] as const).map(role => <label key={role}><input type="checkbox" checked={selectedRoles.includes(role)} onChange={() => toggleRole(role)} />{role === "customer" ? "Заказчик" : "Исполнитель"}</label>)}</div><p>Вы можете использовать обе роли. Доступ к разделам и новым действиям подтверждает Django.</p>{validation.roles && <p id="live-account-roles-error" className={styles.error} role="alert">{validation.roles}</p>}</fieldset>
+        <div className={styles.field}><label htmlFor="live-account-name">Имя для отображения</label><input id="live-account-name" value={fields.display_name} maxLength={255} autoComplete="nickname" required={registration.status.is_complete} aria-invalid={!!validation.name} aria-describedby={validation.name ? "live-account-name-error" : undefined} onChange={event => edit("display_name", event.target.value)} />{validation.name && <p id="live-account-name-error" className={styles.error} role="alert">{validation.name}</p>}</div>
         <div className={styles.fieldColumns}><div className={styles.field}><label htmlFor="live-account-university">Университет</label><input id="live-account-university" value={fields.university} maxLength={255} onChange={event => edit("university", event.target.value)} /></div><div className={styles.field}><label htmlFor="live-account-city">Город</label><input id="live-account-city" value={fields.city} maxLength={255} autoComplete="address-level2" onChange={event => edit("city", event.target.value)} /></div></div>
         <div className={styles.field}><label htmlFor="live-account-about">О себе</label><textarea id="live-account-about" value={fields.about} maxLength={10000} onChange={event => edit("about", event.target.value)} /></div>
         {(selectedRoles.includes("performer") || registration.performer) && <><div className={styles.field}><label htmlFor="live-account-description">Описание исполнителя</label><textarea id="live-account-description" value={fields.description} maxLength={10000} onChange={event => edit("description", event.target.value)} /></div><div className={styles.field}><label htmlFor="live-account-year">Курс обучения</label><input id="live-account-year" value={fields.study_year} maxLength={100} onChange={event => edit("study_year", event.target.value)} /></div>
           <fieldset className={styles.roleFieldset}><legend>Специализации</legend><div className={styles.field}><label htmlFor="live-account-specialization-search">Найти специализацию</label><input id="live-account-specialization-search" type="search" value={specializationSearch} onChange={event => setSpecializationSearch(event.target.value)} /></div><LiveState loading={specializations.loading} error={specializations.error} retry={specializations.reload} /><div className={styles.kindSwitch}>{(specializations.data ?? registration.performer?.specializations ?? []).filter(item => item.title.toLocaleLowerCase("ru").includes(specializationSearch.trim().toLocaleLowerCase("ru"))).map(item => <label key={item.id}><input type="checkbox" checked={(specializationIds ?? registration.performer?.specializations.map(value => value.id) ?? []).includes(item.id)} onChange={() => {
             if (base.current === null) base.current = snapshot.moderation.revision;
+            onDirtyChange?.(true); setValidation({});
             const selected = specializationIds ?? registration.performer?.specializations.map(value => value.id) ?? [];
             setSpecializationIds(selected.includes(item.id) ? selected.filter(value => value !== item.id) : [...selected, item.id]);
           }} />{item.title}</label>)}</div></fieldset>
           <div className={styles.field}><label htmlFor="live-account-portfolio-note">Заметка о портфолио</label><textarea id="live-account-portfolio-note" value={fields.portfolio} maxLength={10000} onChange={event => edit("portfolio", event.target.value)} /><p className={styles.hint}>Примеры для модерации добавляются отдельными работами.</p></div></>}
         <button className={styles.secondary} type="submit" disabled={!dirty}>Сохранить данные профиля</button>
-        {dirty && <button className={styles.remove} type="button" onClick={() => { setChanges({}); setRoles(null); setSpecializationIds(null); base.current = null; writer.refresh(); }}>Загрузить актуальные данные (заменит несохранённые правки)</button>}
+        {dirty && <button className={styles.remove} type="button" onClick={() => { setChanges({}); setRoles(null); setSpecializationIds(null); setValidation({}); base.current = null; onDirtyChange?.(false); writer.refresh(); }}>Загрузить актуальные данные (заменит несохранённые правки)</button>}
       </fieldset>
     </form>
     {!registration.status.is_complete && <p className={styles.hint}>Общая регистрация ещё не завершена. <Link className={styles.textLink} href="/register/roles">Продолжить регистрацию</Link></p>}
@@ -173,17 +184,22 @@ function CabinetPanel({ role, snapshot, refreshKey }: { role: RegistrationRole; 
 }
 
 function AccountBody() {
-  const { logout } = useAuth();
+  const { state: auth, logout } = useAuth();
   const params = useSearchParams(); const router = useRouter();
   const [refresh, setRefresh] = useState(0);
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
+  const [profileDirty, setProfileDirty] = useState(false);
+  const profileDirtyRef = useRef(false);
   const resource = useLiveResource(`account:${refresh}`, async signal => {
     const value = await loadSnapshot(signal);
     if (!signal.aborted) setSnapshot(value);
     return value;
   });
-  const commands = useAccountWriter(() => { setRefresh(value => value + 1); });
+  const commands = useAccountWriter(() => { setRefresh(value => value + 1); }, auth.user?.id ?? null);
   const writer = { ...commands, blocked: commands.blocked || resource.loading || !!resource.error };
+  const relatedWriter: AccountWriter = { ...writer, blocked: writer.blocked || profileDirty,
+    execute: (...args) => profileDirtyRef.current ? Promise.resolve(false) : writer.execute(...args) };
+  const updateProfileDirty = (dirty: boolean) => { profileDirtyRef.current = dirty; setProfileDirty(dirty); };
   if (!snapshot) return <LiveState loading={resource.loading} error={resource.error} retry={resource.reload} />;
   const { account, moderation } = snapshot;
   // The closed production wizard must also cover alternate account entry points.
@@ -198,8 +214,8 @@ function AccountBody() {
     {writer.notice && <p className={styles.success} role="status">{writer.notice}</p>}
     <fieldset className={styles.roleFieldset} disabled={writer.blocked}><legend>Режим кабинета</legend><div className={styles.roleSwitch}>{(["customer", "performer"] as const).filter(item => account.capabilities[item]).map(item => <button type="button" key={item} aria-pressed={item === role} onClick={() => router.replace(`/profile?role=${item}`)}>{item === "customer" ? "Заказчик" : "Исполнитель"}</button>)}</div><p>Роль меняет вид кабинета. Сервер проверяет доступ к каждому действию.</p></fieldset>
     <div className={styles.sections}>{allowed ? <CabinetPanel key={role} role={role} snapshot={snapshot} refreshKey={refreshKey} /> : <section className={styles.panel}><h2>Роль недоступна</h2><p className={styles.hint}>Добавьте нужную роль в данных аккаунта. Доступ появится после сохранения на сервере.</p></section>}
-      {role === "performer" && account.capabilities.performer && <><div className={styles.performerGrid}><ModerationPanel moderation={moderation} writer={writer} /><PortfolioPanel moderation={moderation} writer={writer} refreshKey={refreshKey} /></div><LiveOwnServices /></>}
-      <LiveProfileEditor snapshot={snapshot} writer={writer} />
+      {role === "performer" && account.capabilities.performer && <>{profileDirty && <p className={styles.locked} role="status">В профиле есть несохранённые изменения. Сначала сохраните их или загрузите актуальные данные, затем изменяйте портфолио и отправляйте профиль на модерацию.</p>}<div className={styles.performerGrid}><ModerationPanel moderation={moderation} writer={relatedWriter} /><PortfolioPanel moderation={moderation} writer={relatedWriter} refreshKey={refreshKey} /></div><LiveOwnServices /></>}
+      <LiveProfileEditor snapshot={snapshot} writer={writer} onDirtyChange={updateProfileDirty} />
     </div>
   </div>;
 }

@@ -9,7 +9,7 @@ const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'studly-auth-'));
 fs.mkdirSync(path.join(dir, 'api'));
 const modeSource = fs.readFileSync(path.join(__dirname, '../src/lib/data-mode.ts'), 'utf8');
 fs.writeFileSync(path.join(dir, 'data-mode.js'), ts.transpileModule(modeSource, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText);
-for (const name of ['client', 'auth', 'registration', 'catalog']) {
+for (const name of ['session', 'client', 'auth', 'registration', 'catalog']) {
   const source = fs.readFileSync(path.join(__dirname, '../src/lib/api', name + '.ts'), 'utf8');
   fs.writeFileSync(path.join(dir, 'api', name + '.js'), ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText);
 }

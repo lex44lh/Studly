@@ -120,7 +120,7 @@ test('Campus editor restores server status, moderation reason, values and select
     'next/navigation': { useRouter: () => ({ replace() {} }) },
     'next/link': { default: ({ children, ...props }) => React.createElement('a', props, children) },
   });
-  const html = renderToStaticMarkup(React.createElement(EditorForm, { initial: { ...own(), status: 'changes', reason: 'Improve scope' }, examples: [{ id: uuid, title: 'Server portfolio item' }], reload() {} }));
+  const html = renderToStaticMarkup(React.createElement(EditorForm, { ownerId: 12, initial: { ...own(), status: 'changes', reason: 'Improve scope' }, examples: [{ id: uuid, title: 'Server portfolio item' }], reload() {} }));
   assert.ok(html.includes('Server service')); assert.ok(html.includes('Improve scope')); assert.ok(html.includes('версия 7'));
   assert.ok(html.includes('Server portfolio item')); assert.ok(html.includes('checked=""')); assert.ok(html.includes('Отправить на модерацию'));
   assert.ok(!html.includes('демо-модерацию')); assert.ok(!html.includes('Сохранён в этом браузере'));
@@ -148,7 +148,7 @@ test('unknown draft creation freezes new intentions and explicit retry keeps the
       bodies.push(structuredClone(input)); if (bodies.length === 1) throw new ApiError(0, null); return own();
     } } },
   });
-  const render = () => { cursor = 0; return EditorForm({ examples: [], reload() {} }); };
+  const render = () => { cursor = 0; return EditorForm({ ownerId: 12, examples: [], reload() {} }); };
   const all = node => !node || typeof node !== 'object' ? [] : Array.isArray(node) ? node.flatMap(all) : [node, ...all(node.props?.children)];
   const button = (tree, text) => all(tree).find(node => node.type === 'button' && node.props.children === text);
   let tree = render(); button(tree, 'Сохранить черновик').props.onClick();

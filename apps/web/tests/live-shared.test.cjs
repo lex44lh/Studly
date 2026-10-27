@@ -15,6 +15,7 @@ function compile(file, override = () => undefined) {
   const code = ts.transpileModule(fs.readFileSync(file, 'utf8'), { fileName: file, compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true } }).outputText;
   new Function('require', 'module', 'exports', code)(name => {
     const value = override(name); if (value !== undefined) return value;
+    if (name.startsWith('.')) return compile(path.resolve(path.dirname(file), `${name}.ts`), override);
     return require(name);
   }, fixture, fixture.exports);
   return fixture.exports;
@@ -203,8 +204,9 @@ test('LiveAccess unmounts all private children while loading, anonymous, error, 
 });
 test('LiveAccess uses a server-account key so switching accounts remounts private form state', () => {
   const h = sharedHarness(); const child = React.createElement('div');
-  const first = h.module.LiveAccess({ children: child }); assert.equal(first.type, React.Fragment); assert.equal(first.key, '7'); assert.equal(first.props.children, child);
-  h.setAuth({ status: 'authenticated', user: { id: 8 } }); const next = h.module.LiveAccess({ children: child }); assert.equal(next.key, '8');
+  const first = h.module.LiveAccess({ children: child }); assert.equal(first.type, React.Fragment); assert.equal(first.key, '7:0'); assert.equal(first.props.children, child);
+  h.setAuth({ status: 'authenticated', user: { id: 8 } }); const next = h.module.LiveAccess({ children: child }); assert.equal(next.key, '8:0');
+  h.setAuth({ status: 'authenticated', user: { id: 8 }, identityEpoch: 3 }); assert.equal(h.module.LiveAccess({ children: child }).key, '8:3');
 });
 test('shared feedback is absent on success, exposes retry only for errors and labels loading separately', () => {
   const h = sharedHarness(); assert.equal(h.module.LiveState({}), null);

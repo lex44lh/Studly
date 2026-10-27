@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ApiError, apiErrorMessage } from "@/lib/api/client";
+import { captureIdentity, createIdentityController } from "@/lib/api/session";
 
 export function accountError(error: unknown): string {
   if (error instanceof ApiError && error.status === 400 && error.payload && typeof error.payload === "object") {
@@ -13,7 +14,8 @@ export function accountError(error: unknown): string {
 }
 
 /** One account-wide writer. Unknown versioned results keep the original closure/key/payload. */
-export function useAccountWriter(reload: () => void) {
+export function useAccountWriter(reload: () => void, expectedActorId: number | null = null) {
+  const [identity] = useState(() => captureIdentity(expectedActorId));
   const active = useRef<AbortController | null>(null);
   const pending = useRef<{ work: (signal: AbortSignal) => Promise<unknown>; replayable: boolean } | null>(null);
   const [busy, setBusy] = useState(false);
@@ -24,7 +26,9 @@ export function useAccountWriter(reload: () => void) {
   useEffect(() => () => { active.current?.abort(); active.current = null; pending.current = null; }, []);
   async function execute(work: (signal: AbortSignal) => Promise<unknown>, canReplay = true, retry = false): Promise<boolean> {
     if (active.current || (pending.current && !retry)) return false;
-    const controller = new AbortController(); active.current = controller;
+    const controller = createIdentityController(identity);
+    if (controller.signal.aborted) { pending.current = null; return false; }
+    active.current = controller;
     setBusy(true); setError(""); setNotice("");
     try {
       await work(controller.signal);

@@ -8,6 +8,7 @@ import { PageHeading } from "@/components/studly/PageHeading";
 import { accountClient, type PortfolioExample } from "@/lib/api/account";
 import { servicesClient, type OwnService, type ServiceDraftInput } from "@/lib/api/services";
 import { ApiError, apiErrorMessage, requestKey } from "@/lib/api/client";
+import { captureIdentity, createIdentityController } from "@/lib/api/session";
 import { LiveAccess, LiveState, useLiveResource } from "@/features/live/shared";
 import { draftFields, serviceForm, serviceStatus, type ServiceForm } from "./model";
 import styles from "@/features/demo-workspace/commerce.module.css";
@@ -26,8 +27,9 @@ async function allExamples(signal: AbortSignal) {
   return examples;
 }
 
-export function EditorForm({ initial, examples, reload }: { initial?: OwnService; examples: PortfolioExample[]; reload: () => void }) {
+export function EditorForm({ initial, examples, reload, ownerId }: { initial?: OwnService; examples: PortfolioExample[]; reload: () => void; ownerId: number }) {
   const router = useRouter();
+  const [identity] = useState(() => captureIdentity(ownerId));
   const [service, setService] = useState(initial);
   const [form, setForm] = useState<ServiceForm>(() => serviceForm(initial));
   const [dirty, setDirty] = useState(false);
@@ -41,16 +43,16 @@ export function EditorForm({ initial, examples, reload }: { initial?: OwnService
   const lifetime = useRef<AbortController | null>(null);
   const intention = useRef<{ signature: string; input: ServiceDraftInput; submit: boolean } | null>(null);
   useEffect(() => {
-    const controller = new AbortController(); lifetime.current = controller;
+    const controller = createIdentityController(identity); lifetime.current = controller;
     return () => { controller.abort(); lifetime.current = null; };
-  }, []);
+  }, [identity]);
   const patch = (value: Partial<ServiceForm>) => {
     setForm(previous => ({ ...previous, ...value })); setDirty(true); setValidation(""); setNotice("");
   };
   const conflict = error instanceof ApiError && error.status === 409;
   async function mutate(submit: boolean) {
     const controller = lifetime.current;
-    if (!controller || saving.current || conflict || (uncertain && intention.current?.submit !== submit) || (submit && (!service || dirty))) return;
+    if (!controller || controller.signal.aborted || saving.current || conflict || (uncertain && intention.current?.submit !== submit) || (submit && (!service || dirty))) return;
     saving.current = true; setBusy(true); setError(undefined); setValidation(""); setNotice("");
     try {
       const fields = submit ? {} : draftFields(form);
@@ -130,7 +132,7 @@ function EditorSource({ id }: { id: string | null }) {
   });
   if (!resource.data) return <LiveState loading={resource.loading} error={resource.error} retry={resource.reload} />;
   if (!resource.data.account.capabilities.create_service) return <section className={styles.panel}><h2>Нужна роль исполнителя</h2><p>Подключите роль исполнителя в своём аккаунте.</p><Link href="/register/roles">Открыть регистрацию</Link></section>;
-  return <EditorForm initial={resource.data.service} examples={resource.data.examples} reload={resource.reload} />;
+  return <EditorForm ownerId={resource.data.account.id} initial={resource.data.service} examples={resource.data.examples} reload={resource.reload} />;
 }
 function EditorQuery() {
   const parameters = useSearchParams();

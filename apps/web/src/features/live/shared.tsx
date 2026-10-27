@@ -40,13 +40,13 @@ export function LiveAccess({ children }: { children: ReactNode }) {
   if (demoMode) return <p role="status">Данные аккаунта доступны в режиме Live.</p>;
   if (state.status === "loading") return <LiveState loading />;
   if (state.status !== "authenticated" || !state.user) return <LiveSignIn />;
-  return <Fragment key={state.user.id}>{children}</Fragment>;
+  return <Fragment key={`${state.user.id}:${state.identityEpoch ?? 0}`}>{children}</Fragment>;
 }
 
 /** Resource identity includes the server account; stale data is hidden during render. */
 export function useLiveResource<T>(key: string | null, load: (signal: AbortSignal) => Promise<T>) {
   const { state: auth } = useAuth();
-  const scope = key === null ? null : `${auth.status}:${auth.user?.id ?? "guest"}:${key}`;
+  const scope = key === null ? null : `${auth.status}:${auth.user?.id ?? "guest"}:${auth.identityEpoch ?? 0}:${key}`;
   const [attempt, setAttempt] = useState(0);
   const requestScope = scope === null ? null : `${scope}:attempt-${attempt}`;
   const [result, setResult] = useState<{ key: string; data?: T; error?: unknown }>({ key: "" });

@@ -15,6 +15,7 @@ import { demoMode } from "@/lib/api/catalog";
 import type { Service } from "@/lib/api/catalog";
 import { favoritesClient } from "@/lib/api/services";
 import { useAuth } from "@/context/AuthContext";
+import { captureIdentity, createIdentityController } from "@/lib/api/session";
 const storageKey = "favorites";
 
 type FavoritesContextType = {
@@ -153,6 +154,7 @@ function DemoFavoritesProvider({
 
 function ServerFavoritesProvider({ children }: { children: React.ReactNode }) {
   const { state } = useAuth();
+  const [identity] = useState(() => captureIdentity(state.user?.id ?? null));
   const authenticated = state.status === "authenticated";
   const [snapshot, setSnapshot] = useState<{ services?: Service[]; error?: unknown; attempt?: number }>({});
   const [attempt, setAttempt] = useState(0);
@@ -160,9 +162,9 @@ function ServerFavoritesProvider({ children }: { children: React.ReactNode }) {
   const inFlight = useRef(new Set<number>());
   const lifetime = useRef<AbortController | null>(null);
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = createIdentityController(identity);
     lifetime.current = controller;
-    if (authenticated) {
+    if (authenticated && !controller.signal.aborted) {
       favoritesClient.all(controller.signal).then(serverServices => {
         if (!controller.signal.aborted) setSnapshot({ services: serverServices, attempt });
       }).catch(error => {
@@ -170,7 +172,7 @@ function ServerFavoritesProvider({ children }: { children: React.ReactNode }) {
       });
     }
     return () => { controller.abort(); lifetime.current = null; };
-  }, [authenticated, attempt]);
+  }, [authenticated, attempt, identity]);
   const favorites = snapshot.services?.map(service => service.id) ?? [];
   const toggleFavorite = (id: number) => {
     const controller = lifetime.current;
@@ -196,7 +198,7 @@ function LiveFavoritesProvider({ children }: { children: React.ReactNode }) {
   const { state } = useAuth();
   // Remount immediately on logout/session refresh/account switch, so private
   // membership and pending writes cannot cross an authentication boundary.
-  return <ServerFavoritesProvider key={`${state.status}:${state.user?.id ?? "guest"}`}>{children}</ServerFavoritesProvider>;
+  return <ServerFavoritesProvider key={`${state.status}:${state.user?.id ?? "guest"}:${state.identityEpoch ?? 0}`}>{children}</ServerFavoritesProvider>;
 }
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {

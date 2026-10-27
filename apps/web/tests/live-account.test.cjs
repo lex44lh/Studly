@@ -252,9 +252,11 @@ test('approved profile is editable and explains server remoderation rather than 
 });
 function writerHarness() {
   const runtime = hookRuntime(); let reloaded = 0;
-  const useWriter = loader(name => name === 'react' ? runtime.hooks : undefined)(path.join(root, 'features/live-account/useAccountWriter.ts')).useAccountWriter;
-  const render = () => runtime.render(() => useWriter(() => { reloaded++; }));
-  return { render, unmount: runtime.unmount, reloaded: () => reloaded };
+  const fixtureLoad = loader(name => name === 'react' ? runtime.hooks : undefined);
+  const useWriter = fixtureLoad(path.join(root, 'features/live-account/useAccountWriter.ts')).useAccountWriter;
+  const identity = fixtureLoad(path.join(root, 'lib/api/session.ts'));
+  const render = () => runtime.render(() => useWriter(() => { reloaded++; }, 7));
+  return { render, identity, unmount: runtime.unmount, reloaded: () => reloaded };
 }
 test('account writer serializes same-frame operations and reloads only after server success', async () => {
   const h = writerHarness(); let release; let calls = 0;
@@ -282,6 +284,34 @@ test('account writer aborts its pending request at unmount without updating anot
   const pending = new Promise(resolve => { release = resolve; });
   const write = h.render().execute(async value => { signal = value; await pending; });
   h.unmount(); assert.equal(signal.aborted, true); release(); assert.equal(await write, false); assert.equal(h.reloaded(), 0);
+});
+test('account writer keeps the original form actor lease and refuses a new-session mutation before invoking work', async () => {
+  const h = writerHarness(); const dispose = h.identity.configureIdentityGuard({ readActor: async () => 7, onInvalidated() {} });
+  try {
+    h.identity.confirmIdentity(7); const writer = h.render(); h.identity.confirmIdentity(8); let calls = 0;
+    assert.equal(await writer.execute(async () => { calls++; }), false); assert.equal(calls, 0); assert.equal(h.reloaded(), 0);
+  } finally { dispose(); }
+});
+test('account writer cannot replay an old actor unknown-outcome closure after the session changes', async () => {
+  const h = writerHarness(); const dispose = h.identity.configureIdentityGuard({ readActor: async () => 7, onInvalidated() {} });
+  try {
+    h.identity.confirmIdentity(7); let calls = 0;
+    await h.render().execute(async () => { calls++; throw new Error('Unknown fixture outcome'); }); assert.equal(h.render().uncertain, true);
+    h.identity.confirmIdentity(8); h.render().retry(); await drain(); assert.equal(calls, 1); assert.equal(h.reloaded(), 0);
+  } finally { dispose(); }
+});
+test('registration and favorites remount private state when the same actor receives a new identity epoch', () => {
+  let auth = { status: 'authenticated', user: { id: 7 }, identityEpoch: 1 };
+  const fixtureLoad = loader(name => name === '@/context/AuthContext' ? { useAuth: () => ({ state: auth }) }
+    : name === '@/lib/data-mode' || name === '@/lib/api/catalog' ? { demoMode: false } : undefined);
+  const { RegistrationProvider } = fixtureLoad(registrationPath);
+  const { FavoritesProvider } = fixtureLoad(path.join(root, 'context/FavoritesContext.tsx'));
+  const registrationKey = () => RegistrationProvider({ children: null }).key;
+  const favoritesKey = () => { const live = FavoritesProvider({ children: null }); return live.type(live.props).key; };
+  const firstRegistration = registrationKey(), firstFavorites = favoritesKey();
+  auth = { ...auth, identityEpoch: 2 };
+  assert.notEqual(registrationKey(), firstRegistration); assert.notEqual(favoritesKey(), firstFavorites);
+  assert.match(registrationKey(), /authenticated:7:2$/); assert.match(favoritesKey(), /authenticated:7:2$/);
 });
 test('moderation UI reads missing fields/reason and cannot resubmit a pending or unready profile', () => {
   const components = loader(name => name === '@/features/live/shared' ? {} : name === '@/context/AuthContext' ? {} : undefined)(componentPath);

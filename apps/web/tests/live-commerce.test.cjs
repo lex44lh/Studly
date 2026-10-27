@@ -162,7 +162,23 @@ function uiHarness(apiOverrides = {}) {
     useEffect(effect, deps) { const frame = current, i = frame.cursor++, previous = frame.dependencies.get(i); if (!previous || !deps || deps.some((x, n) => !Object.is(x, previous.deps[n]))) effects.push(() => { previous?.cleanup?.(); frame.dependencies.set(i, { deps, cleanup: effect() }); }); },
     useCallback(fn) { return fn; },
   };
-  const commerceMock = { ...api, commerceClient: { ...client, ...apiOverrides } };
+  // HTTP receipts are frozen acknowledgements. The component now follows them
+  // with GETs; keep the test transport's current server state separately.
+  let lastOrder, lastMessage, lastCase;
+  const latestOrder = id => {
+    const supplied = resources.get(`order:${id}`);
+    return supplied && (!lastOrder || supplied.revision >= lastOrder.revision) ? supplied : lastOrder ?? order();
+  };
+  const commerceMock = { ...api, commerceClient: { ...client,
+    order: async id => latestOrder(id), orders: async () => page([]),
+    messages: async (id, next) => ({ next: null, previous: null, results: [...(next ? [] : resources.get(`messages:${id}`)?.results ?? []), ...(lastMessage ? [lastMessage] : [])] }),
+    securityCase: async id => lastCase ?? resources.get(`security-appeal:${id}`) ?? securityCase(),
+    ...apiOverrides,
+    ...(apiOverrides.purchase ? { purchase: async (...args) => { const response = await apiOverrides.purchase(...args); lastOrder = { ...response, quote_id: args[0], request_key: args[1] }; return lastOrder; } } : {}),
+    ...(apiOverrides.orderAction ? { orderAction: async (...args) => { lastOrder = await apiOverrides.orderAction(...args); return lastOrder; } } : {}),
+    ...(apiOverrides.send ? { send: async (...args) => { lastMessage = { ...await apiOverrides.send(...args), client_message_id: args[1] }; return lastMessage; } } : {}),
+    ...(apiOverrides.appeal ? { appeal: async (...args) => { lastCase = await apiOverrides.appeal(...args); return lastCase; } } : {}),
+  } };
   const load = loader({ react: hooks, '@/context/AuthContext': { useAuth: () => auth }, '@/lib/api/client': apiLoad(path.join(root, 'lib/api/client.ts')), '@/lib/api/commerce': commerceMock,
     '@/features/live/shared': {
       LiveAccess: ({ children }) => auth.state.status === 'authenticated' ? React.createElement(React.Fragment, { key: auth.state.user.id }, children) : React.createElement('p', null, 'Войдите'),
@@ -236,7 +252,7 @@ test('reload restores quote from GET and retains attempted key without automatic
   freshStorage(); const key = protocol.purchaseStorageKey(9, '42', [V]); protocol.savePurchaseIntent(key, { quoteId: U, requestKey: K, attempted: true });
   const calls = []; const h = uiHarness({ quoteDetail: async id => { calls.push(['GET', id]); return quote(); }, purchase: async (_id, requestKey) => { calls.push(['POST', requestKey]); return order(); } });
   let tree = h.mount('LiveQuote', { serviceId: '42', extras: [extra] }); await tick(); tree = h.rerender(); assert.deepEqual(calls, [['GET', U]]); assert.equal(checkbox(tree).props.checked, false); assert.equal(button(tree, 'Обновить расчёт').props.disabled, true);
-  checkbox(tree).props.onChange({ target: { checked: true } }); tree = h.rerender(); button(tree, 'Создать заказ').props.onClick(); await tick(); h.rerender(); assert.deepEqual(calls.at(-1), ['POST', K]);
+  checkbox(tree).props.onChange({ target: { checked: true } }); tree = h.rerender(); button(tree, 'Повторить создание с прежним ключом').props.onClick(); await tick(); h.rerender(); assert.deepEqual(calls.at(-1), ['POST', K]);
 });
 test('changing extras invalidates quote display and consent without changing server totals locally', async () => {
   freshStorage(); const h = uiHarness({ quote: async () => quote() }); let tree = h.mount('LiveQuote', { serviceId: '42', extras: [extra] }); await tick(); tree = h.rerender(); button(tree, 'Получить расчёт').props.onClick(); await tick(); tree = h.rerender(); checkbox(tree).props.onChange({ target: { checked: true } }); tree = h.rerender();

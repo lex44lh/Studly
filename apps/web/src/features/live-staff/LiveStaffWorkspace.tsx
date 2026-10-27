@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Icon } from "@/components/studly/Icon";
 import { ApiError, pagePath, requestKey } from "@/lib/api/client";
+import { captureIdentity, createIdentityController } from "@/lib/api/session";
 import { staffClient, type StaffResource, type StaffRow, type StaffCase, type StaffSession, type StaffPerformer,
   type StaffDecision, type StaffUser, type StaffOrder, type StaffEvent } from "@/lib/api/staff";
 import { portfolioContentPath } from "@/lib/api/account";
@@ -76,6 +77,7 @@ function Resource({ resource, staffId }: { resource: StaffResource; staffId: num
   </section>{selected && <Detail key={`${resource}:${rowId(selected)}`} resource={resource} initial={selected} staffId={staffId} close={() => setSelected(null)} changed={data.reload} />}</>;
 }
 function Detail({ resource, initial, staffId, close, changed }: { resource: StaffResource; initial: StaffRow; staffId: number; close: () => void; changed: () => void }) {
+  const [identity] = useState(() => captureIdentity(staffId));
   const id = rowId(initial); const [purpose, setPurpose] = useState(""); const [approvedPurpose, setApprovedPurpose] = useState("");
   const detail = useLiveResource<StaffRow | StaffCase>(resource === "security-cases" && !approvedPurpose ? null : `staff-detail:${resource}:${id}:${approvedPurpose}`, signal => resource === "security-cases" ? staffClient.caseContent(id, approvedPurpose, signal) : staffClient.detail(resource, id, signal));
   const row = detail.data ?? initial;
@@ -88,7 +90,9 @@ function Detail({ resource, initial, staffId, close, changed }: { resource: Staf
   const needsReason = resource === "security-cases" || decision !== "approved";
   const submit = async () => {
     if (active.current || (!pending && (!canDecide || !confirmed || needsReason && !reason.trim()))) return;
-    active.current = true; setBusy(true); setError(undefined); setNotice(""); const controller = new AbortController(); abort.current = controller;
+    const controller = createIdentityController(identity);
+    if (controller.signal.aborted) return;
+    active.current = true; setBusy(true); setError(undefined); setNotice(""); abort.current = controller;
     let command = pending;
     if (!command) {
       const input = { revision: (row as StaffPerformer | OwnService | SecurityCase).revision, request_key: requestKey(), decision, reason: reason.trim() };

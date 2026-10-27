@@ -1,4 +1,4 @@
-import { ApiError, apiRequest } from "./client";
+import { ApiError, apiMutation, apiRequest } from "./client";
 
 export type SessionUser = { id: number; display_name: string; telegram_username: string };
 export type AuthOptions = { telegram_mini_app: boolean; telegram_website: boolean };
@@ -32,9 +32,7 @@ export const authClient = {
     }));
   },
   async logout(signal?: AbortSignal) {
-    // Fetch on every mutation: Django rotates CSRF after login.
-    const csrf_token = await csrf(signal);
-    return apiRequest<void>("auth/logout/", { method: "POST", csrfToken: csrf_token, signal });
+    return apiMutation<void>("auth/logout/", "POST", undefined, signal);
   },
 };
 
