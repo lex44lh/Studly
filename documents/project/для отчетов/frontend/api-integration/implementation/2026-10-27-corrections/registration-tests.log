@@ -1,0 +1,16 @@
+✔ one or both roles can be toggled without duplicates (0.546041ms)
+✔ editing roles preserves profile and performer drafts (0.067042ms)
+✔ late Telegram hints cannot overwrite a manually edited or cleared name/avatar (0.0495ms)
+✔ direct entry requires roles, a non-whitespace name and performer role (0.055875ms)
+✔ specialization search ignores case and whitespace; supports empty and no-match queries (0.073917ms)
+✔ selection has no count limit; stable IDs remove duplicates (0.710916ms)
+✔ a fresh context contains no account data from a previous session (0.070292ms)
+✔ Telegram hints handle absent SDK, malformed data and unsafe avatar URLs (0.143375ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38.045084

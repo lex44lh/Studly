@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "../../documents/project/\u0434\u043b\u044f \u043e\u0442\u0447\u0435\u0442\u043e\u0432/frontend/api-integration/implementation/2026-10-27-corrections/registration-runner.cjs"
+  ],
+  "environment": {},
+  "exit_code": 0,
+  "startedAt": "2026-10-27T09:50:57.170333+00:00",
+  "finishedAt": "2026-10-27T09:50:57.394063+00:00"
+}

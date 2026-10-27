@@ -1,0 +1,11 @@
+{
+  "command": [
+    "npm",
+    "run",
+    "lint"
+  ],
+  "environment": {},
+  "exit_code": 0,
+  "startedAt": "2026-10-27T10:00:05.307988+00:00",
+  "finishedAt": "2026-10-27T10:00:16.164932+00:00"
+}

@@ -1,0 +1,11 @@
+PASS L4-shared-tabs
+FAIL L4-switch-during-csrf: AssertionError [ERR_ASSERTION]: Identity mismatch needs explicit context/error state
+PASS L2-own-portfolio
+PASS L2-external-conflict
+PASS L3-name
+PASS L3-roles
+FAIL L1-extras-reload: AssertionError [ERR_ASSERTION]: Reload finds pending quote independently of empty selection
+FAIL L1-unavailable-quote: AssertionError [ERR_ASSERTION]: Reload finds pending quote independently of empty selection
+PASS C1-order-receipt
+PASS C1-message-release
+{"pass":false,"cases":10,"assertions":39,"djangoTested":false}

@@ -1,0 +1,8 @@
+PASS UI registration persists both roles
+PASS Profile avatar and name persist after reload
+PASS F3 admin user avatar persists across detail close and reopen
+PASS 12 admin sections 1440 light
+PASS 12 admin sections 1440 dark
+PASS 12 admin sections 390 light
+PASS 12 admin sections 390 dark
+COMPLETE admin {"checks":7,"routes":48,"apiRequests":0,"pageErrors":0,"hydrationErrors":0}

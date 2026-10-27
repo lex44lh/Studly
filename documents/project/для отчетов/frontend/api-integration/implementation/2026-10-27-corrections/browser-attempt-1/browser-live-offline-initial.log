@@ -1,0 +1,8 @@
+MANDATORY_FAILURE locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('h1').first() to be visible[22m
+
+    at settle (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-demo-regression.cjs:15:314)
+    at async go (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-demo-regression.cjs:16:153)
+    at async live (/Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-demo-regression.cjs:23:1122)
+    at async /Users/alekspih/Projects/studly-integration/documents/project/для отчетов/frontend/api-integration/implementation/2026-10-26-live/browser-demo-regression.cjs:24:1266

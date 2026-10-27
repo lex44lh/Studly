@@ -1,0 +1,37 @@
+PASS Both-role account switches cabinet without changing authenticated account
+PASS Profile PATCH, refetch and browser reload restore the fixture server state
+PASS Portfolio link POST uses private account version and appears after server refetch
+PASS Owned service v2 editor PATCH and reload preserve revision and draft
+PASS Catalog uses v2 server search/category/sort query
+PASS Favorites PUT then private list uses Django fixture data
+PASS Pre-order discussion uses a separate conversation
+PASS Quote 409 requires new calculation and fresh explicit consent
+PASS Unknown order response has explicit same-key retry and one server receipt
+PASS Actual performer identity accepts v2 order with optimistic revision
+PASS Held message is private to sender in recipient fixture response and UI
+PASS Cursor messages append by server ID and sequence
+PASS Held sender reads case and posts revisioned appeal
+PASS Unknown message retries original client_message_id and renders stored status
+PASS Buyer can cancel accepted unpaid order; no fake payment or completed state
+PASS Nonstaff 403 cannot acquire workspace through Demo flags
+PASS All 12 staff sections route through real permissions or honest unavailable states
+PASS Staff profile approval requires current detail and explicit confirmation
+PASS Staff service approval uses saved revision and server publication state
+PASS Staff case message needs audited purpose; release decision carries version and reason
+PASS API 400 shows error and explicit GET retry
+PASS API 401 shows error and explicit GET retry
+PASS API 403 shows error and explicit GET retry
+PASS API 404 shows error and explicit GET retry
+PASS API 409 shows error and explicit GET retry
+PASS API 500 shows error and explicit GET retry
+PASS Absent Backend network failure remains an honest error
+PASS Same-browser account replacement clears private profile and favorites
+PASS Incomplete authenticated account remains behind production registration gate
+PASS Guest and production registration/admin gates remain closed
+PASS 14 core routes at 1440px light
+PASS 14 core routes at 1440px dark
+PASS 14 core routes at 390px light
+PASS 14 core routes at 390px dark
+PASS Mobile staff section navigation stays usable
+PASS Poisoned Demo localStorage remains isolated; no Demo IndexedDB
+COMPLETE synthetic Live contract {"assertions":627,"checks":36,"routes":69,"requests":509,"djangoTested":false}

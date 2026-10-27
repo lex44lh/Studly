@@ -1,0 +1,982 @@
+{
+  "kind": "Corrected Frontend candidate verification; synthetic is NOT real Django E2E",
+  "checkedAt": "2026-10-27T10:13:00.066009+00:00",
+  "codeCommit": "f674b2f0a3f75284b0bcf57e8837f220b5c96a32",
+  "rejectedBase": "abe0efb2648ab34f19b9c23f3cf4427bd76e6e05",
+  "backendReference": "8999703fe60ef6714595614413faddc5a9308d44",
+  "sourceManifestSHA256": "46d74bfc9966c1e29164044c1d2276b169481364e39926439e0dd8ba403a9779",
+  "sourceFiles": 171,
+  "tests": {
+    "cjs": 370,
+    "typescriptRegistration": 8,
+    "totalDistinct": 378,
+    "newDistinct": 37
+  },
+  "browser": {
+    "demoRouteCombinations": 232,
+    "liveSyntheticRouteChecks": 69,
+    "liveRoleQueryChecks": 4,
+    "liveOfflineRouteCombinations": 46,
+    "targetedSyntheticCases": 11,
+    "targetedAssertions": 62,
+    "targetedSyntheticRequests": 223,
+    "actualDjangoTested": false,
+    "realTelegramTested": false
+  },
+  "buildsPassed": 3,
+  "lint": {
+    "errors": 0,
+    "unchangedWarnings": 2
+  },
+  "knownBackendDependencies": [
+    "Atomic expected actor/session mutation check; final GET-to-write race remains",
+    "Real isolated Django/PostgreSQL/Telegram/cookie/CSRF E2E",
+    "Recovery of previously incomplete accounts",
+    "Conclusive resolution for unknown purchase without accessible server snapshot"
+  ],
+  "requiredCommandResults": [
+    "tests.json",
+    "registration-tests.json",
+    "typescript.json",
+    "eslint.json",
+    "build-demo.json",
+    "build-demo-admin.json",
+    "build-live.json",
+    "browser-demo.json",
+    "browser-demo-admin.json",
+    "browser-live-offline.json",
+    "browser-live-regression.json",
+    "browser-live-role-query.json",
+    "production-gates.json",
+    "browser-corrections-run-2.json"
+  ],
+  "historicalArtifactsPreserved": 478,
+  "localMarkdownLinksChecked": [
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-23_17-12_f123-closure.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-23_10-42_frontend-scenarios-completion.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-22_18-09_frontend-scenarios-progress.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-22_02-55_technical-acceptance-fixes.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-27_12-33_backend-identity-recovery-handoff.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/implementation/2026-10-27-corrections/"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-26_00-08_django-live-integration.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-26_00-08_ROUTE_API_MATRIX.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-26_00-08_backend-dependencies.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-21_22-18_full-redesign-progress.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../../../LOCAL_START.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/local-launch/2026-10-18_14-42_demo-live-startup.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-18_14-42_frontend-publication.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-16_12-37_git.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/registration/2026-10-16_12-39_registration.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_13-13_auth.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_20-43_integration-publish.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_integration-status.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_15-08_backend-contract-audit.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-16_20-59_frontend-integration-publication.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_21-12_regression-demo-live.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/README.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-18_02-08_visual-prototypes.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-18_13-21_campus-search-implementation.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-18_20-08_worktree-workflow-audit.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../TEAM_WORKFLOW.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../CODEX_DESKTOP.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../handoffs/README.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-18_20-34_worktree-setup.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-19_00-21_session-initialization.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-19_00-44_django-live-plan.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-25_16-34_integration-progress.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-25_16-34_integration-progress.md#7-перенос-и-проверка-после-разрешения-po"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-25_16-34_integration-progress.md#9-завершение-прерванной-публикации"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md",
+      "link": "2026-10-26_00-08_django-live-integration.md"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md",
+      "link": "implementation/2026-10-27-corrections/"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md",
+      "link": "implementation/2026-10-27-corrections/verification-summary.json"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md",
+      "link": "implementation/2026-10-27-corrections/source-manifest.json"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md",
+      "link": "2026-10-27_12-33_backend-identity-recovery-handoff.md"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_backend-identity-recovery-handoff.md",
+      "link": "2026-10-27_12-33_live-integration-corrections.md"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "browser-C1-message-release-pass.png",
+      "sha256": "1fc0fd932909cb9aea624c2bd4216276ab0cc89fc8de8ac24481d524c9ce8362",
+      "bytes": 72831
+    },
+    {
+      "path": "browser-C1-order-receipt-pass.png",
+      "sha256": "3ecc684f7b2cc28c39c584af45761594501c77c836744c4420d1e88b8be9276a",
+      "bytes": 115042
+    },
+    {
+      "path": "browser-L1-extras-reload-failure.png",
+      "sha256": "7148e8b269eb033a2d7a56bfe1b31d8d39e131298e753bcc0067176cac5d57aa",
+      "bytes": 146995
+    },
+    {
+      "path": "browser-L1-extras-reload-pass.png",
+      "sha256": "2ad0fd2d3807565b7ee7a300d1f5d07b4a3f6546c2aec5a0a98d999fc4168813",
+      "bytes": 150372
+    },
+    {
+      "path": "browser-L1-extras-reload-unknown-before-reload.png",
+      "sha256": "1058cdbcd58381d36528bcb68f885dffdab7513bb684c5649a42e0b3a080c3a9",
+      "bytes": 244145
+    },
+    {
+      "path": "browser-L1-no-order-quote-unavailable-pass.png",
+      "sha256": "2ad0fd2d3807565b7ee7a300d1f5d07b4a3f6546c2aec5a0a98d999fc4168813",
+      "bytes": 150372
+    },
+    {
+      "path": "browser-L1-no-order-quote-unavailable-quote-unavailable-locked.png",
+      "sha256": "0c84456e2f5f88f931205b4091f5e298301c63c09e24d520a1f2d702fcc428c8",
+      "bytes": 180635
+    },
+    {
+      "path": "browser-L1-no-order-quote-unavailable-unknown-before-reload.png",
+      "sha256": "bba580dfbae1e76bc0c27bb00eb9d826cb7ede67666598d34009fc523f81639c",
+      "bytes": 242426
+    },
+    {
+      "path": "browser-L1-unavailable-quote-failure.png",
+      "sha256": "5075f865854ff86808c093ce762a0b3b0a36781da2a31c25c37768be37b76948",
+      "bytes": 150373
+    },
+    {
+      "path": "browser-L1-unavailable-quote-pass.png",
+      "sha256": "2ad0fd2d3807565b7ee7a300d1f5d07b4a3f6546c2aec5a0a98d999fc4168813",
+      "bytes": 150372
+    },
+    {
+      "path": "browser-L1-unavailable-quote-unknown-before-reload.png",
+      "sha256": "c312b2745aca4ef33b5c317e8a89641488a782b95d7fdc6b8862198fd2eaa7cd",
+      "bytes": 244129
+    },
+    {
+      "path": "browser-L2-external-conflict-pass.png",
+      "sha256": "11c3269f2bab669a84ffb107ee05414d01125e811e0a734a38cba176c26954c1",
+      "bytes": 302299
+    },
+    {
+      "path": "browser-L2-own-portfolio-pass.png",
+      "sha256": "00a59683c5a2c4067e497703bd5efa4b28c6c09c15a5d2e03fff61e7616d73c8",
+      "bytes": 284589
+    },
+    {
+      "path": "browser-L3-name-pass.png",
+      "sha256": "b18faf980ed8c046160a7eb7cd4641f6dd96e3d76defb10f4fbe406ba17f451b",
+      "bytes": 279688
+    },
+    {
+      "path": "browser-L3-roles-pass.png",
+      "sha256": "4895b4fdf1a2a3a56cd43eac2caf6626283ecbb72d4c8bcecbd3b13dbb230fd1",
+      "bytes": 275749
+    },
+    {
+      "path": "browser-L4-shared-tabs-beta-dirty.png",
+      "sha256": "c955d1360cc5566cf5a11f915e6d3576e30dd8ab19730ed61b8bfb93ba98e550",
+      "bytes": 291869
+    },
+    {
+      "path": "browser-L4-shared-tabs-pass.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-L4-switch-during-csrf-failure.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-L4-switch-during-csrf-pass.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-admin-admin-1440-dark.jpg",
+      "sha256": "0625bee832d8569ca167477b3f398d6307e38475227b39ca2f3245cf9ebb5069",
+      "bytes": 112257
+    },
+    {
+      "path": "browser-admin-admin-1440-light.jpg",
+      "sha256": "04e87be6e1b07bccb3bb6090e75e78225bbc9536df5fcc27b8267f91d4497148",
+      "bytes": 114387
+    },
+    {
+      "path": "browser-admin-admin-390-dark.jpg",
+      "sha256": "ad3d49dca8c1b3846037795c2ef3df6a0d5da957d949d9e7b22cc53419b2f6a8",
+      "bytes": 79495
+    },
+    {
+      "path": "browser-admin-admin-390-light.jpg",
+      "sha256": "a60448c251a83469775856d835bcfec756be2e6d615502dbe5ed7f0008afaa90",
+      "bytes": 81186
+    },
+    {
+      "path": "browser-admin-admin-user-avatar-reopened.jpg",
+      "sha256": "8cf18c12c960b8f4e09349526a82cbed383f89e76e4c8f69d210b2820863bc63",
+      "bytes": 101042
+    },
+    {
+      "path": "browser-admin-profile-1440-light.jpg",
+      "sha256": "38b9ea437a768f1daa6865516096482c68e6314156f07e9bcaaa63e9a23b27c7",
+      "bytes": 204632
+    },
+    {
+      "path": "browser-admin.json",
+      "sha256": "74667932afb8c06d5c147da8d2c382eca5700e374e6c719180fef4abe55c5ebe",
+      "bytes": 15014
+    },
+    {
+      "path": "browser-attempt-1/browser-C1-message-release-pass.png",
+      "sha256": "1fc0fd932909cb9aea624c2bd4216276ab0cc89fc8de8ac24481d524c9ce8362",
+      "bytes": 72831
+    },
+    {
+      "path": "browser-attempt-1/browser-C1-order-receipt-pass.png",
+      "sha256": "3ecc684f7b2cc28c39c584af45761594501c77c836744c4420d1e88b8be9276a",
+      "bytes": 115042
+    },
+    {
+      "path": "browser-attempt-1/browser-L1-extras-reload-failure.png",
+      "sha256": "7148e8b269eb033a2d7a56bfe1b31d8d39e131298e753bcc0067176cac5d57aa",
+      "bytes": 146995
+    },
+    {
+      "path": "browser-attempt-1/browser-L1-extras-reload-unknown-before-reload.png",
+      "sha256": "03af16bc74fe7f5da433d0e2a31ca437c67245bb32335697986b61177a7e26d7",
+      "bytes": 243212
+    },
+    {
+      "path": "browser-attempt-1/browser-L1-unavailable-quote-failure.png",
+      "sha256": "5075f865854ff86808c093ce762a0b3b0a36781da2a31c25c37768be37b76948",
+      "bytes": 150373
+    },
+    {
+      "path": "browser-attempt-1/browser-L1-unavailable-quote-unknown-before-reload.png",
+      "sha256": "6dec1f9ab2af3e357220331d375a398e069cb8c2ba28f19430f2c8758b56e770",
+      "bytes": 244129
+    },
+    {
+      "path": "browser-attempt-1/browser-L2-external-conflict-pass.png",
+      "sha256": "11c3269f2bab669a84ffb107ee05414d01125e811e0a734a38cba176c26954c1",
+      "bytes": 302299
+    },
+    {
+      "path": "browser-attempt-1/browser-L2-own-portfolio-pass.png",
+      "sha256": "21e35aef1c4d1bbc1a1521df7ccb3d1954ed1f3d3517f72290a9880bf709e049",
+      "bytes": 288188
+    },
+    {
+      "path": "browser-attempt-1/browser-L3-name-pass.png",
+      "sha256": "b18faf980ed8c046160a7eb7cd4641f6dd96e3d76defb10f4fbe406ba17f451b",
+      "bytes": 279688
+    },
+    {
+      "path": "browser-attempt-1/browser-L3-roles-pass.png",
+      "sha256": "4895b4fdf1a2a3a56cd43eac2caf6626283ecbb72d4c8bcecbd3b13dbb230fd1",
+      "bytes": 275749
+    },
+    {
+      "path": "browser-attempt-1/browser-L4-shared-tabs-beta-dirty.png",
+      "sha256": "c955d1360cc5566cf5a11f915e6d3576e30dd8ab19730ed61b8bfb93ba98e550",
+      "bytes": 291869
+    },
+    {
+      "path": "browser-attempt-1/browser-L4-shared-tabs-pass.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-attempt-1/browser-L4-switch-during-csrf-failure.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-attempt-1/browser-admin-admin-1440-dark.jpg",
+      "sha256": "0625bee832d8569ca167477b3f398d6307e38475227b39ca2f3245cf9ebb5069",
+      "bytes": 112257
+    },
+    {
+      "path": "browser-attempt-1/browser-admin-admin-1440-light.jpg",
+      "sha256": "04e87be6e1b07bccb3bb6090e75e78225bbc9536df5fcc27b8267f91d4497148",
+      "bytes": 114387
+    },
+    {
+      "path": "browser-attempt-1/browser-admin-admin-390-dark.jpg",
+      "sha256": "ad3d49dca8c1b3846037795c2ef3df6a0d5da957d949d9e7b22cc53419b2f6a8",
+      "bytes": 79495
+    },
+    {
+      "path": "browser-attempt-1/browser-admin-admin-390-light.jpg",
+      "sha256": "a60448c251a83469775856d835bcfec756be2e6d615502dbe5ed7f0008afaa90",
+      "bytes": 81186
+    },
+    {
+      "path": "browser-attempt-1/browser-admin-admin-user-avatar-reopened.jpg",
+      "sha256": "8cf18c12c960b8f4e09349526a82cbed383f89e76e4c8f69d210b2820863bc63",
+      "bytes": 101042
+    },
+    {
+      "path": "browser-attempt-1/browser-admin-profile-1440-light.jpg",
+      "sha256": "38b9ea437a768f1daa6865516096482c68e6314156f07e9bcaaa63e9a23b27c7",
+      "bytes": 204632
+    },
+    {
+      "path": "browser-attempt-1/browser-admin.json",
+      "sha256": "74667932afb8c06d5c147da8d2c382eca5700e374e6c719180fef4abe55c5ebe",
+      "bytes": 15014
+    },
+    {
+      "path": "browser-attempt-1/browser-corrections-results.json",
+      "sha256": "a80730bc4a53ba2e7418f499032a0b6276aeb67b38b2d2f69e08b9ff25e8b72c",
+      "bytes": 151844
+    },
+    {
+      "path": "browser-attempt-1/browser-corrections-run.json",
+      "sha256": "65e44853abcb4b00421bc705287e3f94cab6dfab6b1ec669984a78943e1430e1",
+      "bytes": 356
+    },
+    {
+      "path": "browser-attempt-1/browser-corrections-run.log",
+      "sha256": "976d703d2c301896d70fce5f0ef115f776748bc9bc7c33f4bb486f01fd989e43",
+      "bytes": 551
+    },
+    {
+      "path": "browser-attempt-1/browser-corrections.cjs",
+      "sha256": "619c1b0fd3f2583fb7c6041bca340cf4253e00b68e3243ff1cbd69b648a9704e",
+      "bytes": 22699
+    },
+    {
+      "path": "browser-attempt-1/browser-default-chat-390-light.jpg",
+      "sha256": "802b9b9ea2e6d7008b945b6b71ece0edc744068c228b9bab67a832ea74be0402",
+      "bytes": 41327
+    },
+    {
+      "path": "browser-attempt-1/browser-default-home-1440-light.jpg",
+      "sha256": "2baedf4cb965fa59c61e6c76febd926ff4ad1f11864ec9fd31ed44dc2270a5dd",
+      "bytes": 145943
+    },
+    {
+      "path": "browser-attempt-1/browser-default-profile-1440-light.jpg",
+      "sha256": "a24e6e19a493ed8ac0386736e2a21e5e2d81ace0860e2b27918f1699b038a133",
+      "bytes": 202137
+    },
+    {
+      "path": "browser-attempt-1/browser-default-profile-390-dark.jpg",
+      "sha256": "38742e676f7d5966ba0f5a264d1aa1c14118e627a188d33c665b8b4c20a6ebaa",
+      "bytes": 81286
+    },
+    {
+      "path": "browser-attempt-1/browser-default-service-390-dark.jpg",
+      "sha256": "83267e8a7d1de9dc0f1d36281cb141cf4e6bbf24def1cf2debf41aaf311c8926",
+      "bytes": 100656
+    },
+    {
+      "path": "browser-attempt-1/browser-default.json",
+      "sha256": "daa13b800379ccf07c7607b8dfbeaf91c68016a6268bb2bca5a837e812953b44",
+      "bytes": 57135
+    },
+    {
+      "path": "browser-attempt-1/browser-demo-admin.json",
+      "sha256": "db9df725be28e685bb3582af56a23effa7827c82d8f44a556d16b36271d102e4",
+      "bytes": 366
+    },
+    {
+      "path": "browser-attempt-1/browser-demo-admin.log",
+      "sha256": "fb310dc192ccb5c8464f20ee3d67d366621e39385f98f77e732fd3ace876ed79",
+      "bytes": 380
+    },
+    {
+      "path": "browser-attempt-1/browser-demo.json",
+      "sha256": "f5416b3bc1c29a635f3c15443e1a39cd8813fb5e15a6e0ef6e25ad37e76fc4c7",
+      "bytes": 368
+    },
+    {
+      "path": "browser-attempt-1/browser-demo.log",
+      "sha256": "204b895695e2fdbe3483e36b4b672575abb4bc9cc771468784c447f52d0d6716",
+      "bytes": 613
+    },
+    {
+      "path": "browser-attempt-1/browser-live-contract-chat-390-dark.jpg",
+      "sha256": "b17f9212374963255109336279cc28b72f425579d80c7df4a426a1303c1f77f6",
+      "bytes": 38531
+    },
+    {
+      "path": "browser-attempt-1/browser-live-contract-profile-390-dark.jpg",
+      "sha256": "29482a3125f8ac0df626b0e9738985cb3e1408bb453c7555d61e308b56d5a464",
+      "bytes": 95405
+    },
+    {
+      "path": "browser-attempt-1/browser-live-contract-quote-390-dark.jpg",
+      "sha256": "76b0974fe71295298a6dc8f0d78faa1905e571cd227c10891b91a2e140d02515",
+      "bytes": 80425
+    },
+    {
+      "path": "browser-attempt-1/browser-live-contract-results.json",
+      "sha256": "1f64805ab4216cf9b1d1b1be8a9f34fa7da16284d52a7c751f4aab081306c108",
+      "bytes": 132927
+    },
+    {
+      "path": "browser-attempt-1/browser-live-contract-staff-1440-light.jpg",
+      "sha256": "03d2accdf4ff6aeb14a36696a215f0cc71226738a0b0a39cfa79f3eeea6e59b8",
+      "bytes": 85945
+    },
+    {
+      "path": "browser-attempt-1/browser-live-contract-staff-390-dark.jpg",
+      "sha256": "677079c029f9b0b8800b1a643ef115c84cbceebaa0c1e6ec195096defb367648",
+      "bytes": 22414
+    },
+    {
+      "path": "browser-attempt-1/browser-live-failure-initial.jpg",
+      "sha256": "a198fb7a455da61dacca49c66d81746c97d8c66515f0ec02a3a448f34bbd67dd",
+      "bytes": 23877
+    },
+    {
+      "path": "browser-attempt-1/browser-live-failure.jpg",
+      "sha256": "a198fb7a455da61dacca49c66d81746c97d8c66515f0ec02a3a448f34bbd67dd",
+      "bytes": 23877
+    },
+    {
+      "path": "browser-attempt-1/browser-live-initial.json",
+      "sha256": "9df3f321cda10aa679b064a0ace312fbdc3b77efa9a58d87f2bc918d600d586d",
+      "bytes": 4328
+    },
+    {
+      "path": "browser-attempt-1/browser-live-offline-initial.json",
+      "sha256": "36f99b588a5f325d5e23ab54c20a4f5f1012363295ee27a7eaceb6327805f746",
+      "bytes": 365
+    },
+    {
+      "path": "browser-attempt-1/browser-live-offline-initial.log",
+      "sha256": "fb33357c530eee94eb7eb7133951bd9793ded32e6f17aa8bcef2b7d09d5b571c",
+      "bytes": 902
+    },
+    {
+      "path": "browser-attempt-1/browser-live-offline-service-390-dark.jpg",
+      "sha256": "db4ee6f8f91b1fed4ca1611a7e593b9290cf00fd23efefa503306b90876af5d2",
+      "bytes": 25554
+    },
+    {
+      "path": "browser-attempt-1/browser-live-offline.json",
+      "sha256": "36f99b588a5f325d5e23ab54c20a4f5f1012363295ee27a7eaceb6327805f746",
+      "bytes": 365
+    },
+    {
+      "path": "browser-attempt-1/browser-live-offline.log",
+      "sha256": "fb33357c530eee94eb7eb7133951bd9793ded32e6f17aa8bcef2b7d09d5b571c",
+      "bytes": 902
+    },
+    {
+      "path": "browser-attempt-1/browser-live-regression.json",
+      "sha256": "1de390b30995189e316b9eeac055c458e351cd16f965ff251a36336e69da1b90",
+      "bytes": 363
+    },
+    {
+      "path": "browser-attempt-1/browser-live-regression.log",
+      "sha256": "f0131a893b19b95cfca4ecc5701400e45f76546f7d5811ebefd18efd1126780c",
+      "bytes": 2394
+    },
+    {
+      "path": "browser-attempt-1/browser-live.json",
+      "sha256": "9df3f321cda10aa679b064a0ace312fbdc3b77efa9a58d87f2bc918d600d586d",
+      "bytes": 4328
+    },
+    {
+      "path": "browser-attempt-1/contract-fixtures.cjs",
+      "sha256": "5d1c8ad653b62fbb020e3e2e321bea7aca1bdb0b5913d42281b2e2eab6ede5b9",
+      "bytes": 24327
+    },
+    {
+      "path": "browser-attempt-1/fixture-selfcheck.cjs",
+      "sha256": "1ff7c0390026fb7eb750a29f961e3a4e0e8d23f55f5ff05b52bf0be3d7b9be85",
+      "bytes": 3040
+    },
+    {
+      "path": "browser-corrections-results.json",
+      "sha256": "b0177ad55d7d34eba06be98cbfe4535eb45a68ba05d9139d151655492fb63e3f",
+      "bytes": 169283
+    },
+    {
+      "path": "browser-corrections-run-2.json",
+      "sha256": "1c6f8407ede39a61aab92612d0efe9cf49dc3ec3e5e790ba75c679b14ddfc77d",
+      "bytes": 356
+    },
+    {
+      "path": "browser-corrections-run-2.log",
+      "sha256": "25db02188e53bf87640fc2c72bd2f471ba4e5a2394a0a65dcf20218ca2ca4216",
+      "bytes": 313
+    },
+    {
+      "path": "browser-corrections-run.json",
+      "sha256": "65e44853abcb4b00421bc705287e3f94cab6dfab6b1ec669984a78943e1430e1",
+      "bytes": 356
+    },
+    {
+      "path": "browser-corrections-run.log",
+      "sha256": "976d703d2c301896d70fce5f0ef115f776748bc9bc7c33f4bb486f01fd989e43",
+      "bytes": 551
+    },
+    {
+      "path": "browser-corrections.cjs",
+      "sha256": "2cce8162c0292269f776f886936668c63be0b28990d702078a9ae2efc36607ea",
+      "bytes": 24673
+    },
+    {
+      "path": "browser-default-chat-390-light.jpg",
+      "sha256": "802b9b9ea2e6d7008b945b6b71ece0edc744068c228b9bab67a832ea74be0402",
+      "bytes": 41327
+    },
+    {
+      "path": "browser-default-home-1440-light.jpg",
+      "sha256": "2baedf4cb965fa59c61e6c76febd926ff4ad1f11864ec9fd31ed44dc2270a5dd",
+      "bytes": 145943
+    },
+    {
+      "path": "browser-default-profile-1440-light.jpg",
+      "sha256": "a24e6e19a493ed8ac0386736e2a21e5e2d81ace0860e2b27918f1699b038a133",
+      "bytes": 202137
+    },
+    {
+      "path": "browser-default-profile-390-dark.jpg",
+      "sha256": "38742e676f7d5966ba0f5a264d1aa1c14118e627a188d33c665b8b4c20a6ebaa",
+      "bytes": 81286
+    },
+    {
+      "path": "browser-default-service-390-dark.jpg",
+      "sha256": "83267e8a7d1de9dc0f1d36281cb141cf4e6bbf24def1cf2debf41aaf311c8926",
+      "bytes": 100656
+    },
+    {
+      "path": "browser-default.json",
+      "sha256": "daa13b800379ccf07c7607b8dfbeaf91c68016a6268bb2bca5a837e812953b44",
+      "bytes": 57135
+    },
+    {
+      "path": "browser-demo-admin.json",
+      "sha256": "db9df725be28e685bb3582af56a23effa7827c82d8f44a556d16b36271d102e4",
+      "bytes": 366
+    },
+    {
+      "path": "browser-demo-admin.log",
+      "sha256": "fb310dc192ccb5c8464f20ee3d67d366621e39385f98f77e732fd3ace876ed79",
+      "bytes": 380
+    },
+    {
+      "path": "browser-demo.json",
+      "sha256": "f5416b3bc1c29a635f3c15443e1a39cd8813fb5e15a6e0ef6e25ad37e76fc4c7",
+      "bytes": 368
+    },
+    {
+      "path": "browser-demo.log",
+      "sha256": "204b895695e2fdbe3483e36b4b672575abb4bc9cc771468784c447f52d0d6716",
+      "bytes": 613
+    },
+    {
+      "path": "browser-live-contract-chat-390-dark.jpg",
+      "sha256": "b17f9212374963255109336279cc28b72f425579d80c7df4a426a1303c1f77f6",
+      "bytes": 38531
+    },
+    {
+      "path": "browser-live-contract-profile-390-dark.jpg",
+      "sha256": "29482a3125f8ac0df626b0e9738985cb3e1408bb453c7555d61e308b56d5a464",
+      "bytes": 95405
+    },
+    {
+      "path": "browser-live-contract-quote-390-dark.jpg",
+      "sha256": "76b0974fe71295298a6dc8f0d78faa1905e571cd227c10891b91a2e140d02515",
+      "bytes": 80425
+    },
+    {
+      "path": "browser-live-contract-results.json",
+      "sha256": "1f64805ab4216cf9b1d1b1be8a9f34fa7da16284d52a7c751f4aab081306c108",
+      "bytes": 132927
+    },
+    {
+      "path": "browser-live-contract-staff-1440-light.jpg",
+      "sha256": "03d2accdf4ff6aeb14a36696a215f0cc71226738a0b0a39cfa79f3eeea6e59b8",
+      "bytes": 85945
+    },
+    {
+      "path": "browser-live-contract-staff-390-dark.jpg",
+      "sha256": "677079c029f9b0b8800b1a643ef115c84cbceebaa0c1e6ec195096defb367648",
+      "bytes": 22414
+    },
+    {
+      "path": "browser-live-failure-initial.jpg",
+      "sha256": "a198fb7a455da61dacca49c66d81746c97d8c66515f0ec02a3a448f34bbd67dd",
+      "bytes": 23877
+    },
+    {
+      "path": "browser-live-failure.jpg",
+      "sha256": "a198fb7a455da61dacca49c66d81746c97d8c66515f0ec02a3a448f34bbd67dd",
+      "bytes": 23877
+    },
+    {
+      "path": "browser-live-initial.json",
+      "sha256": "9df3f321cda10aa679b064a0ace312fbdc3b77efa9a58d87f2bc918d600d586d",
+      "bytes": 4328
+    },
+    {
+      "path": "browser-live-offline-initial.json",
+      "sha256": "36f99b588a5f325d5e23ab54c20a4f5f1012363295ee27a7eaceb6327805f746",
+      "bytes": 365
+    },
+    {
+      "path": "browser-live-offline-initial.log",
+      "sha256": "fb33357c530eee94eb7eb7133951bd9793ded32e6f17aa8bcef2b7d09d5b571c",
+      "bytes": 902
+    },
+    {
+      "path": "browser-live-offline-service-390-dark.jpg",
+      "sha256": "db4ee6f8f91b1fed4ca1611a7e593b9290cf00fd23efefa503306b90876af5d2",
+      "bytes": 25554
+    },
+    {
+      "path": "browser-live-offline.json",
+      "sha256": "2ba46338b458d7e1a79405eaf784d532d8e40ff921173498bc3fb59f7a86dd4b",
+      "bytes": 363
+    },
+    {
+      "path": "browser-live-offline.log",
+      "sha256": "7c24a6218ad6503a2c0403fd897363e0872c365ccda51167adf53671b6ba096d",
+      "bytes": 96
+    },
+    {
+      "path": "browser-live-regression.json",
+      "sha256": "1de390b30995189e316b9eeac055c458e351cd16f965ff251a36336e69da1b90",
+      "bytes": 363
+    },
+    {
+      "path": "browser-live-regression.log",
+      "sha256": "f0131a893b19b95cfca4ecc5701400e45f76546f7d5811ebefd18efd1126780c",
+      "bytes": 2394
+    },
+    {
+      "path": "browser-live-role-query-390-dark.jpg",
+      "sha256": "c893bfb58995f36d51ff69627ac4e12e52cfa4b3eb4c7c05a6a96aef7d37f75a",
+      "bytes": 22495
+    },
+    {
+      "path": "browser-live-role-query-results.json",
+      "sha256": "b6f78b74d6f1157b80b5b9ae277d7134d30fed678bce19bd704edfbfcd1ebb16",
+      "bytes": 4885
+    },
+    {
+      "path": "browser-live-role-query.json",
+      "sha256": "93ea66a5d8a6d69ac3eb2359d5d21534ac5540b51e8aaf2a358df4cff90b0e37",
+      "bytes": 369
+    },
+    {
+      "path": "browser-live-role-query.log",
+      "sha256": "591025bd0f9acdad7fd65e09a4af561dd3a80d51d41738bd741ed3c70214dca9",
+      "bytes": 465
+    },
+    {
+      "path": "browser-live.json",
+      "sha256": "9df3f321cda10aa679b064a0ace312fbdc3b77efa9a58d87f2bc918d600d586d",
+      "bytes": 4328
+    },
+    {
+      "path": "browser-offline-regression.cjs",
+      "sha256": "a6a94333f22c46b860728f20a9549e2c8cd93096ece030f0be734abffaec4593",
+      "bytes": 5408
+    },
+    {
+      "path": "browser-offline-results.json",
+      "sha256": "f7ee7ec821a9e3a9b6a1aff0c04cd22f4b2f6ab8ac5823dd96498d520eb091ef",
+      "bytes": 10708
+    },
+    {
+      "path": "build-demo-admin.json",
+      "sha256": "e16632ded29c145cf16b00f2049aa460c77b049230e9ab905b0adea45555eb05",
+      "bytes": 293
+    },
+    {
+      "path": "build-demo-admin.log",
+      "sha256": "c08985c4a7297173485b7ed63d121fd92b23e3599cde79a3100637bd0133cbec",
+      "bytes": 1234
+    },
+    {
+      "path": "build-demo.json",
+      "sha256": "f0cdab1451465c02fc811f3ace57194b13458ac609916367325e02ff2d366e51",
+      "bytes": 294
+    },
+    {
+      "path": "build-demo.log",
+      "sha256": "d93d4a9ec820218e6603a004d23efd5fce99c958158ee43b96f954e7bfcb64ae",
+      "bytes": 1233
+    },
+    {
+      "path": "build-live.json",
+      "sha256": "e84dfbf7a70df6078fc61ff796fd02f099224567ced01e3654a50e62ab942114",
+      "bytes": 293
+    },
+    {
+      "path": "build-live.log",
+      "sha256": "142d88f909da73776a6ce8b7edf11f9da9916338bc7f6a6556bbe99c50b97748",
+      "bytes": 1233
+    },
+    {
+      "path": "contract-fixtures.cjs",
+      "sha256": "16a866ceea28093aae7275cdda17bf1fc1aff91ce79f2f87f7fc4bffa9ac3977",
+      "bytes": 24539
+    },
+    {
+      "path": "eslint-initial.json",
+      "sha256": "53b0ba1c9a98bb5d152601228182fd5e03cd48a03d89a32da030a3148f886932",
+      "bytes": 198
+    },
+    {
+      "path": "eslint-initial.log",
+      "sha256": "cb4b6a78e9638c58cab4b63f34a17cac2961c1ee65556141227ca09c78c25cb0",
+      "bytes": 1513
+    },
+    {
+      "path": "eslint.json",
+      "sha256": "cbaec5b3ef7f75fb36ae0c7517ac68721f06f910890e4e86b601508ccbc275bf",
+      "bytes": 198
+    },
+    {
+      "path": "eslint.log",
+      "sha256": "3caddf739f167791dbae68a42ed997be8d825681958c901669ad0a74ed4c6852",
+      "bytes": 805
+    },
+    {
+      "path": "fixture-selfcheck.cjs",
+      "sha256": "1ff7c0390026fb7eb750a29f961e3a4e0e8d23f55f5ff05b52bf0be3d7b9be85",
+      "bytes": 3040
+    },
+    {
+      "path": "gates-live.json",
+      "sha256": "99a7aec7a5eb471b64c9e578f0dd0c514773c65733033f9d528776977336e01b",
+      "bytes": 708
+    },
+    {
+      "path": "offline--admin.png",
+      "sha256": "38eb425aa6203f22c342c730ee492a29d77d6e4b63eb3266a59abd8e3fbd8225",
+      "bytes": 29471
+    },
+    {
+      "path": "offline--profile.png",
+      "sha256": "78a27a0bd5f7fda2351ca0da0c326bf2fcc67d29d71a5d81571c286d03bb4739",
+      "bytes": 33032
+    },
+    {
+      "path": "offline--register-roles.png",
+      "sha256": "964add7724edf6e0fc33835c5e1d60e45561f9ff8d364ab3eb6d26ae3ce937c2",
+      "bytes": 26174
+    },
+    {
+      "path": "production-gates.cjs",
+      "sha256": "3ab15bcadde62df51500ba0e5604dc14db1495f4a223114b96085352b7935ba6",
+      "bytes": 1718
+    },
+    {
+      "path": "production-gates.json",
+      "sha256": "a517cba9624d117795a3eaec196b3ffca45ff4182b735c4151d13cea3111bcd0",
+      "bytes": 353
+    },
+    {
+      "path": "production-gates.log",
+      "sha256": "99a7aec7a5eb471b64c9e578f0dd0c514773c65733033f9d528776977336e01b",
+      "bytes": 708
+    },
+    {
+      "path": "registration-runner.cjs",
+      "sha256": "ddbba0ee3c41be51400277366e1a179012cf25ab4e5e02ac148992f265e6f93d",
+      "bytes": 1063
+    },
+    {
+      "path": "registration-tests.json",
+      "sha256": "9abdda3b65a30a74950ae9ec312f233b0bcdcb93a3c2de0c7e933ac2db4c6e2a",
+      "bytes": 356
+    },
+    {
+      "path": "registration-tests.log",
+      "sha256": "c8de42de14b9ed877b946c5ee280a108edeabae85bcd16766a8b970858dd7411",
+      "bytes": 784
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "46d74bfc9966c1e29164044c1d2276b169481364e39926439e0dd8ba403a9779",
+      "bytes": 34407
+    },
+    {
+      "path": "source-manifest.sha256",
+      "sha256": "faed7674171315e7271e0a3138987187b0e108189ab4172781b470b840c78063",
+      "bytes": 87
+    },
+    {
+      "path": "tests.json",
+      "sha256": "0bf358acab57e42c2dcb2761813bdc8a12bb2a2dea0d2fe26703fbf7721eb6ab",
+      "bytes": 187
+    },
+    {
+      "path": "tests.log",
+      "sha256": "790ddc0795c8fbc5343fc790255cb2baadc05d3fab2e3788ac599b55865fac56",
+      "bytes": 37687
+    },
+    {
+      "path": "typescript.json",
+      "sha256": "e222ddd0bdec6d9f92e480dfb191ef25fef40167a3ef052836b1a2b496e8f72c",
+      "bytes": 202
+    },
+    {
+      "path": "typescript.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "verify-publication.py",
+      "sha256": "1b306e85a49d53f3214ebed6732ed6833a1c4b04a889c9e1b18ce0e09d2689b6",
+      "bytes": 5631
+    }
+  ],
+  "reportFiles": [
+    {
+      "path": "documents/project/для отчетов/README.md",
+      "sha256": "b55ced2ceba5e093a0aa6bed225ef33a5c04e420caf1d6abefaf756853a6e767"
+    },
+    {
+      "path": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md",
+      "sha256": "0da720cc566774039ae70a59314f737bd52d9f851f2195fd30a7ce29d78588bb"
+    },
+    {
+      "path": "documents/project/для отчетов/frontend/api-integration/2026-10-27_12-33_backend-identity-recovery-handoff.md",
+      "sha256": "9a6085ca2573f784d649967e67b6a414ee81b0ed7c713a5fb1c4d1b50fe099fd"
+    }
+  ],
+  "hashExclusions": [
+    "verification-summary.json (self)",
+    "publication-gate.json (updated after final staging)"
+  ],
+  "retainedFailedAttempts": [
+    "eslint-initial.*: new test harness local variable lint rule, corrected",
+    "browser-live.json and *-initial.*: historical offline runner expected h1 on closed h2 session screen; current runner browser-offline-results.json passes",
+    "browser-attempt-1/: complete preserved first corrections run and concurrent evidence, narrow locator/fixture expectations corrected; final11case run2 passes"
+  ],
+  "publication": "PO authorized ordinary own-branch fast-forward push after final staged gate; resulting docs commit/remote HEAD reported in final response",
+  "pass": true
+}

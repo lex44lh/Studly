@@ -1,0 +1,22 @@
+
+> web@0.1.0 lint
+> eslint
+
+
+/Users/alekspih/Projects/studly-integration/apps/web/src/app/create-service/page.tsx
+  197:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  231:66  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/alekspih/Projects/studly-integration/apps/web/tests/live-identity-corrections.test.cjs
+   9:5   error  Do not assign to the variable `module`. See: https://nextjs.org/docs/messages/no-assign-module-variable  @next/next/no-assign-module-variable
+  97:75  error  Do not assign to the variable `module`. See: https://nextjs.org/docs/messages/no-assign-module-variable  @next/next/no-assign-module-variable
+
+✖ 4 problems (2 errors, 2 warnings)
+
+npm error Lifecycle script `lint` failed with error:
+npm error code 1
+npm error path /Users/alekspih/Projects/studly-integration/apps/web
+npm error workspace web@0.1.0
+npm error location /Users/alekspih/Projects/studly-integration/apps/web
+npm error command failed
+npm error command sh -c eslint
