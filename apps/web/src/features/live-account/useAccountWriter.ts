@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { ApiError, apiErrorMessage } from "@/lib/api/client";
 import { captureIdentity, createIdentityController } from "@/lib/api/session";
+import { OwnRevisionUnconfirmedError } from "./revisions";
 
 export function accountError(error: unknown): string {
+  if (error instanceof OwnRevisionUnconfirmedError) return error.message;
   if (error instanceof ApiError && error.status === 400 && error.payload && typeof error.payload === "object") {
     const collect = (value: unknown): string[] => typeof value === "string" ? [value] : Array.isArray(value) ? value.flatMap(collect)
       : value && typeof value === "object" ? Object.values(value).flatMap(collect) : [];

@@ -215,9 +215,9 @@ function find(tree, predicate) {
 function profileHarness() {
   const runtime = hookRuntime(); const calls = []; let snapshot = { account: account(), moderation: moderation() }; let tree;
   const writer = { blocked: false, refresh() {}, async execute(work) { try { await work(new AbortController().signal); return true; } catch { return false; } } };
-  const overrides = name => name === 'react' ? runtime.hooks : name === '@/lib/api/registration' ? { registrationClient: {
+  const overrides = name => name === 'react' ? runtime.hooks : name === '@/lib/api/registration' ? { ...registrationApi, registrationClient: {
     async save(patch) { calls.push(patch); if (patch.performer_revision !== snapshot.moderation.revision) throw new ApiError(409, null); return snapshot.account.registration; },
-  } } : name === '@/features/live/shared' ? { useLiveResource: () => ({ data: [], loading: false, reload() {} }), LiveState: () => null } : name === '@/context/AuthContext' ? {} : undefined;
+  } } : name === '@/lib/api/account' ? { ...api, accountClient: { ...api.accountClient, async moderation() { return structuredClone(snapshot.moderation); } } } : name === '@/features/live/shared' ? { useLiveResource: () => ({ data: [], loading: false, reload() {} }), LiveState: () => null } : name === '@/context/AuthContext' ? {} : undefined;
   const component = loader(overrides)(componentPath).LiveProfileEditor;
   function render() { tree = runtime.render(() => component({ snapshot, writer })); return tree; }
   render();
