@@ -1,0 +1,15 @@
+PASS A-profile-then-new-work
+PASS B-new-draft-then-profile-save
+PASS existing-edit-then-profile-save
+PASS portfolio-sibling-drafts
+PASS external-profile-CAS
+PASS external-portfolio-CAS
+PASS external-after-own-confirmation
+PASS profile-400-preserves-drafts
+PASS portfolio-400-preserves-draft
+PASS portfolio-503-same-key-retry
+PASS file-draft-survives-profile-save
+PASS dirty-work-prevents-destructive-switch
+PASS reload-canonical-state
+PASS account-switch-drops-old-intent
+{"pass":true,"cases":14,"assertions":114,"requests":435,"pageErrors":0}

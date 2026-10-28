@@ -1,0 +1,5597 @@
+{
+  "kind": "Synthetic browser regression against pinned Django contract; NOT Django E2E",
+  "backend": "8999703fe60ef6714595614413faddc5a9308d44",
+  "fixtureSources": [
+    {
+      "file": "docs/workspace.openapi.json",
+      "sha256": "b847a2b36e9dfe8f8db30313194bd96272f55fe82f4699ee2c5c8d009670d1d4",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/docs/workspace.openapi.json"
+    },
+    {
+      "file": "docs/registration.openapi.json",
+      "sha256": "03d68b1b8925332a03024d7bdb3c664fb23747979777f9abea1a4f3c3d2e76cb",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/docs/registration.openapi.json"
+    },
+    {
+      "file": "API_CONTRACT.md",
+      "sha256": "fca81f203ec44cd7f8cdb08c67e4f26bdfc3ef50e7657f858ce0a7585e38a287",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/API_CONTRACT.md"
+    },
+    {
+      "file": "apps/api/accounts/registration.py",
+      "sha256": "877ba7a4249bdb39dbc50ea1ac87046da691515387850926fcf810aed39856d1",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/registration.py"
+    },
+    {
+      "file": "apps/api/accounts/registration_serializers.py",
+      "sha256": "6d251542903ba3c9f3e2f4011752e0a13d63f8a45114545f0d74efd5251e9133",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/registration_serializers.py"
+    },
+    {
+      "file": "apps/api/accounts/moderation.py",
+      "sha256": "7a8a832eb0f97c4abbd2192d5517ebfaaabddb0b01612a65ca12d858454016ca",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/moderation.py"
+    },
+    {
+      "file": "apps/api/accounts/portfolio_views.py",
+      "sha256": "23125182fedd5f314af0a47f35e6704433ce8200b1a1b739a97a121686385564",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/portfolio_views.py"
+    },
+    {
+      "file": "apps/api/accounts/permissions.py",
+      "sha256": "84a89f902aa5ae81466b1eff3b0510f8898c1e028632c9edffcf8dd3de302ab9",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/permissions.py"
+    },
+    {
+      "file": "apps/api/operations/services.py",
+      "sha256": "4395a03e810099f03f9a311027cb900e036c7b7f1d2dd24073c9be3c6aabd06c",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/operations/services.py"
+    },
+    {
+      "file": "apps/api/orders/workspace.py",
+      "sha256": "fb403cdad63bffdb0e317b8653b20946c19ae8f8273fbe08909a2f1db6897514",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/orders/workspace.py"
+    },
+    {
+      "file": "apps/api/orders/pricing_v2.py",
+      "sha256": "760323ef0f907b35817bb28ca24d30ff0be1f520dd493bf20b577a74d803a6e4",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/orders/pricing_v2.py"
+    },
+    {
+      "file": "apps/api/orders/services.py",
+      "sha256": "d0b1461c7b76134e837f08d2f1d6d45f027086c2bf9bca23dece8115503cb39b",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/orders/services.py"
+    },
+    {
+      "file": "apps/api/conversations/views.py",
+      "sha256": "0789f29309f7300eb39aac05fd4a045f6f2e941c7672a346699a2057a3a8ad2a",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/conversations/views.py"
+    },
+    {
+      "file": "apps/api/conversations/rules.py",
+      "sha256": "ab085d0022958ea76851b6b268f02f1a9e16734e4b80f96989b2f7f5eedb412b",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/conversations/rules.py"
+    }
+  ],
+  "candidate": "339f2748a54d4afc5adab71dfb9c878c5dc34a6d",
+  "sourceManifestSHA256": "7e0ca72a1f3bdbebfa9ec5e1639b5918af26905a660cc7e6aa8f75e01dfda546",
+  "candidateWorkingTree": true,
+  "djangoTested": false,
+  "realTelegramTested": false,
+  "actualCsrfMiddlewareTested": false,
+  "reviewReferences": [
+    "/Users/alekspih/Projects/studly/documents/project/для отчетов/frontend/api-integration/2026-10-26_22-08_django-live-independent-acceptance.md",
+    "/Users/alekspih/Projects/studly/documents/project/для отчетов/frontend/api-integration/2026-10-26_22-08_live-review-handoff.md"
+  ],
+  "started": {
+    "utc": "2026-10-28T08:26:24.744Z",
+    "moscow": "2026-10-28 11:26:24"
+  },
+  "base": "http://127.0.0.1:3002",
+  "assertions": 62,
+  "cases": [
+    {
+      "name": "L4-shared-tabs",
+      "started": {
+        "utc": "2026-10-28T08:26:25.120Z",
+        "moscow": "2026-10-28 11:26:25"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L4-shared-tabs-beta-dirty.png",
+        "browser-L4-shared-tabs-pass.png"
+      ],
+      "observations": [
+        {
+          "originalDirtyFormStillMountedAtSubmit": false,
+          "twoRealTabs": 2,
+          "sharedBrowserCookie": true
+        }
+      ],
+      "finished": {
+        "utc": "2026-10-28T08:26:36.038Z",
+        "moscow": "2026-10-28 11:26:36"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "ca2ed472-c456-4932-9067-8d27041585bd": {
+            "quote_id": "ca2ed472-c456-4932-9067-8d27041585bd",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {},
+        "orders": [
+          {
+            "quote_id": "ca2ed472-c456-4932-9067-8d27041585bd",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "GET",
+            "path": "/api/v1/auth/options/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 16,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 17,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 18,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=customer",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 19,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L4-switch-during-csrf",
+      "started": {
+        "utc": "2026-10-28T08:26:36.064Z",
+        "moscow": "2026-10-28 11:26:36"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L4-switch-during-csrf-pass.png"
+      ],
+      "observations": [
+        {
+          "boundary": "Session changed in CSRF response, after any initial /me check; synthetic TOCTOU probe, not atomic Django guarantee"
+        }
+      ],
+      "finished": {
+        "utc": "2026-10-28T08:26:36.640Z",
+        "moscow": "2026-10-28 11:26:36"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "c44c5673-ded3-4a94-8ec5-995ca8671aba": {
+            "quote_id": "c44c5673-ded3-4a94-8ec5-995ca8671aba",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {},
+        "orders": [
+          {
+            "quote_id": "c44c5673-ded3-4a94-8ec5-995ca8671aba",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [
+          {
+            "operation": "csrf-session-switch",
+            "from": 702,
+            "to": 799
+          }
+        ],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "GET",
+            "path": "/api/v1/auth/options/",
+            "query": "",
+            "actor": 799,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L2-own-portfolio",
+      "started": {
+        "utc": "2026-10-28T08:26:36.643Z",
+        "moscow": "2026-10-28 11:26:36"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L2-own-portfolio-pass.png"
+      ],
+      "observations": [
+        {
+          "ownPortfolioBlockedWhileProfileDirty": true
+        }
+      ],
+      "finished": {
+        "utc": "2026-10-28T08:26:37.419Z",
+        "moscow": "2026-10-28 11:26:37"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Unsaved own text",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 4,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            },
+            {
+              "id": "081b8929-c0e2-44e5-a069-40969936fef2",
+              "title": "Own sequential portfolio",
+              "kind": "link",
+              "url": "https://example.com/synthetic-own",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "a586fba4-01ba-4da0-96a2-baa73ee2ae12": {
+            "quote_id": "a586fba4-01ba-4da0-96a2-baa73ee2ae12",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {
+          "701:portfolio.add:c76f3724-3c35-43f3-8242-38f29a5a84bb": {
+            "example": {
+              "id": "081b8929-c0e2-44e5-a069-40969936fef2",
+              "title": "Own sequential portfolio",
+              "kind": "link",
+              "url": "https://example.com/synthetic-own",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            },
+            "moderation": {
+              "user_id": 701,
+              "revision": 4,
+              "status": "pending",
+              "reason": "",
+              "submitted_at": "2026-10-27T09:35:00Z",
+              "ready_to_submit": true,
+              "missing_fields": [],
+              "approved": false
+            }
+          }
+        },
+        "orders": [
+          {
+            "quote_id": "a586fba4-01ba-4da0-96a2-baa73ee2ae12",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "PATCH",
+            "path": "/api/v1/registration/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "performer_revision": 2,
+              "profile": {
+                "display_name": "Unsaved own text"
+              }
+            },
+            "csrfPresent": true,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 16,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 17,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 18,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 19,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 20,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 21,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 22,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 23,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 24,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 25,
+            "method": "POST",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "revision": 3,
+              "request_key": "c76f3724-3c35-43f3-8242-38f29a5a84bb",
+              "title": "Own sequential portfolio",
+              "url": "https://example.com/synthetic-own"
+            },
+            "csrfPresent": true,
+            "status": 201
+          },
+          {
+            "sequence": 26,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 27,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 28,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 29,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 30,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 31,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 32,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 33,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 34,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 35,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 36,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 37,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 38,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 39,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 40,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 41,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 42,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L2-external-conflict",
+      "started": {
+        "utc": "2026-10-28T08:26:37.423Z",
+        "moscow": "2026-10-28 11:26:37"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L2-external-conflict-pass.png"
+      ],
+      "observations": [],
+      "finished": {
+        "utc": "2026-10-28T08:26:37.984Z",
+        "moscow": "2026-10-28 11:26:37"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "External canonical text",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 3,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "f4d6dc69-e7e3-4f08-8fe6-8d487c9d915e": {
+            "quote_id": "f4d6dc69-e7e3-4f08-8fe6-8d487c9d915e",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {},
+        "orders": [
+          {
+            "quote_id": "f4d6dc69-e7e3-4f08-8fe6-8d487c9d915e",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [
+          {
+            "operation": "external-profile-edit",
+            "actor": 701,
+            "revision": 3
+          }
+        ],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "PATCH",
+            "path": "/api/v1/registration/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "performer_revision": 2,
+              "profile": {
+                "display_name": "Local stale text"
+              }
+            },
+            "csrfPresent": true,
+            "status": 409
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L3-name",
+      "started": {
+        "utc": "2026-10-28T08:26:37.988Z",
+        "moscow": "2026-10-28 11:26:37"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L3-name-pass.png"
+      ],
+      "observations": [],
+      "finished": {
+        "utc": "2026-10-28T08:26:38.758Z",
+        "moscow": "2026-10-28 11:26:38"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrected safe name",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 3,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "48c9f3c0-5f56-4d98-9707-8820d1986db7": {
+            "quote_id": "48c9f3c0-5f56-4d98-9707-8820d1986db7",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {},
+        "orders": [
+          {
+            "quote_id": "48c9f3c0-5f56-4d98-9707-8820d1986db7",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "PATCH",
+            "path": "/api/v1/registration/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "performer_revision": 2,
+              "profile": {
+                "display_name": "Corrected safe name"
+              }
+            },
+            "csrfPresent": true,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 16,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 17,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 18,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 19,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 20,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 21,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 22,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 23,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 24,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 25,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 26,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 27,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 28,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 29,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 30,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L3-roles",
+      "started": {
+        "utc": "2026-10-28T08:26:38.775Z",
+        "moscow": "2026-10-28 11:26:38"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L3-roles-pass.png"
+      ],
+      "observations": [],
+      "finished": {
+        "utc": "2026-10-28T08:26:39.563Z",
+        "moscow": "2026-10-28 11:26:39"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "86a1c383-23f8-43ea-87df-e678a8c53d82": {
+            "quote_id": "86a1c383-23f8-43ea-87df-e678a8c53d82",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {},
+        "orders": [
+          {
+            "quote_id": "86a1c383-23f8-43ea-87df-e678a8c53d82",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "GET",
+            "path": "/api/v1/account/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v1/performer/moderation/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v1/cabinet/",
+            "query": "?role=performer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 16,
+            "method": "GET",
+            "path": "/api/v1/portfolio/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 17,
+            "method": "GET",
+            "path": "/api/v2/my/services/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 18,
+            "method": "GET",
+            "path": "/api/v1/specializations/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L1-extras-reload",
+      "started": {
+        "utc": "2026-10-28T08:26:39.570Z",
+        "moscow": "2026-10-28 11:26:39"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L1-extras-reload-unknown-before-reload.png",
+        "browser-L1-extras-reload-pass.png"
+      ],
+      "observations": [
+        {
+          "unknownResponseAfterCommit": true
+        },
+        {
+          "pendingResolvedByCanonicalOrderRead": true
+        }
+      ],
+      "finished": {
+        "utc": "2026-10-28T08:26:40.443Z",
+        "moscow": "2026-10-28 11:26:40"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "b7b99a10-ee27-4d0d-bdf1-87b122ca5226": {
+            "quote_id": "b7b99a10-ee27-4d0d-bdf1-87b122ca5226",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          },
+          "820b20b0-99e7-4f70-98b8-3f1cef264d3a": {
+            "quote_id": "820b20b0-99e7-4f70-98b8-3f1cef264d3a",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "extras_amount": "200.00",
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "owner": 701
+          }
+        },
+        "receipts": {
+          "701:order.create.v2:4db2e796-439b-4279-9f33-12cdd046c615": {
+            "quote_id": "820b20b0-99e7-4f70-98b8-3f1cef264d3a",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "id": 852,
+            "revision": 1,
+            "request_key": "4db2e796-439b-4279-9f33-12cdd046c615",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        },
+        "orders": [
+          {
+            "quote_id": "b7b99a10-ee27-4d0d-bdf1-87b122ca5226",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          },
+          {
+            "quote_id": "820b20b0-99e7-4f70-98b8-3f1cef264d3a",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "id": 852,
+            "revision": 1,
+            "request_key": "4db2e796-439b-4279-9f33-12cdd046c615",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "POST",
+            "path": "/api/v2/quotes/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "service_id": 811,
+              "extra_ids": [
+                "11111111-1111-4111-8111-111111111111"
+              ]
+            },
+            "csrfPresent": true,
+            "status": 201
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "POST",
+            "path": "/api/v2/orders/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "quote_id": "820b20b0-99e7-4f70-98b8-3f1cef264d3a",
+              "request_key": "4db2e796-439b-4279-9f33-12cdd046c615"
+            },
+            "csrfPresent": true,
+            "status": 503
+          },
+          {
+            "sequence": 13,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 16,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 17,
+            "method": "GET",
+            "path": "/api/v2/orders/",
+            "query": "?role=customer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 18,
+            "method": "GET",
+            "path": "/api/v2/orders/852/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L1-unavailable-quote",
+      "started": {
+        "utc": "2026-10-28T08:26:40.449Z",
+        "moscow": "2026-10-28 11:26:40"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L1-unavailable-quote-unknown-before-reload.png",
+        "browser-L1-unavailable-quote-pass.png"
+      ],
+      "observations": [
+        {
+          "unknownResponseAfterCommit": true
+        },
+        {
+          "configuredQuote404ResolvedByCanonicalOrder": true
+        },
+        {
+          "pendingResolvedByCanonicalOrderRead": true
+        }
+      ],
+      "finished": {
+        "utc": "2026-10-28T08:26:41.368Z",
+        "moscow": "2026-10-28 11:26:41"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "5bb9e421-98d9-415d-a170-77228c352bf3": {
+            "quote_id": "5bb9e421-98d9-415d-a170-77228c352bf3",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          },
+          "a8106554-1030-4f0e-b96a-21644523ed91": {
+            "quote_id": "a8106554-1030-4f0e-b96a-21644523ed91",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "extras_amount": "200.00",
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "owner": 701
+          }
+        },
+        "receipts": {
+          "701:order.create.v2:8a7ba849-f2e7-4ef7-a82d-aec56512a53b": {
+            "quote_id": "a8106554-1030-4f0e-b96a-21644523ed91",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "id": 852,
+            "revision": 1,
+            "request_key": "8a7ba849-f2e7-4ef7-a82d-aec56512a53b",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        },
+        "orders": [
+          {
+            "quote_id": "5bb9e421-98d9-415d-a170-77228c352bf3",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          },
+          {
+            "quote_id": "a8106554-1030-4f0e-b96a-21644523ed91",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "id": 852,
+            "revision": 1,
+            "request_key": "8a7ba849-f2e7-4ef7-a82d-aec56512a53b",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "POST",
+            "path": "/api/v2/quotes/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "service_id": 811,
+              "extra_ids": [
+                "11111111-1111-4111-8111-111111111111"
+              ]
+            },
+            "csrfPresent": true,
+            "status": 201
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "POST",
+            "path": "/api/v2/orders/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "quote_id": "a8106554-1030-4f0e-b96a-21644523ed91",
+              "request_key": "8a7ba849-f2e7-4ef7-a82d-aec56512a53b"
+            },
+            "csrfPresent": true,
+            "status": 503
+          },
+          {
+            "sequence": 13,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 16,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 17,
+            "method": "GET",
+            "path": "/api/v2/orders/",
+            "query": "?role=customer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 18,
+            "method": "GET",
+            "path": "/api/v2/orders/852/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "L1-no-order-quote-unavailable",
+      "started": {
+        "utc": "2026-10-28T08:26:41.375Z",
+        "moscow": "2026-10-28 11:26:41"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-L1-no-order-quote-unavailable-unknown-before-reload.png",
+        "browser-L1-no-order-quote-unavailable-quote-unavailable-locked.png",
+        "browser-L1-no-order-quote-unavailable-pass.png"
+      ],
+      "observations": [
+        {
+          "unknownResponseAfterCommit": false
+        },
+        {
+          "quoteUnavailableAfterReload": true,
+          "noCanonicalOrder": true,
+          "newIntentBlocked": true
+        }
+      ],
+      "finished": {
+        "utc": "2026-10-28T08:26:42.827Z",
+        "moscow": "2026-10-28 11:26:42"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "933a732d-350b-4d34-acfb-0ec93be03bd5": {
+            "quote_id": "933a732d-350b-4d34-acfb-0ec93be03bd5",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          },
+          "01caff79-2506-4e66-9c35-94dd6ad3bb8a": {
+            "quote_id": "01caff79-2506-4e66-9c35-94dd6ad3bb8a",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "extras_amount": "200.00",
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "owner": 701
+          }
+        },
+        "receipts": {
+          "701:order.create.v2:33864290-8104-45d1-bef5-d5dd3b988a8b": {
+            "quote_id": "01caff79-2506-4e66-9c35-94dd6ad3bb8a",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "id": 852,
+            "revision": 1,
+            "request_key": "33864290-8104-45d1-bef5-d5dd3b988a8b",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        },
+        "orders": [
+          {
+            "quote_id": "933a732d-350b-4d34-acfb-0ec93be03bd5",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          },
+          {
+            "quote_id": "01caff79-2506-4e66-9c35-94dd6ad3bb8a",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 4,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [
+              {
+                "id": "11111111-1111-4111-8111-111111111111",
+                "title": "Corrections extra",
+                "price_amount": "200.00",
+                "extra_days": 1
+              }
+            ],
+            "price_amount": "1200.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "60.00",
+            "total_amount": "1260.00",
+            "id": 852,
+            "revision": 1,
+            "request_key": "33864290-8104-45d1-bef5-d5dd3b988a8b",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [],
+        "events": [
+          {
+            "operation": "purchase-failed-before-commit"
+          }
+        ],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "POST",
+            "path": "/api/v2/quotes/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "service_id": 811,
+              "extra_ids": [
+                "11111111-1111-4111-8111-111111111111"
+              ]
+            },
+            "csrfPresent": true,
+            "status": 201
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "POST",
+            "path": "/api/v2/orders/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "quote_id": "01caff79-2506-4e66-9c35-94dd6ad3bb8a",
+              "request_key": "33864290-8104-45d1-bef5-d5dd3b988a8b"
+            },
+            "csrfPresent": true,
+            "status": 503
+          },
+          {
+            "sequence": 13,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v2/services/811/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 16,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 17,
+            "method": "GET",
+            "path": "/api/v2/orders/",
+            "query": "?role=customer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 18,
+            "method": "GET",
+            "path": "/api/v2/quotes/01caff79-2506-4e66-9c35-94dd6ad3bb8a/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 404
+          },
+          {
+            "sequence": 19,
+            "method": "GET",
+            "path": "/api/v2/orders/",
+            "query": "?role=customer",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 20,
+            "method": "GET",
+            "path": "/api/v2/quotes/01caff79-2506-4e66-9c35-94dd6ad3bb8a/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 21,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 22,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 23,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 24,
+            "method": "POST",
+            "path": "/api/v2/orders/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "quote_id": "01caff79-2506-4e66-9c35-94dd6ad3bb8a",
+              "request_key": "33864290-8104-45d1-bef5-d5dd3b988a8b"
+            },
+            "csrfPresent": true,
+            "status": 201
+          },
+          {
+            "sequence": 25,
+            "method": "GET",
+            "path": "/api/v2/orders/852/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "C1-order-receipt",
+      "started": {
+        "utc": "2026-10-28T08:26:42.841Z",
+        "moscow": "2026-10-28 11:26:42"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-C1-order-receipt-pass.png"
+      ],
+      "observations": [],
+      "finished": {
+        "utc": "2026-10-28T08:26:43.607Z",
+        "moscow": "2026-10-28 11:26:43"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "7b5f19a2-12b6-43b0-9364-34391bfc7c9e": {
+            "quote_id": "7b5f19a2-12b6-43b0-9364-34391bfc7c9e",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {
+          "702:order.action.v2:e9225765-4ddb-45dc-84ab-3e2f25ff75d3": {
+            "quote_id": "7b5f19a2-12b6-43b0-9364-34391bfc7c9e",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 2,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [],
+            "payment_status": "unpaid",
+            "status": "awaiting_payment",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": "2026-10-27T09:35:00Z",
+            "closed_at": null,
+            "closed_by": null
+          }
+        },
+        "orders": [
+          {
+            "quote_id": "7b5f19a2-12b6-43b0-9364-34391bfc7c9e",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 3,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "cancelled",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": "2026-10-27T09:35:00Z",
+            "closed_at": "2026-10-27T09:35:00Z",
+            "closed_by": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            }
+          }
+        ],
+        "messages": [],
+        "events": [
+          {
+            "operation": "external-cancel",
+            "id": 851,
+            "revision": 3
+          }
+        ],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v2/orders/851/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/orders/851/conversation/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/orders/851/events/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 9,
+            "method": "POST",
+            "path": "/api/v2/orders/851/accept/",
+            "query": "",
+            "actor": 702,
+            "body": {
+              "revision": 1,
+              "request_key": "e9225765-4ddb-45dc-84ab-3e2f25ff75d3"
+            },
+            "csrfPresent": true,
+            "status": 503
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "POST",
+            "path": "/api/v2/orders/851/accept/",
+            "query": "",
+            "actor": 702,
+            "body": {
+              "revision": 1,
+              "request_key": "e9225765-4ddb-45dc-84ab-3e2f25ff75d3"
+            },
+            "csrfPresent": true,
+            "status": 200
+          },
+          {
+            "sequence": 14,
+            "method": "GET",
+            "path": "/api/v2/orders/851/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 15,
+            "method": "GET",
+            "path": "/api/v1/orders/851/events/",
+            "query": "",
+            "actor": 702,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    },
+    {
+      "name": "C1-message-release",
+      "started": {
+        "utc": "2026-10-28T08:26:43.612Z",
+        "moscow": "2026-10-28 11:26:43"
+      },
+      "pass": true,
+      "screenshots": [
+        "browser-C1-message-release-pass.png"
+      ],
+      "observations": [],
+      "finished": {
+        "utc": "2026-10-28T08:26:44.202Z",
+        "moscow": "2026-10-28 11:26:44"
+      },
+      "fixture": {
+        "accounts": {
+          "701": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Alpha",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "702": {
+            "roles": [
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Beta",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          },
+          "799": {
+            "roles": [
+              "customer",
+              "performer"
+            ],
+            "profile": {
+              "display_name": "Corrections Gamma",
+              "avatar_url": null,
+              "university": "Synthetic university",
+              "city": "Synthetic city",
+              "about": "Synthetic account"
+            },
+            "performer": {
+              "description": "Synthetic performer",
+              "study_year": "2",
+              "portfolio": "",
+              "specializations": [
+                {
+                  "id": "99999999-9999-4999-8999-999999999999",
+                  "title": "Программирование"
+                }
+              ]
+            },
+            "progress": {
+              "current_step": "profile",
+              "performer_skipped": false,
+              "updated_at": "2026-10-27T09:35:00Z"
+            },
+            "status": {
+              "is_complete": true,
+              "completed_at": "2026-10-27T09:35:00Z",
+              "missing_fields": [],
+              "performer_ready": true,
+              "performer_missing_fields": []
+            }
+          }
+        },
+        "revisions": {
+          "701": 2,
+          "702": 2,
+          "799": 2
+        },
+        "portfolio": {
+          "701": [
+            {
+              "id": "33333333-3333-4333-8333-000000000701",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "702": [
+            {
+              "id": "33333333-3333-4333-8333-000000000702",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ],
+          "799": [
+            {
+              "id": "33333333-3333-4333-8333-000000000799",
+              "title": "Existing synthetic work",
+              "kind": "link",
+              "url": "https://example.com/existing-synthetic-work",
+              "content_url": null,
+              "content_type": null,
+              "size": 0,
+              "created_at": "2026-10-27T09:35:00Z"
+            }
+          ]
+        },
+        "quotes": {
+          "fdd5b9aa-a487-446d-b801-48e7bee869a2": {
+            "quote_id": "fdd5b9aa-a487-446d-b801-48e7bee869a2",
+            "service_id": 811,
+            "service_revision": 3,
+            "performer_id": 702,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "extras_amount": "0.00",
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "owner": 701
+          }
+        },
+        "receipts": {
+          "701:message.send:1b7f2db3-eb6c-4a36-bd53-48629594403c": {
+            "id": 1,
+            "sequence": 1,
+            "conversation_id": "22222222-2222-4222-8222-222222222222",
+            "sender_id": 701,
+            "client_message_id": "1b7f2db3-eb6c-4a36-bd53-48629594403c",
+            "text": "Оплатим напрямую на карту — synthetic security regression",
+            "status": "held",
+            "categories": [
+              "external_payment"
+            ],
+            "rules_version": "offplatform-2026-10-24-v1",
+            "warning": "Сообщение удержано. Можно сообщить об ошибке.",
+            "security_case_id": 901,
+            "created_at": "2026-10-27T09:35:00Z"
+          }
+        },
+        "orders": [
+          {
+            "quote_id": "fdd5b9aa-a487-446d-b801-48e7bee869a2",
+            "service_id": 811,
+            "service_revision": 3,
+            "title": "Corrections synthetic service",
+            "description": "Contract-derived synthetic content",
+            "included": [
+              "Synthetic included item"
+            ],
+            "currency": "RUB",
+            "duration_days": 3,
+            "tariff_code": "buyer-5-v1",
+            "base_price_amount": "1000.00",
+            "selected_extras": [],
+            "price_amount": "1000.00",
+            "buyer_fee_percent": "5.00",
+            "buyer_fee_amount": "50.00",
+            "total_amount": "1050.00",
+            "id": 851,
+            "revision": 1,
+            "request_key": "77777777-7777-4777-8777-777777777777",
+            "buyer": {
+              "id": 701,
+              "name": "Corrections Alpha"
+            },
+            "performer": {
+              "id": 702,
+              "name": "Corrections Beta"
+            },
+            "available_actions": [
+              "cancel"
+            ],
+            "payment_status": "unpaid",
+            "status": "pending_acceptance",
+            "created_at": "2026-10-27T09:35:00Z",
+            "accepted_at": null,
+            "closed_at": null,
+            "closed_by": null
+          }
+        ],
+        "messages": [
+          {
+            "id": 1,
+            "sequence": 2,
+            "conversation_id": "22222222-2222-4222-8222-222222222222",
+            "sender_id": 701,
+            "client_message_id": "1b7f2db3-eb6c-4a36-bd53-48629594403c",
+            "text": "Оплатим напрямую на карту — synthetic security regression",
+            "status": "stored",
+            "categories": [
+              "external_payment"
+            ],
+            "rules_version": "offplatform-2026-10-24-v1",
+            "warning": null,
+            "security_case_id": null,
+            "created_at": "2026-10-27T09:35:00Z"
+          }
+        ],
+        "events": [
+          {
+            "operation": "external-message-release",
+            "id": 1,
+            "sequence": 2
+          }
+        ],
+        "requests": [
+          {
+            "sequence": 1,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 2,
+            "method": "GET",
+            "path": "/api/v1/conversations/22222222-2222-4222-8222-222222222222/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 3,
+            "method": "GET",
+            "path": "/api/v1/favorites/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 4,
+            "method": "GET",
+            "path": "/api/v1/conversations/22222222-2222-4222-8222-222222222222/messages/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 5,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 6,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 7,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 8,
+            "method": "POST",
+            "path": "/api/v1/conversations/22222222-2222-4222-8222-222222222222/messages/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "client_message_id": "1b7f2db3-eb6c-4a36-bd53-48629594403c",
+              "text": "Оплатим напрямую на карту — synthetic security regression"
+            },
+            "csrfPresent": true,
+            "status": 503
+          },
+          {
+            "sequence": 9,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 10,
+            "method": "GET",
+            "path": "/api/v1/auth/csrf/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 11,
+            "method": "GET",
+            "path": "/api/v1/auth/me/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          },
+          {
+            "sequence": 12,
+            "method": "POST",
+            "path": "/api/v1/conversations/22222222-2222-4222-8222-222222222222/messages/",
+            "query": "",
+            "actor": 701,
+            "body": {
+              "client_message_id": "1b7f2db3-eb6c-4a36-bd53-48629594403c",
+              "text": "Оплатим напрямую на карту — synthetic security regression"
+            },
+            "csrfPresent": true,
+            "status": 200
+          },
+          {
+            "sequence": 13,
+            "method": "GET",
+            "path": "/api/v1/conversations/22222222-2222-4222-8222-222222222222/messages/",
+            "query": "",
+            "actor": 701,
+            "body": null,
+            "csrfPresent": false,
+            "status": 200
+          }
+        ],
+        "fixtureErrors": []
+      }
+    }
+  ],
+  "pageErrors": [],
+  "pass": true,
+  "finished": {
+    "utc": "2026-10-28T08:26:44.209Z",
+    "moscow": "2026-10-28 11:26:44"
+  }
+}

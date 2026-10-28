@@ -12,6 +12,8 @@
 
 ## Сеансы
 
+- STUDLY 2.0: остаточный L2/P2 после повторной приёмки — 28.10.2026: [исправление связанных черновиков профиля и портфолио](frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md), [evidence и новый source manifest](frontend/api-integration/implementation/2026-10-28-l2/). Собственные переходы revision подтверждаются отдельно; внешний CAS сохраняется.
+
 - STUDLY 2.0: исправления REJECTED Live Integration — 27.10.2026: [исправительный отчёт L1–L4/C1](frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md), [Backend identity/recovery handoff](frontend/api-integration/2026-10-27_12-33_backend-identity-recovery-handoff.md), [новые доказательства и source manifest](frontend/api-integration/implementation/2026-10-27-corrections/). Клиентские исправления не заменяют атомарную серверную проверку identity и настоящий Django E2E.
 
 - STUDLY 2.0: Django Live Integration — 26.10.2026: [основной отчёт](frontend/api-integration/2026-10-26_00-08_django-live-integration.md), [Frontend ROUTE_API_MATRIX](frontend/api-integration/2026-10-26_00-08_ROUTE_API_MATRIX.md), [зависимости Backend и запрос сотруднику](frontend/api-integration/2026-10-26_00-08_backend-dependencies.md). Реальные Django E2E требуют изолированного окружения; итоговые проверки и публикация фиксируются в отчёте.

@@ -1,0 +1,12 @@
+PASS L4-shared-tabs
+PASS L4-switch-during-csrf
+PASS L2-own-portfolio
+PASS L2-external-conflict
+PASS L3-name
+PASS L3-roles
+PASS L1-extras-reload
+PASS L1-unavailable-quote
+PASS L1-no-order-quote-unavailable
+PASS C1-order-receipt
+PASS C1-message-release
+{"pass":true,"cases":11,"assertions":62,"djangoTested":false}

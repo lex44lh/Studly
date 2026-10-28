@@ -1,0 +1,88 @@
+{
+  "pass": true,
+  "kind": "Synthetic fixture selfcheck, NOT Django E2E",
+  "backend": "8999703fe60ef6714595614413faddc5a9308d44",
+  "provenance": [
+    {
+      "file": "docs/workspace.openapi.json",
+      "sha256": "b847a2b36e9dfe8f8db30313194bd96272f55fe82f4699ee2c5c8d009670d1d4",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/docs/workspace.openapi.json"
+    },
+    {
+      "file": "docs/registration.openapi.json",
+      "sha256": "03d68b1b8925332a03024d7bdb3c664fb23747979777f9abea1a4f3c3d2e76cb",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/docs/registration.openapi.json"
+    },
+    {
+      "file": "API_CONTRACT.md",
+      "sha256": "fca81f203ec44cd7f8cdb08c67e4f26bdfc3ef50e7657f858ce0a7585e38a287",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/API_CONTRACT.md"
+    },
+    {
+      "file": "apps/api/accounts/registration.py",
+      "sha256": "877ba7a4249bdb39dbc50ea1ac87046da691515387850926fcf810aed39856d1",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/registration.py"
+    },
+    {
+      "file": "apps/api/accounts/registration_serializers.py",
+      "sha256": "6d251542903ba3c9f3e2f4011752e0a13d63f8a45114545f0d74efd5251e9133",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/registration_serializers.py"
+    },
+    {
+      "file": "apps/api/accounts/moderation.py",
+      "sha256": "7a8a832eb0f97c4abbd2192d5517ebfaaabddb0b01612a65ca12d858454016ca",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/moderation.py"
+    },
+    {
+      "file": "apps/api/accounts/portfolio_views.py",
+      "sha256": "23125182fedd5f314af0a47f35e6704433ce8200b1a1b739a97a121686385564",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/portfolio_views.py"
+    },
+    {
+      "file": "apps/api/accounts/permissions.py",
+      "sha256": "84a89f902aa5ae81466b1eff3b0510f8898c1e028632c9edffcf8dd3de302ab9",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/accounts/permissions.py"
+    },
+    {
+      "file": "apps/api/operations/services.py",
+      "sha256": "4395a03e810099f03f9a311027cb900e036c7b7f1d2dd24073c9be3c6aabd06c",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/operations/services.py"
+    },
+    {
+      "file": "apps/api/orders/workspace.py",
+      "sha256": "fb403cdad63bffdb0e317b8653b20946c19ae8f8273fbe08909a2f1db6897514",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/orders/workspace.py"
+    },
+    {
+      "file": "apps/api/orders/pricing_v2.py",
+      "sha256": "760323ef0f907b35817bb28ca24d30ff0be1f520dd493bf20b577a74d803a6e4",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/orders/pricing_v2.py"
+    },
+    {
+      "file": "apps/api/orders/services.py",
+      "sha256": "d0b1461c7b76134e837f08d2f1d6d45f027086c2bf9bca23dece8115503cb39b",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/orders/services.py"
+    },
+    {
+      "file": "apps/api/conversations/views.py",
+      "sha256": "0789f29309f7300eb39aac05fd4a045f6f2e941c7672a346699a2057a3a8ad2a",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/conversations/views.py"
+    },
+    {
+      "file": "apps/api/conversations/rules.py",
+      "sha256": "ab085d0022958ea76851b6b268f02f1a9e16734e4b80f96989b2f7f5eedb412b",
+      "url": "https://github.com/lex44lh/Studly/blob/8999703fe60ef6714595614413faddc5a9308d44/apps/api/conversations/rules.py"
+    }
+  ],
+  "checks": [
+    "schema-valid link add",
+    "shared CAS increments",
+    "receipt replay precedes CAS",
+    "same-key creates no duplicate",
+    "new stale key gets409",
+    "existing edit increments",
+    "edit replay",
+    "multipart transport preserves file bytes and revision"
+  ],
+  "requests": 7
+}

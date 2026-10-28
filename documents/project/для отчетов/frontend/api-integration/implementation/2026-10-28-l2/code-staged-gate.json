@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-28T08:30:38.275867+00:00",
+  "pass": true,
+  "stagedPaths": [
+    "apps/web/src/features/live-account/LiveAccountWorkspace.tsx",
+    "apps/web/src/features/live-account/revisions.ts",
+    "apps/web/src/features/live-account/useAccountWriter.ts",
+    "apps/web/tests/live-account-corrections.test.cjs",
+    "apps/web/tests/live-account-revision.test.cjs",
+    "apps/web/tests/live-account.test.cjs"
+  ],
+  "sourceManifestSHA256": "7e0ca72a1f3bdbebfa9ec5e1639b5918af26905a660cc7e6aa8f75e01dfda546",
+  "sourceIndexFilesVerified": 173,
+  "credentialPatternFindings": [],
+  "diffCheck": "PASS",
+  "cachedDiffCheck": "PASS"
+}

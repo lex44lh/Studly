@@ -1,0 +1,652 @@
+{
+  "kind": "Residual client L2 correction; synthetic browser is NOT Django E2E",
+  "checkedAt": "2026-10-28T08:31:57.749381+00:00",
+  "rejectedBase": "339f2748a54d4afc5adab71dfb9c878c5dc34a6d",
+  "codeCommit": "b960e054c34bb9bd88540025e7409881b48dc122",
+  "backendReference": "8999703fe60ef6714595614413faddc5a9308d44",
+  "sourceManifestSHA256": "7e0ca72a1f3bdbebfa9ec5e1639b5918af26905a660cc7e6aa8f75e01dfda546",
+  "sourceFiles": 173,
+  "tests": {
+    "cjs": 393,
+    "typescriptRegistration": 8,
+    "totalDistinct": 401,
+    "newDistinct": 23
+  },
+  "browser": {
+    "l2Cases": 14,
+    "l2Assertions": 114,
+    "l2SyntheticRequests": 435,
+    "previousCorrectionsCases": 11,
+    "previousCorrectionsAssertions": 62,
+    "demoRouteCombinations": 232,
+    "generalLiveRoutes": 69,
+    "generalLiveAssertions": 627,
+    "generalLiveSyntheticRequests": 506,
+    "actualDjangoTested": false,
+    "realTelegramTested": false
+  },
+  "buildsPassed": 3,
+  "lint": {
+    "errors": 0,
+    "unchangedWarnings": 2
+  },
+  "historicalArtifactsPreserved": 629,
+  "requiredCommandResults": [
+    "tests.json",
+    "registration-tests.json",
+    "typescript.json",
+    "eslint.json",
+    "build-demo.json",
+    "build-demo-admin.json",
+    "build-live.json",
+    "browser-demo.json",
+    "browser-demo-admin.json",
+    "browser-live-regression.json",
+    "browser-prior-corrections.json",
+    "browser-l2-run.json"
+  ],
+  "evidenceFiles": [
+    {
+      "path": "browser-C1-message-release-pass.png",
+      "sha256": "1fc0fd932909cb9aea624c2bd4216276ab0cc89fc8de8ac24481d524c9ce8362",
+      "bytes": 72831
+    },
+    {
+      "path": "browser-C1-order-receipt-pass.png",
+      "sha256": "3ecc684f7b2cc28c39c584af45761594501c77c836744c4420d1e88b8be9276a",
+      "bytes": 115042
+    },
+    {
+      "path": "browser-L1-extras-reload-pass.png",
+      "sha256": "2ad0fd2d3807565b7ee7a300d1f5d07b4a3f6546c2aec5a0a98d999fc4168813",
+      "bytes": 150372
+    },
+    {
+      "path": "browser-L1-extras-reload-unknown-before-reload.png",
+      "sha256": "ec9c8273d694d6ccbdd08a253f071b6d7208667716e0f1cbca198ad83a187f3d",
+      "bytes": 244390
+    },
+    {
+      "path": "browser-L1-no-order-quote-unavailable-pass.png",
+      "sha256": "2ad0fd2d3807565b7ee7a300d1f5d07b4a3f6546c2aec5a0a98d999fc4168813",
+      "bytes": 150372
+    },
+    {
+      "path": "browser-L1-no-order-quote-unavailable-quote-unavailable-locked.png",
+      "sha256": "0c84456e2f5f88f931205b4091f5e298301c63c09e24d520a1f2d702fcc428c8",
+      "bytes": 180635
+    },
+    {
+      "path": "browser-L1-no-order-quote-unavailable-unknown-before-reload.png",
+      "sha256": "6249dcdf2817a3dbe067e72300c61c412130c60c5187b84f977a44984700c76d",
+      "bytes": 244624
+    },
+    {
+      "path": "browser-L1-unavailable-quote-pass.png",
+      "sha256": "2ad0fd2d3807565b7ee7a300d1f5d07b4a3f6546c2aec5a0a98d999fc4168813",
+      "bytes": 150372
+    },
+    {
+      "path": "browser-L1-unavailable-quote-unknown-before-reload.png",
+      "sha256": "97af314dabb6dddfa4a3767bd85bac296f0c8ea7f5e8ca966c37e2275729e3b1",
+      "bytes": 244328
+    },
+    {
+      "path": "browser-L2-external-conflict-pass.png",
+      "sha256": "7c5c55058570ebbe62b0e2e48e52ef17cd01d84f663b50e7de642d22b660f920",
+      "bytes": 303042
+    },
+    {
+      "path": "browser-L2-own-portfolio-pass.png",
+      "sha256": "d07990fe65e9e79a7eff839d6d2b75f3e90a4255a8d54c13009edfc61dd033a3",
+      "bytes": 288983
+    },
+    {
+      "path": "browser-L3-name-pass.png",
+      "sha256": "09e2f9ac6923bcbca47e2eda5d67f64968a557e30d9d9f213d0bf2bea1479bae",
+      "bytes": 277086
+    },
+    {
+      "path": "browser-L3-roles-pass.png",
+      "sha256": "4b27feac5759116d89574393ff3fdef7c862e00d32406e9ce96a645eb56ea9eb",
+      "bytes": 276455
+    },
+    {
+      "path": "browser-L4-shared-tabs-beta-dirty.png",
+      "sha256": "db14dc8096f48e4515cd288e2b724bde70640bb175c61f09ab588c3af20c0199",
+      "bytes": 292661
+    },
+    {
+      "path": "browser-L4-shared-tabs-pass.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-L4-switch-during-csrf-pass.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-admin-admin-1440-dark.jpg",
+      "sha256": "0625bee832d8569ca167477b3f398d6307e38475227b39ca2f3245cf9ebb5069",
+      "bytes": 112257
+    },
+    {
+      "path": "browser-admin-admin-1440-light.jpg",
+      "sha256": "04e87be6e1b07bccb3bb6090e75e78225bbc9536df5fcc27b8267f91d4497148",
+      "bytes": 114387
+    },
+    {
+      "path": "browser-admin-admin-390-dark.jpg",
+      "sha256": "44a6776100318fb4981442c051c7fe80e5cda30bf0e0c51290754705dce83627",
+      "bytes": 79438
+    },
+    {
+      "path": "browser-admin-admin-390-light.jpg",
+      "sha256": "5d6bf0ca08aeaab70da85d15e3213a337acda7a4cf2969a947a2b69de9728de8",
+      "bytes": 81178
+    },
+    {
+      "path": "browser-admin-admin-user-avatar-reopened.jpg",
+      "sha256": "7ea9da0410a3870abdf207b5b88f82ad7f2057d9619edd40f96ea80f43972ec4",
+      "bytes": 99913
+    },
+    {
+      "path": "browser-admin-profile-1440-light.jpg",
+      "sha256": "38b9ea437a768f1daa6865516096482c68e6314156f07e9bcaaa63e9a23b27c7",
+      "bytes": 204632
+    },
+    {
+      "path": "browser-admin.json",
+      "sha256": "44351c3407479c365acc663e548369a7049bea8846d41203b4f53ddb8516260c",
+      "bytes": 15014
+    },
+    {
+      "path": "browser-corrections-results.json",
+      "sha256": "2bbb55d9a6cdb87ecf77c1c66cf1a1d1f1ae17a859e6a4e5398cd9084ce84b32",
+      "bytes": 169581
+    },
+    {
+      "path": "browser-default-chat-390-light.jpg",
+      "sha256": "322a3aea59a288cc00b4c1046523116d6bb7153439f7a0c1a4ace62e118de118",
+      "bytes": 44226
+    },
+    {
+      "path": "browser-default-home-1440-light.jpg",
+      "sha256": "f750602663903af476c8331894fd40f7976b7e2aa9ae23a514ca3a100fe3c5f2",
+      "bytes": 145937
+    },
+    {
+      "path": "browser-default-profile-1440-light.jpg",
+      "sha256": "cd9d1394c904e24449c597845b858581a43cd2393c9e9e307e668e3e907f42c7",
+      "bytes": 205422
+    },
+    {
+      "path": "browser-default-profile-390-dark.jpg",
+      "sha256": "38742e676f7d5966ba0f5a264d1aa1c14118e627a188d33c665b8b4c20a6ebaa",
+      "bytes": 81286
+    },
+    {
+      "path": "browser-default-service-390-dark.jpg",
+      "sha256": "709a52076e3d76a05cb801890519be22d03bc14a8890f4e1776f304998a7eef4",
+      "bytes": 100665
+    },
+    {
+      "path": "browser-default.json",
+      "sha256": "452f7a9b3a4c99f611c4c061e9cd120c25ca8408b54b1591724855e25c06fc1c",
+      "bytes": 57135
+    },
+    {
+      "path": "browser-demo-admin.json",
+      "sha256": "e0d2746c41b3c0f89f3ce4bcc9eb5eda979e507b65adaf82320ace16e0e5ad37",
+      "bytes": 366
+    },
+    {
+      "path": "browser-demo-admin.log",
+      "sha256": "fb310dc192ccb5c8464f20ee3d67d366621e39385f98f77e732fd3ace876ed79",
+      "bytes": 380
+    },
+    {
+      "path": "browser-demo.json",
+      "sha256": "6b1ba77f15de9b70efbae0854701fee0d713164886ef09fa942b471e1cbbcaed",
+      "bytes": 368
+    },
+    {
+      "path": "browser-demo.log",
+      "sha256": "204b895695e2fdbe3483e36b4b672575abb4bc9cc771468784c447f52d0d6716",
+      "bytes": 613
+    },
+    {
+      "path": "browser-l2-A-profile-then-new-work-pass.png",
+      "sha256": "a249fd08c2221e387b796c5419c80590883bc1464ce9469728caeeb41b54890f",
+      "bytes": 292375
+    },
+    {
+      "path": "browser-l2-B-new-draft-then-profile-save-pass.png",
+      "sha256": "f5c8ac82b77daf67ed1a1e7de0e5103f1d0b867df331745bfc625e71284f64f1",
+      "bytes": 282395
+    },
+    {
+      "path": "browser-l2-account-switch-drops-old-intent-pass.png",
+      "sha256": "4ef4cc189aeb63dd2d69ed2c56d8bc6b1eaf56d1f07462cf7b9e6f2605c09cf4",
+      "bytes": 47004
+    },
+    {
+      "path": "browser-l2-dirty-work-prevents-destructive-switch-pass.png",
+      "sha256": "36b542d9c0df9a4bb5932b7f75e887eaac6790f9c0118be6acd6ef6958e1ad15",
+      "bytes": 312066
+    },
+    {
+      "path": "browser-l2-existing-edit-then-profile-save-pass.png",
+      "sha256": "eb164aff50b307ed35cc52bac697fb93f8b2a676432521ff75ebfad69bc62903",
+      "bytes": 286950
+    },
+    {
+      "path": "browser-l2-external-after-own-confirmation-pass.png",
+      "sha256": "ccf09af07a9dd8e086cb5539f65874555a4e7e37e0031165bebf3ed09db949ae",
+      "bytes": 329856
+    },
+    {
+      "path": "browser-l2-external-portfolio-CAS-pass.png",
+      "sha256": "452fa5976be62b37647a83435023f98fad248d0b7dd8ab2d2bbe25f56828e3d3",
+      "bytes": 306145
+    },
+    {
+      "path": "browser-l2-external-profile-CAS-pass.png",
+      "sha256": "110c5d2a73fb9947c454d628708e04ba338c34d20a99987dcac027d925ed3407",
+      "bytes": 303915
+    },
+    {
+      "path": "browser-l2-file-draft-survives-profile-save-pass.png",
+      "sha256": "b8c577f8e8f6d301321a21c7c63964ac5572ad1e7c676a59b96839d6f09eaef9",
+      "bytes": 309681
+    },
+    {
+      "path": "browser-l2-portfolio-400-preserves-draft-pass.png",
+      "sha256": "49fedb917be20f279193a4e41825a32f499c31e59e241299d7543ed2c5b01be1",
+      "bytes": 295442
+    },
+    {
+      "path": "browser-l2-portfolio-503-same-key-retry-pass.png",
+      "sha256": "03ccc997123945dddb52267e14c3ea5a53874c544afda0979f56d745312f1931",
+      "bytes": 292254
+    },
+    {
+      "path": "browser-l2-portfolio-sibling-drafts-pass.png",
+      "sha256": "0f4bd9c8e7c4110ecbe135021f99c9988b0358d73ab0f89a9dbbf3e6ea5cab6f",
+      "bytes": 294807
+    },
+    {
+      "path": "browser-l2-profile-400-preserves-drafts-pass.png",
+      "sha256": "50eb15b89cb11e0815e7869201080d899944829536dd270f322c5b76f8265f76",
+      "bytes": 296820
+    },
+    {
+      "path": "browser-l2-reload-canonical-state-pass.png",
+      "sha256": "74406d3e43efa2dedbaab2c695b57115fa3d253b5a6796bac1991ca3981b2ce1",
+      "bytes": 303876
+    },
+    {
+      "path": "browser-l2-results.json",
+      "sha256": "381261335fbe9aa9c8504e62c5bc9a3d1c93197d274cd534bc20ec02e769d689",
+      "bytes": 206188
+    },
+    {
+      "path": "browser-l2-run.json",
+      "sha256": "22ba83540b55c1a06bc9657ec3350e97bffbad724222c94080f5c939c60c35f1",
+      "bytes": 338
+    },
+    {
+      "path": "browser-l2-run.log",
+      "sha256": "50040d7a15c88eb9e1c81f384d7abfa0fdb65dfef80332c4217cfa257b1bdc6c",
+      "bytes": 544
+    },
+    {
+      "path": "browser-l2.cjs",
+      "sha256": "5ece70f29cfbcf630822f631c260cf743016821669583b9a74f1aab3b62c526a",
+      "bytes": 22395
+    },
+    {
+      "path": "browser-live-contract-chat-390-dark.jpg",
+      "sha256": "b17f9212374963255109336279cc28b72f425579d80c7df4a426a1303c1f77f6",
+      "bytes": 38531
+    },
+    {
+      "path": "browser-live-contract-profile-390-dark.jpg",
+      "sha256": "f07d42eb2e078e20d6f2e22d92a533dc8b6191792ce46db8f3c90ce60c5ff891",
+      "bytes": 95691
+    },
+    {
+      "path": "browser-live-contract-quote-390-dark.jpg",
+      "sha256": "76b0974fe71295298a6dc8f0d78faa1905e571cd227c10891b91a2e140d02515",
+      "bytes": 80425
+    },
+    {
+      "path": "browser-live-contract-results.json",
+      "sha256": "2a1b65ff8a7496ac5f99ae53c31965b7a1cd4ddbecb17a80ffc4dab22c5a4582",
+      "bytes": 132340
+    },
+    {
+      "path": "browser-live-contract-staff-1440-light.jpg",
+      "sha256": "03d2accdf4ff6aeb14a36696a215f0cc71226738a0b0a39cfa79f3eeea6e59b8",
+      "bytes": 85945
+    },
+    {
+      "path": "browser-live-contract-staff-390-dark.jpg",
+      "sha256": "677079c029f9b0b8800b1a643ef115c84cbceebaa0c1e6ec195096defb367648",
+      "bytes": 22414
+    },
+    {
+      "path": "browser-live-regression.json",
+      "sha256": "633d20c1099009ae299341daea768061a911517391e2423bf12843a8f79ad017",
+      "bytes": 363
+    },
+    {
+      "path": "browser-live-regression.log",
+      "sha256": "4b19713d9f1e8d89a472029d876b610109861713817476474e01fdc31afbd383",
+      "bytes": 2394
+    },
+    {
+      "path": "browser-prior-corrections.json",
+      "sha256": "4c6fa48facfd46a06b0c824160fa862989035d5970635cf52297feccc6902aad",
+      "bytes": 356
+    },
+    {
+      "path": "browser-prior-corrections.log",
+      "sha256": "25db02188e53bf87640fc2c72bd2f471ba4e5a2394a0a65dcf20218ca2ca4216",
+      "bytes": 313
+    },
+    {
+      "path": "build-demo-admin.json",
+      "sha256": "388c40bc0f28e155c0b93a1fbf3e2163976a01485cf11cb57c2cd41e12b9037b",
+      "bytes": 293
+    },
+    {
+      "path": "build-demo-admin.log",
+      "sha256": "d595373fe98c867f7d517eca2a1d16cc361ba3ae60107d3c568e188aae0067cd",
+      "bytes": 1234
+    },
+    {
+      "path": "build-demo.json",
+      "sha256": "309b69cece75a46ad77f95c66224b53e77c6a8c6933890a27d20a17f8be15105",
+      "bytes": 294
+    },
+    {
+      "path": "build-demo.log",
+      "sha256": "376b3bc0380becba4882b56a4db430727a0d45b8545b38bf29f3f59be2c48ec0",
+      "bytes": 1233
+    },
+    {
+      "path": "build-live.json",
+      "sha256": "e8ba06d98fa50cfc984a7e90e76416633bc43b959fccd3ee863e3c28f27b9695",
+      "bytes": 293
+    },
+    {
+      "path": "build-live.log",
+      "sha256": "8b739d7af10fd474cfd9407e5b09cce0261939a8c0a2a2236c4de7614fd6b71b",
+      "bytes": 1234
+    },
+    {
+      "path": "code-staged-gate.json",
+      "sha256": "e221e3df3dbe0575df423b77533ac0e16dfa7aad32dbee9d0fad67fe392cfe1c",
+      "bytes": 646
+    },
+    {
+      "path": "contract-fixtures.cjs",
+      "sha256": "2cf7f5272fb732875f59b86f88b3b007ae0afae749958806742aee8d7a017f24",
+      "bytes": 7696
+    },
+    {
+      "path": "eslint.json",
+      "sha256": "61019d7fc0e257dfd9056a71b1a5e9197df72e8d401cd5b0037b0531537e4d11",
+      "bytes": 198
+    },
+    {
+      "path": "eslint.log",
+      "sha256": "3caddf739f167791dbae68a42ed997be8d825681958c901669ad0a74ed4c6852",
+      "bytes": 805
+    },
+    {
+      "path": "fixture-selfcheck.cjs",
+      "sha256": "825865f857996ed21d104aa264f40ce363b302a99bc8f2bb36a79b9733943496",
+      "bytes": 3708
+    },
+    {
+      "path": "fixture-selfcheck.json",
+      "sha256": "2471d203cd30e768e9cd97522721a878c27d38cadd4730e7df961e8872d49453",
+      "bytes": 4267
+    },
+    {
+      "path": "registration-tests.json",
+      "sha256": "f6619e56df0ac6f9bb9ac78541a798b51213662bc6002becf98651557e73d1f6",
+      "bytes": 356
+    },
+    {
+      "path": "registration-tests.log",
+      "sha256": "45c876393a60a26aa1b5c067164f2c77cd16910f0755815f8dfa53f69cdcbdaf",
+      "bytes": 783
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "7e0ca72a1f3bdbebfa9ec5e1639b5918af26905a660cc7e6aa8f75e01dfda546",
+      "bytes": 34802
+    },
+    {
+      "path": "source-manifest.sha256",
+      "sha256": "92152cb14660062a4e52d0e518b53c107b8037e0dfbb37b11f32bcd2bdcbc40d",
+      "bytes": 87
+    },
+    {
+      "path": "tests.json",
+      "sha256": "e1db19071b4611b57cf909eb2728f2429d5eae12b66bafd7130218ef7089fa91",
+      "bytes": 187
+    },
+    {
+      "path": "tests.log",
+      "sha256": "69d54bac7dd8c4c0c6a5fc73c954f38f83ff3fecdc9dd3321c91f46a78f64fd8",
+      "bytes": 40627
+    },
+    {
+      "path": "typescript.json",
+      "sha256": "6b7b3f49c5c22f8fce393a9bac527466f4aa242fdcfb875b3ebfe0257f5fc1e0",
+      "bytes": 202
+    },
+    {
+      "path": "typescript.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "verify-publication.py",
+      "sha256": "cb4b07dfef5ccf83627e7f2cd25fd5f70ddd6ea885153e0a9441c733417ef637",
+      "bytes": 5622
+    }
+  ],
+  "reportFiles": [
+    {
+      "path": "documents/project/для отчетов/README.md",
+      "sha256": "9831bc3a0553bc8a1a002757fc832b7b0734f9d5df43fd9597ef91808f184074"
+    },
+    {
+      "path": "documents/project/для отчетов/frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md",
+      "sha256": "a720015002eeb6af5c3826010ba68dc59b64f4b01815508391c3df3089e449e9"
+    }
+  ],
+  "localMarkdownLinksChecked": [
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-23_17-12_f123-closure.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-23_10-42_frontend-scenarios-completion.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-22_18-09_frontend-scenarios-progress.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-22_02-55_technical-acceptance-fixes.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/implementation/2026-10-28-l2/"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-27_12-33_live-integration-corrections.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-27_12-33_backend-identity-recovery-handoff.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/implementation/2026-10-27-corrections/"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-26_00-08_django-live-integration.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-26_00-08_ROUTE_API_MATRIX.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-26_00-08_backend-dependencies.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-21_22-18_full-redesign-progress.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../../../LOCAL_START.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/local-launch/2026-10-18_14-42_demo-live-startup.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-18_14-42_frontend-publication.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-16_12-37_git.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/registration/2026-10-16_12-39_registration.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_13-13_auth.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_20-43_integration-publish.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_integration-status.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_15-08_backend-contract-audit.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-16_20-59_frontend-integration-publication.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-16_21-12_regression-demo-live.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/README.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-18_02-08_visual-prototypes.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/redesign/2026-10-18_13-21_campus-search-implementation.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-18_20-08_worktree-workflow-audit.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../TEAM_WORKFLOW.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../CODEX_DESKTOP.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "../handoffs/README.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "git/2026-10-18_20-34_worktree-setup.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-19_00-21_session-initialization.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-19_00-44_django-live-plan.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-25_16-34_integration-progress.md"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-25_16-34_integration-progress.md#7-перенос-и-проверка-после-разрешения-po"
+    },
+    {
+      "from": "documents/project/для отчетов/README.md",
+      "link": "frontend/api-integration/2026-10-25_16-34_integration-progress.md#9-завершение-прерванной-публикации"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md",
+      "link": "implementation/2026-10-28-l2/"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md",
+      "link": "implementation/2026-10-28-l2/verification-summary.json"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md",
+      "link": "implementation/2026-10-28-l2/publication-gate.json"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md",
+      "link": "implementation/2026-10-28-l2/source-manifest.json"
+    },
+    {
+      "from": "documents/project/для отчетов/frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md",
+      "link": "2026-10-27_12-33_backend-identity-recovery-handoff.md"
+    }
+  ],
+  "hashExclusions": [
+    "verification-summary.json self",
+    "publication-gate.json updated after final staging"
+  ],
+  "remainingScope": "Ready for targeted independent client L2 review. Server L4 guard, Django/PostgreSQL and incomplete recovery remain Backend-owned and unchanged.",
+  "publication": "PO authorized ownbranch ordinary fastforward after final staged gate; final docs SHA/localremote confirmation supplied in response",
+  "pass": true
+}
