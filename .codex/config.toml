@@ -1,0 +1,6 @@
+# Project-scoped Codex configuration. Custom agents are discovered in agents/*.toml.
+# https://learn.chatgpt.com/docs/agent-configuration/subagents
+[agents]
+enabled = true
+# Concurrently open subagent threads; the primary Orchestrator is excluded.
+max_concurrent_threads_per_session = 3
