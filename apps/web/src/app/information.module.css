@@ -188,6 +188,34 @@
   font-weight: 650;
 }
 
+.document {
+  display: grid;
+  gap: 24px;
+  padding: clamp(20px, 4vw, 36px);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.document h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.document p,
+.document dl {
+  max-width: 72ch;
+  margin: 0;
+}
+
+.document dd {
+  margin: 0 0 12px;
+}
+
+.document a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+}
+
 .errorCode {
   display: block;
   font-size: clamp(84px, 16vw, 140px);

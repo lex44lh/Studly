@@ -17,7 +17,7 @@ export default function AboutPage() {
       </header>
       <nav className={styles.links} aria-label="Узнать о платформе">
         <Link className={styles.linkCard} href="/safety"><span className={styles.cardIcon}><Icon name="heart" /></span><span><strong>Безопасность</strong><small>Информация о безопасной работе</small></span><Icon name="arrow" /></Link>
-        <Link className={styles.linkCard} href="/rules"><span className={styles.cardIcon}><Icon name="book" /></span><span><strong>Правила платформы</strong><small>Статус подготовки правил</small></span><Icon name="arrow" /></Link>
+        <Link className={styles.linkCard} href="/rules"><span className={styles.cardIcon}><Icon name="book" /></span><span><strong>Документы STUDLY</strong><small>Условия пользования платформой</small></span><Icon name="arrow" /></Link>
         <Link className={styles.linkCard} href="/support"><span className={styles.cardIcon}><Icon name="chat" /></span><span><strong>Поддержка</strong><small>Информация о разделе</small></span><Icon name="arrow" /></Link>
       </nav>
     </div>

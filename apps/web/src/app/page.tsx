@@ -45,6 +45,9 @@ export default function HomePage() {
     <section className="page-section" aria-labelledby="home-services"><div className="page-section-title"><h2 id="home-services">{demoMode ? "Популярные услуги" : "Услуги"}</h2><Link href="/search">Весь каталог <Icon name="arrow" /></Link></div>
       {demoMode ? <div className="page-grid">{popularServices.map(service => <ServiceCard key={service.id} {...service} isDemo />)}</div> : <ServiceList limit={4} />}
     </section>
-    <div className="page-actions page-section"><Link href="/search" className="page-button">Смотреть все услуги <Icon name="arrow" /></Link></div>
+    <div className="page-actions page-section">
+      <Link href="/search" className="page-button">Смотреть все услуги <Icon name="arrow" /></Link>
+      <Link href="/rules" className="page-button-secondary">Документы STUDLY</Link>
+    </div>
   </div>;
 }
