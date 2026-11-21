@@ -88,3 +88,13 @@ STUDLY_ENV_FILE=/private/tmp/studly-live-test/local.env .venv/bin/python manage.
 При совместной проверке: чистый профиль браузера → auth/options → CSRF GET → настоящий login → новый CSRF после login → auth/me → приватные чтения/записи → reload → logout → отказ прежней сессии. Дополнительно два аккаунта/вкладки, неверный Origin, истёкшая сессия и Telegram iOS/Android/Desktop/Web. Cookie из HTTP localhost не доказывают Secure/SameSite в Telegram. Реальная оплата, paid/completed, выплаты и документы действующего оператора не включаются.
 
 Ранее выявленный риск пропуска released message при конкурентной cursor pagination остаётся отдельной незавершённой задачей. Последовательные проверки чата и успешный suite не доказывают устранение этой гонки. В этой подготовке алгоритм sequence не изменялся.
+
+## Фактически выполнено 21 ноября 2026
+
+- Backend `aba56191aabbd21901feacc552d134bb7aae8232`: 244/244 теста на отдельной PostgreSQL17/macOS; `check`, отсутствие новых миграций, `pip check`, `git diff --check` успешны. Запуск suite из корня не является корректной процедурой: subprocess-тестам нужен apps/api; окончательный полный запуск выполнен именно оттуда.
+- [GitHub CI](https://github.com/lex44lh/Studly/actions/runs/44942327045) успешен для Python3.12/PostgreSQL16 и Python3.13/PostgreSQL17: установка, Gunicorn config, миграции с нуля, tests.
+- Frontend SHA6c59201: production Webpack build, TypeScript, 393/393 tests, lint0ошибок/2 прежних img warnings. Хеши180 исходных файлов после локальных установки/сборки/тестов совпали. Linux-сборка на VPS также прошла без изменения исходных файлов.
+- Mac: Next3002 → Django8002 → отдельная PostgreSQL55439. Browser `/search` показал синтетическую услугу из API; карточка сохранила Live и сообщила об отсутствии Telegram-настройки; `/rules` показал «Документы готовятся к публикации»; console errors в проверенных страницах отсутствовали.
+- Через настоящий Next proxy выполнены auth/me, CSRF GET, отказ POST без CSRF и с чужим Origin, quote105.00 RUB, неоплаченный order и идемпотентный повтор, conversation. Это synthetic API E2E, не настоящий Telegram/банковский платёж/полный приватный browser E2E.
+- На VPS отдельно созданы тестовые users/DB/media/env/units. `systemd-analyze verify` успешен, обе службы active, NRestarts0, internal API ready200 и Next loopback200; CSRF-cookie Secure/HttpOnly/SameSite=Lax. Production health200 и прежние ссылки релизов сохранены. Public HTTPS ожидает DNS и отдельный сертификат; до успешного внешнего запроса его нельзя считать проверенным.
+- Security reviewer статически проверил границы prod/test и CLI-сессий; замечания об унаследованных Telegram credentials и коллизии synthetic actor исправлены с отрицательными тестами. Это не юридическая приёмка.

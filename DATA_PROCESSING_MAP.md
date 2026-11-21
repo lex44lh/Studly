@@ -10,6 +10,8 @@
 
 Рабочая схема: accounts0001–0003, catalog0001–0003, orders0001–0002, стандартные auth/admin/contenttypes/sessions. Новые accounts0004, catalog0004–0005, orders0003–0004, conversations и operations на рабочей БД не обнаружены. Их данные ниже относятся к подготовленной версии v2/отдельному тестовому стенду.
 
+После отдельного подтверждения владельца на том же VPS создан изолированный synthetic stand: Backend `aba56191aabbd21901feacc552d134bb7aae8232`, Frontend `6c592011ac9d07367befb877e616ec8982d63cd0`, отдельные DB/role `studly_live_test_bank` (PostgreSQL16), MEDIA_ROOT `/var/lib/studly-live/live-test-media`, cookies с отдельными именами и synthetic sessions на1час. Применён полный граф миграций новой версии. Роль без superuser/createdb/createrole; проверка `has_table_privilege` для рабочей `accounts_user` вернула false. Новые службы `studly-live-api`/`studly-live-web` active, NRestarts=0; Unix socket ready и Next loopback200. Env `/etc/studly-live/api.env` root:studly-live0640, каталог0750. Рабочие релизы/БД не переключались. На момент этой записи внешний TLS стенда ещё ожидает A-запись и сертификат; внутренние проверки не объявляются внешним HTTPS.
+
 ## Категории и сроки
 
 | Данные | Место и обработка | Защита | Срок/удаление |
