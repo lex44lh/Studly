@@ -1,0 +1,18 @@
+[Unit]
+Description=STUDLY pinned Frontend synthetic Live
+After=network.target studly-live-api.service
+[Service]
+User=studly-live-web
+Group=studly-live-web
+WorkingDirectory=/opt/studly-live-web/current/apps/web
+Environment=NODE_ENV=production
+Environment=NEXT_TELEMETRY_DISABLED=1
+ExecStart=/opt/studly/node/bin/node /opt/studly-live-web/current/node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3002
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/studly-live-web/current/apps/web/.next/cache
+[Install]
+WantedBy=multi-user.target

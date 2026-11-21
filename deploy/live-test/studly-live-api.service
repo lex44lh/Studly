@@ -1,0 +1,22 @@
+[Unit]
+Description=STUDLY synthetic Live API (separate database and files)
+After=network.target postgresql.service
+[Service]
+User=studly-live
+Group=www-data
+SupplementaryGroups=studly-live
+WorkingDirectory=/opt/studly-live/current/apps/api
+EnvironmentFile=/etc/studly-live/api.env
+ExecStart=/opt/studly-live/venv/bin/gunicorn --workers 2 --bind unix:/run/studly-live-api/api.sock config.wsgi:application
+RuntimeDirectory=studly-live-api
+RuntimeDirectoryMode=0750
+StateDirectory=studly-live
+UMask=0007
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/studly-live
+[Install]
+WantedBy=multi-user.target

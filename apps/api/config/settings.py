@@ -7,7 +7,8 @@ from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / ".env", override=False)
+# A separate test env must not inherit credentials from the working .env.
+load_dotenv(Path(os.environ.get("STUDLY_ENV_FILE", BASE_DIR / ".env")), override=False)
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "true").lower() == "true"
 DEVELOPMENT_SECRET_KEY = (

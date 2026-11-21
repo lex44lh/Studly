@@ -1,0 +1,19 @@
+name: studly-live-test
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Set dedicated test DB}
+      POSTGRES_USER: ${POSTGRES_USER:?Set dedicated test role}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a private test password}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - live_test_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+volumes:
+  live_test_postgres:
