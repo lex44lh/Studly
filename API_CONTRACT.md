@@ -81,7 +81,7 @@
 
 | Запрос | Результат |
 |---|---|
-| `GET /api/v1/auth/options/` | `telegram_mini_app` и `telegram_website`: настроены ли соответствующие способы входа на сервере |
+| `GET /api/v1/auth/options/` | Флаги `telegram_mini_app`, `telegram_website`, `email_login`, `email_registration`, `email_linking` |
 | `GET /api/v1/auth/csrf/` | CSRF-cookie и `{"csrf_token":"..."}` |
 | `POST /api/v1/auth/telegram/mini-app/` | Проверяет `{"init_data":"исходная строка Telegram.WebApp.initData"}`, создаёт сессию |
 | `GET /api/v1/auth/telegram/start/` | `302`: переход на Telegram; необязательный `next` задаёт относительный путь возврата на сайт |
@@ -96,6 +96,8 @@
 Запросы должны сохранять cookie. Для первой интеграции предполагается общий origin интерфейса и API: инфраструктура направляет `/api/` в Django. В актуальном Frontend этого маршрута пока нет. `CSRF_TRUSTED_ORIGINS` само по себе не включает CORS. Подключение разных доменов и совместимость cookie во всех клиентах Telegram ещё требуют проверки.
 
 `auth/options` не подтверждает успешный вход настоящего пользователя или правильность внешних настроек Telegram. Отдельный бот-токен не заменяет OIDC Client Secret. Для возврата на сайт открывать, например, `/api/v1/auth/telegram/start/?next=%2Fregister%2Froles` обычной навигацией браузера. Допускается один непустой путь от корня текущего origin до 2048 символов; внешний, неоднозначный или повторный `next` даёт `400 invalid_return_path`. Сохраняется только проверенный путь из начала входа; `next` в callback игнорируется. Ошибки не перенаправляют браузер; после обработки попытки, в том числе при `503`, нужен новый вход через `/start/`. Полный порядок и обновление CSRF после входа: [REGISTRATION_API.md](REGISTRATION_API.md).
+
+Вход по паролю и подтверждение email подключаются по флагам `email_*`. Формы, статусы, нормализация и продолжение профиля описаны в [контракте регистрации](REGISTRATION_API.md#регистрация-и-вход-по-email). [OpenAPI](docs/registration.openapi.json) содержит все шесть маршрутов.
 
 ## Создание, исправление услуги и свои заявки
 

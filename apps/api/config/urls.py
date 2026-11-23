@@ -5,6 +5,7 @@ from django.urls import include, path
 
 from health.views import HealthView, ReadinessView
 from accounts.cabinet_views import AccountView, CabinetView
+from accounts.live_test_login import live_test_login
 from catalog.favorites import FavoriteListView, FavoriteView
 from accounts.portfolio_views import (PortfolioView, PortfolioDetailView, PortfolioContentView,
                                       ModerationView, ModeratorProfileDecisionView)
@@ -20,6 +21,7 @@ urlpatterns = [
     path("api/v1/health/", HealthView.as_view(), name="health"),
     path("api/v1/ready/", ReadinessView.as_view(), name="ready"),
     path("admin/", admin.site.urls),
+    path("api/v1/auth/live-test/sign-in/", live_test_login, name="live-test-sign-in"),
     path("api/v1/auth/", include("accounts.urls")),
     path("api/v1/account/", AccountView.as_view(), name="account"),
     path("api/v1/cabinet/", CabinetView.as_view(), name="cabinet"),

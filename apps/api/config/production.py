@@ -23,6 +23,17 @@ SECURE_HSTS_PRELOAD = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
+if STUDLY_EMAIL_AUTH_ENABLED:  # noqa: F405
+    EMAIL_HOST = os.environ.get("STUDLY_EMAIL_SMTP_HOST", "")
+    EMAIL_HOST_USER = os.environ.get("STUDLY_EMAIL_SMTP_USER", "")
+    EMAIL_HOST_PASSWORD = os.environ.get("STUDLY_EMAIL_SMTP_PASSWORD", "")
+    if not all((EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, os.environ.get("STUDLY_EMAIL_FROM"))):
+        raise ImproperlyConfigured("Email authentication on production requires an explicitly configured SMTP account and sender.")
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    STUDLY_EMAIL_TRUST_NGINX = True
+
 # Отдельный префикс служебной статики Django не занимает пути Next.js.
 STATIC_URL = "/django-static/"
 STATIC_ROOT = Path(os.environ.get("DJANGO_STATIC_ROOT", "/srv/studly/static"))

@@ -31,6 +31,33 @@ def validate_actor(user, role):
         raise CommandError("Synthetic actor marker collision; refusing access or mutation.")
 
 
+def prepare_test_service(performer, fixture_key, *, title):
+    # Serialize repeated fixture setup. Existing fixture edits are not overwritten.
+    User.objects.select_for_update().get(pk=performer.pk)
+    profile, _ = PerformerProfile.objects.get_or_create(user=performer, defaults={
+        "description": "Синтетический профиль для проверки API; не реальная услуга.",
+        "moderation_status": "approved",
+    })
+    specialization, _ = Specialization.objects.get_or_create(title="[ТЕСТ] Проверка интеграции")
+    profile.specializations.add(specialization)
+    portfolio_key = "portfolio" if fixture_key == "live-test-v1" else f"{fixture_key}:portfolio"
+    example, _ = PortfolioExample.objects.get_or_create(
+        pk=uuid5(NAMESPACE_URL, PREFIX + portfolio_key),
+        defaults={"profile": profile, "title": "[ТЕСТ] Пример", "url": "https://example.invalid/studly-test"},
+    )
+    service, created = Service.objects.get_or_create(demo_key=fixture_key, defaults={
+        "performer": performer, "title": title,
+        "description": "Только синтетический сценарий интеграции. Оплата не подключена.",
+        "category": "[ТЕСТ] Проверка интеграции", "included": ["Тестовая консультация"],
+        "price_amount": Decimal("100.00"), "duration_days": 1, "status": "published", "is_demo": False,
+    })
+    if service.performer_id != performer.pk or service.is_demo or example.profile_id != profile.pk:
+        raise CommandError("Fixture marker collision; existing data were not changed.")
+    if created:
+        service.portfolio_examples.add(example)
+    return service
+
+
 class Command(BaseCommand):
     help = "Create repeatable synthetic Live fixtures on an explicitly isolated stand."
 
@@ -48,28 +75,7 @@ class Command(BaseCommand):
             validate_actor(user, role)
             actors[role] = user
             RegistrationProgress.objects.get_or_create(user=user, defaults={"completed_at": timezone.now()})
-        # Serialize repeated fixture setup. Existing fixture edits are not overwritten.
-        User.objects.select_for_update().get(pk=actors["performer"].pk)
-        profile, _ = PerformerProfile.objects.get_or_create(user=actors["performer"], defaults={
-            "description": "Синтетический профиль для проверки API; не реальная услуга.",
-            "moderation_status": "approved",
-        })
-        specialization, _ = Specialization.objects.get_or_create(title="[ТЕСТ] Проверка интеграции")
-        profile.specializations.add(specialization)
-        example, _ = PortfolioExample.objects.get_or_create(
-            pk=uuid5(NAMESPACE_URL, PREFIX + "portfolio"),
-            defaults={"profile": profile, "title": "[ТЕСТ] Пример", "url": "https://example.invalid/studly-test"},
-        )
-        service, created = Service.objects.get_or_create(demo_key="live-test-v1", defaults={
-            "performer": actors["performer"], "title": "[ТЕСТ] Консультация по Python",
-            "description": "Только синтетический сценарий интеграции. Оплата не подключена.",
-            "category": "[ТЕСТ] Проверка интеграции", "included": ["Тестовая консультация"],
-            "price_amount": Decimal("100.00"), "duration_days": 1, "status": "published", "is_demo": False,
-        })
-        if service.performer_id != profile.user_id or service.is_demo or example.profile_id != profile.pk:
-            raise CommandError("Fixture marker collision; existing data were not changed.")
-        if created:
-            service.portfolio_examples.add(example)
+        service = prepare_test_service(actors["performer"], "live-test-v1", title="[ТЕСТ] Консультация по Python")
         permissions = Permission.objects.filter(
             content_type__app_label="accounts", codename="moderate_performer",
         ) | Permission.objects.filter(content_type__app_label="catalog", codename="moderate_service") | Permission.objects.filter(

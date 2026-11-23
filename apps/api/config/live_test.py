@@ -31,3 +31,18 @@ SECURE_SSL_REDIRECT = not DEBUG  # noqa: F405
 SECURE_HSTS_SECONDS = 3600 if not DEBUG else 0  # noqa: F405
 STATIC_URL = "/django-static/"
 STATIC_ROOT = Path(os.environ.get("DJANGO_STATIC_ROOT", BASE_DIR / "staticfiles"))  # noqa: F405
+
+if STUDLY_EMAIL_AUTH_ENABLED:  # noqa: F405
+    if any(os.environ.get(key) for key in ("STUDLY_EMAIL_SMTP_HOST", "STUDLY_EMAIL_SMTP_USER", "STUDLY_EMAIL_SMTP_PASSWORD")):
+        raise ImproperlyConfigured("External SMTP credentials are forbidden on the synthetic test stand.")
+    mail_path = os.environ.get("STUDLY_EMAIL_TEST_OUTBOX")
+    if not mail_path or not Path(mail_path).is_absolute():
+        raise ImproperlyConfigured("Synthetic email requires an absolute private STUDLY_EMAIL_TEST_OUTBOX directory.")
+    outbox = Path(mail_path).resolve()
+    if not outbox.is_dir() or outbox.stat().st_mode & 0o077:
+        raise ImproperlyConfigured("Create STUDLY_EMAIL_TEST_OUTBOX with private permissions (0700).")
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = outbox
+    DEFAULT_FROM_EMAIL = "studly@example.test"
+    STUDLY_EMAIL_TEST_DOMAIN = "example.test"
+    STUDLY_EMAIL_TRUST_NGINX = not DEBUG  # noqa: F405

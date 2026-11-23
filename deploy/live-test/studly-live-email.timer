@@ -1,0 +1,10 @@
+[Unit]
+Description=Run synthetic STUDLY email delivery after requests are persisted
+
+[Timer]
+OnActiveSec=15s
+OnUnitInactiveSec=15s
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target

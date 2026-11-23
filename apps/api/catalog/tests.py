@@ -137,15 +137,18 @@ class DemoCatalogTests(TestCase):
             User.objects.create_user(None)
 
 
+@override_settings(STUDLY_EMAIL_AUTH_ENABLED=False)
 class AuthOptionsTests(TestCase):
     @override_settings(TELEGRAM_BOT_TOKEN="", TELEGRAM_OIDC_CLIENT_ID="", TELEGRAM_OIDC_CLIENT_SECRET="")
     def test_options_are_public_and_contain_no_secrets(self):
         response = self.client.get(reverse("accounts:options"))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"telegram_mini_app": False, "telegram_website": False})
+        self.assertEqual(response.json(), {"telegram_mini_app": False, "telegram_website": False,
+                                          "email_login": False, "email_registration": False, "email_linking": False})
 
     @override_settings(TELEGRAM_BOT_TOKEN="fake-local-test-token", TELEGRAM_OIDC_CLIENT_ID="123",
                        TELEGRAM_OIDC_CLIENT_SECRET="fake-secret", TELEGRAM_OIDC_REDIRECT_URI="https://example.com/callback")
     def test_configured_methods_are_available_without_exposing_credentials(self):
         self.assertEqual(self.client.get(reverse("accounts:options")).json(),
-                         {"telegram_mini_app": True, "telegram_website": True})
+                         {"telegram_mini_app": True, "telegram_website": True,
+                          "email_login": False, "email_registration": False, "email_linking": False})

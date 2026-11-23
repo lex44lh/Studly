@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.functions import Lower
 
 
 class UserManager(BaseUserManager):
@@ -54,6 +55,69 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.display_name or str(self.telegram_id)
+
+
+class EmailCredential(models.Model):
+    """Подтверждённый email-вход того же аккаунта, независимо от Telegram."""
+
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="email_credential",
+    )
+    email = models.CharField(max_length=254, unique=True)
+    username = models.CharField(max_length=32, unique=True)
+    verified_at = models.DateTimeField()
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(email=Lower("email")) & ~models.Q(email=""),
+                name="email_credential_email_canonical",
+            ),
+            models.CheckConstraint(
+                condition=models.Q(username=Lower("username")) & ~models.Q(username=""),
+                name="email_credential_username_canonical",
+            ),
+        ]
+
+
+class EmailChallenge(models.Model):
+    class Purpose(models.TextChoices):
+        REGISTER = "register", "Регистрация"
+        LINK = "link", "Привязка email"
+        RESET = "reset", "Сброс пароля"
+
+    purpose = models.CharField(max_length=16, choices=Purpose.choices)
+    selector = models.CharField(max_length=64, unique=True)
+    email = models.CharField(max_length=254)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name="email_challenges", null=True, blank=True,
+    )
+    expires_at = models.DateTimeField(db_index=True)
+    sent_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["expires_at"], condition=models.Q(sent_at__isnull=True),
+                name="email_challenge_unsent_idx",
+            ),
+        ]
+        constraints = [
+            models.CheckConstraint(
+                condition=(
+                    models.Q(purpose="register", user__isnull=True)
+                    | models.Q(purpose__in=["link", "reset"], user__isnull=False)
+                ),
+                name="email_challenge_purpose_user_valid",
+            ),
+        ]
+
+
+class EmailAttempt(models.Model):
+    key = models.CharField(max_length=64, primary_key=True)
+    window_started_at = models.DateTimeField(db_index=True)
+    count = models.PositiveIntegerField(default=0)
 
 
 class Specialization(models.Model):

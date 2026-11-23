@@ -45,6 +45,21 @@ class ProductionSettingsTests(SimpleTestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("ImproperlyConfigured", result.stderr)
 
+    def test_email_auth_requires_trusted_action_url_and_explicit_tls_smtp(self):
+        code = "import config.production as c; assert c.EMAIL_USE_TLS and c.EMAIL_PORT == 587"
+        options = {"STUDLY_EMAIL_AUTH_ENABLED": "true", "STUDLY_EMAIL_SMTP_HOST": "smtp.example.test",
+                   "STUDLY_EMAIL_SMTP_USER": "synthetic-smtp", "STUDLY_EMAIL_SMTP_PASSWORD": "synthetic-only",
+                   "STUDLY_EMAIL_FROM": "studly@example.test", "STUDLY_EMAIL_ACTION_URL": "https://studly-help.ru/auth/email"}
+        valid = self.run_production(code, **options)
+        self.assertEqual(valid.returncode, 0, valid.stderr)
+        for invalid in ({"STUDLY_EMAIL_ACTION_URL": "https://untrusted.example.test/auth"},
+                        {"STUDLY_EMAIL_ACTION_URL": "https://studly-help.ru/auth#existing"},
+                        {"STUDLY_EMAIL_SMTP_PASSWORD": ""}):
+            with self.subTest(field=next(iter(invalid))):
+                response = self.run_production(code, **(options | invalid))
+                self.assertNotEqual(response.returncode, 0)
+                self.assertIn("ImproperlyConfigured", response.stderr)
+
     def test_http_redirects_and_proxy_https_keeps_secure_csrf_cookie(self):
         result = self.run_production('''
 import django

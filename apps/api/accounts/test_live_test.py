@@ -44,6 +44,15 @@ class LiveTestConfigurationTests(SimpleTestCase):
     def test_isolated_configuration_loads(self):
         self.assertEqual(self.check_config().returncode, 0)
 
+    def test_email_on_live_requires_private_outbox_and_no_external_smtp(self):
+        with TemporaryDirectory() as directory:
+            options = {"STUDLY_EMAIL_AUTH_ENABLED": "true", "STUDLY_EMAIL_TEST_OUTBOX": directory,
+                       "STUDLY_EMAIL_ACTION_URL": "http://127.0.0.1:3002/search"}
+            self.assertEqual(self.check_config(**options).returncode, 0)
+            self.assertNotEqual(self.check_config(**(options | {"STUDLY_EMAIL_SMTP_HOST": "smtp.example.test"})).returncode, 0)
+            Path(directory).chmod(0o755)
+            self.assertNotEqual(self.check_config(**options).returncode, 0)
+
     def test_working_database_media_and_payment_credentials_are_rejected(self):
         for changes in ({"POSTGRES_DB": "studly"}, {"POSTGRES_USER": "studly_api"},
                         {"DJANGO_MEDIA_ROOT": "/var/lib/studly-api/avatars"},

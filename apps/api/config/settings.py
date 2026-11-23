@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
@@ -96,6 +97,12 @@ if DEBUG:
     )
 
 AUTH_USER_MODEL = "accounts.User"
+AUTH_PASSWORD_VALIDATORS = [
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", "OPTIONS": {"min_length": 12}},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+]
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = not DEBUG
 SESSION_COOKIE_SAMESITE = "Lax"
@@ -111,6 +118,31 @@ CSRF_TRUSTED_ORIGINS = [
     for origin in os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")
     if origin.strip()
 ]
+
+STUDLY_EMAIL_AUTH_ENABLED = os.environ.get("STUDLY_EMAIL_AUTH_ENABLED") == "true"
+STUDLY_EMAIL_TRUST_NGINX = False
+STUDLY_EMAIL_TEST_DOMAIN = ""
+STUDLY_EMAIL_ACTION_URL = os.environ.get("STUDLY_EMAIL_ACTION_URL", "")
+if STUDLY_EMAIL_AUTH_ENABLED:
+    try:
+        action_url = urlsplit(STUDLY_EMAIL_ACTION_URL)
+        action_host = action_url.hostname
+        action_url.port  # Reject a malformed port.
+    except ValueError:
+        raise ImproperlyConfigured("Invalid STUDLY_EMAIL_ACTION_URL.") from None
+    local_http = DEBUG and action_url.scheme == "http" and action_host in {"localhost", "127.0.0.1", "::1"}
+    if (
+        not (action_url.scheme == "https" or local_http)
+        or not action_host or action_host not in ALLOWED_HOSTS
+        or not action_url.path or action_url.username is not None
+        or action_url.query or action_url.fragment
+        or any(char.isspace() or char == "\\" for char in STUDLY_EMAIL_ACTION_URL)
+    ):
+        raise ImproperlyConfigured("STUDLY_EMAIL_ACTION_URL must be a trusted fixed URL without a query or fragment.")
+
+DEFAULT_FROM_EMAIL = os.environ.get("STUDLY_EMAIL_FROM", "studly@example.test")
+EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+EMAIL_TIMEOUT = 5
 
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_AUTH_MAX_AGE = int(os.environ.get("TELEGRAM_AUTH_MAX_AGE", "300"))

@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "STUDLY — регистрация и Telegram-вход",
-    "version": "1.0.0",
-    "description": "Реализованный Backend-контракт для согласования интеграции, 2026-10-17. Frontend ещё не подключён. Все приватные ответы no-store. Основной сценарий: единый origin, серверная сессия Django, CSRF из JSON /auth/csrf/. Справочник специализаций временно пуст. Дополнительные правила и ограничения в REGISTRATION_API.md. Это спецификация раздела регистрации, а не всего API заказов и каталога."
+    "title": "STUDLY — регистрация, Telegram и email-вход",
+    "version": "1.1.0",
+    "description": "Backend-контракт для единого origin: серверная сессия Django и CSRF из /auth/csrf/. Email подключается по флагам auth/options. Порядок интеграции описан в REGISTRATION_API.md."
   },
   "servers": [
     {
@@ -301,6 +301,502 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthOptions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/email/register/": {
+      "post": {
+        "operationId": "emailRegister",
+        "summary": "Запросить подтверждение email для нового аккаунта",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailAddressInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Запрос принят к обработке",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailAccepted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка полей либо code/detail: недействительный токен, пароль или занятый логин."
+          },
+          "403": {
+            "description": "Нет действительного CSRF или отсутствует требуемый недавний Telegram-вход.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Ожидается application/json."
+          },
+          "429": {
+            "description": "Превышен лимит попыток.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Секунды до повторной попытки",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Email-вход отключён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/email/verify/": {
+      "post": {
+        "operationId": "emailVerify",
+        "summary": "Подтвердить адрес, выбрать логин и пароль",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailVerifyInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Создана новая серверная сессия",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка полей либо code/detail: недействительный токен, пароль или занятый логин."
+          },
+          "403": {
+            "description": "Нет действительного CSRF или отсутствует требуемый недавний Telegram-вход.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Ожидается application/json."
+          },
+          "429": {
+            "description": "Превышен лимит попыток.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Секунды до повторной попытки",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Email-вход отключён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/email/login/": {
+      "post": {
+        "operationId": "emailLogin",
+        "summary": "Войти по email или логину и паролю",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailLoginInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Создана новая серверная сессия",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка полей либо code/detail: недействительный токен, пароль или занятый логин."
+          },
+          "403": {
+            "description": "Нет действительного CSRF или отсутствует требуемый недавний Telegram-вход.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Ожидается application/json."
+          },
+          "429": {
+            "description": "Превышен лимит попыток.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Секунды до повторной попытки",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Email-вход отключён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Неверные данные для входа.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/email/reset/request/": {
+      "post": {
+        "operationId": "emailResetRequest",
+        "summary": "Запросить ссылку восстановления",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailAddressInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Запрос принят к обработке",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailAccepted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка полей либо code/detail: недействительный токен, пароль или занятый логин."
+          },
+          "403": {
+            "description": "Нет действительного CSRF или отсутствует требуемый недавний Telegram-вход.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Ожидается application/json."
+          },
+          "429": {
+            "description": "Превышен лимит попыток.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Секунды до повторной попытки",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Email-вход отключён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/email/reset/confirm/": {
+      "post": {
+        "operationId": "emailResetConfirm",
+        "summary": "Установить новый пароль по ссылке",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailResetConfirmInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Пароль обновлён, прежние сессии недействительны"
+          },
+          "400": {
+            "description": "Ошибка полей либо code/detail: недействительный токен, пароль или занятый логин."
+          },
+          "403": {
+            "description": "Нет действительного CSRF или отсутствует требуемый недавний Telegram-вход.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Ожидается application/json."
+          },
+          "429": {
+            "description": "Превышен лимит попыток.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Секунды до повторной попытки",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Email-вход отключён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/email/link/": {
+      "post": {
+        "operationId": "emailLink",
+        "summary": "Начать привязку email к своему Telegram-аккаунту",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "csrfCookie": [],
+            "csrfHeader": [],
+            "sessionCookie": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailAddressInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Запрос принят к обработке",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailAccepted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка полей либо code/detail: недействительный токен, пароль или занятый логин."
+          },
+          "403": {
+            "description": "Нет действительного CSRF или отсутствует требуемый недавний Telegram-вход.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Ожидается application/json."
+          },
+          "429": {
+            "description": "Превышен лимит попыток.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Секунды до повторной попытки",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Email-вход отключён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailError"
                 }
               }
             }
@@ -951,11 +1447,23 @@
           },
           "telegram_website": {
             "type": "boolean"
+          },
+          "email_login": {
+            "type": "boolean"
+          },
+          "email_registration": {
+            "type": "boolean"
+          },
+          "email_linking": {
+            "type": "boolean"
           }
         },
         "required": [
           "telegram_mini_app",
-          "telegram_website"
+          "telegram_website",
+          "email_login",
+          "email_registration",
+          "email_linking"
         ]
       },
       "MiniAppLogin": {
@@ -984,6 +1492,129 @@
         },
         "required": [
           "avatar"
+        ]
+      },
+      "EmailAddressInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "EmailVerifyInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}\\.[0-9a-f]{64}$",
+            "writeOnly": true
+          },
+          "username": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 32
+          },
+          "password": {
+            "type": "string",
+            "minLength": 12,
+            "maxLength": 128,
+            "writeOnly": true,
+            "format": "password"
+          }
+        },
+        "required": [
+          "token",
+          "username",
+          "password"
+        ]
+      },
+      "EmailLoginInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "maxLength": 254
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 128,
+            "writeOnly": true,
+            "format": "password"
+          }
+        },
+        "required": [
+          "identifier",
+          "password"
+        ]
+      },
+      "EmailResetConfirmInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}\\.[0-9a-f]{64}$",
+            "writeOnly": true
+          },
+          "password": {
+            "type": "string",
+            "minLength": 12,
+            "maxLength": 128,
+            "writeOnly": true,
+            "format": "password"
+          }
+        },
+        "required": [
+          "token",
+          "password"
+        ]
+      },
+      "EmailAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "detail": {
+            "type": "string",
+            "example": "Если действие доступно, инструкция отправлена на почту."
+          }
+        },
+        "required": [
+          "detail"
+        ]
+      },
+      "EmailError": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "detail": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "detail"
         ]
       }
     }

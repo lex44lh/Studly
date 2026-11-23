@@ -50,12 +50,18 @@ class AuthOptionsView(PublicAuthView):
         return Response({
             "telegram_mini_app": bool(settings.TELEGRAM_BOT_TOKEN),
             "telegram_website": website,
+            "email_login": bool(getattr(settings, "STUDLY_EMAIL_AUTH_ENABLED", False)),
+            "email_registration": bool(getattr(settings, "STUDLY_EMAIL_AUTH_ENABLED", False)),
+            "email_linking": bool(getattr(settings, "STUDLY_EMAIL_AUTH_ENABLED", False))
+                             and (website or bool(settings.TELEGRAM_BOT_TOKEN)),
         })
 
 
 def complete_login(request, identity):
     user = resolve_user(identity)
     login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+    from .email_auth import mark_telegram_login
+    mark_telegram_login(request, user)
     return Response({"user": UserSerializer(user).data})
 
 

@@ -1,0 +1,18 @@
+[Unit]
+Description=STUDLY account email delivery on the synthetic Live stand
+After=postgresql.service
+
+[Service]
+Type=oneshot
+User=studly-live
+Group=studly-live
+WorkingDirectory=/opt/studly-live/current/apps/api
+EnvironmentFile=/etc/studly-live/api.env
+ExecStart=/opt/studly-live/venv/bin/python manage.py deliver_email_auth --settings=config.live_test
+TimeoutStartSec=120
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/studly-live/email-outbox
