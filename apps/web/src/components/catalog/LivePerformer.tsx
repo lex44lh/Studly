@@ -14,6 +14,6 @@ export default function LivePerformer({ id }: { id: string }) {
   const initials = profile.name.trim().split(/\s+/).slice(0,2).map(word => word[0]).join("");
   return <div className="campus-page"><BackButton /><div className="performer-layout">
     <section className="page-panel performer-summary"><div className="performer-initials" aria-hidden="true">{initials || "ST"}</div><p className="page-eyebrow">ИСПОЛНИТЕЛЬ</p><h1>{profile.name || "Профиль исполнителя"}</h1></section>
-    <div><section className="page-panel"><h2>О себе</h2><p className="page-muted">{profile.about || "Описание пока не добавлено."}</p><p className="page-muted">Рейтинг и отзывы пока недоступны в Live.</p></section><section className="page-section"><div className="page-section-title"><h2>Активные услуги</h2></div><ServiceList key={id} query={page || `performer=${encodeURIComponent(id)}`} onPage={query => setPagination({ id, query })} /></section></div>
+    <div><section className="page-panel"><h2>О себе</h2><p className="page-muted">{profile.about || "Описание пока не добавлено."}</p><p className="page-muted">Рейтинг и отзывы пока недоступны.</p></section><section className="page-section"><div className="page-section-title"><h2>Активные услуги</h2></div><ServiceList key={id} query={page || `performer=${encodeURIComponent(id)}`} onPage={query => setPagination({ id, query })} /></section></div>
   </div></div>;
 }

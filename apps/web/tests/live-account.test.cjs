@@ -327,6 +327,19 @@ test('cabinet renders server counts and unavailable ratings without invented zer
   assert.match(html, /<strong>—<\/strong><span>Средняя оценка/); assert.match(html, /Черновики: 1/);
   assert.match(html, /href="\/orders\?role=performer"/); assert.match(html, /Создать черновик услуги/);
 });
+test('only the performer cabinet shows the unavailable earnings state without a balance or payout action', () => {
+  const components = loader(name => name === '@/features/live/shared' ? {
+    LiveState: () => null,
+    useLiveResource: () => ({ loading: false, reload() {} }),
+  } : name === '@/context/AuthContext' ? {} : undefined)(componentPath);
+  const snapshot = { account: account(), moderation: moderation() };
+  const render = role => renderToStaticMarkup(React.createElement(components.CabinetPanel, { role, snapshot, refreshKey: 'fixture' }));
+  const performer = render('performer');
+  assert.match(performer, /Заработок и выплаты/);
+  assert.match(performer, /Данные о заработке и выплатах пока недоступны/);
+  assert.doesNotMatch(performer, /₽|Вывести|История выплат/);
+  assert.doesNotMatch(render('customer'), /Заработок и выплаты/);
+});
 test('private file example uses authenticated same-origin download and no public inline file embedding', () => {
   const components = loader(name => name === '@/features/live/shared' ? {} : name === '@/context/AuthContext' ? {} : undefined)(componentPath);
   const html = renderToStaticMarkup(React.createElement(components.ExampleEditor, { example: upload(), revision: 4, writer: { blocked: false } }));

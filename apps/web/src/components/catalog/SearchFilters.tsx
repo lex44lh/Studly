@@ -49,7 +49,7 @@ export function SearchFilters({ values, isDemo, onMinPrice, onMaxPrice, onDurati
             aria-describedby={!isDemo ? `${id}-rating-note` : undefined} onChange={event => onRating(event.target.checked)} />
           <span>От 4,7 и выше</span>
         </label>
-        {!isDemo && <p className="filter-note" id={`${id}-rating-note`}>Рейтинг пока недоступен в Live.</p>}
+        {!isDemo && <p className="filter-note" id={`${id}-rating-note`}>Рейтинг пока недоступен.</p>}
       </fieldset>
     </>
   );

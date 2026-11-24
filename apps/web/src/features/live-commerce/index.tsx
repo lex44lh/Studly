@@ -19,7 +19,7 @@ const storageWarning = "Браузер не сохранил ключ повто
 const date = (value: string) => new Date(value).toLocaleString("ru-RU");
 function useViewer() { const { state } = useAuth(); return state.status === "authenticated" ? state.user!.id : null; }
 function Frame({ title, children }: { title: string; children: ReactNode }) {
-  return <div className={styles.page}><header className={styles.intro}><p className={styles.eyebrow}>Мой кампус · Live</p><h1>{title}</h1></header>{children}</div>;
+  return <div className={styles.page}><header className={styles.intro}><p className={styles.eyebrow}>Мой кампус</p><h1>{title}</h1></header>{children}</div>;
 }
 function WriteError({ error, unknown }: { error: unknown; unknown: boolean }) {
   if (!error) return null;

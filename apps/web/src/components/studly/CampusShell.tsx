@@ -3,7 +3,7 @@
 import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useSyncExternalStore, type ReactNode } from "react";
 import BrandMark from "@/components/BrandMark";
 import { useAuth } from "@/context/AuthContext";
 import { demoMode } from "@/lib/data-mode";
@@ -31,6 +31,43 @@ const moreLinks = [
   ["/support", "Поддержка"], ["/safety", "Безопасность"], ["/rules", "Правила"], ["/about", "О STUDLY"],
 ];
 
+type ManualTheme = Exclude<CampusTheme, "auto">;
+
+const THEME_STORAGE_KEY = "studly:campus-theme";
+const themeListeners = new Set<() => void>();
+let sessionTheme: ManualTheme | null | undefined;
+
+function subscribeToManualTheme(listener: () => void) {
+  themeListeners.add(listener);
+  return () => { themeListeners.delete(listener); };
+}
+
+function getManualTheme(): ManualTheme | null {
+  if (sessionTheme !== undefined) return sessionTheme;
+  try {
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
+  } catch {
+    return null;
+  }
+}
+
+function getServerManualTheme() {
+  return null;
+}
+
+function setManualTheme(theme: ManualTheme | null) {
+  // Keep the selection available to all shells in this tab even if storage is blocked.
+  sessionTheme = theme;
+  try {
+    if (theme === null) window.localStorage.removeItem(THEME_STORAGE_KEY);
+    else window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch {
+    // The current tab can still use the selection.
+  }
+  themeListeners.forEach(listener => listener());
+}
+
 export function CampusShell({ children, skipLabel = "Перейти к каталогу", variant = "reference" }: {
   children: ReactNode;
   /** Legacy prop; the shell owns a stable skip target even when page content fails. */
@@ -45,8 +82,8 @@ export function CampusShell({ children, skipLabel = "Перейти к ката�
   const currentFor = (href: string) => href === activeHref ? (pathname === href ? "page" as const : "location" as const) : undefined;
   const { sdkReady } = useAuth();
   const platform = useCampusPlatform(sdkReady);
-  const [manualTheme, setManualTheme] = useState<CampusTheme>("auto");
-  const theme = manualTheme === "auto" ? platform.theme : manualTheme;
+  const manualTheme = useSyncExternalStore(subscribeToManualTheme, getManualTheme, getServerManualTheme);
+  const theme = manualTheme ?? platform.theme;
   const menu = useRef<HTMLDialogElement>(null);
   function toggleTheme() {
     const dark = theme === "dark" || (theme === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches);
@@ -59,7 +96,7 @@ export function CampusShell({ children, skipLabel = "Перейти к ката�
         <Link href="/" className="brand" aria-label="STUDLY — главная"><span className="brand-mark"><BrandMark size={36} /></span><span>STUDLY</span></Link>
         {!onboarding && !administration && <nav className="desktop-nav" aria-label="Основная навигация">{navigation.slice(0, 4).map(item => <Link key={item.href} href={item.href} className={`nav-item${item.href === activeHref ? " is-active" : ""}`} aria-current={currentFor(item.href)}>{item.label}</Link>)}</nav>}
         <div className="header-actions">
-          <span className="demo-label" title={demoMode ? "Демонстрационные данные. Реальных заказов и платежей нет." : "Данные Django API"}>{demoMode ? "ДЕМО" : "LIVE"}</span>
+          {demoMode && <span className="demo-label" title="Демонстрационные данные. Реальных заказов и платежей нет.">ДЕМО</span>}
           {!onboarding && !administration && <Link href="/create-service" className="publish-btn">Предложить услугу</Link>}
           <button type="button" className="icon-btn theme-toggle" onClick={toggleTheme} aria-label="Переключить светлую и тёмную тему"><span className="theme-light-icon"><Icon name="moon" /></span><span className="theme-dark-icon"><Icon name="sun" /></span></button>
           <button type="button" className="icon-btn menu-toggle" onClick={() => menu.current?.showModal()} aria-label="Открыть меню"><Icon name="menu" /></button>
@@ -74,7 +111,7 @@ export function CampusShell({ children, skipLabel = "Перейти к ката�
           {workspace?.sandboxEnabled && <Link href="/admin" onClick={() => menu.current?.close()}>Административный Demo-sandbox</Link>}
           <h3 className="campus-menu-subtitle">Категории услуг</h3>
           <nav className="menu-links" aria-label="Категории услуг">{categoryLinks.map(([slug,label]) => <Link key={slug} href={`/category/${slug}`} onClick={() => menu.current?.close()}>{label}</Link>)}</nav>
-          <button type="button" className="secondary-btn system-theme" onClick={() => setManualTheme("auto")}>Тема Telegram / системы</button>
+          <button type="button" className="secondary-btn system-theme" onClick={() => setManualTheme(null)}>Тема Telegram / системы</button>
           {demoMode && <p role="note">Демонстрационный режим. Данные вымышлены; настоящие платежи и регистрация аккаунта недоступны.</p>}
         </div>
       </dialog>

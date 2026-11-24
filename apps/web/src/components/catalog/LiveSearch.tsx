@@ -8,6 +8,7 @@ import { servicesClient } from "@/lib/api/services";
 import { liveSearchQuery } from "@/features/live-services/search";
 import LiveFavoriteFeedback from "@/features/live-services/LiveFavoriteFeedback";
 import { ApiError, apiErrorMessage, pagePath } from "@/lib/api/client";
+import BrandMark from "@/components/BrandMark";
 import { useApiResource } from "@/components/catalog/ApiState";
 import { SearchFilters } from "@/components/catalog/SearchFilters";
 import { CampusServiceCard } from "@/components/studly/CampusServiceCard";
@@ -15,10 +16,28 @@ import { Icon } from "@/components/studly/Icon";
 import { Button, StatusPanel } from "@/components/studly/primitives";
 import {
   filterSearchServices, searchRequestQuery, validatePriceRange,
-  type DurationFilter, type SortOption,
+  type SearchFilters as FilterValues, type SortOption,
 } from "@/lib/catalog/search";
 
+type CatalogFilters = Omit<FilterValues, "query">;
 
+const defaultFilters: CatalogFilters = {
+  category: "", minPrice: "", maxPrice: "", duration: "any", rating47: false, sort: "relevance",
+};
+
+function filtersAreActive({ category, minPrice, maxPrice, duration, rating47, sort }: CatalogFilters) {
+  return Boolean(category || minPrice || maxPrice || duration !== "any" || rating47 || sort !== "relevance");
+}
+
+function filterFields(values: FilterValues, update: (changes: Partial<CatalogFilters>) => void) {
+  return {
+    values, isDemo: demoMode,
+    onMinPrice: (minPrice: string) => update({ minPrice }),
+    onMaxPrice: (maxPrice: string) => update({ maxPrice }),
+    onDuration: (duration: CatalogFilters["duration"]) => update({ duration }),
+    onRating: (rating47: boolean) => update({ rating47 }),
+  };
+}
 
 function SearchSkeleton() {
   return (
@@ -34,17 +53,14 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
   const services = useDemoCatalog();
   const categories = [...new Set(services.map(service => service.category))];
   const [query, setQuery] = useState(initialQuery);
-  const [category, setCategory] = useState(initialCategory);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [duration, setDuration] = useState<DurationFilter>("any");
-  const [rating47, setRating47] = useState(false);
-  const [sort, setSort] = useState<SortOption>("relevance");
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [filters, setFilters] = useState<CatalogFilters>(() => ({ ...defaultFilters, category: initialCategory }));
+  const [draftFilters, setDraftFilters] = useState<CatalogFilters | null>(null);
+  const { category, minPrice, maxPrice, duration, rating47, sort } = filters;
   const filterDialog = useRef<HTMLDialogElement>(null);
+  const desktopFilters = useRef<HTMLElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
   const [page, setPage] = useState({ search: "", query: "" });
-  const values = useMemo(() => ({ query, category, minPrice, maxPrice, duration, rating47, sort }), [query, category, minPrice, maxPrice, duration, rating47, sort]);
+  const values = useMemo(() => ({ ...filters, query }), [filters, query]);
   const serverQuery = liveSearchQuery(values);
   const requestQuery = demoMode ? searchRequestQuery(query, page) : page.search === serverQuery && page.query ? page.query : serverQuery;
   const price = validatePriceRange(minPrice, maxPrice);
@@ -58,14 +74,19 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
     duration: `${service.duration_days} дн.`, durationDays: service.duration_days, included: service.included, isDemo: service.is_demo,
   })), [data, services]);
 
-  const hasActiveFilters = Boolean(category || minPrice || maxPrice || duration !== "any" || rating47 || sort !== "relevance");
+  const hasActiveFilters = filtersAreActive(filters);
+  const dialogFilters = draftFilters ?? filters;
+  const dialogPriceError = validatePriceRange(dialogFilters.minPrice, dialogFilters.maxPrice).error;
   const filteredServices = useMemo(() => demoMode ? filterSearchServices(sourceServices, values, true) : sourceServices, [sourceServices, values]);
 
   // A modal must never leave the desktop page inert after a viewport change.
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 701px)");
     const closeOnDesktop = () => {
-      if (desktop.matches && filterDialog.current?.open) filterDialog.current.close();
+      if (desktop.matches && filterDialog.current?.open) {
+        filterDialog.current.close();
+        desktopFilters.current?.focus();
+      }
     };
     desktop.addEventListener("change", closeOnDesktop);
     return () => desktop.removeEventListener("change", closeOnDesktop);
@@ -75,21 +96,18 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
     setQuery(value);
     setPage({ search: "", query: "" });
   };
-  const resetFilters = () => {
-    setCategory("");
-    setMinPrice("");
-    setMaxPrice("");
-    setDuration("any");
-    setRating47(false);
-    setSort("relevance");
+  const applyFilters = (next: CatalogFilters) => {
+    if (liveSearchQuery({ ...next, query }) !== serverQuery) setPage({ search: "", query: "" });
+    setFilters(next);
   };
-  const filterFields = {
-    values, isDemo: demoMode, onMinPrice: setMinPrice, onMaxPrice: setMaxPrice,
-    onDuration: setDuration, onRating: setRating47,
+  const updateFilters = (changes: Partial<CatalogFilters>) => applyFilters({ ...filters, ...changes });
+  const resetFilters = () => applyFilters(defaultFilters);
+  const updateDraftFilters = (changes: Partial<CatalogFilters>) => {
+    setDraftFilters(current => current && { ...current, ...changes });
   };
   const openFilters = () => {
     filterDialog.current?.showModal();
-    setFiltersOpen(true);
+    setDraftFilters(filters);
   };
 
   return (
@@ -98,7 +116,7 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
         <p className="eyebrow">Свои люди. Нужные навыки.</p>
         <h1 className="intro-title" id="search-title">Найди своего<br /><span>исполнителя.</span></h1>
         <p className="intro-copy">От учёбы до творчества — нужная помощь рядом.</p>
-        <div className="intro-art" aria-hidden="true" />
+        <div className="intro-art" aria-hidden="true"><BrandMark size={120} /></div>
       </section>}
 
       <form className="search-form" role="search" onSubmit={event => { event.preventDefault(); if (window.matchMedia("(pointer: coarse)").matches) searchInput.current?.blur(); }}>
@@ -111,16 +129,16 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
       </form>
 
       <nav className="category-list" aria-label="Категории услуг">
-        <button className="category-chip" type="button" aria-pressed={!category} onClick={() => setCategory("")}><Icon name="grid" />Все услуги</button>
+        <button className="category-chip" type="button" aria-pressed={!category} onClick={() => updateFilters({ category: "" })}><Icon name="grid" />Все услуги</button>
         {demoMode ? categories.map(item => (
-          <button key={item} className="category-chip" type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>
-        )) : <label className="filter-note" htmlFor="live-category">Категория <input className="sort-select" id="live-category" type="text" maxLength={100} value={category} placeholder="Название категории" onChange={event => setCategory(event.target.value)} /></label>}
+          <button key={item} className="category-chip" type="button" aria-pressed={category === item} onClick={() => updateFilters({ category: item })}>{item}</button>
+        )) : <label className="filter-note" htmlFor="live-category">Категория <input className="sort-select" id="live-category" type="text" maxLength={100} value={category} placeholder="Название категории" onChange={event => updateFilters({ category: event.target.value })} /></label>}
       </nav>
 
       <div className="catalog-layout">
-        <aside className="filters-panel" aria-label="Фильтры услуг">
+        <aside className="filters-panel" aria-label="Фильтры услуг" ref={desktopFilters} tabIndex={-1}>
           <div className="filter-head">Фильтры<button type="button" className="reset-btn" disabled={!hasActiveFilters} onClick={resetFilters}>Сбросить</button></div>
-          <SearchFilters {...filterFields} />
+          <SearchFilters {...filterFields(values, updateFilters)} />
           <p className="filter-note">{demoMode ? "Демонстрационные предложения. Имена и данные вымышлены." : "Поиск, категория, цена, срок и сортировка применяются сервером ко всему каталогу."}</p>
         </aside>
 
@@ -133,9 +151,9 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
               </span>
             </div>
             <div className="toolbar-actions">
-              <button type="button" className="filter-toggle" onClick={openFilters} aria-label="Открыть фильтры" aria-haspopup="dialog" aria-expanded={filtersOpen} aria-controls="search-filter-dialog"><Icon name="filter" /><span>Фильтры</span></button>
+              <button type="button" className="filter-toggle" onClick={openFilters} aria-label="Открыть фильтры" aria-haspopup="dialog" aria-expanded={draftFilters !== null} aria-controls="search-filter-dialog"><Icon name="filter" /><span>Фильтры</span></button>
               <label className="sr-only" htmlFor="search-sort">Сортировка услуг</label>
-              <select className="sort-select" id="search-sort" value={sort} onChange={event => setSort(event.target.value as SortOption)}>
+              <select className="sort-select" id="search-sort" value={sort} onChange={event => updateFilters({ sort: event.target.value as SortOption })}>
                 <option value="relevance">{demoMode ? "По релевантности" : "По порядку"}</option><option value="priceAsc">Сначала дешевле</option>
                 <option value="priceDesc">Сначала дороже</option><option value="rating" disabled={!demoMode}>По рейтингу</option>
                 <option value="duration">Сначала быстрее</option>
@@ -146,10 +164,10 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
           {!demoMode && <p className="catalog-notice">Фильтры применяются ко всему каталогу. Рейтинг пока недоступен.</p>}
           {!demoMode && <LiveFavoriteFeedback />}
           <div className="active-filters">
-            {category && <button type="button" onClick={() => setCategory("")} aria-label={`Убрать категорию ${category}`}>{category}<Icon name="close" /></button>}
-            {(minPrice || maxPrice) && <button type="button" onClick={() => { setMinPrice(""); setMaxPrice(""); }}>Цена: {minPrice || "0"}–{maxPrice || "∞"} ₽<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
-            {duration !== "any" && <button type="button" onClick={() => setDuration("any")}>До {duration} {duration === "1" ? "дня" : "дней"}<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
-            {rating47 && <button type="button" onClick={() => setRating47(false)}>Рейтинг 4,7+<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
+            {category && <button type="button" onClick={() => updateFilters({ category: "" })} aria-label={`Убрать категорию ${category}`}>{category}<Icon name="close" /></button>}
+            {(minPrice || maxPrice) && <button type="button" onClick={() => updateFilters({ minPrice: "", maxPrice: "" })}>Цена: {minPrice || "0"}–{maxPrice || "∞"} ₽<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
+            {duration !== "any" && <button type="button" onClick={() => updateFilters({ duration: "any" })}>До {duration} {duration === "1" ? "дня" : "дней"}<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
+            {rating47 && <button type="button" onClick={() => updateFilters({ rating47: false })}>Рейтинг 4,7+<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
           </div>
 
           {!demoMode && !data ? error ? (
@@ -179,14 +197,20 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
         </section>
       </div>
 
-      <dialog className="filter-dialog" id="search-filter-dialog" ref={filterDialog} aria-labelledby="search-filter-title" onClose={() => setFiltersOpen(false)}>
-        <form className="filter-form" onSubmit={event => { event.preventDefault(); if (!price.error) filterDialog.current?.close(); }}>
+      <dialog className="filter-dialog" id="search-filter-dialog" ref={filterDialog} aria-labelledby="search-filter-title"
+        onClose={event => { if (!event.currentTarget.open) setDraftFilters(null); }}>
+        <form className="filter-form" onSubmit={event => {
+          event.preventDefault();
+          if (!draftFilters || dialogPriceError) return;
+          applyFilters(draftFilters);
+          filterDialog.current?.close();
+        }}>
           <div className="filter-dialog-head"><h2 id="search-filter-title">Фильтры</h2><button type="button" className="icon-btn" aria-label="Закрыть фильтры" onClick={() => filterDialog.current?.close()}><Icon name="close" /></button></div>
-          <SearchFilters {...filterFields} />
+          <SearchFilters {...filterFields({ ...dialogFilters, query }, updateDraftFilters)} />
           {!demoMode && <p className="filter-note">Цена и срок применяются сервером ко всему каталогу.</p>}
           <div className="dialog-actions">
-            <Button type="button" variant="secondary" onClick={resetFilters} disabled={!hasActiveFilters}>Сбросить</Button>
-            <Button type="submit" className="filter-apply" disabled={Boolean(price.error)}>Показать услуги</Button>
+            <Button type="button" variant="secondary" onClick={() => setDraftFilters(defaultFilters)} disabled={!filtersAreActive(dialogFilters)}>Сбросить</Button>
+            <Button type="submit" className="filter-apply" disabled={Boolean(dialogPriceError)}>Показать услуги</Button>
           </div>
         </form>
       </dialog>

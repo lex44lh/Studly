@@ -128,26 +128,17 @@
   position: absolute;
   top: 7px;
   right: 35px;
+  display: grid;
+  place-items: center;
   width: 160px;
   height: 120px;
   pointer-events: none;
-}.studly-app .intro-art::before,
-.studly-app .intro-art::after {
-  position: absolute;
-  width: 140px;
-  height: 44px;
-  border-radius: 16px;
-  content: "";
-}.studly-app .intro-art::before {
-  top: 14px;
-  left: 5px;
-  background: var(--accent);
-  transform: rotate(-24deg);
-}.studly-app .intro-art::after {
-  top: 65px;
-  left: 20px;
-  background: var(--campus-warm);
-  transform: rotate(-24deg);
+}.studly-app .intro-art svg {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+}.studly-app .intro-art path {
+  fill: var(--accent-ink, #3547b8);
 }.studly-app .search-form {
   min-height: 60px;
   gap: 14px;
@@ -888,8 +879,16 @@
     line-height: 1.45;
   }
 
+  .studly-app .intro:has(> .intro-art) {
+    padding-right: 56px;
+    overflow-wrap: anywhere;
+  }
+
   .studly-app .intro-art {
-    display: none;
+    top: 0;
+    right: 0;
+    width: 44px;
+    height: 60px;
   }
 
   .studly-app .search-form {

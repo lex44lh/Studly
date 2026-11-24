@@ -6,6 +6,8 @@ if (!["http:", "https:"].includes(backend.protocol) || backend.username || backe
   throw new Error("DJANGO_API_ORIGIN must be an HTTP(S) origin without credentials or a path.");
 }
 const nextConfig: NextConfig = {
+  // The development indicator covers the first Campus tab on narrow screens.
+  devIndicators: false,
   // Django contracts require trailing slashes; do not redirect POST/PATCH away from them.
   skipTrailingSlashRedirect: true,
   async rewrites() {
