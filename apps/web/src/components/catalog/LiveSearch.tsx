@@ -65,7 +65,7 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
   const requestQuery = demoMode ? searchRequestQuery(query, page) : page.search === serverQuery && page.query ? page.query : serverQuery;
   const price = validatePriceRange(minPrice, maxPrice);
   const priceError = price.error;
-  const load = useCallback((signal: AbortSignal) => demoMode ? Promise.resolve(null) : priceError ? Promise.reject(new ApiError(400, null)) : servicesClient.list(requestQuery, signal), [requestQuery, priceError]);
+  const load = useCallback((signal: AbortSignal) => demoMode || priceError ? Promise.resolve(null) : servicesClient.list(requestQuery, signal), [requestQuery, priceError]);
   const { data, error, retry } = useApiResource(requestQuery, load);
 
   const sourceServices = useMemo(() => demoMode ? services : (data?.results ?? []).map(service => ({
@@ -165,12 +165,12 @@ function SearchContent({ initialQuery, initialCategory = "", compact = false }: 
           {!demoMode && <LiveFavoriteFeedback />}
           <div className="active-filters">
             {category && <button type="button" onClick={() => updateFilters({ category: "" })} aria-label={`Убрать категорию ${category}`}>{category}<Icon name="close" /></button>}
-            {(minPrice || maxPrice) && <button type="button" onClick={() => updateFilters({ minPrice: "", maxPrice: "" })}>Цена: {minPrice || "0"}–{maxPrice || "∞"} ₽<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
+            {!priceError && (minPrice || maxPrice) && <button type="button" onClick={() => updateFilters({ minPrice: "", maxPrice: "" })}>Цена: {minPrice || "0"}–{maxPrice || "∞"} ₽<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
             {duration !== "any" && <button type="button" onClick={() => updateFilters({ duration: "any" })}>До {duration} {duration === "1" ? "дня" : "дней"}<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
             {rating47 && <button type="button" onClick={() => updateFilters({ rating47: false })}>Рейтинг 4,7+<span className="sr-only"> — убрать фильтр</span><Icon name="close" /></button>}
           </div>
 
-          {!demoMode && !data ? error ? (
+          {priceError ? <StatusPanel kind="empty" title="Проверьте диапазон цены"><p>{priceError}</p></StatusPanel> : !demoMode && !data ? error ? (
             <StatusPanel kind="error" title="Не удалось загрузить услуги"
               action={!(error instanceof ApiError && error.status === 404) ? <Button onClick={retry}>Повторить загрузку</Button> : undefined}>
               <p>{apiErrorMessage(error)}</p>

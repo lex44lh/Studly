@@ -10,7 +10,7 @@ const model = new Module(file, module);
 model._compile(ts.transpileModule(fs.readFileSync(file, 'utf8'), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
 }).outputText, file);
-const { filterSearchServices, validatePriceRange, searchRequestQuery } = model.exports;
+const { filterSearchServices, normalizePriceInput, validatePriceRange, searchRequestQuery } = model.exports;
 
 const source = [
   { id: 1, title: 'Python', description: 'Разбор кода', seller: 'Иван', category: 'Код', priceNumber: 500, durationDays: 1, rating: '4.6 (2 отзыва)' },
@@ -56,4 +56,20 @@ test('pagination query is retained only for its originating search', () => {
   assert.equal(searchRequestQuery(' Python ', page), 'search=Python&page=2');
   assert.equal(searchRequestQuery('математика', page), new URLSearchParams({ search: 'математика' }).toString());
   assert.equal(searchRequestQuery('', page), 'search=');
+});
+
+
+test('price fields remove decorative leading zeros and match Django decimal bounds', () => {
+  assert.equal(normalizePriceInput('012312'), '12312');
+  assert.equal(normalizePriceInput('000,50'), '0,50');
+  assert.equal(normalizePriceInput('000'), '0');
+  const valid = validatePriceRange('01000', '012312,25');
+  assert.equal(valid.minParam, '1000');
+  assert.equal(valid.maxParam, '12312.25');
+  assert.equal(valid.error, '');
+  assert.equal(validatePriceRange('', '99999999.99').error, '');
+  for (const max of ['1e3', '2.001', '100000000', '+1000', '1.2,3']) {
+    assert.equal(validatePriceRange('', max).invalidMax, true);
+  }
+  assert.equal(validatePriceRange('1000', '000').invalidRange, true);
 });

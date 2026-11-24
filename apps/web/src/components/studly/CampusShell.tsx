@@ -4,6 +4,7 @@ import { useOptionalDemoWorkspace } from "@/features/demo-workspace/Provider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useSyncExternalStore, type ReactNode } from "react";
+import { CAMPUS_THEME_KEY } from "@/lib/campus-theme";
 import BrandMark from "@/components/BrandMark";
 import { useAuth } from "@/context/AuthContext";
 import { demoMode } from "@/lib/data-mode";
@@ -33,19 +34,35 @@ const moreLinks = [
 
 type ManualTheme = Exclude<CampusTheme, "auto">;
 
-const THEME_STORAGE_KEY = "studly:campus-theme";
 const themeListeners = new Set<() => void>();
 let sessionTheme: ManualTheme | null | undefined;
 
+function publishManualTheme(theme: ManualTheme | null) {
+  sessionTheme = theme;
+  if (theme === null) delete document.documentElement.dataset.studlyTheme;
+  else document.documentElement.dataset.studlyTheme = theme;
+  themeListeners.forEach(listener => listener());
+}
+
+function handleThemeStorage(event: StorageEvent) {
+  if (event.storageArea !== window.localStorage || (event.key !== null && event.key !== CAMPUS_THEME_KEY)) return;
+  const theme = event.newValue;
+  publishManualTheme(theme === "light" || theme === "dark" ? theme : null);
+}
+
 function subscribeToManualTheme(listener: () => void) {
+  if (!themeListeners.size) window.addEventListener("storage", handleThemeStorage);
   themeListeners.add(listener);
-  return () => { themeListeners.delete(listener); };
+  return () => {
+    themeListeners.delete(listener);
+    if (!themeListeners.size) window.removeEventListener("storage", handleThemeStorage);
+  };
 }
 
 function getManualTheme(): ManualTheme | null {
   if (sessionTheme !== undefined) return sessionTheme;
   try {
-    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    const storedTheme = window.localStorage.getItem(CAMPUS_THEME_KEY);
     return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
   } catch {
     return null;
@@ -58,14 +75,13 @@ function getServerManualTheme() {
 
 function setManualTheme(theme: ManualTheme | null) {
   // Keep the selection available to all shells in this tab even if storage is blocked.
-  sessionTheme = theme;
+  publishManualTheme(theme);
   try {
-    if (theme === null) window.localStorage.removeItem(THEME_STORAGE_KEY);
-    else window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    if (theme === null) window.localStorage.removeItem(CAMPUS_THEME_KEY);
+    else window.localStorage.setItem(CAMPUS_THEME_KEY, theme);
   } catch {
     // The current tab can still use the selection.
   }
-  themeListeners.forEach(listener => listener());
 }
 
 export function CampusShell({ children, skipLabel = "Перейти к каталогу", variant = "reference" }: {

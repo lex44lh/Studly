@@ -52,7 +52,7 @@
 .studly-app .category-option { display:flex; gap:10px; align-items:center; min-height:44px; font-size:14px; }
 .studly-app .category-option input { width:18px; height:18px; min-height:18px; accent-color:var(--accent); }
 .studly-app .page-error { color:#a32437; font-size:14px; }
-.studly-app[data-theme=dark] .page-error { color:#ffacb9; }
+:is(.studly-app[data-theme=dark], :where(:root[data-studly-theme="dark"]) .studly-app[data-theme="auto"]) .page-error { color:#ffacb9; }
 .studly-app .performer-layout { display:grid; grid-template-columns:300px minmax(0,1fr); gap:24px; align-items:start; }
 .studly-app .performer-summary { position:sticky; top:24px; }
 .studly-app .performer-initials { display:flex; align-items:center; justify-content:center; width:76px; height:76px; border-radius:24px; background:var(--cover-b); color:var(--cover-b-ink); font-weight:700; font-size:25px; margin-bottom:24px; }
@@ -97,12 +97,12 @@
   .studly-app.campus-shell-onboarding .app .workspace { padding-bottom:calc(28px + var(--safe-bottom)); }
 }
 @media(prefers-reduced-motion:reduce) { .studly-app .page-back:active,.studly-app .campus-page button:active { transform:none!important; } }
-@media(prefers-color-scheme:dark) { .studly-app[data-theme=auto] .page-error { color:#ffacb9; } }
+@media(prefers-color-scheme:dark) { :where(:root:not([data-studly-theme="light"])).studly-app[data-theme=auto] .page-error { color:#ffacb9; } }
 .studly-app .campus-page h1.page-heading { display:block; font-size:clamp(28px,3.4vw,42px); font-weight:750; line-height:1.14; letter-spacing:-.04em; margin:0 0 18px; }
 
 .studly-app .campus-menu-subtitle { margin:20px 0 14px; font-size:16px; font-weight:650; }
 .studly-app { --campus-error:#a32437; }
-.studly-app[data-theme=dark] { --campus-error:#ffacb9; }
-@media(prefers-color-scheme:dark) { .studly-app[data-theme=auto] { --campus-error:#ffacb9; } }
+:is(.studly-app[data-theme=dark], :where(:root[data-studly-theme="dark"]) .studly-app[data-theme="auto"]) { --campus-error:#ffacb9; }
+@media(prefers-color-scheme:dark) { :where(:root:not([data-studly-theme="light"])).studly-app[data-theme=auto] { --campus-error:#ffacb9; } }
 
 .studly-app .page-disabled-preview .page-back { display:none; }

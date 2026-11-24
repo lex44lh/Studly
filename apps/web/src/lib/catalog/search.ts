@@ -25,16 +25,30 @@ export function normalizeSearch(value: string) {
   return value.trim().toLowerCase();
 }
 
+export function normalizePriceInput(value: string) {
+  return value.trim().replace(/^0+(?=\d)/, "");
+}
+
+function parsePriceBound(value: string) {
+  const text = normalizePriceInput(value).replace(",", ".");
+  if (!text) return { value: null, text };
+  const amount = Number(text);
+  const valid = /^\d+(?:\.\d{1,2})?$/.test(text) && amount <= 99_999_999.99;
+  return { value: valid ? amount : null, text: valid ? text : null };
+}
+
 export function validatePriceRange(minPrice: string, maxPrice: string) {
-  const min = minPrice.trim() === "" ? null : Number(minPrice);
-  const max = maxPrice.trim() === "" ? null : Number(maxPrice);
-  const invalidMin = min !== null && (!Number.isFinite(min) || min < 0);
-  const invalidMax = max !== null && (!Number.isFinite(max) || max < 0);
-  const invalidRange = !invalidMin && !invalidMax && min !== null && max !== null && min > max;
+  const lower = parsePriceBound(minPrice);
+  const upper = parsePriceBound(maxPrice);
+  const min = lower.value;
+  const max = upper.value;
+  const invalidMin = lower.text === null;
+  const invalidMax = upper.text === null;
+  const invalidRange = min !== null && max !== null && min > max;
   return {
-    min, max, invalidMin, invalidMax, invalidRange,
+    min, max, minParam: lower.text, maxParam: upper.text, invalidMin, invalidMax, invalidRange,
     error: invalidMin || invalidMax
-      ? "Укажите неотрицательную цену."
+      ? "Укажите цену от 0 до 99 999 999,99 ₽, не более двух знаков после запятой."
       : invalidRange ? "Минимальная цена не может быть выше максимальной." : "",
   };
 }

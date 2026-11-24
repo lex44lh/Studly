@@ -2,7 +2,7 @@
 
 import { useId } from "react";
 import type { DurationFilter, SearchFilters as FilterValues } from "@/lib/catalog/search";
-import { validatePriceRange } from "@/lib/catalog/search";
+import { normalizePriceInput, validatePriceRange } from "@/lib/catalog/search";
 
 type Props = {
   values: FilterValues;
@@ -23,14 +23,14 @@ export function SearchFilters({ values, isDemo, onMinPrice, onMaxPrice, onDurati
         <legend>Цена, ₽</legend>
         <div className="price-inputs">
           <div><label htmlFor={`${id}-min`}>От</label>
-            <input id={`${id}-min`} type="number" inputMode="decimal" min="0" step="any" value={values.minPrice}
+            <input id={`${id}-min`} type="text" inputMode="decimal" value={values.minPrice}
               placeholder="0" aria-invalid={price.invalidMin || price.invalidRange}
-              aria-describedby={price.error ? `${id}-price-error` : undefined} onChange={event => onMinPrice(event.target.value)} />
+              aria-describedby={price.error ? `${id}-price-error` : undefined} onChange={event => onMinPrice(normalizePriceInput(event.target.value))} />
           </div>
           <div><label htmlFor={`${id}-max`}>До</label>
-            <input id={`${id}-max`} type="number" inputMode="decimal" min="0" step="any" value={values.maxPrice}
+            <input id={`${id}-max`} type="text" inputMode="decimal" value={values.maxPrice}
               placeholder="Любая" aria-invalid={price.invalidMax || price.invalidRange}
-              aria-describedby={price.error ? `${id}-price-error` : undefined} onChange={event => onMaxPrice(event.target.value)} />
+              aria-describedby={price.error ? `${id}-price-error` : undefined} onChange={event => onMaxPrice(normalizePriceInput(event.target.value))} />
           </div>
         </div>
         {price.error && <p className="filter-error" id={`${id}-price-error`} role="alert">{price.error}</p>}

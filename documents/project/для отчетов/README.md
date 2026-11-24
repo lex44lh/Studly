@@ -12,6 +12,8 @@
 
 ## Сеансы
 
+- [Цена в поиске и тема после обновления — 24.11.2026](frontend/catalog/2026-11-24_12-46_price-theme-hotfix.md)
+
 - [Передача рабочей версии Frontend — 24.11.2026](frontend/api-integration/2026-11-24_12-26_frontend-release-handoff.md)
 
 - STUDLY 2.0: остаточный L2/P2 после повторной приёмки — 28.10.2026: [исправление связанных черновиков профиля и портфолио](frontend/api-integration/2026-10-28_11-08_l2-residual-correction.md), [evidence и новый source manifest](frontend/api-integration/implementation/2026-10-28-l2/). Собственные переходы revision подтверждаются отдельно; внешний CAS сохраняется.

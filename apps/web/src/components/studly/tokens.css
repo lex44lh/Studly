@@ -21,7 +21,7 @@
   --focus: var(--campus-focus);
   --campus-warm: #f2c96d;
   --campus-inset: 0 1px 0 rgb(255 255 255 / 80%)}
-.studly-app[data-theme="dark"]{
+:is(.studly-app[data-theme="dark"], :where(:root[data-studly-theme="dark"]) .studly-app[data-theme="auto"]){
   --bg: #111827;
   --surface: #192236;
   --surface-2: #212c40;
@@ -42,7 +42,7 @@
   --campus-inset: 0 1px 0 rgb(255 255 255 / 3%)}
 .studly-app{--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--type-small:13px;--type-body:16px;--radius-control:11px;--motion-feedback:140ms;--motion-sheet:180ms;--motion-ease:cubic-bezier(.2,.7,.2,1)}
 @media (prefers-color-scheme: dark){
-  .studly-app[data-theme="auto"]{
+  :where(:root:not([data-studly-theme="light"])).studly-app[data-theme="auto"]{
   --bg: #111827;
   --surface: #192236;
   --surface-2: #212c40;
