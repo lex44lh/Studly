@@ -10,6 +10,7 @@ import { LiveAccess, LiveState, useLiveResource } from "@/features/live/shared";
 import { accountClient, safePortfolioUrl, portfolioContentPath, type LiveAccount, type PerformerModeration, type PortfolioExample, type AccountVersion, type PortfolioPage } from "@/lib/api/account";
 import { registrationClient, registrationRevisionAfterSave } from "@/lib/api/registration";
 import { ApiError, requestKey } from "@/lib/api/client";
+import { telegramRegistrationEnabled } from "@/lib/data-mode";
 import type { RegistrationResponse } from "@/types/registration-api";
 import type { RegistrationRole } from "@/types/registration";
 import { useAccountWriter, type AccountWriter } from "./useAccountWriter";
@@ -253,7 +254,18 @@ function AccountBody() {
   if (!snapshot) return <LiveState loading={resource.loading} error={resource.error} retry={resource.reload} />;
   const { account, moderation } = snapshot;
   // The closed production wizard must also cover alternate account entry points.
-  if (process.env.NODE_ENV !== "development" && !account.registration.status.is_complete) return <div className={styles.page}><section className={styles.panel}><p className={styles.eyebrow}>Мой STUDLY</p><h1>Регистрация скоро появится</h1><p>Регистрация этого аккаунта ещё не завершена. Создание профиля в этой сборке закрыто.</p><nav className={styles.compactLinks}><Link href="/search">Перейти в каталог</Link><button type="button" className={styles.secondary} onClick={logout}>Выйти из аккаунта</button></nav></section></div>;
+  if (process.env.NODE_ENV !== "development" && !account.registration.status.is_complete) {
+    return <div className={styles.page}><section className={styles.panel}>
+      <h1>{telegramRegistrationEnabled ? "Завершите регистрацию" : "Регистрация скоро появится"}</h1>
+      {telegramRegistrationEnabled && <p>Укажите имя и выберите роль. Чтобы предлагать услуги, выберите «Исполнитель». Можно выбрать обе роли.</p>}
+      <nav className="page-actions page-section" aria-label="Действия с аккаунтом">
+        {/* Normal navigation lets Nginx route to the Django form. */}
+        {telegramRegistrationEnabled && <a className="page-button" href="/register/roles">Выбрать роль</a>}
+        <Link className="page-button-secondary" href="/search">Перейти в каталог</Link>
+        <button type="button" className="page-button-secondary" onClick={logout}>Выйти</button>
+      </nav>
+    </section></div>;
+  }
   const requested = params.get("role");
   const role = requested === "customer" || requested === "performer" ? requested : account.registration.roles[0];
   const allowed = role && account.capabilities[role];

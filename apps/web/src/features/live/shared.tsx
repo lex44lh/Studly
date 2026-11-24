@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { authClient, type AuthOptions } from "@/lib/api/auth";
+import { authClient } from "@/lib/api/auth";
 import { apiErrorMessage } from "@/lib/api/client";
 import { demoMode, emailAuthUiEnabled } from "@/lib/data-mode";
 
@@ -17,21 +17,26 @@ export function LiveState({ error, loading, retry }: { error?: unknown; loading?
 
 function LiveSignIn() {
   const { state, refresh } = useAuth();
-  const [options, setOptions] = useState<AuthOptions | null>(null);
-  useEffect(() => {
-    const controller = new AbortController();
-    authClient.options(controller.signal).then(value => { if (!controller.signal.aborted) setOptions(value); }).catch(() => {});
-    return () => controller.abort();
-  }, []);
+  const { data: options, error, loading, reload } = useLiveResource("sign-in-options", authClient.options);
+  const canUseEmail = emailAuthUiEnabled && (options?.email_login || options?.email_registration);
   return <section className="page-panel" aria-labelledby="live-sign-in-title">
-    <h2 id="live-sign-in-title">Войдите в STUDLY</h2><p>{state.message}</p>
-    {(options?.telegram_mini_app || !emailAuthUiEnabled) && <p>Откройте приложение в Telegram, чтобы подтвердить вход.</p>}
-    {emailAuthUiEnabled && (options?.email_login === true || options?.email_registration === true) && <Link className="primary-btn" href="/auth/email">Продолжить с почтой</Link>}
-    {options?.telegram_website && <a className="primary-btn" href="/api/v1/auth/telegram/start/?next=%2Fprofile" onClick={event => {
-      event.currentTarget.href = `/api/v1/auth/telegram/start/?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
-    }}>Войти через Telegram</a>}
-    <button type="button" className="secondary-btn" onClick={refresh}>Повторить проверку входа</button>
-    <Link href="/search">Перейти в каталог</Link>
+    <h2 id="live-sign-in-title">Войдите в STUDLY</h2>
+    {loading && <p role="status">Загружаем способы входа…</p>}
+    {state.status === "error" ? <p role="alert">{state.message}</p> : options?.telegram_website ?
+      <p>Подтвердите вход в Telegram. При первом входе вы сможете выбрать роль заказчика или исполнителя.</p> :
+      options?.telegram_mini_app && <p>Для входа откройте STUDLY в Telegram.</p>}
+    {!!error && <p role="alert">Не удалось загрузить способы входа.</p>}
+    <div className="page-actions page-section">
+      {options?.telegram_website && <a className="page-button" href="/api/v1/auth/telegram/start/?next=%2Fprofile" onClick={event => {
+        event.currentTarget.href = `/api/v1/auth/telegram/start/?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+      }}>Войти через Telegram</a>}
+      {canUseEmail && <Link className="page-button" href="/auth/email">Войти по почте</Link>}
+      {(state.status === "error" || !!error) && <button type="button" className="page-button-secondary" onClick={() => {
+        if (state.status === "error") void refresh();
+        else reload();
+      }}>Попробовать снова</button>}
+      <Link className="page-button-secondary" href="/search">Перейти в каталог</Link>
+    </div>
   </section>;
 }
 

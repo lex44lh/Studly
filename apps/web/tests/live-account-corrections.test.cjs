@@ -41,7 +41,7 @@ function textContent(tree) {
   if (typeof tree === 'string' || typeof tree === 'number') return String(tree);
   return tree && typeof tree === 'object' ? React.Children.toArray(tree.props?.children).map(textContent).join(' ') : '';
 }
-function harness() {
+function harness({ telegramRegistrationEnabled = false } = {}) {
   const accountHooks = hooksRuntime(), editorHooks = hooksRuntime(), portfolioHooks = hooksRuntime(), exampleHooks = new Map(); let currentHooks = accountHooks;
   const state = { snapshot: initialSnapshot(), patches: [], related: [], examples: [], reload: () => {}, tree: null, editor: null,
     saveError: null, exampleError: null, afterSaveAck: null, afterExampleAck: null, moderationReads: 0 };
@@ -111,6 +111,7 @@ function harness() {
     if (name === '@/lib/api/registration') return { ...registrationApi, registrationClient };
     if (name === './revisions') return sourceModule(path.resolve(path.dirname(source), 'revisions.ts'), dependency => dependency === '@/lib/api/account' ? { accountClient } : undefined);
     if (name === '@/lib/api/client') return { ApiError, requestKey: () => uuid };
+    if (name === '@/lib/data-mode') return { telegramRegistrationEnabled };
     if (name === './useAccountWriter') return { useAccountWriter: reload => { state.reload = reload; return commands; } };
     if (name === '@/features/live-services/LiveOwnServices') return { __esModule: true, default: () => null };
     return require(name);
@@ -162,6 +163,17 @@ test('L2: dirty profile blocks portfolio add/edit/delete and moderation, includi
   }
   assert.equal(h.state.related.length, 0); assert.equal(h.state.patches.length, 0);
   assert.equal(h.input('live-account-name').props.value, 'Unsaved own text');
+});
+
+test('an incomplete Telegram account can reach server role selection before the editor mounts', async () => {
+  const h = harness({ telegramRegistrationEnabled: true });
+  h.state.snapshot.account.registration.status.is_complete = false;
+  h.renderAccount(); await drain(); h.renderAccount();
+  const action = find(h.state.tree, node => node.type === 'a' && node.props.href === '/register/roles');
+  assert.equal(textContent(action), 'Выбрать роль');
+  assert.match(textContent(h.state.tree), /Исполнитель/);
+  assert.equal(find(h.state.tree, node => node.type === h.components.LiveProfileEditor, false), undefined);
+  assert.equal(h.state.patches.length, 0);
 });
 test('L2: saving text first unlocks the related command at the new canonical revision without a self-conflict', async () => {
   const h = harness(); await h.ready(); h.edit('live-account-name', 'Saved own text'); h.renderPortfolio();

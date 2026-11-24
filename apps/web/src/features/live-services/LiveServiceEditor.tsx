@@ -9,6 +9,7 @@ import { accountClient, type PortfolioExample } from "@/lib/api/account";
 import { servicesClient, type OwnService, type ServiceDraftInput } from "@/lib/api/services";
 import { ApiError, apiErrorMessage, requestKey } from "@/lib/api/client";
 import { captureIdentity, createIdentityController } from "@/lib/api/session";
+import { telegramRegistrationEnabled } from "@/lib/data-mode";
 import { LiveAccess, LiveState, useLiveResource } from "@/features/live/shared";
 import { draftFields, serviceForm, serviceStatus, type ServiceForm } from "./model";
 import styles from "@/features/demo-workspace/commerce.module.css";
@@ -131,7 +132,14 @@ function EditorSource({ id }: { id: string | null }) {
     return { account, service, examples };
   });
   if (!resource.data) return <LiveState loading={resource.loading} error={resource.error} retry={resource.reload} />;
-  if (!resource.data.account.capabilities.create_service) return <section className={styles.panel}><h2>Нужна роль исполнителя</h2><p>Подключите роль исполнителя в своём аккаунте.</p><Link href="/register/roles">Открыть регистрацию</Link></section>;
+  if (!resource.data.account.capabilities.create_service) {
+    const registered = resource.data.account.registration.status.is_complete;
+    return <section className={styles.panel}><h2>Чтобы предлагать услуги, нужна роль исполнителя</h2>
+      {registered ? <><p>В данных профиля отметьте «Исполнитель» и сохраните изменения.</p><Link className={styles.primary} href="/profile?role=performer#live-account-data-title">Настроить роль в профиле</Link></> :
+        telegramRegistrationEnabled ? <a className={styles.primary} href="/register/roles">Выбрать роль</a> :
+          <Link className={styles.primary} href="/register/roles">Открыть регистрацию</Link>}
+    </section>;
+  }
   return <EditorForm ownerId={resource.data.account.id} initial={resource.data.service} examples={resource.data.examples} reload={resource.reload} />;
 }
 function EditorQuery() {

@@ -13,3 +13,5 @@ export const demoMode = dataMode === "demo";
 
 // Build flag for the isolated rollout. The Django capability is also checked at runtime.
 export const emailAuthUiEnabled = !demoMode && process.env.NEXT_PUBLIC_STUDLY_EMAIL_AUTH_UI === "1";
+// The deployment routes /register/roles to the Django registration form.
+export const telegramRegistrationEnabled = !demoMode && process.env.NEXT_PUBLIC_STUDLY_TELEGRAM_REGISTRATION === "1";
