@@ -3,9 +3,9 @@
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { authClient } from "@/lib/api/auth";
+import { authClient, type AuthOptions } from "@/lib/api/auth";
 import { apiErrorMessage } from "@/lib/api/client";
-import { demoMode } from "@/lib/data-mode";
+import { demoMode, emailAuthUiEnabled } from "@/lib/data-mode";
 
 export function LiveState({ error, loading, retry }: { error?: unknown; loading?: boolean; retry?: () => void }) {
   if (!error && !loading) return null;
@@ -17,16 +17,17 @@ export function LiveState({ error, loading, retry }: { error?: unknown; loading?
 
 function LiveSignIn() {
   const { state, refresh } = useAuth();
-  const [website, setWebsite] = useState(false);
+  const [options, setOptions] = useState<AuthOptions | null>(null);
   useEffect(() => {
     const controller = new AbortController();
-    authClient.options(controller.signal).then(options => { if (!controller.signal.aborted) setWebsite(options.telegram_website); }).catch(() => {});
+    authClient.options(controller.signal).then(value => { if (!controller.signal.aborted) setOptions(value); }).catch(() => {});
     return () => controller.abort();
   }, []);
   return <section className="page-panel" aria-labelledby="live-sign-in-title">
     <h2 id="live-sign-in-title">Войдите в STUDLY</h2><p>{state.message}</p>
-    <p>Откройте приложение в Telegram, чтобы подтвердить вход.</p>
-    {website && <a className="primary-btn" href="/api/v1/auth/telegram/start/?next=%2Fprofile" onClick={event => {
+    {(options?.telegram_mini_app || !emailAuthUiEnabled) && <p>Откройте приложение в Telegram, чтобы подтвердить вход.</p>}
+    {emailAuthUiEnabled && (options?.email_login === true || options?.email_registration === true) && <Link className="primary-btn" href="/auth/email">Продолжить с почтой</Link>}
+    {options?.telegram_website && <a className="primary-btn" href="/api/v1/auth/telegram/start/?next=%2Fprofile" onClick={event => {
       event.currentTarget.href = `/api/v1/auth/telegram/start/?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
     }}>Войти через Telegram</a>}
     <button type="button" className="secondary-btn" onClick={refresh}>Повторить проверку входа</button>

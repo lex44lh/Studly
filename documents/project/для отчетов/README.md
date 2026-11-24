@@ -12,6 +12,8 @@
 
 ## Сеансы
 
+- [Подключение клиентских форм email-входа — 24.11.2026](frontend/registration/2026-11-24_12-46_email-auth-frontend.md)
+
 - [Цена в поиске и тема после обновления — 24.11.2026](frontend/catalog/2026-11-24_12-46_price-theme-hotfix.md)
 
 - [Передача рабочей версии Frontend — 24.11.2026](frontend/api-integration/2026-11-24_12-26_frontend-release-handoff.md)

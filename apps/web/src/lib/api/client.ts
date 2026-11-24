@@ -6,6 +6,12 @@ export class ApiError extends Error {
   }
 }
 
+// These endpoints establish or revoke the browser session. They still require CSRF.
+const sessionEntryPaths = new Set([
+  "auth/telegram/mini-app/", "auth/email/register/", "auth/email/verify/",
+  "auth/email/login/", "auth/email/reset/request/", "auth/email/reset/confirm/",
+]);
+
 export async function apiRequest<T>(path: string, options: {
   method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
   version?: 1 | 2;
@@ -20,7 +26,7 @@ export async function apiRequest<T>(path: string, options: {
   }
   let response: Response;
   const mutation = options.method && options.method !== "GET";
-  if (mutation && path !== "auth/telegram/mini-app/") assertWriteIdentity(options.signal);
+  if (mutation && !sessionEntryPaths.has(path)) assertWriteIdentity(options.signal);
   const signal = identitySignal(options.signal);
   try {
     response = await fetch(`/api/v${options.version ?? 1}/${path}`, {
@@ -36,7 +42,7 @@ export async function apiRequest<T>(path: string, options: {
     throw new ApiError(0, null);
   }
   signal?.throwIfAborted();
-  if (mutation && path !== "auth/telegram/mini-app/") assertWriteIdentity(options.signal);
+  if (mutation && !sessionEntryPaths.has(path)) assertWriteIdentity(options.signal);
   if (response.status === 204) return undefined as T;
   let payload: unknown;
   try { payload = await response.json(); } catch { throw new ApiError(response.ok ? 502 : response.status, null); }

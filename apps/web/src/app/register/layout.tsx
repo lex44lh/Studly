@@ -1,13 +1,14 @@
-import { demoMode } from "@/lib/data-mode";
+import { demoMode, emailAuthUiEnabled } from "@/lib/data-mode";
+import { EmailRegistrationGate } from "@/features/email-auth/EmailRegistrationGate";
 import Link from "next/link";
 import { Icon } from "@/components/studly/Icon";
 import { RegistrationProvider } from "@/context/RegistrationContext";
 import styles from "@/components/registration/registration.module.css";
 
 export default function RegistrationLayout({ children }: { children: React.ReactNode }) {
-  // Until Django is connected, forms are a development-only preview.
+  // The published onboarding stays closed until both rollout and API allow registration.
   if (process.env.NODE_ENV !== "development" && !demoMode) {
-    return <section className={styles.screen} aria-labelledby="registration-unavailable-title">
+    const closed = <section className={styles.screen} aria-labelledby="registration-unavailable-title">
       <div className={`${styles.container} ${styles.center}`}>
         <p className={styles.eyebrow}>Знакомство со STUDLY</p>
         <div className={styles.panel}>
@@ -18,6 +19,7 @@ export default function RegistrationLayout({ children }: { children: React.React
         </div>
       </div>
     </section>;
+    return emailAuthUiEnabled ? <EmailRegistrationGate closed={closed}>{children}</EmailRegistrationGate> : closed;
   }
   return <RegistrationProvider>{children}</RegistrationProvider>;
 }

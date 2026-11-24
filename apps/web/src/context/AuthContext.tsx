@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { authClient, getTelegramInitData, type SessionUser } from "@/lib/api/auth";
 import { demoMode } from "@/lib/data-mode";
 import { ApiError } from "@/lib/api/client";
@@ -23,6 +24,8 @@ function messageFor(error: unknown) {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const emailScreen = pathname === "/auth/email" || pathname.startsWith("/auth/email/");
   const [state, setState] = useState<AuthState>(initial);
   const [sdkReady, setSdkReady] = useState(false);
   const active = useRef<AbortController | null>(null);
@@ -66,7 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (!(error instanceof ApiError) || ![401, 403].includes(error.status)) throw error;
       }
       const options = await authClient.options(controller.signal);
-      const initData = getTelegramInitData();
+      const initData = emailScreen ? "" : getTelegramInitData();
       if (!loggedOut.current && options.telegram_mini_app && initData) {
         await authClient.login(initData, controller.signal);
         const { user } = await authClient.me(controller.signal);
@@ -84,7 +87,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } finally {
       if (active.current === controller) active.current = null;
     }
-  }, [accept]);
+  }, [accept, emailScreen]);
 
   useEffect(() => {
     if (demoMode) return;
@@ -138,7 +141,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [run, sdkReady]);
 
   return <AuthContext.Provider value={{ state: demoMode ? { status: "anonymous", user: null, message: "Демо: вход и серверная сессия не выполняются." } : state, sdkReady, refresh: () => { loggedOut.current = false; void run(); }, logout: () => { void run(true); } }}>
-    {!demoMode && <Script src="https://telegram.org/js/telegram-web-app.js?64" strategy="afterInteractive"
+    {!demoMode && !emailScreen && <Script src="https://telegram.org/js/telegram-web-app.js?64" strategy="afterInteractive"
       onReady={() => setSdkReady(true)} onError={() => setSdkReady(true)} />}
     {children}
   </AuthContext.Provider>;

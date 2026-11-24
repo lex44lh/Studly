@@ -148,3 +148,26 @@ test('demo is explicit, missing mode stays live even for production', () => {
     assert.throws(() => resolveDataMode('demoo'));
   } finally { if (previous === undefined) delete process.env.NODE_ENV; else process.env.NODE_ENV = previous; }
 });
+
+test('email login obtains anonymous CSRF, preserves password and checks rotated session', async () => {
+  const { configureIdentityGuard } = require(path.join(dir, 'api', 'session.js'));
+  const dispose = configureIdentityGuard({ readActor: async () => null, onInvalidated() {} });
+  const calls = [];
+  const user = { id: 42, display_name: '', telegram_username: '' };
+  const responses = [json({ csrf_token: 'anonymous' }), json({ user }), json({ csrf_token: 'rotated' }), json({ user })];
+  global.fetch = async (url, options) => { calls.push({ url, ...options }); return responses.shift(); };
+  try {
+    const signal = new AbortController().signal;
+    await authClient.emailLogin({ identifier: 'learner', password: ' with spaces ' }, signal);
+    await authClient.confirmEmailSession(42, signal);
+    assert.deepEqual(calls.map(c => c.url), ['/api/v1/auth/csrf/', '/api/v1/auth/email/login/', '/api/v1/auth/csrf/', '/api/v1/auth/me/']);
+    assert.equal(JSON.parse(calls[1].body).password, ' with spaces ');
+    assert.equal(calls[1].headers['X-CSRFToken'], 'anonymous');
+    await assert.rejects(apiRequest('auth/email/link/', { method: 'POST', signal }), /Аккаунт изменился/);
+  } finally { dispose(); }
+});
+
+test('email confirmation rejects a session established for a different account', async () => {
+  global.fetch = async url => url.endsWith('/csrf/') ? json({ csrf_token: 'rotated' }) : json({ user: { id: 11, display_name: '', telegram_username: '' } });
+  await assert.rejects(authClient.confirmEmailSession(12, new AbortController().signal), { status: 409 });
+});

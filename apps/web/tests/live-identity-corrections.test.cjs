@@ -76,7 +76,7 @@ test('L4 invalidation aborts an already dispatched bound request and suppresses 
   await assert.rejects(pending, { name: 'AbortError' }); assert.equal(h.session.createIdentityController(h.session.captureIdentity(701)).signal.aborted, true);
 }));
 
-function authHarness({ demo = false } = {}) {
+function authHarness({ demo = false, pathname = "/profile" } = {}) {
   const React = require('react'); const { session } = loadModules();
   const slots = [], effects = [], cleanups = []; let cursor = 0;
   const hooks = { ...React,
@@ -97,7 +97,7 @@ function authHarness({ demo = false } = {}) {
   const file = path.resolve(__dirname, '../src/context/AuthContext.tsx'); const fixture = { exports: {} };
   const code = ts.transpileModule(fs.readFileSync(file, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX } }).outputText;
   new Function('require', 'module', 'exports', code)(name => ({ react: hooks, '@/lib/api/auth': { authClient, getTelegramInitData: () => 'synthetic-signed-input' }, '@/lib/api/client': client,
-    '@/lib/api/session': session, '@/lib/data-mode': { demoMode: demo }, 'next/script': { default: () => null } }[name] ?? require(name)), fixture, fixture.exports);
+    '@/lib/api/session': session, '@/lib/data-mode': { demoMode: demo }, 'next/script': { default: () => null }, 'next/navigation': { usePathname: () => pathname } }[name] ?? require(name)), fixture, fixture.exports);
   function render() { cursor = 0; const value = fixture.exports.AuthProvider({ children: null }).props.value; while (effects.length) effects.shift()(); return value; }
   const flush = async () => { await new Promise(resolve => setTimeout(resolve, 5)); return render(); };
   return { session, win, doc, channels, writes, render, flush, actor(value) { actor = value; }, reads: () => reads, logins: () => logins, logouts: () => logouts,
@@ -130,4 +130,11 @@ test('L4 visibility/pageshow recheck and explicit logout do not auto-login or re
 });
 test('L4 Demo does not install session listeners or call authentication', async () => {
   const h = authHarness({ demo: true }); try { h.render(); await h.flush(); h.win.dispatchEvent(new Event('focus')); await h.flush(); assert.equal(h.reads(), 0); assert.equal(h.channels.length, 0); } finally { h.close(); }
+});
+
+
+test('email landing does not initiate Telegram login even if an SDK was already loaded', async () => {
+  const h = authHarness({ pathname: '/auth/email' });
+  try { h.actor(null); h.render(); assert.equal((await h.flush()).state.status, 'anonymous'); assert.equal(h.logins(), 0); }
+  finally { h.close(); }
 });
