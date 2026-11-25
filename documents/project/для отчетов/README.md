@@ -12,6 +12,8 @@
 
 ## Сеансы
 
+- [Обратная связь по Demo и передача Live — 25.11.2026](frontend/catalog/2026-11-25_13-42_demo-feedback-and-live-handoff.md)
+
 - [Ссылки Telegram и TikTok на странице «О STUDLY» — 25.11.2026](frontend/2026-11-25_01-19_about-social-links.md)
 
 - [Цена в поиске и тема после обновления — 24.11.2026](frontend/catalog/2026-11-24_12-46_price-theme-hotfix.md)
