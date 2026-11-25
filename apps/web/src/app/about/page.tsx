@@ -12,6 +12,8 @@ export default function AboutPage() {
         <p className={styles.lead}>STUDLY — площадка услуг для студентов.</p>
         <div className="page-actions">
           <Link href="/search" className="page-button">Найти услугу <Icon name="arrow" /></Link>
+          <a href="https://t.me/studlyhelp" className="page-button-secondary" target="_blank" rel="noopener noreferrer">Telegram-канал</a>
+          <a href="https://vm.tiktok.com/ZN8uBbQGH/" className="page-button-secondary" target="_blank" rel="noopener noreferrer">TikTok</a>
         </div>
         <span className={styles.heroNumber} aria-hidden="true">ST.</span>
       </header>

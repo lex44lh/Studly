@@ -10,7 +10,7 @@ import { LiveAccess, LiveState, useLiveResource } from "@/features/live/shared";
 import { accountClient, safePortfolioUrl, portfolioContentPath, type LiveAccount, type PerformerModeration, type PortfolioExample, type AccountVersion, type PortfolioPage } from "@/lib/api/account";
 import { registrationClient, registrationRevisionAfterSave } from "@/lib/api/registration";
 import { ApiError, requestKey } from "@/lib/api/client";
-import { telegramRegistrationEnabled } from "@/lib/data-mode";
+import { djangoAdminUiEnabled, telegramRegistrationEnabled } from "@/lib/data-mode";
 import type { RegistrationResponse } from "@/types/registration-api";
 import type { RegistrationRole } from "@/types/registration";
 import { useAccountWriter, type AccountWriter } from "./useAccountWriter";
@@ -210,7 +210,37 @@ function PortfolioPanel({ moderation, writer, refreshKey, revisions, onDirtyChan
     <LiveState loading={portfolio.loading} error={portfolio.error} retry={portfolio.reload} />
     <div className={styles.examples}>{examples.map(example => <ExampleEditor key={example.id} example={example} revision={moderation.revision} actor={moderation.user_id} writer={portfolioWriter} revisions={chain} onDirtyChange={editorDirty} />)}</div>
     {page && <>{!examples.length && <p className={styles.muted}>Примеров работ пока нет.</p>}<nav className={styles.compactLinks} aria-label="Страницы портфолио">{page.previous && <button className={styles.secondary} type="button" disabled={portfolioWriter.blocked || Object.keys(editingDrafts).length > 0} onClick={() => setNext(page.previous!)}>Назад</button>}{page.next && <button className={styles.secondary} type="button" disabled={portfolioWriter.blocked || Object.keys(editingDrafts).length > 0} onClick={() => setNext(page.next!)}>Далее</button>}</nav></>}
-    <form className={styles.exampleForm} onSubmit={add}><fieldset className={styles.fieldset} disabled={portfolioWriter.blocked}><legend className={styles.formLegend}>Добавить работу</legend><div className={styles.kindSwitch}>{(["link", "file"] as const).map(value => <label key={value}><input type="radio" name="live-example-kind" checked={kind === value} onChange={() => { touched(); setKind(value); setError(""); }} />{value === "link" ? "Ссылка" : "Файл"}</label>)}</div><div className={styles.field}><label htmlFor="live-example-title">Название работы</label><input id="live-example-title" value={title} required maxLength={200} onChange={event => { touched(); setTitle(event.target.value); }} /></div>{kind === "link" ? <div className={styles.field}><label htmlFor="live-example-url">Ссылка на работу</label><input id="live-example-url" type="url" value={url} required maxLength={2000} onChange={event => { touched(); setUrl(event.target.value); }} placeholder="https://" /></div> : <div className={styles.field}><label htmlFor="live-example-file">Файл с примером работы</label><input id="live-example-file" ref={fileInput} type="file" required accept="image/png,image/jpeg,image/webp,application/pdf" onChange={event => { touched(); setFile(event.target.files?.[0] ?? null); }} /><p className={styles.hint}>PNG, JPEG, WebP или PDF до 10 МиБ. Окончательную проверку содержимого выполняет сервер.</p></div>}{error && <p className={styles.error} role="alert">{error}</p>}<button className={styles.secondary} type="submit">Добавить пример</button><button className={styles.remove} type="button" onClick={() => { clearNew(); writer.refresh(); }}>Загрузить актуальные данные (очистит новую работу)</button></fieldset></form>
+    <form className={styles.exampleForm} onSubmit={add}>
+      <fieldset className={styles.fieldset} disabled={portfolioWriter.blocked}>
+        <legend className={styles.formLegend}>Добавить работу</legend>
+        <div className={styles.kindSwitch}>{(["link", "file"] as const).map(value =>
+          <label key={value}>
+            <input type="radio" name="live-example-kind" checked={kind === value} onChange={() => {
+              touched();
+              setKind(value);
+              setFile(null);
+              setError("");
+            }} />
+            {value === "link" ? "Ссылка" : "Файл"}
+          </label>
+        )}</div>
+        <div className={styles.field}>
+          <label htmlFor="live-example-title">Название работы</label>
+          <input id="live-example-title" value={title} required maxLength={200} onChange={event => { touched(); setTitle(event.target.value); }} />
+        </div>
+        {kind === "link" ? <div className={styles.field} key="link">
+          <label htmlFor="live-example-url">Ссылка на работу</label>
+          <input id="live-example-url" type="url" value={url} required maxLength={2000} onChange={event => { touched(); setUrl(event.target.value); }} placeholder="https://" />
+        </div> : <div className={styles.field} key="file">
+          <label htmlFor="live-example-file">Файл с примером работы</label>
+          <input id="live-example-file" ref={fileInput} type="file" required accept="image/png,image/jpeg,image/webp,application/pdf" onChange={event => { touched(); setFile(event.target.files?.[0] ?? null); }} />
+          <p className={styles.hint}>PNG, JPEG, WebP или PDF до 10 МиБ. Окончательную проверку содержимого выполняет сервер.</p>
+        </div>}
+        {error && <p className={styles.error} role="alert">{error}</p>}
+        <button className={styles.secondary} type="submit">Добавить пример</button>
+        <button className={styles.remove} type="button" onClick={() => { clearNew(); writer.refresh(); }}>Загрузить актуальные данные (очистит новую работу)</button>
+      </fieldset>
+    </form>
   </section>;
 }
 
@@ -253,6 +283,10 @@ function AccountBody() {
   const updatePortfolioDirty = (dirty: boolean) => { portfolioDirtyRef.current = dirty; setPortfolioDirty(dirty); };
   if (!snapshot) return <LiveState loading={resource.loading} error={resource.error} retry={resource.reload} />;
   const { account, moderation } = snapshot;
+  // Nginx serves Django Admin directly, outside the Next.js router.
+  const adminLink = djangoAdminUiEnabled && account.capabilities.django_admin
+    ? <a className="page-button" href="/admin/">Открыть админку</a>
+    : null;
   // The closed production wizard must also cover alternate account entry points.
   if (process.env.NODE_ENV !== "development" && !account.registration.status.is_complete) {
     return <div className={styles.page}><section className={styles.panel}>
@@ -261,6 +295,7 @@ function AccountBody() {
       <nav className="page-actions page-section" aria-label="Действия с аккаунтом">
         {/* Normal navigation lets Nginx route to the Django form. */}
         {telegramRegistrationEnabled && <a className="page-button" href="/register/roles">Выбрать роль</a>}
+        {adminLink}
         <Link className="page-button-secondary" href="/search">Перейти в каталог</Link>
         <button type="button" className="page-button-secondary" onClick={logout}>Выйти</button>
       </nav>
@@ -270,7 +305,13 @@ function AccountBody() {
   const role = requested === "customer" || requested === "performer" ? requested : account.registration.roles[0];
   const allowed = role && account.capabilities[role];
   const refreshKey = `${refresh}:${moderation.revision}`;
-  return <div className={styles.page}><header className={styles.heading}><p className={styles.eyebrow}>Мой STUDLY</p><div className={styles.identity}><Avatar registration={account.registration} revision={moderation.revision} /><div><h1>{account.registration.profile.display_name || "Мой аккаунт"}</h1>{account.registration.profile.university && <p>{account.registration.profile.university}</p>}{account.registration.profile.city && <p className={styles.city}>{account.registration.profile.city}</p>}</div></div><nav className={styles.compactLinks} aria-label="Доступ к аккаунту">{account.capabilities.django_admin && <Link href="/staff">Рабочее место сотрудника</Link>}<button type="button" className={styles.secondary} disabled={writer.blocked} onClick={logout}>Выйти из аккаунта</button></nav></header>
+  return <div className={styles.page}><header className={styles.heading}><p className={styles.eyebrow}>Мой STUDLY</p><div className={styles.identity}><Avatar registration={account.registration} revision={moderation.revision} /><div><h1>{account.registration.profile.display_name || "Мой аккаунт"}</h1>{account.registration.profile.university && <p>{account.registration.profile.university}</p>}{account.registration.profile.city && <p className={styles.city}>{account.registration.profile.city}</p>}</div></div>
+    <nav className={styles.compactLinks} aria-label="Доступ к аккаунту">
+      {adminLink}
+      {account.capabilities.django_admin && <Link href="/staff">Рабочее место сотрудника</Link>}
+      <button type="button" className={styles.secondary} disabled={writer.blocked} onClick={logout}>Выйти из аккаунта</button>
+    </nav>
+  </header>
     <LiveState loading={resource.loading} error={resource.error} retry={resource.reload} />
     {writer.error && <div className={styles.error} role="alert"><p>{writer.error}</p>{writer.uncertain && writer.replayable ? <button className={styles.secondary} type="button" disabled={writer.busy} onClick={writer.retry}>Повторить исходную операцию с тем же ключом</button> : <button className={styles.secondary} type="button" disabled={writer.busy} onClick={writer.refresh}>Загрузить актуальные данные</button>}</div>}
     {writer.notice && <p className={styles.success} role="status">{writer.notice}</p>}

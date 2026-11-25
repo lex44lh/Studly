@@ -41,7 +41,7 @@ function textContent(tree) {
   if (typeof tree === 'string' || typeof tree === 'number') return String(tree);
   return tree && typeof tree === 'object' ? React.Children.toArray(tree.props?.children).map(textContent).join(' ') : '';
 }
-function harness({ telegramRegistrationEnabled = false } = {}) {
+function harness({ djangoAdminUiEnabled = true, telegramRegistrationEnabled = false } = {}) {
   const accountHooks = hooksRuntime(), editorHooks = hooksRuntime(), portfolioHooks = hooksRuntime(), exampleHooks = new Map(); let currentHooks = accountHooks;
   const state = { snapshot: initialSnapshot(), patches: [], related: [], examples: [], reload: () => {}, tree: null, editor: null,
     saveError: null, exampleError: null, afterSaveAck: null, afterExampleAck: null, moderationReads: 0 };
@@ -111,7 +111,7 @@ function harness({ telegramRegistrationEnabled = false } = {}) {
     if (name === '@/lib/api/registration') return { ...registrationApi, registrationClient };
     if (name === './revisions') return sourceModule(path.resolve(path.dirname(source), 'revisions.ts'), dependency => dependency === '@/lib/api/account' ? { accountClient } : undefined);
     if (name === '@/lib/api/client') return { ApiError, requestKey: () => uuid };
-    if (name === '@/lib/data-mode') return { telegramRegistrationEnabled };
+    if (name === '@/lib/data-mode') return { djangoAdminUiEnabled, telegramRegistrationEnabled };
     if (name === './useAccountWriter') return { useAccountWriter: reload => { state.reload = reload; return commands; } };
     if (name === '@/features/live-services/LiveOwnServices') return { __esModule: true, default: () => null };
     return require(name);
@@ -175,6 +175,35 @@ test('an incomplete Telegram account can reach server role selection before the 
   assert.equal(find(h.state.tree, node => node.type === h.components.LiveProfileEditor, false), undefined);
   assert.equal(h.state.patches.length, 0);
 });
+
+test('Django Admin is linked directly from complete and incomplete profiles only if the server allows it', async () => {
+  for (const isComplete of [true, false]) {
+    for (const canUseAdmin of [true, false]) {
+      const h = harness({ telegramRegistrationEnabled: true });
+      h.state.snapshot.account.registration.status.is_complete = isComplete;
+      h.state.snapshot.account.capabilities.django_admin = canUseAdmin;
+      h.renderAccount();
+      await drain();
+      const tree = h.renderAccount();
+      const link = find(tree, node => node.props?.href === '/admin/', false);
+      if (canUseAdmin) {
+        assert.equal(link?.type, 'a');
+        assert.equal(textContent(link), 'Открыть админку');
+      } else {
+        assert.equal(link, undefined);
+      }
+    }
+  }
+});
+
+test('Django Admin stays hidden when the environment only exposes the staff workspace', async () => {
+  const h = harness({ djangoAdminUiEnabled: false });
+  h.state.snapshot.account.capabilities.django_admin = true;
+  await h.ready();
+  assert.equal(find(h.state.tree, node => node.props?.href === '/admin/', false), undefined);
+  find(h.state.tree, node => node.props?.href === '/staff');
+});
+
 test('L2: saving text first unlocks the related command at the new canonical revision without a self-conflict', async () => {
   const h = harness(); await h.ready(); h.edit('live-account-name', 'Saved own text'); h.renderPortfolio();
   assert.equal(find(h.state.portfolio, node => node.type === 'fieldset').props.disabled, true);

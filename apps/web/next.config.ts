@@ -8,8 +8,22 @@ if (!["http:", "https:"].includes(backend.protocol) || backend.username || backe
 const nextConfig: NextConfig = {
   // The development indicator covers the first Campus tab on narrow screens.
   devIndicators: false,
+  poweredByHeader: false,
   // Django contracts require trailing slashes; do not redirect POST/PATCH away from them.
   skipTrailingSlashRedirect: true,
+  async headers() {
+    return [{
+      source: "/:path((?!api(?:/|$)).*)",
+      headers: [
+        // Telegram Web embeds the Mini App. Native Telegram clients do not need a frame exception.
+        { key: "Content-Security-Policy", value: "frame-ancestors 'self' https://web.telegram.org; object-src 'none'; base-uri 'self'" },
+        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        { key: "X-Content-Type-Options", value: "nosniff" },
+        // Match the Django responses served on the same host.
+        ...(process.env.NODE_ENV === "production" ? [{ key: "Strict-Transport-Security", value: "max-age=3600" }] : []),
+      ],
+    }];
+  },
   async rewrites() {
     return [{ source: "/api/:path*", destination: `${backend.origin}/api/:path*/` }];
   },

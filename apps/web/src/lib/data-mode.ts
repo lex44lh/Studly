@@ -15,3 +15,5 @@ export const demoMode = dataMode === "demo";
 export const emailAuthUiEnabled = !demoMode && process.env.NEXT_PUBLIC_STUDLY_EMAIL_AUTH_UI === "1";
 // The deployment routes /register/roles to the Django registration form.
 export const telegramRegistrationEnabled = !demoMode && process.env.NEXT_PUBLIC_STUDLY_TELEGRAM_REGISTRATION === "1";
+// Enabled only where the proxy serves Django Admin.
+export const djangoAdminUiEnabled = !demoMode && process.env.NEXT_PUBLIC_STUDLY_DJANGO_ADMIN_UI === "1";

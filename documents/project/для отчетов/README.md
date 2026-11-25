@@ -12,6 +12,16 @@
 
 ## Сеансы
 
+- [Управление STUDLY и проверка перед запуском — 25.11.2026](frontend/api-integration/2026-11-25_22-03_studly-operations-guide.md)
+
+- [Исправления безопасности и выкладка Frontend — 25.11.2026](frontend/api-integration/2026-11-25_21-42_frontend-security-release.md)
+
+- [Проверка безопасности и сценариев Live — 25.11.2026](frontend/api-integration/2026-11-25_21-35_live-safety-and-bugs.md)
+
+- [Переход в Django Admin из профиля — 25.11.2026](frontend/api-integration/2026-11-25_21-26_django-admin-link.md)
+
+- [Частичная приёмка Live: доступность, staff и текущий релиз — 25.11.2026](frontend/api-integration/2026-11-25_20-44_live-access-review.md)
+
 - [Подключение клиентских форм email-входа — 24.11.2026](frontend/registration/2026-11-24_12-46_email-auth-frontend.md)
 
 - [Цена в поиске и тема после обновления — 24.11.2026](frontend/catalog/2026-11-24_12-46_price-theme-hotfix.md)
